@@ -10,6 +10,7 @@ public class TopDownCarController : MonoBehaviour
     public float turnFactor = 3.5f;
     public float steerRejectFactor = 8; //Sets amount of steering deficiency at low velocities
     public float maxSpeed = 20;
+    public float startBoost = 20f;
 
     //local variables
     float accelerationInput = 0;
@@ -17,7 +18,9 @@ public class TopDownCarController : MonoBehaviour
 
     float rotationAngle = 0;
 
-    float velocityVsUp = 0;
+    float velocityVsUp = 27;
+
+    Vector2 carPullVector;
 
     //Components
     Rigidbody2D carRigidbody2D;
@@ -26,6 +29,8 @@ public class TopDownCarController : MonoBehaviour
     void Awake()
     {
         carRigidbody2D = GetComponent<Rigidbody2D>();
+        carPullVector = new Vector2(0.0f, 0.0f);
+        carRigidbody2D.velocity = new Vector2(0, startBoost);
     }
 
     // Start is called before the first frame update
@@ -39,7 +44,7 @@ public class TopDownCarController : MonoBehaviour
     {
         
     }
-
+    
     //Frame-Rate independent for physics calculation
     void FixedUpdate()
     {
@@ -48,6 +53,8 @@ public class TopDownCarController : MonoBehaviour
         KillOrthogonalVelocity();
 
         ApplySteering();
+
+        PullCarBack(); //use if the camera should be static
     }
 
     void ApplyEngineForce()
@@ -102,9 +109,21 @@ public class TopDownCarController : MonoBehaviour
 
     }
 
+    void PullCarBack()
+    {
+        carRigidbody2D.AddForce(carPullVector);
+        Debug.Log("carPullVector y-direction is right now" + carPullVector.y);
+    }
+
     public void SetInputVector(Vector2 inputVector)
     {
         steeringInput = inputVector.x;
         accelerationInput = inputVector.y;
+    }
+
+    public void SetPullVector(Vector2 pullVector)
+    {
+        carPullVector = pullVector;
+        //Debug.Log("The Car is currently pulled to direction:" + pullVector); //Prints the Value of the Pullback Vector to Console
     }
 }

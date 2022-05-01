@@ -9613,6 +9613,7 @@ GameObject:
   - component: {fileID: 2127688632}
   - component: {fileID: 2127688634}
   - component: {fileID: 2127688635}
+  - component: {fileID: 2127688636}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -9674,6 +9675,7 @@ MonoBehaviour:
   turnFactor: 3.5
   steerRejectFactor: 8
   maxSpeed: 20
+  startBoost: 20
 --- !u!114 &2127688635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9686,3 +9688,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22469f20118e7a04bb72a345f591bad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2127688636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127688631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a84cf18062a8d4281ba47db4a17840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pullX: 0
+  pullY: -27
