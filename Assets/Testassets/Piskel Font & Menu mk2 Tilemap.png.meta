@@ -1,0 +1,1774 @@
+fileFormatVersion: 2
+guid: b455df7e97875d24eb6e215208da6eae
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 6
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 122
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27c67fd3dd3887345a282c28dbc8cf54
+      internalID: 1720632587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 122
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efa787d1e7a92494fa5008645a370c29
+      internalID: -423268594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 122
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0928a1d16305eff4e860e08e945183d7
+      internalID: -1487979415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 122
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d9aa268ec740754db6cf892999193c9
+      internalID: 1434785487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_4
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 122
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de19e39fc2d3f3b4fa1f6c085347f070
+      internalID: 47715779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_5
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 122
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edd26bdc742e34842a5208e4ccbbd172
+      internalID: 706611759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_6
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 122
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08be290d8d19ea5469fab9e8a132ab6b
+      internalID: 221375244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 122
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdac436573b45514083a07681333b7e3
+      internalID: 190468697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_8
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 122
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b84b2f784dec404fb2ff1b4cd561ca7
+      internalID: -1497253913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_9
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 122
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a000233ab5747c740b96147dfee9e9ef
+      internalID: -284708386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12731440dd1d37148921e3f797e931ed
+      internalID: 70917105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_11
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b91e8dd59a731954b8dedec3fb46fbf1
+      internalID: 1191305550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19127c04faf730746959208deca31680
+      internalID: 1020726114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_13
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146434f1fd8dace46b2369b46cbe4f58
+      internalID: 1813199466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f58cf472c627b9e498291c30cc7c7660
+      internalID: -2088515010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_15
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1986fdfcdfce1c9469532d4526a66016
+      internalID: 383863260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_16
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8c792eefe2d64446b7e1d947a564b46
+      internalID: 730471444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_17
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcb81f6c6f256304ca13eb888a5ec3e6
+      internalID: -971315557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2aac6a7113d60745960e5c315bcd5be
+      internalID: 394970712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_19
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a040e0280a875f429fa882c8bf74d5d
+      internalID: 767782226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_20
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cc8b444d90750a44952fd8a636cb43d
+      internalID: 85885527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_21
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b05b101102b85c4085cfcd37635a409
+      internalID: 417757373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7d9bd58f6609fa4c95ea1827fce7a4a
+      internalID: 48664269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 106
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf1f7a7325f842a4abd04d2b7942faf3
+      internalID: 1580239872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_24
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 106
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 006adb5f2d974b4448ea5101405b63c4
+      internalID: 2063841362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_25
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 106
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6c504b58ce2b943a53bb601848a3dd
+      internalID: -800248394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_26
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 106
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37418e2a48f227546a6ea412643bc685
+      internalID: -214240869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_27
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 106
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d324df6f918478488555116069e8b49
+      internalID: 355476599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_28
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 106
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a4ab375594f67f488f391eb9094522b
+      internalID: 1948815980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_29
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 106
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27afaf0c6197e4549b343eac7bb688b9
+      internalID: 860952998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_30
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 106
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7d3fbe390fa5ad4ba1488bbbfe74bbd
+      internalID: 593084650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_31
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 106
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4a225529922c1742a84039204e6ea94
+      internalID: 345658636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_32
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 106
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8bccc7ef9747874e968e833a7532fde
+      internalID: 389757424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_33
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 106
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d64cf4b4608ea21429ab8820a01c8829
+      internalID: -2054156521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ff5ec72d4cc2c4b85ce32cc4952302
+      internalID: 1511311270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_35
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6f85c974ce46cb4b9ecc34129e006e7
+      internalID: 730274648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_36
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dacdd54373b839c4a89310420988aa72
+      internalID: -1687454612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_37
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e911a2993e095fb42aa8fe19ad8cf507
+      internalID: -312582403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_38
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f41276dcd271d144bdcd77116239d04
+      internalID: -376429757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_39
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83e8eec59db214f4fac0ed58429d2e94
+      internalID: -1183990370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_40
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 262116f86490af14495a8833ba6fdc35
+      internalID: -1508307565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_41
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c75ce63027c81a64190d63b5b8d40fba
+      internalID: -1161876160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_42
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f65b1ceda3994224e948803c7d4dddaf
+      internalID: 877807560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_43
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ede01f1e8dbed340af9e5aeb3c7cb1e
+      internalID: 1591621980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_44
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7779056e806cdf48937ece1098fe8ed
+      internalID: 1166554973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_45
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d463d23a079c2d5448ae29ae3e301de2
+      internalID: 81108782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_46
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11eded0e531147d4b8ad4e3bbac6394b
+      internalID: -1242886452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_47
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59231566fb8070147a945a663f111b6e
+      internalID: 181403598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_48
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 98
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a44e2ffb67874a2478330894ea61b59b
+      internalID: 57599081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8236c3f8686ae7641ad37e408a219422
+      internalID: 76653187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_50
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 90
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79ac45ee127c0bf4ca33fc65059e9ea2
+      internalID: -995534586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_51
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 90
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d53d62b5a6ccd3e4b990cd7051bc1d96
+      internalID: -1151280855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_52
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 90
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c5a049c9d48cec40b14c411618376b4
+      internalID: 881743026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_53
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 90
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b8e4bbd0fab746458e2d671b0b2392f
+      internalID: 185158819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_54
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 90
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0648f794463efeb4f8358aff2f85b982
+      internalID: -404505715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_55
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 90
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dac73a94eb769f4facffdeb75df94de
+      internalID: -347076113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_56
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 90
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf612182fc94a17468eecc02608bbfd0
+      internalID: 2101791288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_57
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 90
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01b922944ecf3fb47b0b30dba8593ce8
+      internalID: 1388107261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_58
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 90
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1035ac2ae19c02b4ba14ddd0470c5fef
+      internalID: -1890305064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_59
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 90
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76a0d0e956d4adf4bb605d4693c1f176
+      internalID: -395956640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e09b5247a4de7f644abdaf3da89d75ae
+      internalID: -769566014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_61
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37b0dafac27c3e743bfb4c926caaa857
+      internalID: -212991142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_62
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d0bd466e8a386945a46986972038154
+      internalID: -1671892168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_63
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f241b7e9932a95a489f24ce3270a811a
+      internalID: 1836798320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_64
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c11da61b17c9c4693c1b4aeb5a50d7
+      internalID: -1155964661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_65
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e72fd9c69bf26714aaf1be7b6d2b3935
+      internalID: 836167027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_66
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1bfe98ff81d63a4bbfca456c59d4dcd
+      internalID: 2126675805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_67
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07358b5c9be23024ab7b67caf96f84d5
+      internalID: 2135712796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_68
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9429d870e73b494c8fee097fc32825d
+      internalID: -419847558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_69
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1a1d41a57ea637469788a568bc12b49
+      internalID: -1689090699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_70
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ddc59fe28237a4792072d4c2c0fa3d
+      internalID: 1022694854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_71
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2800a6e71566bc42a7bf3e6c45a0084
+      internalID: -1474170523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_72
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ad9cf93cb79bdf4fa76e41e11f7b291
+      internalID: 876789930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piskel Font & Menu mk2 Tilemap_73
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8385e83ba99899e4d86b86fb5748d146
+      internalID: 1316887582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Piskel Font & Menu mk2 Tilemap_63: 1836798320
+      Piskel Font & Menu mk2 Tilemap_69: -1689090699
+      Piskel Font & Menu mk2 Tilemap_35: 730274648
+      Piskel Font & Menu mk2 Tilemap_37: -312582403
+      Piskel Font & Menu mk2 Tilemap_50: -995534586
+      Piskel Font & Menu mk2 Tilemap_68: -419847558
+      Piskel Font & Menu mk2 Tilemap_18: 394970712
+      Piskel Font & Menu mk2 Tilemap_66: 2126675805
+      Piskel Font & Menu mk2 Tilemap_61: -212991142
+      Piskel Font & Menu mk2 Tilemap_42: 877807560
+      Piskel Font & Menu mk2 Tilemap_17: -971315557
+      Piskel Font & Menu mk2 Tilemap_1: -423268594
+      Piskel Font & Menu mk2 Tilemap_22: 48664269
+      Piskel Font & Menu mk2 Tilemap_23: 1580239872
+      Piskel Font & Menu mk2 Tilemap_67: 2135712796
+      Piskel Font & Menu mk2 Tilemap_16: 730471444
+      Piskel Font & Menu mk2 Tilemap_6: 221375244
+      Piskel Font & Menu mk2 Tilemap_13: 1813199466
+      Piskel Font & Menu mk2 Tilemap_34: 1511311270
+      Piskel Font & Menu mk2 Tilemap_72: 876789930
+      Piskel Font & Menu mk2 Tilemap_21: 417757373
+      Piskel Font & Menu mk2 Tilemap_24: 2063841362
+      Piskel Font & Menu mk2 Tilemap_31: 345658636
+      Piskel Font & Menu mk2 Tilemap_20: 85885527
+      Piskel Font & Menu mk2 Tilemap_56: 2101791288
+      Piskel Font & Menu mk2 Tilemap_58: -1890305064
+      Piskel Font & Menu mk2 Tilemap_54: -404505715
+      Piskel Font & Menu mk2 Tilemap_38: -376429757
+      Piskel Font & Menu mk2 Tilemap_36: -1687454612
+      Piskel Font & Menu mk2 Tilemap_2: -1487979415
+      Piskel Font & Menu mk2 Tilemap_19: 767782226
+      Piskel Font & Menu mk2 Tilemap_26: -214240869
+      Piskel Font & Menu mk2 Tilemap_60: -769566014
+      Piskel Font & Menu mk2 Tilemap_3: 1434785487
+      Piskel Font & Menu mk2 Tilemap_29: 860952998
+      Piskel Font & Menu mk2 Tilemap_64: -1155964661
+      Piskel Font & Menu mk2 Tilemap_8: -1497253913
+      Piskel Font & Menu mk2 Tilemap_43: 1591621980
+      Piskel Font & Menu mk2 Tilemap_5: 706611759
+      Piskel Font & Menu mk2 Tilemap_49: 76653187
+      Piskel Font & Menu mk2 Tilemap_44: 1166554973
+      Piskel Font & Menu mk2 Tilemap_9: -284708386
+      Piskel Font & Menu mk2 Tilemap_27: 355476599
+      Piskel Font & Menu mk2 Tilemap_7: 190468697
+      Piskel Font & Menu mk2 Tilemap_30: 593084650
+      Piskel Font & Menu mk2 Tilemap_32: 389757424
+      Piskel Font & Menu mk2 Tilemap_25: -800248394
+      Piskel Font & Menu mk2 Tilemap_48: 57599081
+      Piskel Font & Menu mk2 Tilemap_73: 1316887582
+      Piskel Font & Menu mk2 Tilemap_51: -1151280855
+      Piskel Font & Menu mk2 Tilemap_33: -2054156521
+      Piskel Font & Menu mk2 Tilemap_41: -1161876160
+      Piskel Font & Menu mk2 Tilemap_10: 70917105
+      Piskel Font & Menu mk2 Tilemap_15: 383863260
+      Piskel Font & Menu mk2 Tilemap_45: 81108782
+      Piskel Font & Menu mk2 Tilemap_46: -1242886452
+      Piskel Font & Menu mk2 Tilemap_52: 881743026
+      Piskel Font & Menu mk2 Tilemap_14: -2088515010
+      Piskel Font & Menu mk2 Tilemap_70: 1022694854
+      Piskel Font & Menu mk2 Tilemap_47: 181403598
+      Piskel Font & Menu mk2 Tilemap_59: -395956640
+      Piskel Font & Menu mk2 Tilemap_53: 185158819
+      Piskel Font & Menu mk2 Tilemap_65: 836167027
+      Piskel Font & Menu mk2 Tilemap_40: -1508307565
+      Piskel Font & Menu mk2 Tilemap_71: -1474170523
+      Piskel Font & Menu mk2 Tilemap_28: 1948815980
+      Piskel Font & Menu mk2 Tilemap_0: 1720632587
+      Piskel Font & Menu mk2 Tilemap_4: 47715779
+      Piskel Font & Menu mk2 Tilemap_11: 1191305550
+      Piskel Font & Menu mk2 Tilemap_55: -347076113
+      Piskel Font & Menu mk2 Tilemap_12: 1020726114
+      Piskel Font & Menu mk2 Tilemap_39: -1183990370
+      Piskel Font & Menu mk2 Tilemap_57: 1388107261
+      Piskel Font & Menu mk2 Tilemap_62: -1671892168
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
