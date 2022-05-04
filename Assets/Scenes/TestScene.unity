@@ -9316,6 +9316,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 1379453195}
+  tileDatas:
+  - {fileID: 11400000, guid: d34e3e3dc6bfd7147abf8dc4353716ac, type: 2}
+  - {fileID: 11400000, guid: 66b63b2049d9cf34795c244a3474a831, type: 2}
 --- !u!4 &294240844
 Transform:
   m_ObjectHideFlags: 0
@@ -10282,4 +10285,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullX: 0
-  pullY: -25
+  pullY: 0

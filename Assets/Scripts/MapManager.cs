@@ -8,6 +8,24 @@ public class MapManager : MonoBehaviour
 	[SerializeField]
 	private Tilemap map;
 	
+	[SerializeField]
+	private List<TileData> tileDatas;
+	
+	private Dictionary<TileBase, TileData> dataFromTiles;
+	
+	private void Awake()
+	{
+		dataFromTiles = new Dictionary<TileBase, TileData>();
+		
+		foreach (var tileData in tileDatas)
+		{
+			foreach (var tile in tileData.tiles)
+			{
+				dataFromTiles.Add(tile, tileData);
+			}
+		}
+	}
+	
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +47,17 @@ public class MapManager : MonoBehaviour
 			
 			TileBase clickedTile = map.GetTile(gridPosition);
 			
-			print("At postition " + gridPosition + " there is a " + clickedTile);
+			float resistance = dataFromTiles[clickedTile].resistance;
+			
+			print("At postition " + gridPosition + " there is a " + clickedTile + "with a resistance of " + resistance);
 		}
+	}
+	
+	public float GetTileResistance(Vector2 worldPosition)
+	{
+		Vector3Int gridPosition = map.WorldToCell(worldPosition);
+		TileBase tile = map.GetTile(gridPosition);
+		float resistance = dataFromTiles[tile].resistance;
+		return resistance;
 	}
 }

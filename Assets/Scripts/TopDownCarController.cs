@@ -21,6 +21,8 @@ public class TopDownCarController : MonoBehaviour
     float velocityVsUp = 27;
 
     Vector2 carPullVector;
+	
+	private MapManager mapManager;
 
     //Components
     Rigidbody2D carRigidbody2D;
@@ -31,6 +33,7 @@ public class TopDownCarController : MonoBehaviour
         carRigidbody2D = GetComponent<Rigidbody2D>();
         carPullVector = new Vector2(0.0f, 0.0f);
         carRigidbody2D.velocity = new Vector2(0, startBoost);
+		mapManager = FindObjectOfType<MapManager>();
     }
 
     // Start is called before the first frame update
@@ -78,9 +81,11 @@ public class TopDownCarController : MonoBehaviour
         if (accelerationInput == 0)
             carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 3.0f, Time.fixedDeltaTime * 3);
         else carRigidbody2D.drag = 0;
+		
+		float speedByGroundType = mapManager.GetTileResistance(transform.position);
 
         //Creates a force for the Engine
-        Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor;
+        Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor * speedByGroundType;
 
         //Applies force and pushes the car forward
         carRigidbody2D.AddForce(engineForceVector, ForceMode2D.Force);
