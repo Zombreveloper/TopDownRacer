@@ -112,7 +112,7 @@ public class TopDownCarController : MonoBehaviour
     void PullCarBack()
     {
         carRigidbody2D.AddForce(carPullVector);
-        Debug.Log("carPullVector y-direction is right now" + carPullVector.y);
+        //Debug.Log("carPullVector y-direction is right now" + carPullVector.y);
     }
 
     public void SetInputVector(Vector2 inputVector)
