@@ -47,17 +47,24 @@ public class MapManager : MonoBehaviour
 			
 			TileBase clickedTile = map.GetTile(gridPosition);
 			
+			if (clickedTile != null)
+			{
 			float resistance = dataFromTiles[clickedTile].resistance;
-			
 			print("At postition " + gridPosition + " there is a " + clickedTile + "with a resistance of " + resistance);
+			}
+			else print("There is no Tile set on" + gridPosition);
 		}
 	}
 	
-	public float GetTileResistance(Vector2 worldPosition)
+	public float GetTileResistance(Vector2 worldPosition) //Gets called by the CarController
 	{
 		Vector3Int gridPosition = map.WorldToCell(worldPosition);
 		TileBase tile = map.GetTile(gridPosition);
-		float resistance = dataFromTiles[tile].resistance;
-		return resistance;
+		if (tile != null)
+		{
+			float resistance = dataFromTiles[tile].resistance;
+			return resistance;
+		}
+		else return 1;
 	}
 }

@@ -82,10 +82,10 @@ public class TopDownCarController : MonoBehaviour
             carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 3.0f, Time.fixedDeltaTime * 3);
         else carRigidbody2D.drag = 0;
 		
-		float speedByGroundType = mapManager.GetTileResistance(transform.position);
+		float groundTileResistance = mapManager.GetTileResistance(transform.position);	// gets the Value for the resistance of the current Ground Tile. Applies to the Engine Force next line
 
         //Creates a force for the Engine
-        Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor * speedByGroundType;
+        Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor * (1 / groundTileResistance);
 
         //Applies force and pushes the car forward
         carRigidbody2D.AddForce(engineForceVector, ForceMode2D.Force);
