@@ -10,15 +10,20 @@ public class MapBuilder : MonoBehaviour
 	
 	[SerializeField] Camera cam; //Only necessary for pointing with mouse.
 	
+	public GameObject straightTrackPrefab;
+	
 	private Vector3Int buildPos;
+	
 	
     // Start is called before the first frame update
     void Start()
     {
+		//builds the street Tiles for now. going to be outsourced
 		for (int i=-2; i<2; i++)
 		{
 			buildPos.Set(i,1,0);
-			PlaceTile(buildPos);
+			//PlaceTile(buildPos);
+			Instantiate(straightTrackPrefab, buildPos, Quaternion.identity);
 		}
     }
 

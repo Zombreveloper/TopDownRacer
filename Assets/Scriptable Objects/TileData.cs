@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "TileData", menuName = "ScriptableObject/TileEffectsOnCar")]
 
 public class TileData : ScriptableObject
 {
