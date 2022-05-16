@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerCounter : MonoBehaviour
 {
-    public GameObject startButton;
+    public Button startButton;
+
     public GameObject player_1;
     public GameObject player_2;
     public GameObject player_3;
@@ -32,7 +33,7 @@ public class PlayerCounter : MonoBehaviour
         players.Add(player_7);
         players.Add(player_8);
 
-        //startButton.interactable = false; //button has "disabled"-color...
+        startButton.interactable = false; //button has "disabled"-color...
     }
 
     // Update is called once per frame

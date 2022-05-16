@@ -15,6 +15,9 @@ MonoBehaviour:
   playerName: Player 1
   leftInput: 
   rightInput: 
-  color: 
+  red_value: 255
+  green_value: 0
+  blue_value: 0
+  alpha_value: 255
   vehicle: 
   health: 3

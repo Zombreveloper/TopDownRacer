@@ -2990,7 +2990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile_1: {fileID: 11400000, guid: 2232cef1cf14a8446a96389095f5c6e1, type: 2}
-  playerName: {fileID: 1354666972}
+  playerName: {fileID: 1354666974}
   inputFieldLeft: {fileID: 1566728971}
   inputFieldRight: {fileID: 49070065}
 --- !u!1 &778863136
@@ -6519,7 +6519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab986519fd5b89a41874395802f26fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButton: {fileID: 2109279602}
+  startButton: {fileID: 2109279604}
   player_1: {fileID: 768587675}
   player_2: {fileID: 895710515}
   player_3: {fileID: 2059275159}

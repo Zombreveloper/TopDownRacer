@@ -9,7 +9,14 @@ public class PlayerProfile : ScriptableObject
     public string leftInput;
     public string rightInput;
 
-    public string color; //should be a hex-value
+    public bool ready = false;
+
+    //public string color;
+    public byte red_value;
+    public byte green_value;
+    public byte blue_value;
+    public byte alpha_value;
+
     public string vehicle; //should be a SO on its own
     public string health;
 }
