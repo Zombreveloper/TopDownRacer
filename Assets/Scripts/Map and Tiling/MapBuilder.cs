@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/* Based on the Video: Edit, Save And Load Unity Tilemaps at Runtime! https://www.youtube.com/watch?v=snUe2oa_iM0
+*/
+
 public class MapBuilder : MonoBehaviour
 {
 	[SerializeField] Tilemap currentTilemap;
@@ -10,20 +13,35 @@ public class MapBuilder : MonoBehaviour
 	
 	[SerializeField] Camera cam; //Only necessary for pointing with mouse.
 	
+	[SerializeField] Grid currentGrid;
+	
 	public GameObject straightTrackPrefab;
 	
 	private Vector3Int buildPos;
+	private Vector3 prefabSpawnPoint;
+	private Tile _straightTrack;
 	
 	
     // Start is called before the first frame update
     void Start()
     {
+		
 		//builds the street Tiles for now. going to be outsourced
 		for (int i=-2; i<2; i++)
 		{
 			buildPos.Set(i,1,0);
-			//PlaceTile(buildPos);
-			Instantiate(straightTrackPrefab, buildPos, Quaternion.identity);
+			PlaceSingleTile(buildPos);
+			
+			prefabSpawnPoint = currentGrid.CellToWorld(buildPos);
+			GameObject newStraightTile = Instantiate(straightTrackPrefab, prefabSpawnPoint, Quaternion.identity) as GameObject;
+			newStraightTile.transform.parent = currentTilemap.transform;
+			
+			
+			
+			//currentTilemap.SetTile(buildPos, straightTrackPrefab);
+			
+			//_straightTrack = Instantiate(straightTrackPrefab);
+			//currentTilemap.SetTile(buildPos, _straightTrack);
 		}
     }
 
@@ -36,12 +54,12 @@ public class MapBuilder : MonoBehaviour
 		
 		if (Input.GetMouseButton(0))
 		{
-			PlaceTile(pos);
+			PlaceSingleTile(pos);
 		}
     }
 	
 	
-	void PlaceTile(Vector3Int pos)
+	void PlaceSingleTile(Vector3Int pos)
 	{
 		currentTilemap.SetTile(pos, currentTile);
 	}
