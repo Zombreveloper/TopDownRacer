@@ -2946,6 +2946,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 768587676}
+  - component: {fileID: 768587677}
   m_Layer: 5
   m_Name: Player 1
   m_TagString: Untagged
@@ -2976,6 +2977,22 @@ RectTransform:
   m_AnchoredPosition: {x: -300, y: 137}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &768587677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768587675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9def3c5e9fc78e24fadac574e475d848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile_1: {fileID: 11400000, guid: 2232cef1cf14a8446a96389095f5c6e1, type: 2}
+  playerName: {fileID: 1354666972}
+  inputFieldLeft: {fileID: 1566728971}
+  inputFieldRight: {fileID: 49070065}
 --- !u!1 &778863136
 GameObject:
   m_ObjectHideFlags: 0
@@ -6392,6 +6409,7 @@ GameObject:
   - component: {fileID: 1530158327}
   - component: {fileID: 1530158326}
   - component: {fileID: 1530158325}
+  - component: {fileID: 1530158329}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6489,6 +6507,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1530158329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530158324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab986519fd5b89a41874395802f26fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startButton: {fileID: 2109279602}
+  player_1: {fileID: 768587675}
+  player_2: {fileID: 895710515}
+  player_3: {fileID: 2059275159}
+  player_4: {fileID: 1085775899}
+  player_5: {fileID: 1602145477}
+  player_6: {fileID: 1071991918}
+  player_7: {fileID: 754771803}
+  player_8: {fileID: 1598098257}
+  profile_1: {fileID: 11400000, guid: 2232cef1cf14a8446a96389095f5c6e1, type: 2}
 --- !u!1 &1566728971
 GameObject:
   m_ObjectHideFlags: 0

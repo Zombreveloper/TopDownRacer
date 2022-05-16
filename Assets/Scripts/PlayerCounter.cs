@@ -16,6 +16,8 @@ public class PlayerCounter : MonoBehaviour
     public GameObject player_7;
     public GameObject player_8;
 
+    public PlayerProfile profile_1;
+
 
     // Start is called before the first frame update
     void Start()
