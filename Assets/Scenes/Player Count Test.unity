@@ -2907,6 +2907,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 754771804}
+  - component: {fileID: 754771805}
   m_Layer: 5
   m_Name: Player 7
   m_TagString: Untagged
@@ -2937,6 +2938,22 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: -97}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &754771805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754771803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9def3c5e9fc78e24fadac574e475d848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 7c840e03e5c99a343a1d24f58be7ae31, type: 2}
+  playerName: {fileID: 234001357}
+  inputFieldLeft: {fileID: 1428043309}
+  inputFieldRight: {fileID: 140345817}
 --- !u!1 &768587675
 GameObject:
   m_ObjectHideFlags: 0
@@ -2989,7 +3006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9def3c5e9fc78e24fadac574e475d848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile_1: {fileID: 11400000, guid: 2232cef1cf14a8446a96389095f5c6e1, type: 2}
+  profile: {fileID: 11400000, guid: 2232cef1cf14a8446a96389095f5c6e1, type: 2}
   playerName: {fileID: 1354666974}
   inputFieldLeft: {fileID: 1566728971}
   inputFieldRight: {fileID: 49070065}
@@ -3325,6 +3342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 895710516}
+  - component: {fileID: 895710517}
   m_Layer: 5
   m_Name: Player 2
   m_TagString: Untagged
@@ -3355,6 +3373,22 @@ RectTransform:
   m_AnchoredPosition: {x: -100, y: 137}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &895710517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895710515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9def3c5e9fc78e24fadac574e475d848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 3e6e4da82f4411240b67249857106798, type: 2}
+  playerName: {fileID: 1106663429}
+  inputFieldLeft: {fileID: 67638209}
+  inputFieldRight: {fileID: 1813111419}
 --- !u!1 &937593411
 GameObject:
   m_ObjectHideFlags: 0
@@ -4428,6 +4462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1071991919}
+  - component: {fileID: 1071991920}
   m_Layer: 5
   m_Name: Player 6
   m_TagString: Untagged
@@ -4458,6 +4493,22 @@ RectTransform:
   m_AnchoredPosition: {x: -100, y: -97}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1071991920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071991918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9def3c5e9fc78e24fadac574e475d848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 05cf657bf2ebeee46874dedcc58013ad, type: 2}
+  playerName: {fileID: 1313433416}
+  inputFieldLeft: {fileID: 2108587523}
+  inputFieldRight: {fileID: 571102080}
 --- !u!1 &1082638920
 GameObject:
   m_ObjectHideFlags: 0
@@ -4602,6 +4653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1085775900}
+  - component: {fileID: 1085775901}
   m_Layer: 5
   m_Name: Player 4
   m_TagString: Untagged
@@ -4632,6 +4684,22 @@ RectTransform:
   m_AnchoredPosition: {x: 300, y: 137}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1085775901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085775899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9def3c5e9fc78e24fadac574e475d848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 8389a77543a91484ca8b2cda18ae476d, type: 2}
+  playerName: {fileID: 605745239}
+  inputFieldLeft: {fileID: 1522520075}
+  inputFieldRight: {fileID: 1127902251}
 --- !u!1 &1106663427
 GameObject:
   m_ObjectHideFlags: 0
@@ -6520,15 +6588,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 2109279604}
-  player_1: {fileID: 768587675}
-  player_2: {fileID: 895710515}
-  player_3: {fileID: 2059275159}
-  player_4: {fileID: 1085775899}
-  player_5: {fileID: 1602145477}
-  player_6: {fileID: 1071991918}
-  player_7: {fileID: 754771803}
-  player_8: {fileID: 1598098257}
+  PlayerUI:
+  - {fileID: 768587675}
+  - {fileID: 895710515}
+  - {fileID: 2059275159}
+  - {fileID: 1085775899}
+  - {fileID: 1602145477}
+  - {fileID: 1071991918}
+  - {fileID: 754771803}
+  - {fileID: 1598098257}
   profile_1: {fileID: 11400000, guid: 2232cef1cf14a8446a96389095f5c6e1, type: 2}
+  PlayerProfileArray:
+  - {fileID: 11400000, guid: 2232cef1cf14a8446a96389095f5c6e1, type: 2}
+  - {fileID: 11400000, guid: 3e6e4da82f4411240b67249857106798, type: 2}
+  - {fileID: 11400000, guid: 9ebca5c115f6d7543a37ca45677cd035, type: 2}
+  - {fileID: 11400000, guid: 8389a77543a91484ca8b2cda18ae476d, type: 2}
+  - {fileID: 11400000, guid: 67e748b6ca14c614f938a962ec8a29d5, type: 2}
+  - {fileID: 11400000, guid: 05cf657bf2ebeee46874dedcc58013ad, type: 2}
+  - {fileID: 11400000, guid: 7c840e03e5c99a343a1d24f58be7ae31, type: 2}
+  - {fileID: 11400000, guid: 9190a73ae2937a74692951493856b944, type: 2}
+  ReadyPlayersArray: []
 --- !u!1 &1566728971
 GameObject:
   m_ObjectHideFlags: 0
@@ -6902,6 +6981,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1598098258}
+  - component: {fileID: 1598098259}
   m_Layer: 5
   m_Name: Player 8
   m_TagString: Untagged
@@ -6932,6 +7012,22 @@ RectTransform:
   m_AnchoredPosition: {x: 300, y: -97}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1598098259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598098257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9def3c5e9fc78e24fadac574e475d848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 9190a73ae2937a74692951493856b944, type: 2}
+  playerName: {fileID: 937593413}
+  inputFieldLeft: {fileID: 1750874921}
+  inputFieldRight: {fileID: 1027087810}
 --- !u!1 &1602145477
 GameObject:
   m_ObjectHideFlags: 0
@@ -6941,6 +7037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1602145478}
+  - component: {fileID: 1602145479}
   m_Layer: 5
   m_Name: Player 5
   m_TagString: Untagged
@@ -6971,6 +7068,22 @@ RectTransform:
   m_AnchoredPosition: {x: -300, y: -97}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1602145479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602145477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9def3c5e9fc78e24fadac574e475d848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 67e748b6ca14c614f938a962ec8a29d5, type: 2}
+  playerName: {fileID: 2146829271}
+  inputFieldLeft: {fileID: 1859997649}
+  inputFieldRight: {fileID: 1770195575}
 --- !u!1 &1607327748
 GameObject:
   m_ObjectHideFlags: 0
@@ -9307,6 +9420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2059275160}
+  - component: {fileID: 2059275161}
   m_Layer: 5
   m_Name: Player 3
   m_TagString: Untagged
@@ -9337,6 +9451,22 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: 137}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2059275161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059275159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9def3c5e9fc78e24fadac574e475d848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 9ebca5c115f6d7543a37ca45677cd035, type: 2}
+  playerName: {fileID: 778863138}
+  inputFieldLeft: {fileID: 1463247449}
+  inputFieldRight: {fileID: 86260690}
 --- !u!1 &2080518072
 GameObject:
   m_ObjectHideFlags: 0

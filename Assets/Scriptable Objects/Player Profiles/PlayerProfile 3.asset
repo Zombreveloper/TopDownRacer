@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: PlayerProfile 3
   m_EditorClassIdentifier: 
   playerName: Player 3
-  leftInput: 
-  rightInput: 
-  color: 
+  leftInput: g
+  rightInput: h
+  ready: 0
+  red_value: 0
+  green_value: 0
+  blue_value: 255
+  alpha_value: 255
   vehicle: 
   health: 3
