@@ -9,19 +9,7 @@ public class PlayerCounter : MonoBehaviour
     public Button startButton;
 
     //UI Objects
-    /*public GameObject player_1;
-    public GameObject player_2;
-    public GameObject player_3;
-    public GameObject player_4;
-    public GameObject player_5;
-    public GameObject player_6;
-    public GameObject player_7;
-    public GameObject player_8;*/
-
     public List<GameObject> PlayerUI = new List<GameObject>();
-
-    //Scriptable Objects
-    public PlayerProfile profile_1;
 
     //list of all possible playerProfile SOs
     public List<PlayerProfile> PlayerProfileArray = new List<PlayerProfile>();
@@ -41,6 +29,8 @@ public class PlayerCounter : MonoBehaviour
         startButton.interactable = false; //button has "disabled"-color...
 
         ReadyPlayersArray.Clear();
+
+        resetPlayers();
     }
 
     // Update is called once per frame
@@ -52,6 +42,15 @@ public class PlayerCounter : MonoBehaviour
         //Debug.Log("passed enoughPlayers");
         updateUI();
         //Debug.Log("passed updateUI");
+    }
+
+    void resetPlayers() //resets the players Inputs
+    {
+        foreach(PlayerProfile profile in PlayerProfileArray)
+        {
+            profile.leftInput = "";
+            profile.rightInput = "";
+        }
     }
 
     void countPlayers()
