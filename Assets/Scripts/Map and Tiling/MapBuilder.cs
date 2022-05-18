@@ -32,16 +32,6 @@ public class MapBuilder : MonoBehaviour
 			buildPos.Set(i,1,0);
 			PlaceSingleTile(buildPos);
 			
-			prefabSpawnPoint = currentGrid.CellToWorld(buildPos);
-			GameObject newStraightTile = Instantiate(straightTrackPrefab, prefabSpawnPoint, Quaternion.identity) as GameObject;
-			newStraightTile.transform.parent = currentTilemap.transform;
-			
-			
-			
-			//currentTilemap.SetTile(buildPos, straightTrackPrefab);
-			
-			//_straightTrack = Instantiate(straightTrackPrefab);
-			//currentTilemap.SetTile(buildPos, _straightTrack);
 		}
     }
 
@@ -58,9 +48,20 @@ public class MapBuilder : MonoBehaviour
 		}
     }
 	
-	
+	//places a tile on a given position on the grid
 	void PlaceSingleTile(Vector3Int pos)
 	{
 		currentTilemap.SetTile(pos, currentTile);
+	}
+	
+	//Intanciates a Prefab on given positions on the grid
+	void PlacePrefab(Vector3Int pos)
+	{
+		prefabSpawnPoint = currentGrid.CellToWorld(pos);
+		GameObject newStraightTile = Instantiate(straightTrackPrefab, prefabSpawnPoint, Quaternion.identity) as GameObject;
+		newStraightTile.transform.parent = currentTilemap.transform;
+		//currentTilemap.SetTile(buildPos, straightTrackPrefab);
+		//_straightTrack = Instantiate(straightTrackPrefab);
+		//currentTilemap.SetTile(buildPos, _straightTrack);
 	}
 }
