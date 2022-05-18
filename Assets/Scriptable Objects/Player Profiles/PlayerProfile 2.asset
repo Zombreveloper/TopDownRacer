@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PlayerProfile 2
   m_EditorClassIdentifier: 
   playerName: Player 2
-  leftInput: d
+  leftInput: f
   rightInput: f
   ready: 0
   red_value: 0
-  green_value: 255
+  green_value: 155
   blue_value: 0
   alpha_value: 255
   vehicle: 
