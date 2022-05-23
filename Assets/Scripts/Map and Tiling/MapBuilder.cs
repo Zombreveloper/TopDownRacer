@@ -23,6 +23,7 @@ public class MapBuilder : MonoBehaviour
 
 
 	private Tile _straightTrack;
+	private TrackBuildMarker buildMarker;
 
 	//private IEnumerator TilingDelay;
 	
@@ -30,7 +31,7 @@ public class MapBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+		buildMarker = FindObjectOfType<TrackBuildMarker>();
 		StartCoroutine(TilingDelay());
 
 	}
@@ -41,27 +42,28 @@ public class MapBuilder : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-		PlaceTileByMouse();
-		
+		PlaceTileByMouse();	
     }
 
 	//Coroutine that waits for a given time to set a tile
 	private IEnumerator TilingDelay()
 	{
 		int currentHeight;
+		Vector3Int currentBuildPos = buildMarker.GetMarkerPos();
 		currentHeight = 1;
 
 		Debug.Log("Started Coroutine at timestamp : " + Time.time);
-		for (currentHeight = -1; currentHeight < 10; currentHeight++)
+		for (currentHeight = currentBuildPos.y; currentHeight < 10; currentHeight++)
 		{
 			StraightLinePattern(currentHeight);
+			buildMarker.MoveUp();
 			yield return new WaitForSeconds(1);
 		}
 
 		Debug.Log("Ended Coroutine at timestamp : " + Time.time);
 	}
 
-	void StraightLinePattern(int posY)
+	void StraightLinePattern(int posY) //move this to Patterns Class later
 	{
 		for (int i = -1; i < 2; i++)
 		{
@@ -83,7 +85,7 @@ public class MapBuilder : MonoBehaviour
 		Vector3Int pos = currentTilemap.WorldToCell(mousePosition);
 
 
-		if (Input.GetMouseButton(0))
+		if (Input.GetMouseButton(1))
 		{
 			PlaceSingleTile(pos);
 		}
