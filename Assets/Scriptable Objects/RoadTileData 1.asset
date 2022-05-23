@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27213803ba814de4b9883c12de9c9a85, type: 3}
-  m_Name: RoadTileData
+  m_Name: RoadTileData 1
   m_EditorClassIdentifier: 
   tiles:
   - {fileID: 11400000, guid: cc3a18a367e66444ba6f0cc89b256b61, type: 2}
