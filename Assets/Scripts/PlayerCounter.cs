@@ -15,7 +15,8 @@ public class PlayerCounter : MonoBehaviour
     public List<PlayerProfile> PlayerProfileArray = new List<PlayerProfile>();
 
     //list of all playerProfile SOs that have input-buttons
-    public List<PlayerProfile> ReadyPlayersArray = new List<PlayerProfile>(); //maby make this a SO so everybody knows...
+    //public List<PlayerProfile> ReadyPlayersArray = new List<PlayerProfile>(); //maby make this a SO so everybody knows...
+    public ReadyPlayersList_SO ReadyPlayersList;
 
     private int currentPlayerUI;
     private int currentPlayer;
@@ -28,7 +29,7 @@ public class PlayerCounter : MonoBehaviour
 
         startButton.interactable = false; //button has "disabled"-color...
 
-        ReadyPlayersArray.Clear();
+        ReadyPlayersList.ReadyPlayersArray.Clear();
 
         resetPlayers();
     }
@@ -67,7 +68,8 @@ public class PlayerCounter : MonoBehaviour
 
             if (current.leftInput != "" && current.rightInput != "") //checks if a player has 2 inputs
             {
-                ReadyPlayersArray.Add(current);
+                //ReadyPlayersArray.Add(current);
+                ReadyPlayersList.ReadyPlayersArray.Add(current);
                 currentPlayer++;
                 Debug.Log("Player " + current.name + " is ready");
             }
@@ -79,7 +81,7 @@ public class PlayerCounter : MonoBehaviour
         //check if players 1 and 2 exist
         //startButton.interactable = true;
 
-        if (ReadyPlayersArray.Count >= 2)
+        if (ReadyPlayersList.ReadyPlayersArray.Count >= 2)
         {
             startButton.interactable = true;
         }
@@ -87,7 +89,7 @@ public class PlayerCounter : MonoBehaviour
 
     void updateUI()
     {
-        currentPlayerUI = ReadyPlayersArray.Count;
+        currentPlayerUI = ReadyPlayersList.ReadyPlayersArray.Count;
         if(currentPlayerUI < PlayerProfileArray.Count) //only 1 UI-Element for 1 possible Player.
         {
             GameObject currentUI = PlayerUI[currentPlayerUI];
