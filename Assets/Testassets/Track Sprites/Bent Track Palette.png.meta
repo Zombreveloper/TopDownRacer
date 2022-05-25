@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 32f4bb554bceec34a881ab5b42f574bf
+guid: ed8e0d166daab704da9cc14e97a24186
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,7 +126,138 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Bent Track Palette_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -64, y: -64}
+        - {x: -64, y: -48}
+        - {x: -48, y: -50}
+        - {x: -29, y: -56}
+        - {x: -12, y: -64}
+      - - {x: 41, y: 23}
+        - {x: 15, y: 35}
+        - {x: -11, y: 43}
+        - {x: -40, y: 48}
+        - {x: -64, y: 49}
+        - {x: -64, y: 64}
+        - {x: 64, y: 64}
+        - {x: 64, y: 9}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d5676d1986d76b4bb6039447868e971
+      internalID: 1727320672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bent Track Palette_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -35, y: -13}
+        - {x: -56, y: 3}
+        - {x: -64, y: 9}
+        - {x: -64, y: 64}
+        - {x: 64, y: 64}
+        - {x: 64, y: -64}
+        - {x: 8, y: -64}
+        - {x: 0, y: -52}
+        - {x: -17, y: -31}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b46d64dfdd3a857498b7f34b2ee6ccf4
+      internalID: -1987470619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bent Track Palette_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -64, y: -64}
+        - {x: -64, y: 64}
+        - {x: -14, y: 64}
+        - {x: -4, y: 59}
+        - {x: 6, y: 53}
+        - {x: 21, y: 41}
+        - {x: 38, y: 24}
+        - {x: 50, y: 10}
+        - {x: 64, y: -10}
+        - {x: 64, y: -64}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3563b0cc3672e814dba008003853e015
+      internalID: 705078054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bent Track Palette_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 49, y: -64}
+        - {x: 47, y: -35}
+        - {x: 41, y: -7}
+        - {x: 31, y: 21}
+        - {x: 22, y: 42}
+        - {x: 8, y: 64}
+        - {x: 64, y: 64}
+        - {x: 64, y: -64}
+      - - {x: -64, y: -64}
+        - {x: -64, y: -11}
+        - {x: -61, y: -17}
+        - {x: -57, y: -25}
+        - {x: -53, y: -37}
+        - {x: -50, y: -49}
+        - {x: -49, y: -64}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3255d1a91254333478ff13bd4d8ea9a1
+      internalID: -175240767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -137,7 +268,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bent Track Palette_2: 705078054
+      Bent Track Palette_1: -1987470619
+      Bent Track Palette_0: 1727320672
+      Bent Track Palette_3: -175240767
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
