@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Player Count Test.unity
     guid: 8c233555d62ee51429ff89873c890353
+  - enabled: 1
+    path: Assets/Scenes/Menu Test.unity
+    guid: 07561ad562b646842965c6e8985ea214
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer Test.unity
+    guid: bce31c58c708d194497a08d5d9748c06
   m_configObjects: {}

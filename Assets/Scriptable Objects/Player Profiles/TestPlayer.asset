@@ -9,8 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2faec6b97291b3a4e8d9000079fcbdd2, type: 3}
-  m_Name: ReadyPlayersList_SO
+  m_Script: {fileID: 11500000, guid: c62e0e163bf334d45b35c2184538b166, type: 3}
+  m_Name: TestPlayer
   m_EditorClassIdentifier: 
-  ReadyPlayersArray:
-  - {fileID: 11400000, guid: bfd78439e564a754f8ebc2212b643064, type: 2}
+  playerName: 
+  leftInput: a
+  rightInput: d
+  ready: 0
+  red_value: 155
+  green_value: 155
+  blue_value: 155
+  alpha_value: 255
+  vehicle: 
+  health: 

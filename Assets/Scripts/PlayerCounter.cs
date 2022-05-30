@@ -4,6 +4,8 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
+using UnityEngine.SceneManagement;
+
 public class PlayerCounter : MonoBehaviour
 {
     public Button startButton;
@@ -97,8 +99,14 @@ public class PlayerCounter : MonoBehaviour
         }
     }
 
-    void startGame() //shouod also get called by pressing SpaceBar
+    public void startGame() //shouod also get called by pressing SpaceBar
     {
-        Debug.Log("started Game");
+        //Debug.Log("started Game");
+        SceneManager.LoadScene("Multiplayer Test");
+    }
+
+    public void backToMainMenu()
+    {
+        SceneManager.LoadScene("Menu Test");
     }
 }
