@@ -33,8 +33,7 @@ public class TrackBuildMarker : MonoBehaviour
 
     public Vector3Int GetMarkerPos()
     {
-        Vector3Int markerPos = pointerPos;
-        return markerPos;
+        return this.pointerPos;
     }
 
 

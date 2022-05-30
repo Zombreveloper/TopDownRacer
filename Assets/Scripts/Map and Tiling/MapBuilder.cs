@@ -14,6 +14,7 @@ public class MapBuilder : MonoBehaviour
 	[SerializeField] Camera cam; //Only necessary for pointing with mouse.
 	
 	[SerializeField] Grid currentGrid;
+	//[SerializeField] private TilingPatterns tilingPatterns;
 	
 	public GameObject straightTrackPrefab;
 	
@@ -21,17 +22,16 @@ public class MapBuilder : MonoBehaviour
 	private Vector3Int buildPos;
 	private Vector3 prefabSpawnPoint;
 
-
-	private Tile _straightTrack;
+	//referenced classes
 	private TrackBuildMarker buildMarker;
-
-	//private IEnumerator TilingDelay;
+	private TilingPatterns tilingPatterns;
 	
 	
     // Start is called before the first frame update
     void Start()
     {
 		buildMarker = FindObjectOfType<TrackBuildMarker>();
+		tilingPatterns = FindObjectOfType<TilingPatterns>();
 		StartCoroutine(TilingDelay());
 
 	}
@@ -42,44 +42,44 @@ public class MapBuilder : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-		PlaceTileByMouse();	
-    }
+		PlaceTileByMouse();
+	}
 
 	//Coroutine that waits for a given time to set a tile
 	private IEnumerator TilingDelay()
 	{
 		int currentHeight;
 		Vector3Int currentBuildPos = buildMarker.GetMarkerPos();
-		currentHeight = 1;
+		currentHeight = 0;
 
 		Debug.Log("Started Coroutine at timestamp : " + Time.time);
 		for (currentHeight = currentBuildPos.y; currentHeight < 10; currentHeight++)
 		{
-			StraightLinePattern(currentHeight);
-			buildMarker.MoveUp();
+			tilingPatterns.StraightLinePattern(currentHeight, buildPos); //calls for a straight line
+			PlacePattern(tilingPatterns.GetPattern()); //draws the pattern onto the map
+			buildMarker.MoveUp(); //should be called elsewhere
 			yield return new WaitForSeconds(1);
 		}
 
 		Debug.Log("Ended Coroutine at timestamp : " + Time.time);
 	}
 
-	void StraightLinePattern(int posY) //move this to Patterns Class later
-	{
-		for (int i = -1; i < 2; i++)
-		{
-			buildPos.Set(i, posY, 0);
-			PlaceSingleTile(buildPos);
-		}	
-	}
-
 	
-	void PlaceSingleTile(Vector3Int pos) //places a tile on a given position on the grid
+
+	private void PlacePattern(List<Vector3Int> pattern) //set by TilingPatterns class! places a Pattern of tiles on a given position on the grid
+	{
+		foreach (Vector3Int coordinate in pattern)
+		{
+			PlaceSingleTile(coordinate);
+		}
+	}
+	private void PlaceSingleTile(Vector3Int pos) //places a single current tile on a given position on the grid
 	{
 		currentTilemap.SetTile(pos, currentTile);
 	}
 
 	
-	void PlaceTileByMouse()
+	void PlaceTileByMouse() //Click anywhere to place a given tile set by currentTile
 	{
 		Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		Vector3Int pos = currentTilemap.WorldToCell(mousePosition);
@@ -89,16 +89,25 @@ public class MapBuilder : MonoBehaviour
 		{
 			PlaceSingleTile(pos);
 		}
-	} //Click anywhere to place a given tile set by the currentTile
+	} 
 
 
+
+	//here starts the trash dump! These methods will never be used but if compiler finds problems here
+	//i did something wrong higher up!
 	void PlacePrefab(Vector3Int pos)
 	{
 		prefabSpawnPoint = currentGrid.CellToWorld(pos);
 		GameObject newStraightTile = Instantiate(straightTrackPrefab, prefabSpawnPoint, Quaternion.identity) as GameObject;
 		newStraightTile.transform.parent = currentTilemap.transform;
-		//currentTilemap.SetTile(buildPos, straightTrackPrefab);
-		//_straightTrack = Instantiate(straightTrackPrefab);
-		//currentTilemap.SetTile(buildPos, _straightTrack);
-	}//MOST LIKELY NOT EVER USED!!  Instanciates a Prefab on given positions on the grid
+	}//MOST LIKELY NOT EVER USED!! (but functional)  Instanciates a Prefab on given positions on the grid
+
+	void StraightLinePattern(int posY) //this is just here to fall back onto if something brakes!
+	{
+		for (int i = -1; i < 2; i++)
+		{
+			buildPos.Set(i, posY, 0);
+			PlaceSingleTile(buildPos);
+		}	
+	}
 }
