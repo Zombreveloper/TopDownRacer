@@ -294,12 +294,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285453087}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92602dc2ddd42da46aee994a509aa0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 0}
+  targets: []
+  allCars: {fileID: 11400000, guid: 2442cfc45577f004b838c70d270065b3, type: 2}
+  offset: {x: 0, y: 0, z: 0}
+  smoothTime: 0.2
 --- !u!1 &639393759
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,6 +1789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allMyParicipants: {fileID: 11400000, guid: 31e14a575b027e44d8b784db5c67f1d7, type: 2}
+  allCars: {fileID: 11400000, guid: 2442cfc45577f004b838c70d270065b3, type: 2}
   carPrefab: {fileID: 7916444501015972658, guid: 00d1e54bb88efab4f99f155d70912ad5, type: 3}
 --- !u!4 &1622804548
 Transform:

@@ -5,15 +5,23 @@ using UnityEngine;
 public class ParticipantsManager : MonoBehaviour
 {
     public ReadyPlayersList_SO allMyParicipants;
+    public PartTakingCarsListSO allCars;
     public GameObject carPrefab;
     private GameObject currentCar;
     private int index = 1;
 
-        // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         index = 1;
         spawnCars();
+    }
+
+        // Start is called before the first frame update
+    void Start()
+    {
+        allCars.carsList.Clear();
+        //index = 1;
+        //spawnCars();
     }
 
     // Update is called once per frame
@@ -38,7 +46,8 @@ public class ParticipantsManager : MonoBehaviour
                 index++;
                 currentCar.GetComponent<LassesTestInputHandler>().myDriver = player;
                 currentCar.GetComponent<CarColor>().myDriver = player;
-                //setDriver();
+                //make Car available for every script in the Scene
+                allCars.carsList.Add(currentCar);
             }
         }
     }
