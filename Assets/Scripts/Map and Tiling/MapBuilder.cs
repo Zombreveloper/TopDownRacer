@@ -48,14 +48,21 @@ public class MapBuilder : MonoBehaviour
 	//Coroutine that waits for a given time to set a tile
 	private IEnumerator TilingDelay()
 	{
-		int currentHeight;
-		Vector3Int currentBuildPos = buildMarker.GetMarkerPos();
-		currentHeight = 0;
+		//int currentHeight;
+		//Vector3Int currentBuildPos = buildMarker.GetMarkerPos();
+		//currentHeight = 0;
 
 		Debug.Log("Started Coroutine at timestamp : " + Time.time);
-		for (currentHeight = currentBuildPos.y; currentHeight < 10; currentHeight++)
+		for (int currentHeight = 0; currentHeight < 10; currentHeight++)
 		{
-			tilingPatterns.StraightLinePattern(currentHeight, buildPos); //calls for a straight line
+			tilingPatterns.StraightLinePattern(); //calls for a straight line
+			PlacePattern(tilingPatterns.GetPattern()); //draws the pattern onto the map
+			buildMarker.MoveUp(); //should be called elsewhere
+			yield return new WaitForSeconds(1);
+		}
+		for (int currentHeight = 0; currentHeight < 1; currentHeight++)
+		{
+			tilingPatterns.CurvedTrackPattern(); //calls for a straight line
 			PlacePattern(tilingPatterns.GetPattern()); //draws the pattern onto the map
 			buildMarker.MoveUp(); //should be called elsewhere
 			yield return new WaitForSeconds(1);
@@ -64,13 +71,22 @@ public class MapBuilder : MonoBehaviour
 		Debug.Log("Ended Coroutine at timestamp : " + Time.time);
 	}
 
+	Vector3Int getMarker()
+    {
+		return buildMarker.GetMarkerPos();
+	}
+		
 	
 
 	private void PlacePattern(List<Vector3Int> pattern) //set by TilingPatterns class! places a Pattern of tiles on a given position on the grid
 	{
+		Vector3Int markerPos = getMarker();
+
+
 		foreach (Vector3Int coordinate in pattern)
 		{
-			PlaceSingleTile(coordinate);
+			Vector3Int gridCoordinate = markerPos + coordinate; //transforms relative coordinate to coordinate on Grid
+			PlaceSingleTile(gridCoordinate);
 		}
 	}
 	private void PlaceSingleTile(Vector3Int pos) //places a single current tile on a given position on the grid

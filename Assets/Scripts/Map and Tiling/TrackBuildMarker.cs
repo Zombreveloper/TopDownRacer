@@ -11,12 +11,13 @@ public class TrackBuildMarker : MonoBehaviour
     private void Awake()
     {
         pointerPos.Set(0, 0, 0);
+        Debug.Log("Pointer wakes at Position: " + pointerPos);
     }
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update but only AFTER the coroutine in MapBuilder!!!
     void Start()
     {
-        Debug.Log("Pointer is now on Position: " + pointerPos);
+        //Debug.Log("Pointer starts at Position: " + pointerPos);
     }
 
     // Update is called once per frame
