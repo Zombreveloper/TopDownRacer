@@ -34,6 +34,7 @@ public class TilingPatterns : MonoBehaviour
         for (int i = -1; i < 2; i++)
         {
             buildPos.Set(i, 0, 0);
+            //buildPos = Quaternion.AngleAxis(-90, Vector3.up) * buildPos;
             tileCoordinates.Add(new Vector3Int(buildPos.x, buildPos.y, buildPos.z));
             //savedPattern = buildPos;
             savedCoordinates = tileCoordinates;
@@ -48,7 +49,7 @@ public class TilingPatterns : MonoBehaviour
 
         for (int i = -1; i < 2; i++)
         {
-            for (int j = 0; j < 2; j++)
+            for (int j = 0; j < 3; j++)
             {
                 buildPos.Set(i, j, 0);
                 tileCoordinates.Add(new Vector3Int(buildPos.x, buildPos.y, buildPos.z));

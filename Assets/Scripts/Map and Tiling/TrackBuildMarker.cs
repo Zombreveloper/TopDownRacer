@@ -6,11 +6,13 @@ using UnityEngine.Tilemaps;
 public class TrackBuildMarker : MonoBehaviour
 {
 
-    private Vector3Int pointerPos;
+    private Vector3Int pointerPos; //represents pointers position
+    private Vector3Int pointerRot; //represents pointers rotation
 
     private void Awake()
     {
         pointerPos.Set(0, 0, 0);
+        pointerRot.Set(0,0,90); //rotation of 90 degrees left
         Debug.Log("Pointer wakes at Position: " + pointerPos);
     }
 
@@ -26,15 +28,27 @@ public class TrackBuildMarker : MonoBehaviour
         
     }
 
-    public void MoveUp()
+    //Public funktions
+    public void MoveUp(int steps)
     {
-        pointerPos.y = pointerPos.y + 1;
+        pointerPos.y = pointerPos.y + steps;
+        Debug.Log("Pointer is now on Position: " + pointerPos);
+    }
+
+    public void MoveLeft(int steps)
+    {
+        pointerPos.x = pointerPos.x - steps;
         Debug.Log("Pointer is now on Position: " + pointerPos);
     }
 
     public Vector3Int GetMarkerPos()
     {
         return this.pointerPos;
+    }
+
+    public Vector3 GetMarkerRot()
+    {
+        return this.pointerRot;
     }
 
 
