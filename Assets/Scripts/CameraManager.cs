@@ -22,6 +22,9 @@ public class CameraManager : MonoBehaviour
 	public Vector3 offset;
 	public float smoothTime = .5f;
 	private Vector3 velocity;
+	public float zoomLimiter = 30f;
+	public float minZoom = 30f;
+	public float maxZoom = 15f;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,12 @@ public class CameraManager : MonoBehaviour
 		if (targets.Count == 0)
 			return;
 
+		move();
+		zoom();
+	}
+
+	void move()
+	{
 		Vector3 centerPoint = getCenterPoint();
 
 		Vector3 newPosition = centerPoint + offset;
@@ -70,6 +79,40 @@ public class CameraManager : MonoBehaviour
 		foreach(GameObject car in allCars.carsList)
 		{
 			targets.Add(car.transform);
+		}
+	}
+
+	void zoom()
+	{
+		//Debug.Log(getGreatestDistance());
+		float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance() / zoomLimiter);
+		_mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, newZoom, Time.deltaTime);
+	}
+
+	float getGreatestDistance()
+	{
+		var bounds = new Bounds(targets[0].position, Vector3.zero);
+		for (int i = 0; i < targets.Count; i++)
+		{
+			bounds.Encapsulate(targets[i].position);
+		}
+
+		//hier das größere nehmen, x oder y Achse!
+
+		float xDistance = bounds.size.x;
+		float yDistance = bounds.size.y;
+
+		if (xDistance > yDistance)
+		{
+			return xDistance;
+		}
+		else if (yDistance > xDistance)
+		{
+			return yDistance;
+		}
+		else
+		{
+			return xDistance;
 		}
 	}
 }
