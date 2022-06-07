@@ -38,7 +38,7 @@ public class MapBuilder : MonoBehaviour
 		tilingPatterns = FindObjectOfType<TilingPatterns>();
 		StartCoroutine(TilingDelay());
 
-	}
+    }
 
 
 
@@ -52,9 +52,6 @@ public class MapBuilder : MonoBehaviour
 	//Coroutine that waits for a given time to set a tile
 	private IEnumerator TilingDelay()
 	{
-		//int currentHeight;
-		//Vector3Int currentBuildPos = buildMarker.GetMarkerPos();
-		//currentHeight = 0;
 
 		Debug.Log("Started Coroutine at timestamp : " + Time.time);
 		for (int currentHeight = 0; currentHeight < 10; currentHeight++)
@@ -67,7 +64,7 @@ public class MapBuilder : MonoBehaviour
 			MakeCurvedLine();
 			yield return new WaitForSeconds(1);
 		}
-		MakeStraightLine();
+		MakeHorizontalLine();
 
 		Debug.Log("Ended Coroutine at timestamp : " + Time.time);
 	}
@@ -80,12 +77,22 @@ public class MapBuilder : MonoBehaviour
 		buildMarker.MoveUp(1); //could be called elsewhere?
 	}
 
+	void MakeHorizontalLine()
+	{
+		currentTile = TileStraightVert;
+		tilingPatterns.StraightLinePatternVertical(); //calls for a straight line
+		PlacePattern(tilingPatterns.GetPattern()); //draws the pattern onto the map
+		buildMarker.MoveLeft(1); //could be called elsewhere?
+	}
+
 	void MakeCurvedLine()
 	{
 		currentTile = TileCurveLD;
 		tilingPatterns.CurvedTrackPattern(); //calls for a straight line
-		PlacePattern(tilingPatterns.GetPattern()); //draws the pattern onto the map
-		buildMarker.MoveLeft(3); //could be called elsewhere?
+        PlacePattern(tilingPatterns.GetPattern()); //draws the pattern onto the map
+		buildMarker.MoveUp(1);
+		buildMarker.RotateLeft();
+		buildMarker.MoveLeft(2); //could be called elsewhere?
 	}
 
 		
@@ -93,16 +100,28 @@ public class MapBuilder : MonoBehaviour
 
 	private void PlacePattern(List<Vector3Int> pattern) //set by TilingPatterns class! places a Pattern of tiles on a given position on the grid
 	{
-		Vector3Int markerPos = getMarkerPos();
-		Vector3 markerRot = getMarkerRot();
+		Vector3Int markerPos = buildMarker.GetMarkerPos();
+		Vector3 markerRot = buildMarker.GetMarkerRot();
 
 
 		foreach (Vector3Int coordinate in pattern)
 		{
-			Vector3Int gridCoordinate = markerPos + coordinate; //transforms relative coordinate to coordinate on Grid
+			Vector3Int rotatedCoordinate = RotatePattern(coordinate); //Vllt umbenennen und umsiedeln. Wendet die Rotation des Marker auf das Pattern an
+			Vector3Int gridCoordinate = markerPos + rotatedCoordinate; //transforms relative coordinate to coordinate on Grid
 			PlaceSingleTile(gridCoordinate);
 		}
 	}
+
+	Vector3Int RotatePattern(Vector3 coordinate) 
+	{
+		Vector3 markerRotation = buildMarker.GetMarkerRot(); //ACHTUNG sollte eigentlich per Funktion zu Vector3 umgewandelt werden! Aber wenns funktioniert?
+		Quaternion rotation = Quaternion.Euler(markerRotation);
+		Matrix4x4 rotMatrix = Matrix4x4.Rotate(rotation);
+		Vector3 rotatedVector = rotMatrix.MultiplyPoint3x4(coordinate);
+		Vector3Int rotatedIntVector = Vector3Int.RoundToInt(rotatedVector);
+		return rotatedIntVector;
+	}
+
 	private void PlaceSingleTile(Vector3Int pos) //places a single current tile on a given position on the grid
 	{
 		currentTilemap.SetTile(pos, currentTile);
@@ -122,15 +141,7 @@ public class MapBuilder : MonoBehaviour
 	}
 
 	//getters and setters
-	Vector3Int getMarkerPos()
-	{
-		return buildMarker.GetMarkerPos();
-	}
-
-	Vector3 getMarkerRot()
-	{
-		return buildMarker.GetMarkerRot();
-	}
+	
 
 	//here starts the trash dump! These methods will never be used but if compiler finds problems here
 	//i did something wrong higher up!

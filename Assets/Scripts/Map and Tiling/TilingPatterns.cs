@@ -39,6 +39,22 @@ public class TilingPatterns : MonoBehaviour
             //savedPattern = buildPos;
             savedCoordinates = tileCoordinates;
         }
+        //Debug.Log("my TileCoordinates have: " + tileCoordinates.Count + "Elements");
+    }
+
+    public void StraightLinePatternVertical() //Builds List of coordinates for tiles in relation to each other
+    {
+        Vector3Int buildPos = new Vector3Int(0, 0, 0);
+        List<Vector3Int> tileCoordinates = new List<Vector3Int>();
+
+        for (int i = -1; i < 2; i++)
+        {
+            buildPos.Set(i, 0, 0);
+            //buildPos = Quaternion.AngleAxis(-90, Vector3.up) * buildPos;
+            tileCoordinates.Add(new Vector3Int(buildPos.x, buildPos.y, buildPos.z));
+            //savedPattern = buildPos;
+            savedCoordinates = tileCoordinates;
+        }
         Debug.Log("my TileCoordinates have: " + tileCoordinates.Count + "Elements");
     }
 

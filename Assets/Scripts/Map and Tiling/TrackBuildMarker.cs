@@ -12,7 +12,7 @@ public class TrackBuildMarker : MonoBehaviour
     private void Awake()
     {
         pointerPos.Set(0, 0, 0);
-        pointerRot.Set(0,0,90); //rotation of 90 degrees left
+        pointerRot.Set(0, 0, 0); //rotation, 0 means upwards
         Debug.Log("Pointer wakes at Position: " + pointerPos);
     }
 
@@ -28,7 +28,7 @@ public class TrackBuildMarker : MonoBehaviour
         
     }
 
-    //Public funktions
+    //Public functions
     public void MoveUp(int steps)
     {
         pointerPos.y = pointerPos.y + steps;
@@ -41,12 +41,19 @@ public class TrackBuildMarker : MonoBehaviour
         Debug.Log("Pointer is now on Position: " + pointerPos);
     }
 
+    public void RotateLeft()
+    {
+        pointerRot.z = pointerRot.z + 90;
+        Debug.Log("Pointer has now rotation of: " + pointerRot);
+    }
+
+    //getters and setters
     public Vector3Int GetMarkerPos()
     {
         return this.pointerPos;
     }
 
-    public Vector3 GetMarkerRot()
+    public Vector3Int GetMarkerRot()
     {
         return this.pointerRot;
     }
