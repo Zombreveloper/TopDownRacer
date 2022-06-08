@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a09a9b82f47df4fb2044621fb71622, type: 3}
   m_Name: PartTakingCarsList_SO
   m_EditorClassIdentifier: 
-  carsList: []
+  carsList:
+  - {fileID: 0}
+  - {fileID: 0}

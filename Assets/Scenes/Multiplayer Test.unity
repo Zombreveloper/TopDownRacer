@@ -303,6 +303,9 @@ MonoBehaviour:
   allCars: {fileID: 11400000, guid: 2442cfc45577f004b838c70d270065b3, type: 2}
   offset: {x: 0, y: 0, z: 0}
   smoothTime: 0.2
+  zoomLimiter: 30
+  minZoom: 30
+  maxZoom: 15
 --- !u!1 &639393759
 GameObject:
   m_ObjectHideFlags: 0

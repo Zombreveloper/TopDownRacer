@@ -18,7 +18,7 @@ public class CameraManager : MonoBehaviour
 	//GameObject car;
 
 	public List<Transform> targets;
-	public PartTakingCarsListSO allCars;
+	public PartTakingCarsListSO allCars; //make this a MonoBehaviour instead of SO
 	public Vector3 offset;
 	public float smoothTime = .5f;
 	private Vector3 velocity;
@@ -76,7 +76,7 @@ public class CameraManager : MonoBehaviour
 
 	void makeTargetsList()
 	{
-		foreach(GameObject car in allCars.carsList)
+		foreach(GameObject car in allCars.carsList) //make this a MonoBehaviour instead of SO
 		{
 			targets.Add(car.transform);
 		}
