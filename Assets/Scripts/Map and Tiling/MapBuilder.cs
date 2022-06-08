@@ -38,16 +38,11 @@ public class MapBuilder : MonoBehaviour
 		tilingPatterns = FindObjectOfType<TilingPatterns>();
 		StartCoroutine(TilingDelay());
 
-    }
+    }	
 
 
 
 
-	// Update is called once per frame
-	void Update()
-    {
-		PlaceTileByMouse();
-	}
 
 	//Coroutine that waits for a given time to set a tile
 	private IEnumerator TilingDelay()
@@ -56,25 +51,35 @@ public class MapBuilder : MonoBehaviour
 		Debug.Log("Started Coroutine at timestamp : " + Time.time);
 		for (int currentHeight = 0; currentHeight < 10; currentHeight++)
 		{
-			MakeStraightLine();
+			MakeLine();
 			yield return new WaitForSeconds(1);
 		}
-		for (int currentHeight = 0; currentHeight < 1; currentHeight++)
+		for (int currentHeight = 0; currentHeight < 2; currentHeight++)
 		{
 			MakeCurvedLine();
 			yield return new WaitForSeconds(1);
 		}
-		MakeHorizontalLine();
+		for (int currentHeight = 0; currentHeight < 9; currentHeight++)
+		{
+			MakeLine();
+			yield return new WaitForSeconds(1);
+		}
 
 		Debug.Log("Ended Coroutine at timestamp : " + Time.time);
 	}
 
-	void MakeStraightLine()
+	// Update is called once per frame
+	void Update()
+	{
+		PlaceTileByMouse();
+	}
+
+	void MakeLine()
     {
 		currentTile = TileStraightVert;
 		tilingPatterns.StraightLinePattern(); //calls for a straight line
 		PlacePattern(tilingPatterns.GetPattern()); //draws the pattern onto the map
-		buildMarker.MoveUp(1); //could be called elsewhere?
+		buildMarker.StepForward(1); //could be called elsewhere?
 	}
 
 	void MakeHorizontalLine()
@@ -90,9 +95,9 @@ public class MapBuilder : MonoBehaviour
 		currentTile = TileCurveLD;
 		tilingPatterns.CurvedTrackPattern(); //calls for a straight line
         PlacePattern(tilingPatterns.GetPattern()); //draws the pattern onto the map
-		buildMarker.MoveUp(1);
+		buildMarker.StepForward(1);
 		buildMarker.RotateLeft();
-		buildMarker.MoveLeft(2); //could be called elsewhere?
+		buildMarker.StepForward(2);
 	}
 
 		
@@ -114,7 +119,7 @@ public class MapBuilder : MonoBehaviour
 
 	Vector3Int RotatePattern(Vector3 coordinate) 
 	{
-		Vector3 markerRotation = buildMarker.GetMarkerRot(); //ACHTUNG sollte eigentlich per Funktion zu Vector3 umgewandelt werden! Aber wenns funktioniert?
+		Vector3 markerRotation = buildMarker.GetMarkerRot(); //transforms MarkerRotation from Vector3Int to Vector3 in the process
 		Quaternion rotation = Quaternion.Euler(markerRotation);
 		Matrix4x4 rotMatrix = Matrix4x4.Rotate(rotation);
 		Vector3 rotatedVector = rotMatrix.MultiplyPoint3x4(coordinate);

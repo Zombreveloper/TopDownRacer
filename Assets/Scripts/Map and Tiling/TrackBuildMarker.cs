@@ -25,10 +25,17 @@ public class TrackBuildMarker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //Public functions
+
+    public void StepForward(int steps)
+    {
+
+        pointerPos = pointerPos + RotatedStep(steps);
+        Debug.Log("Pointer is now on Position: " + pointerPos);
+    }
     public void MoveUp(int steps)
     {
         pointerPos.y = pointerPos.y + steps;
@@ -45,6 +52,28 @@ public class TrackBuildMarker : MonoBehaviour
     {
         pointerRot.z = pointerRot.z + 90;
         Debug.Log("Pointer has now rotation of: " + pointerRot);
+    }
+
+    public void RotateRight()
+    {
+        pointerRot.z = pointerRot.z - 90;
+        Debug.Log("Pointer has now rotation of: " + pointerRot);
+    }
+
+    Vector3Int RotatedStep(int stepsForward)
+    {
+        
+       Vector3 stepDirection = new Vector3(0, stepsForward, 0);
+       
+            Vector3 markerRotation = pointerRot; //transforms Vector3Int pointerRot to Vector3
+            Quaternion rotation = Quaternion.Euler(markerRotation);
+            Matrix4x4 rotMatrix = Matrix4x4.Rotate(rotation);
+            //lines above build our rotation Matrix
+
+            Vector3 rotatedVector = rotMatrix.MultiplyPoint3x4(stepDirection); //applies rotation to current position
+            Vector3Int rotatedIntVector = Vector3Int.RoundToInt(rotatedVector); //transforms result back to Vector3Int
+            return rotatedIntVector;
+        
     }
 
     //getters and setters
