@@ -9301,6 +9301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile with Triggers
       objectReference: {fileID: 0}
+    - target: {fileID: 7837203318223339774, guid: 9a4da682bad4ece45802c047861e69f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8089973739813238563, guid: 9a4da682bad4ece45802c047861e69f0, type: 3}
       propertyPath: m_TileSpriteArray.Array.size
       value: 3
@@ -9626,6 +9630,12 @@ MonoBehaviour:
   currentTilemap: {fileID: 1379453195}
   TileStraightVert: {fileID: 11400000, guid: 06cbb4acef3c12942b4dc5211bcf6f2f, type: 2}
   TileCurveLD: {fileID: 11400000, guid: 761f4b9e97b63154ea24f1e618746a66, type: 2}
+  GrassTile: {fileID: 11400000, guid: 68f54b24e4af38042836eaa4f5f66831, type: 2}
+  StraightTile: {fileID: 11400000, guid: 6d1ab509c6118914d8cbf10bd67601de, type: 2}
+  CurveTileUL: {fileID: 11400000, guid: ae4bf30ef0432e24596b77acdc40a802, type: 2}
+  CurveTileUR: {fileID: 11400000, guid: ee4c3afedd7bbee489d7eef6f8e8bf60, type: 2}
+  CurveTileDL: {fileID: 11400000, guid: e124f679b88b210468f1d0f3d473d85d, type: 2}
+  CurveTileDR: {fileID: 11400000, guid: bf87ccb6d224cea42918c34bdd486cfe, type: 2}
   cam: {fileID: 889841276}
   currentGrid: {fileID: 1996651159}
   straightTrackPrefab: {fileID: 7837203318223339774, guid: 9a4da682bad4ece45802c047861e69f0, type: 3}
@@ -9653,6 +9663,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3f52d16190d8d45b5329565c8146b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GrassTile: {fileID: 11400000, guid: 68f54b24e4af38042836eaa4f5f66831, type: 2}
+  StraightTile: {fileID: 11400000, guid: 6d1ab509c6118914d8cbf10bd67601de, type: 2}
+  CurveTileUL: {fileID: 11400000, guid: ae4bf30ef0432e24596b77acdc40a802, type: 2}
+  CurveTileUR: {fileID: 11400000, guid: ee4c3afedd7bbee489d7eef6f8e8bf60, type: 2}
+  CurveTileDL: {fileID: 11400000, guid: e124f679b88b210468f1d0f3d473d85d, type: 2}
+  CurveTileDR: {fileID: 11400000, guid: bf87ccb6d224cea42918c34bdd486cfe, type: 2}
 --- !u!1 &780333441
 GameObject:
   m_ObjectHideFlags: 0

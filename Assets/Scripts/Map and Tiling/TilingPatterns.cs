@@ -9,8 +9,16 @@ using UnityEngine.Tilemaps;
 public class TilingPatterns : MonoBehaviour
 {
     //variables
-    //Vector3Int savedPattern;
-    List<Vector3Int> savedCoordinates;
+    List<Vector3Int> savedCoordinatesList;
+    TileBase[] SpriteArray;
+
+    [Header("Tiles to build with")]
+    [SerializeField] TileBase GrassTile;
+    [SerializeField] TileBase StraightTile;
+    [SerializeField] TileBase CurveTileUL;
+    [SerializeField] TileBase CurveTileUR;
+    [SerializeField] TileBase CurveTileDL;
+    [SerializeField] TileBase CurveTileDR;
 
     //referenced classes
 
@@ -37,26 +45,23 @@ public class TilingPatterns : MonoBehaviour
             //buildPos = Quaternion.AngleAxis(-90, Vector3.up) * buildPos;
             tileCoordinates.Add(new Vector3Int(buildPos.x, buildPos.y, buildPos.z));
             //savedPattern = buildPos;
-            savedCoordinates = tileCoordinates;
+            savedCoordinatesList = tileCoordinates;
         }
         //Debug.Log("my TileCoordinates have: " + tileCoordinates.Count + "Elements");
+        SetTileSprites(tileCoordinates);
     }
 
-    public void StraightLinePatternVertical() //Builds List of coordinates for tiles in relation to each other
+    void SetTileSprites(List<Vector3Int> tileCoordinates)
     {
-        Vector3Int buildPos = new Vector3Int(0, 0, 0);
-        List<Vector3Int> tileCoordinates = new List<Vector3Int>();
-
-        for (int i = -1; i < 2; i++)
+        Vector3Int[] currentPatternArray = tileCoordinates.ToArray();
+        TileBase[] currentTilesArray = new TileBase[currentPatternArray.Length];
+        for (int index = 0; index < currentPatternArray.Length; index++)
         {
-            buildPos.Set(i, 0, 0);
-            //buildPos = Quaternion.AngleAxis(-90, Vector3.up) * buildPos;
-            tileCoordinates.Add(new Vector3Int(buildPos.x, buildPos.y, buildPos.z));
-            //savedPattern = buildPos;
-            savedCoordinates = tileCoordinates;
+            currentTilesArray[index] = index == 1 ? StraightTile : GrassTile;
         }
-        Debug.Log("my TileCoordinates have: " + tileCoordinates.Count + "Elements");
+        SpriteArray = currentTilesArray;
     }
+
 
     public void CurvedTrackPattern()
     {
@@ -70,18 +75,21 @@ public class TilingPatterns : MonoBehaviour
                 buildPos.Set(i, j, 0);
                 tileCoordinates.Add(new Vector3Int(buildPos.x, buildPos.y, buildPos.z));
                 //savedPattern = buildPos;
-                savedCoordinates = tileCoordinates;
+                savedCoordinatesList = tileCoordinates;
             }
         }
-        Debug.Log("my TileCoordinates have: " + tileCoordinates.Count + "Elements");
+        //Debug.Log("my TileCoordinates have: " + tileCoordinates.Count + "Elements");
     }
 
 
 
     public List<Vector3Int> GetPattern() //sends a pattern to whoever calls it
     {
-        //return this.savedPattern;
-        return this.savedCoordinates;
+        return this.savedCoordinatesList;
     }
 
+    public TileBase[] GetSprites()
+    {
+        return this.SpriteArray;
+    }
 }

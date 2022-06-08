@@ -1,10 +1,10 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /* Based on the Video: Edit, Save And Load Unity Tilemaps at Runtime! https://www.youtube.com/watch?v=snUe2oa_iM0
-*/
+
 
 public class MapBuilder : MonoBehaviour
 {
@@ -21,7 +21,6 @@ public class MapBuilder : MonoBehaviour
 	[SerializeField] TileBase CurveTileUR;
 	[SerializeField] TileBase CurveTileDL;
 	[SerializeField] TileBase CurveTileDR;
-
 
 	[Header("Scene Camera")]
 	[SerializeField] Camera cam; //Only necessary for pointing with mouse.
@@ -87,7 +86,7 @@ public class MapBuilder : MonoBehaviour
     {
 		currentTile = TileStraightVert;
 		tilingPatterns.StraightLinePattern(); //calls for a straight line
-		PlacePattern(tilingPatterns.GetPattern(), tilingPatterns.GetSprites()); //draws the pattern onto the map, needs Positions + Sprites!
+		PlacePattern(tilingPatterns.GetPattern()); //draws the pattern onto the map
 		buildMarker.StepForward(1); //could be called elsewhere?
 	}
 
@@ -96,7 +95,7 @@ public class MapBuilder : MonoBehaviour
 	{
 		currentTile = TileCurveLD;
 		tilingPatterns.CurvedTrackPattern(); //calls for a straight line
-        PlacePattern(tilingPatterns.GetPattern(), tilingPatterns.GetSprites()); //draws the pattern onto the map, needs Positions + Sprites!
+        PlacePattern(tilingPatterns.GetPattern()); //draws the pattern onto the map
 		buildMarker.StepForward(1);
 		buildMarker.RotateLeft();
 		buildMarker.StepForward(2);
@@ -105,24 +104,18 @@ public class MapBuilder : MonoBehaviour
 		
 	
 
-	private void PlacePattern(List<Vector3Int> pattern, TileBase[] spriteArray) //set by TilingPatterns class! places a Pattern of tiles on a given position on the grid
-	{	
+	private void PlacePattern(List<Vector3Int> pattern) //set by TilingPatterns class! places a Pattern of tiles on a given position on the grid
+	{
 		Vector3Int markerPos = buildMarker.GetMarkerPos();
 		Vector3 markerRot = buildMarker.GetMarkerRot();
-		Vector3Int[] currentPattern = pattern.ToArray();
-		Vector3Int[] gridCoordinates = new Vector3Int[currentPattern.Length];
-		//TileBase[] currentTilesArray = irgendwas;
 
-		int i = 0;
-		foreach (Vector3Int coordinate in currentPattern)
+
+		foreach (Vector3Int coordinate in pattern)
 		{
 			Vector3Int rotatedCoordinate = RotatePattern(coordinate); //Vllt umbenennen und umsiedeln. Wendet die Rotation des Marker auf das Pattern an
 			Vector3Int gridCoordinate = markerPos + rotatedCoordinate; //transforms relative coordinate to coordinate on Grid
-			gridCoordinates[i] = gridCoordinate;
-			i++;
-			//PlaceSingleTile(gridCoordinate);
+			PlaceSingleTile(gridCoordinate);
 		}
-		currentTilemap.SetTiles(gridCoordinates, spriteArray);
 	}
 
 	Vector3Int RotatePattern(Vector3 coordinate) 
@@ -174,3 +167,4 @@ public class MapBuilder : MonoBehaviour
 		}	
 	}
 }
+*/

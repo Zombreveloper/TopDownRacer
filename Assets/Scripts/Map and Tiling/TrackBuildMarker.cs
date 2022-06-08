@@ -32,21 +32,10 @@ public class TrackBuildMarker : MonoBehaviour
 
     public void StepForward(int steps)
     {
-
         pointerPos = pointerPos + RotatedStep(steps);
         Debug.Log("Pointer is now on Position: " + pointerPos);
     }
-    public void MoveUp(int steps)
-    {
-        pointerPos.y = pointerPos.y + steps;
-        Debug.Log("Pointer is now on Position: " + pointerPos);
-    }
-
-    public void MoveLeft(int steps)
-    {
-        pointerPos.x = pointerPos.x - steps;
-        Debug.Log("Pointer is now on Position: " + pointerPos);
-    }
+   
 
     public void RotateLeft()
     {
@@ -87,5 +76,18 @@ public class TrackBuildMarker : MonoBehaviour
         return this.pointerRot;
     }
 
+
+    //Trash dump
+    public void MoveUp(int steps)
+    {
+        pointerPos.y = pointerPos.y + steps;
+        Debug.Log("Pointer is now on Position: " + pointerPos);
+    }
+
+    public void MoveLefd(int steps)
+    {
+        pointerPos.x = pointerPos.x - steps;
+        Debug.Log("Pointer is now on Position: " + pointerPos);
+    }
 
 }
