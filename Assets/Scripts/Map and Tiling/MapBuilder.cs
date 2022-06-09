@@ -111,7 +111,6 @@ public class MapBuilder : MonoBehaviour
 		Vector3 markerRot = buildMarker.GetMarkerRot();
 		Vector3Int[] currentPattern = pattern.ToArray();
 		Vector3Int[] gridCoordinates = new Vector3Int[currentPattern.Length];
-		//TileBase[] currentTilesArray = irgendwas;
 
 		int i = 0;
 		foreach (Vector3Int coordinate in currentPattern)

@@ -10,7 +10,7 @@ public class TilingPatterns : MonoBehaviour
 {
     //variables
     List<Vector3Int> savedCoordinatesList;
-    TileBase[] SpriteArray;
+    TileBase[] spriteArray;
 
     [Header("Tiles to build with")]
     [SerializeField] TileBase GrassTile;
@@ -48,10 +48,10 @@ public class TilingPatterns : MonoBehaviour
             savedCoordinatesList = tileCoordinates;
         }
         //Debug.Log("my TileCoordinates have: " + tileCoordinates.Count + "Elements");
-        SetTileSprites(tileCoordinates);
+        SetStraightTileSprites(tileCoordinates);
     }
 
-    void SetTileSprites(List<Vector3Int> tileCoordinates)
+    void SetStraightTileSprites(List<Vector3Int> tileCoordinates)
     {
         Vector3Int[] currentPatternArray = tileCoordinates.ToArray();
         TileBase[] currentTilesArray = new TileBase[currentPatternArray.Length];
@@ -59,7 +59,7 @@ public class TilingPatterns : MonoBehaviour
         {
             currentTilesArray[index] = index == 1 ? StraightTile : GrassTile;
         }
-        SpriteArray = currentTilesArray;
+        spriteArray = currentTilesArray;
     }
 
 
@@ -78,9 +78,30 @@ public class TilingPatterns : MonoBehaviour
                 savedCoordinatesList = tileCoordinates;
             }
         }
+
+        SetCurveTileSprites(tileCoordinates);
         //Debug.Log("my TileCoordinates have: " + tileCoordinates.Count + "Elements");
     }
 
+    void SetCurveTileSprites(List<Vector3Int> tileCoordinates)
+    {
+        Vector3Int[] currentPatternArray = tileCoordinates.ToArray();
+        TileBase[] currentTilesArray = new TileBase[currentPatternArray.Length];
+       
+        //fills Array with specific tiles
+        currentTilesArray[0] = CurveTileDL;
+        currentTilesArray[1] = CurveTileUL;
+        currentTilesArray[2] = GrassTile;
+        currentTilesArray[3] = CurveTileDR;
+        currentTilesArray[4] = CurveTileUR;
+        currentTilesArray[5] = GrassTile;
+        currentTilesArray[6] = GrassTile;
+        currentTilesArray[7] = GrassTile;
+        currentTilesArray[8] = GrassTile;
+
+
+        spriteArray = currentTilesArray;
+    }
 
 
     public List<Vector3Int> GetPattern() //sends a pattern to whoever calls it
@@ -90,6 +111,6 @@ public class TilingPatterns : MonoBehaviour
 
     public TileBase[] GetSprites()
     {
-        return this.SpriteArray;
+        return this.spriteArray;
     }
 }
