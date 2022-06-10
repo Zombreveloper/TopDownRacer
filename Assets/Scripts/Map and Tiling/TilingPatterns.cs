@@ -63,7 +63,7 @@ public class TilingPatterns : MonoBehaviour
     }
 
 
-    public void CurvedTrackPattern()
+    public void CurvedLeftTrackPattern()
     {
         Vector3Int buildPos = new Vector3Int(0, 0, 0);
         List<Vector3Int> tileCoordinates = new List<Vector3Int>();
@@ -79,11 +79,31 @@ public class TilingPatterns : MonoBehaviour
             }
         }
 
-        SetCurveTileSprites(tileCoordinates);
+        SetCurveLeftTileSprites(tileCoordinates);
         //Debug.Log("my TileCoordinates have: " + tileCoordinates.Count + "Elements");
     }
 
-    void SetCurveTileSprites(List<Vector3Int> tileCoordinates)
+    public void CurvedRightTrackPattern()
+    {
+        Vector3Int buildPos = new Vector3Int(0, 0, 0);
+        List<Vector3Int> tileCoordinates = new List<Vector3Int>();
+
+        for (int i = -1; i < 2; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                buildPos.Set(i, j, 0);
+                tileCoordinates.Add(new Vector3Int(buildPos.x, buildPos.y, buildPos.z));
+                //savedPattern = buildPos;
+                savedCoordinatesList = tileCoordinates;
+            }
+        }
+
+        SetCurveRightTileSprites(tileCoordinates);
+        //Debug.Log("my TileCoordinates have: " + tileCoordinates.Count + "Elements");
+    }
+
+    void SetCurveLeftTileSprites(List<Vector3Int> tileCoordinates)
     {
         Vector3Int[] currentPatternArray = tileCoordinates.ToArray();
         TileBase[] currentTilesArray = new TileBase[currentPatternArray.Length];
@@ -97,6 +117,26 @@ public class TilingPatterns : MonoBehaviour
         currentTilesArray[5] = GrassTile;
         currentTilesArray[6] = GrassTile;
         currentTilesArray[7] = GrassTile;
+        currentTilesArray[8] = GrassTile;
+
+
+        spriteArray = currentTilesArray;
+    }
+
+    void SetCurveRightTileSprites(List<Vector3Int> tileCoordinates)
+    {
+        Vector3Int[] currentPatternArray = tileCoordinates.ToArray();
+        TileBase[] currentTilesArray = new TileBase[currentPatternArray.Length];
+
+        //fills Array with specific tiles
+        currentTilesArray[0] = GrassTile;
+        currentTilesArray[1] = GrassTile;
+        currentTilesArray[2] = GrassTile;
+        currentTilesArray[3] = CurveTileDR;
+        currentTilesArray[4] = CurveTileUR;
+        currentTilesArray[5] = GrassTile;
+        currentTilesArray[6] = CurveTileDL;
+        currentTilesArray[7] = CurveTileUL;
         currentTilesArray[8] = GrassTile;
 
 

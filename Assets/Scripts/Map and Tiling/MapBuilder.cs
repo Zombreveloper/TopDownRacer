@@ -14,14 +14,6 @@ public class MapBuilder : MonoBehaviour
 	[SerializeField] TileBase TileCurveLD; //Ruletiles for curved Track Left to Down
 	TileBase currentTile;
 
-	[Header("Tiles without Rules")]
-	[SerializeField] TileBase GrassTile;
-	[SerializeField] TileBase StraightTile;
-	[SerializeField] TileBase CurveTileUL;
-	[SerializeField] TileBase CurveTileUR;
-	[SerializeField] TileBase CurveTileDL;
-	[SerializeField] TileBase CurveTileDR;
-
 
 	[Header("Scene Camera")]
 	[SerializeField] Camera cam; //Only necessary for pointing with mouse.
@@ -50,22 +42,43 @@ public class MapBuilder : MonoBehaviour
     }	
 
 
-
-
-
 	//Coroutine that waits for a given time to set a tile
 	private IEnumerator TilingDelay()
 	{
 
 		Debug.Log("Started Coroutine at timestamp : " + Time.time);
-		for (int currentHeight = 0; currentHeight < 10; currentHeight++)
+
+		int infinityKeeper = 0;
+		while (infinityKeeper == 0)
+		{
+			int randomNumber = Random.Range(0, 12); //Sets random int between 0 and 11
+			Debug.Log("The randomized Number is: " + randomNumber);
+			if (randomNumber < 8)
+			{
+				MakeLine();
+				yield return new WaitForSeconds(1);
+			}
+			else if (randomNumber >= 8 && randomNumber < 9)
+			{
+				MakeCurveRight();
+				yield return new WaitForSeconds(1);
+			}
+			else
+			{
+				MakeCurveLeft();
+				yield return new WaitForSeconds(1);
+			}
+		}
+
+
+		/*for (int currentHeight = 0; currentHeight < 10; currentHeight++)
 		{
 			MakeLine();
 			yield return new WaitForSeconds(1);
 		}
 		for (int currentHeight = 0; currentHeight < 2; currentHeight++)
 		{
-			MakeCurvedLine();
+			MakeCurveLeft();
 			yield return new WaitForSeconds(1);
 		}
 		for (int currentHeight = 0; currentHeight < 9; currentHeight++)
@@ -73,7 +86,7 @@ public class MapBuilder : MonoBehaviour
 			MakeLine();
 			yield return new WaitForSeconds(1);
 		}
-
+		*/
 		Debug.Log("Ended Coroutine at timestamp : " + Time.time);
 	}
 
@@ -85,27 +98,46 @@ public class MapBuilder : MonoBehaviour
 
 	void MakeLine()
     {
-		currentTile = TileStraightVert;
+		string flag = "straightTrack";
+		//currentTile = TileStraightVert;
 		tilingPatterns.StraightLinePattern(); //calls for a straight line
-		PlacePattern(tilingPatterns.GetPattern(), tilingPatterns.GetSprites()); //draws the pattern onto the map, needs Positions + Sprites!
+		PlacePattern(tilingPatterns.GetPattern(), tilingPatterns.GetSprites(), flag); //draws the pattern onto the map, needs Positions + Sprites!
 		buildMarker.StepForward(1); //could be called elsewhere?
 	}
 
 	
-	void MakeCurvedLine()
+	void MakeCurveLeft()
 	{
-		currentTile = TileCurveLD;
-		tilingPatterns.CurvedTrackPattern(); //calls for a straight line
-        PlacePattern(tilingPatterns.GetPattern(), tilingPatterns.GetSprites()); //draws the pattern onto the map, needs Positions + Sprites!
+		string flag = "leftCurve";
+		//currentTile = TileCurveLD;
+		tilingPatterns.CurvedLeftTrackPattern(); //calls for a straight line
+        PlacePattern(tilingPatterns.GetPattern(), tilingPatterns.GetSprites(), flag); //draws the pattern onto the map, needs Positions + Sprites!
 		buildMarker.StepForward(1);
 		buildMarker.RotateLeft();
 		buildMarker.StepForward(2);
 	}
 
-		
-	
+	void MakeCurveRight()
+	{
+		string flag = "rightCurve";
+		tilingPatterns.CurvedRightTrackPattern(); //calls for a straight line
+		PlacePattern(tilingPatterns.GetPattern(), tilingPatterns.GetSprites(), flag ); //draws the pattern onto the map, needs Positions + Sprites!
+		buildMarker.StepForward(1);
+		buildMarker.RotateRight();
+		buildMarker.StepForward(2);
+	}
 
-	private void PlacePattern(List<Vector3Int> pattern, TileBase[] spriteArray) //set by TilingPatterns class! places a Pattern of tiles on a given position on the grid
+	void MirrorTilesInPattern(Vector3Int[] coordinates)
+	{
+		foreach (Vector3Int position in coordinates)
+		{
+			Quaternion newRotation = Quaternion.Euler(buildMarker.GetMarkerRot()); //der Quaternion aus der PointerRotation
+			currentTilemap.SetTransformMatrix(position, Matrix4x4.TRS(Vector3.zero, newRotation, new Vector3(-1, 1, 1))); //Überschreibt Rotation der Transformationsmatrix
+		}
+	}
+
+
+	private void PlacePattern(List<Vector3Int> pattern, TileBase[] spriteArray, string direction) //set by TilingPatterns class! places a Pattern of tiles on a given position on the grid
 	{	
 		Vector3Int markerPos = buildMarker.GetMarkerPos();
 		Vector3 markerRot = buildMarker.GetMarkerRot();
@@ -122,6 +154,23 @@ public class MapBuilder : MonoBehaviour
 			//PlaceSingleTile(gridCoordinate);
 		}
 		currentTilemap.SetTiles(gridCoordinates, spriteArray);
+		RotateAllTilesInPattern(gridCoordinates);
+
+		if (direction == "rightCurve")
+        {
+			MirrorTilesInPattern(gridCoordinates);
+
+		}
+	}
+
+	//Don´t ever lose this! function to rotate a tile!
+	void RotateAllTilesInPattern(Vector3Int[] coordinates)
+	{
+		foreach (Vector3Int position in coordinates)
+		{
+			Quaternion newRotation = Quaternion.Euler(buildMarker.GetMarkerRot()); //der Quaternion aus der PointerRotation
+			currentTilemap.SetTransformMatrix(position, Matrix4x4.TRS(Vector3.zero, newRotation, Vector3.one)); //Überschreibt Rotation der Transformationsmatrix
+		}
 	}
 
 	Vector3Int RotatePattern(Vector3 coordinate) 
