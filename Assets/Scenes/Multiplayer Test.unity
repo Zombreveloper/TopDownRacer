@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 21553374}
+  - component: {fileID: 21553375}
   m_Layer: 0
   m_Name: PlacementManager
   m_TagString: Untagged
@@ -154,6 +155,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &21553375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21553373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a91be7cac700b4a89b55bce3d0a07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeCars: {fileID: 0}
 --- !u!1 &144656454
 GameObject:
   m_ObjectHideFlags: 0

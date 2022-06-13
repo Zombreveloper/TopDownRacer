@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3735191791012032094}
   - component: {fileID: 1418655479604987479}
+  - component: {fileID: 7911199891321253234}
   m_Layer: 0
   m_Name: Car Collider
   m_TagString: Untagged
@@ -132,6 +133,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
+--- !u!114 &7911199891321253234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4936236550805993493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f69c0e4e06275a8468aefdde30c749dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7039528919432292128
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,8 +193,8 @@ GameObject:
   - component: {fileID: 1661030404866649602}
   - component: {fileID: -7703983796486940473}
   m_Layer: 0
-  m_Name: Lasses Test Car
-  m_TagString: Untagged
+  m_Name: Test Car
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
