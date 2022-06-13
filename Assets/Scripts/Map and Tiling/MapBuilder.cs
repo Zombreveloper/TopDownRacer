@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 /* Based on the Video: Edit, Save And Load Unity Tilemaps at Runtime! https://www.youtube.com/watch?v=snUe2oa_iM0
 */
 
+//WEITERMACHEN IN ZEILE 158!
 public class MapBuilder : MonoBehaviour
 {
 	[Header("Selected Tiles")]
@@ -20,7 +21,7 @@ public class MapBuilder : MonoBehaviour
 
 	[Header("Prefab Stuff (may not matter)")]
 	[SerializeField] Grid currentGrid;	
-	public GameObject straightTrackPrefab;
+	private GameObject straightTrackPrefab;
 	
 	//Vectors for positions on a grid to build on
 	private Vector3Int buildPos;
@@ -29,6 +30,7 @@ public class MapBuilder : MonoBehaviour
 	//referenced classes
 	private TrackBuildMarker buildMarker;
 	private TilingPatterns tilingPatterns;
+	private CheckpointPlacer checkpointPlacer;
 	
 	
 
@@ -37,6 +39,7 @@ public class MapBuilder : MonoBehaviour
     {
 		buildMarker = FindObjectOfType<TrackBuildMarker>();
 		tilingPatterns = FindObjectOfType<TilingPatterns>();
+		checkpointPlacer = FindObjectOfType<CheckpointPlacer>();
 		StartCoroutine(TilingDelay());
 
     }	
@@ -58,7 +61,7 @@ public class MapBuilder : MonoBehaviour
 				MakeLine();
 				yield return new WaitForSeconds(1);
 			}
-			else if (randomNumber >= 8 && randomNumber < 9)
+			else if (randomNumber >= 8 && randomNumber < 10)
 			{
 				MakeCurveRight();
 				yield return new WaitForSeconds(1);
@@ -152,9 +155,12 @@ public class MapBuilder : MonoBehaviour
 			gridCoordinates[i] = gridCoordinate;
 			i++;
 			//PlaceSingleTile(gridCoordinate);
+			checkpointPlacer.PlaceCheckpoint(gridCoordinate, rotatedCoordinate);
+			checkpointPlacer.GetCheckpoint();
 		}
 		currentTilemap.SetTiles(gridCoordinates, spriteArray);
 		RotateAllTilesInPattern(gridCoordinates);
+
 
 		if (direction == "rightCurve")
         {
