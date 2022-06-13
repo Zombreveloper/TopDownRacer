@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticipantsManager : MonoBehaviour
 {
     public ReadyPlayersList_SO allMyParicipants;
-    public PartTakingCarsListSO allCars; //make this a MonoBehaviour instead of SO
+    public ListOfActiveCars activeCars; //connet in hirachy
     public GameObject carPrefab;
     private GameObject currentCar;
     private int index = 1;
@@ -13,7 +13,7 @@ public class ParticipantsManager : MonoBehaviour
     void Awake()
     {
         index = 1;
-        allCars.carsList.Clear(); //make this a MonoBehaviour instead of SO
+        activeCars.carsList.Clear();
         spawnCars();
     }
 
@@ -47,7 +47,7 @@ public class ParticipantsManager : MonoBehaviour
                 currentCar.GetComponent<LassesTestInputHandler>().myDriver = player;
                 currentCar.GetComponent<CarColor>().myDriver = player;
                 //make Car available for every script in the Scene
-                allCars.carsList.Add(currentCar); //make this a MonoBehaviour instead of SO
+                activeCars.carsList.Add(currentCar);
             }
         }
     }

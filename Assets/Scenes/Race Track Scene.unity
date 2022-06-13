@@ -9854,6 +9854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets: []
   allCars: {fileID: 11400000, guid: 2442cfc45577f004b838c70d270065b3, type: 2}
+  activeCars: {fileID: 1225788051}
   offset: {x: 0, y: 0, z: 0}
   smoothTime: 0.05
   zoomLimiter: 30
@@ -9914,6 +9915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1225788050}
   - component: {fileID: 1225788049}
+  - component: {fileID: 1225788051}
   m_Layer: 0
   m_Name: ParticipantsManager
   m_TagString: Untagged
@@ -9935,6 +9937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allMyParicipants: {fileID: 11400000, guid: 31e14a575b027e44d8b784db5c67f1d7, type: 2}
   allCars: {fileID: 11400000, guid: 2442cfc45577f004b838c70d270065b3, type: 2}
+  activeCars: {fileID: 1225788051}
   carPrefab: {fileID: 7916444501015972658, guid: 00d1e54bb88efab4f99f155d70912ad5, type: 3}
 --- !u!4 &1225788050
 Transform:
@@ -9951,6 +9954,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1225788051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225788048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a69206723b2284bbf96328416905e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carsList: []
 --- !u!1 &1264026337
 GameObject:
   m_ObjectHideFlags: 0
