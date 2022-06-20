@@ -6,7 +6,6 @@ using UnityEngine.Tilemaps;
 /* Based on the Video: Edit, Save And Load Unity Tilemaps at Runtime! https://www.youtube.com/watch?v=snUe2oa_iM0
 */
 
-//WEITERMACHEN IN ZEILE 158!
 public class MapBuilder : MonoBehaviour
 {
 	[Header("Selected Tiles")]
@@ -73,7 +72,7 @@ public class MapBuilder : MonoBehaviour
 			}
 		}
 
-
+		//Method to build a Track myself
 		/*for (int currentHeight = 0; currentHeight < 10; currentHeight++)
 		{
 			MakeLine();
@@ -155,9 +154,9 @@ public class MapBuilder : MonoBehaviour
 			gridCoordinates[i] = gridCoordinate;
 			i++;
 			//PlaceSingleTile(gridCoordinate);
-			checkpointPlacer.PlaceCheckpoint(gridCoordinate, rotatedCoordinate);
-			checkpointPlacer.GetCheckpoint();
+			//checkpointPlacer.GetCheckpoint();
 		}
+		checkpointPlacer.PlaceCheckpoint(markerPos, markerRot);
 		currentTilemap.SetTiles(gridCoordinates, spriteArray);
 		RotateAllTilesInPattern(gridCoordinates);
 
