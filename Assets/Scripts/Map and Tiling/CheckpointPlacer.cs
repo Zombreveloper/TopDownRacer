@@ -33,7 +33,7 @@ public class CheckpointPlacer : MonoBehaviour
 
     public void PlaceCheckpoint(Vector3Int position, Vector3 rotationVec)
     {
-        string aNumber = "mit Ordnungsnummer";
+        //string aNumber = "mit Ordnungsnummer";
         Quaternion rotation = Quaternion.Euler(rotationVec);
         Vector3 worldPosition = myTilemap.GetCellCenterWorld(position);
         //currentCheckpoint = Instantiate(checkpointPrefab, worldPosition, rotation, checkpoints.transform);
@@ -41,7 +41,9 @@ public class CheckpointPlacer : MonoBehaviour
         checkpointPool.Enqueue(Instantiate(checkpointPrefab, worldPosition, rotation, checkpoints.transform));
 
         if (checkpointPool.Count > 5)
+        {
             Destroy(checkpointPool.Dequeue());
+        }
     }
 
     public GameObject GetCheckpoint()
