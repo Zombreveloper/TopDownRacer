@@ -23,6 +23,7 @@ public class CheckpointScript : MonoBehaviour
         if (other.tag == "Car")
         {
             carCounter++;
+            Debug.Log("Car Counter set to " + carCounter);
         }
     }
 

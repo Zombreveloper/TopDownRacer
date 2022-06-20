@@ -13,6 +13,8 @@ public class CheckpointPlacer : MonoBehaviour
     private GameObject currentCheckpoint;
     private Tilemap myTilemap;
 
+    private Queue<GameObject> checkpointPool = new Queue<GameObject>();
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -27,11 +29,19 @@ public class CheckpointPlacer : MonoBehaviour
         
     }
 
+
+
     public void PlaceCheckpoint(Vector3Int position, Vector3 rotationVec)
     {
+        string aNumber = "mit Ordnungsnummer";
         Quaternion rotation = Quaternion.Euler(rotationVec);
         Vector3 worldPosition = myTilemap.GetCellCenterWorld(position);
-        currentCheckpoint = Instantiate(checkpointPrefab, worldPosition, rotation, checkpoints.transform);
+        //currentCheckpoint = Instantiate(checkpointPrefab, worldPosition, rotation, checkpoints.transform);
+        //currentCheckpoint.name = "Checkpoint " + aNumber;
+        checkpointPool.Enqueue(Instantiate(checkpointPrefab, worldPosition, rotation, checkpoints.transform));
+
+        if (checkpointPool.Count > 5)
+            Destroy(checkpointPool.Dequeue());
     }
 
     public GameObject GetCheckpoint()
