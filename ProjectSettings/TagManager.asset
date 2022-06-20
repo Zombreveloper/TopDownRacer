@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Car
   - Checkpoint
+  - underpass
+  - overpass
   layers:
   - Default
   - TransparentFX
@@ -40,6 +42,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: track
+    uniqueID: 123859203
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: above track
+    uniqueID: 376131307
     locked: 0
