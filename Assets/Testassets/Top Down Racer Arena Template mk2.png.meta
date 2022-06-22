@@ -182,10 +182,6 @@ TextureImporter:
         - {x: -64, y: 54}
         - {x: -64, y: 64}
         - {x: -54, y: 64}
-      - - {x: 50, y: -64}
-        - {x: 50, y: -42}
-        - {x: 64, y: -52}
-        - {x: 64, y: -64}
       tessellationDetail: 0
       bones: []
       spriteID: 4f98a6033fb2b3f409997cc1d059c46d
@@ -206,18 +202,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 50, y: -64}
-        - {x: -44, y: 4}
-        - {x: 21, y: 10}
-        - {x: 2, y: -11}
-        - {x: 39, y: -38}
-        - {x: 58, y: -14}
-        - {x: 64, y: -38}
-        - {x: 64, y: -64}
-      - - {x: -64, y: -64}
-        - {x: -64, y: -53}
-        - {x: -49, y: -64}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 546cdf596b7e45145a99fff008fea91b
@@ -243,9 +228,6 @@ TextureImporter:
         - {x: 54, y: 64}
         - {x: 64, y: 64}
         - {x: 64, y: 54}
-      - - {x: -64, y: -64}
-        - {x: -64, y: -38}
-        - {x: -55, y: -64}
       tessellationDetail: 0
       bones: []
       spriteID: 2b4fe7dd620341342b8fdc6a94d8d819
@@ -271,10 +253,6 @@ TextureImporter:
         - {x: 62, y: -62}
         - {x: 64, y: -53}
         - {x: 64, y: -64}
-      - - {x: -64, y: 52}
-        - {x: -64, y: 64}
-        - {x: -54, y: 64}
-        - {x: -51, y: 39}
       tessellationDetail: 0
       bones: []
       spriteID: b68fe425fa40b5e45948f7a77938af0c
@@ -295,19 +273,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 51, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 53}
-      - - {x: 35, y: 0}
-        - {x: 19, y: -11}
-        - {x: -37, y: -13}
-        - {x: -14, y: 18}
-        - {x: -52, y: 47}
-        - {x: -64, y: 37}
-        - {x: -64, y: 64}
-        - {x: -49, y: 64}
-        - {x: -3, y: 33}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 71b2f22df289637488fba93b6923e933
@@ -333,10 +299,6 @@ TextureImporter:
         - {x: -64, y: -54}
         - {x: -62, y: -62}
         - {x: -54, y: -64}
-      - - {x: 51, y: 23}
-        - {x: 50, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 37}
       tessellationDetail: 0
       bones: []
       spriteID: 74488dc384de9d34b96c8d1d7bcb8863

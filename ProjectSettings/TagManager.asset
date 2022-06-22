@@ -8,6 +8,8 @@ TagManager:
   - Checkpoint
   - underpass
   - overpass
+  - overpass collider
+  - underpass collider
   layers:
   - Default
   - TransparentFX
