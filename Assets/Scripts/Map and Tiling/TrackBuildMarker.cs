@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEditor;
 
 public class TrackBuildMarker : MonoBehaviour
 {
@@ -9,11 +10,19 @@ public class TrackBuildMarker : MonoBehaviour
     private Vector3Int pointerPos; //represents pointers position
     private Vector3Int pointerRot; //represents pointers rotation
 
+    //checkbox for printing Pos and Rot Logs
+    [Header("Toggle to enable poition an rotation Logs")]
+    [SerializeField] bool printsEnabled = true;
+
     private void Awake()
     {
         pointerPos.Set(0, 0, 0);
         pointerRot.Set(0, 0, 0); //rotation, 0 means upwards
-        Debug.Log("Pointer wakes at Position: " + pointerPos);
+        if (printsEnabled)
+        {
+            Debug.Log("Pointer wakes at Position: " + pointerPos);
+        }
+
     }
 
     // Start is called before the first frame update but only AFTER the coroutine in MapBuilder!!!
@@ -22,31 +31,37 @@ public class TrackBuildMarker : MonoBehaviour
         //Debug.Log("Pointer starts at Position: " + pointerPos);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     //Public functions
 
     public void StepForward(int steps)
     {
         pointerPos = pointerPos + RotatedStep(steps);
-        Debug.Log("Pointer is now on Position: " + pointerPos);
+        if (printsEnabled)
+        {
+            Debug.Log("Pointer is now on Position: " + pointerPos);
+        }
+        
     }
    
 
     public void RotateLeft()
     {
         pointerRot.z = pointerRot.z + 90;
-        Debug.Log("Pointer has now rotation of: " + pointerRot);
+        if (printsEnabled)
+        {
+            Debug.Log("Pointer has now rotation of: " + pointerRot);
+        }
+        
     }
 
     public void RotateRight()
     {
         pointerRot.z = pointerRot.z - 90;
-        Debug.Log("Pointer has now rotation of: " + pointerRot);
+        if (printsEnabled)
+        {
+            Debug.Log("Pointer has now rotation of: " + pointerRot);
+        }
     }
 
     Vector3Int RotatedStep(int stepsForward)

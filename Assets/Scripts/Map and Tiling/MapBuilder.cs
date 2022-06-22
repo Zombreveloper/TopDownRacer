@@ -39,9 +39,11 @@ public class MapBuilder : MonoBehaviour
 		buildMarker = FindObjectOfType<TrackBuildMarker>();
 		tilingPatterns = FindObjectOfType<TilingPatterns>();
 		checkpointPlacer = FindObjectOfType<CheckpointPlacer>();
-		StartCoroutine(TilingDelay());
+		//StartCoroutine(TilingDelay());
+		MakeLine();
+		MakeLine();
 
-    }	
+	}	
 
 
 	//Coroutine that waits for a given time to set a tile
@@ -54,7 +56,7 @@ public class MapBuilder : MonoBehaviour
 		while (infinityKeeper == 0)
 		{
 			int randomNumber = Random.Range(0, 12); //Sets random int between 0 and 11
-			Debug.Log("The randomized Number is: " + randomNumber);
+			//Debug.Log("The randomized Number is: " + randomNumber);
 			if (randomNumber < 8)
 			{
 				MakeLine();
@@ -91,6 +93,25 @@ public class MapBuilder : MonoBehaviour
 		*/
 		Debug.Log("Ended Coroutine at timestamp : " + Time.time);
 	}
+
+	public void BuildRandomPiece()
+    {
+		int randomNumber = Random.Range(0, 12); //Sets random int between 0 and 11
+		//Debug.Log("The randomized Number is: " + randomNumber);
+		if (randomNumber < 8)
+		{
+			MakeLine();
+		}
+		else if (randomNumber >= 8 && randomNumber < 10)
+		{
+			MakeCurveRight();
+		}
+		else
+		{
+			MakeCurveLeft();
+		}
+	}
+
 
 	// Update is called once per frame
 	void Update()

@@ -21,7 +21,7 @@ public class PlacementManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        activeCars = FindObjectOfType<ListOfActiveCars>();
     }
 
     // Update is called once per frame
@@ -48,5 +48,7 @@ public class PlacementManager : MonoBehaviour
         //check distance from the firstCar to others
         //or not Marv?
         //because camera view shall kick the plaxers
+
+        //I will place checkpoints somewhat narrowly. So we will never need to measure who is last
     }
 }

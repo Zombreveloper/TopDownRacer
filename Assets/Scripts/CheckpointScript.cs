@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class CheckpointScript : MonoBehaviour
 {
+    //referenced classes
+    private MapBuilder mapBuilder;
+
     int carCounter = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        mapBuilder = FindObjectOfType<MapBuilder>();
     }
 
     // Update is called once per frame
@@ -37,5 +40,10 @@ public class CheckpointScript : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void CallMapBuilder()
+    {
+        mapBuilder.BuildRandomPiece();
     }
 }

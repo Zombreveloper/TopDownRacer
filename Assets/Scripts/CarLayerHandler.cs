@@ -106,7 +106,7 @@ public class CarLayerHandler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider2d)
     {
-        Debug.Log("trigger");
+        Debug.Log("Car Layer Handler entered a trigger");
         if (collider2d.CompareTag("underpass"))
         {
             Debug.Log("underpass");
