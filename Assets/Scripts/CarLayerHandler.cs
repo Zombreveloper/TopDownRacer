@@ -9,9 +9,17 @@ using UnityEngine;
 
 public class CarLayerHandler : MonoBehaviour
 {
-    public List<SpriteRenderer> defaultLayerSpriteRenderers = new List<SpriteRenderer>();
+    public SpriteRenderer carOutlineSpriteRenderer;
+    public SpriteRenderer carNormalSpriteRenderer;
 
-    bool isDrivingOnOverpass = false;
+    List<SpriteRenderer> defaultLayerSpriteRenderers = new List<SpriteRenderer>();
+
+    List<Collider2D> underpassColliderList = new List<Collider2D>();
+    List<Collider2D> overpassColliderList = new List<Collider2D>();
+
+    Collider2D carCollider;
+
+    bool isDrivingOnOverpass = true;
 
     void Awake()
     {
@@ -22,12 +30,24 @@ public class CarLayerHandler : MonoBehaviour
             defaultLayerSpriteRenderers.Add(spriteRenderer);
         }
       }
+
+      foreach(GameObject overpassColliderGameObject in GameObject.FindGameObjectsWithTag("overpass collider"))
+      {
+        overpassColliderList.Add(overpassColliderGameObject.GetComponent<Collider2D>());
+      }
+
+      foreach(GameObject underpassColliderGameObject in GameObject.FindGameObjectsWithTag("underpass collider"))
+      {
+        underpassColliderList.Add(underpassColliderGameObject.GetComponent<Collider2D>());
+      }
+
+      carCollider = GetComponentInChildren<Collider2D>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        UpdateSortingAndCollisionLayers();
     }
 
     // Update is called once per frame
@@ -41,10 +61,38 @@ public class CarLayerHandler : MonoBehaviour
         if (isDrivingOnOverpass)
         {
             SetSortingLayer("above track");
+
+            carOutlineSpriteRenderer.enabled = false;
+            carNormalSpriteRenderer.maskInteraction = SpriteMaskInteraction.None;
         }
         else
         {
             SetSortingLayer("track");
+
+            carOutlineSpriteRenderer.enabled = true;
+            carNormalSpriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+        }
+
+        SetCollisionWithOverpass();
+    }
+
+    void SetCollisionWithOverpass()
+    {
+        foreach (Collider2D collider2D in overpassColliderList)
+        {
+            Physics2D.IgnoreCollision(carCollider, collider2D, !isDrivingOnOverpass);
+        }
+
+        foreach (Collider2D collider2D in underpassColliderList)
+        {
+            if (isDrivingOnOverpass)
+            {
+                Physics2D.IgnoreCollision(carCollider, collider2D, true);
+            }
+            else
+            {
+                Physics2D.IgnoreCollision(carCollider, collider2D, false);
+            }
         }
     }
 

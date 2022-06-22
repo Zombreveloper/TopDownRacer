@@ -323,7 +323,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9542f256fd70e54a80d5c0a191ee04a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultLayerSpriteRenderers: []
+  carOutlineSpriteRenderer: {fileID: 5049796050066118734}
+  carNormalSpriteRenderer: {fileID: 3979988520718426537}
 --- !u!1 &8095696107228676280
 GameObject:
   m_ObjectHideFlags: 0
