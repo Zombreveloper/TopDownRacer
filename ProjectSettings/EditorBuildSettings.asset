@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Multiplayer Test.unity
     guid: bce31c58c708d194497a08d5d9748c06
+  - enabled: 1
+    path: Assets/Scenes/Race Track Scene.unity
+    guid: 09029453e1ab81143b913ec303a45818
   m_configObjects: {}

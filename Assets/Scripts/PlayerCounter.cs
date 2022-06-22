@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class PlayerCounter : MonoBehaviour
 {
     public Button startButton;
+    public Button buttonToRaceTrack; //Button to go to random generated Race Track
 
     //UI Objects
     public List<GameObject> PlayerUI = new List<GameObject>();
@@ -30,6 +31,7 @@ public class PlayerCounter : MonoBehaviour
         currentPlayer = 0;
 
         startButton.interactable = false; //button has "disabled"-color...
+        buttonToRaceTrack.interactable = false;
 
         ReadyPlayersList.ReadyPlayersArray.Clear();
 
@@ -86,6 +88,7 @@ public class PlayerCounter : MonoBehaviour
         if (ReadyPlayersList.ReadyPlayersArray.Count >= 2)
         {
             startButton.interactable = true;
+            buttonToRaceTrack.interactable = true;
         }
     }
 
@@ -103,6 +106,12 @@ public class PlayerCounter : MonoBehaviour
     {
         //Debug.Log("started Game");
         SceneManager.LoadScene("Multiplayer Test");
+    }
+
+    public void startGeneratedGame() //shouod also get called by pressing SpaceBar
+    {
+        //Debug.Log("started Game");
+        SceneManager.LoadScene("Race Track Scene");
     }
 
     public void backToMainMenu()
