@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class CarLayerHandler : MonoBehaviour
 {
-    List<SpriteRenderer> defaultLayerSpriteRenderers = new List<SpriteRenderer>();
+    public List<SpriteRenderer> defaultLayerSpriteRenderers = new List<SpriteRenderer>();
 
     bool isDrivingOnOverpass = false;
 
@@ -19,7 +19,7 @@ public class CarLayerHandler : MonoBehaviour
       {
         if (spriteRenderer.sortingLayerName == "Default")
         {
-          defaultLayerSpriteRenderers.Add(spriteRenderer);
+            defaultLayerSpriteRenderers.Add(spriteRenderer);
         }
       }
     }
@@ -36,17 +36,40 @@ public class CarLayerHandler : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2d(Collider2D collider2d)
+    void UpdateSortingAndCollisionLayers()
     {
-      if (collider2d.CompareTag("UnderpassTrigger"))
-      {
-        isDrivingOnOverpass = false;
-      }
-      else if (collider2d.CompareTag("OverpasssTrigger"))
-      {
-        isDrivingOnOverpass = true;
-      }
+        if (isDrivingOnOverpass)
+        {
+            SetSortingLayer("above track");
+        }
+        else
+        {
+            SetSortingLayer("track");
+        }
     }
 
-    //bei min 15 weitermachen
+    void SetSortingLayer(string layerName)
+    {
+        foreach (SpriteRenderer spriteRenderer in defaultLayerSpriteRenderers)
+        {
+            spriteRenderer.sortingLayerName = layerName;
+        }
+    }
+
+    void OnTriggerEnter2d(Collider2D collider2d)
+    {
+        Debug.Log("trigger");
+        if (collider2d.CompareTag("underpass"))
+        {
+            Debug.Log("underpass");
+            isDrivingOnOverpass = false;
+            UpdateSortingAndCollisionLayers();
+        }
+        else if (collider2d.CompareTag("overpass"))
+        {
+            Debug.Log("overpass");
+            isDrivingOnOverpass = true;
+            UpdateSortingAndCollisionLayers();
+        }
+    }
 }
