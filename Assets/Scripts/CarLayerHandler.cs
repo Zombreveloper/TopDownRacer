@@ -42,6 +42,9 @@ public class CarLayerHandler : MonoBehaviour
       }
 
       carCollider = GetComponentInChildren<Collider2D>();
+
+      //Default drive on underpass
+      carCollider.gameObject.layer = LayerMask.NameToLayer("ObjectOnOverpass"); //in Projectsettings->Physics2D->Layer Collision Matrix->disable collision between Over- and Underpass Layer
     }
 
     // Start is called before the first frame update
@@ -109,14 +112,16 @@ public class CarLayerHandler : MonoBehaviour
         Debug.Log("Car Layer Handler entered a trigger");
         if (collider2d.CompareTag("underpass"))
         {
-            Debug.Log("underpass");
+            //Debug.Log("underpass");
             isDrivingOnOverpass = false;
+            carCollider.gameObject.layer = LayerMask.NameToLayer("ObjectOnUnderpass"); //in Projectsettings->Physics2D->Layer Collision Matrix->disable collision between Over- and Underpass Layer
             UpdateSortingAndCollisionLayers();
         }
         else if (collider2d.CompareTag("overpass"))
         {
-            Debug.Log("overpass");
+            //Debug.Log("overpass");
             isDrivingOnOverpass = true;
+            carCollider.gameObject.layer = LayerMask.NameToLayer("ObjectOnOverpass"); //in Projectsettings->Physics2D->Layer Collision Matrix->disable collision between Over- and Underpass Layer
             UpdateSortingAndCollisionLayers();
         }
     }

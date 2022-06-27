@@ -7282,6 +7282,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7c840e03e5c99a343a1d24f58be7ae31, type: 2}
   - {fileID: 11400000, guid: 9190a73ae2937a74692951493856b944, type: 2}
   ReadyPlayersList: {fileID: 11400000, guid: 31e14a575b027e44d8b784db5c67f1d7, type: 2}
+  gameMode: {fileID: 11400000, guid: 003f203112b025d40ba6921acae269f2, type: 2}
 --- !u!1 &1566728971
 GameObject:
   m_ObjectHideFlags: 0
@@ -9802,7 +9803,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Random Gen Map
+  m_text: Multiplayer Test
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

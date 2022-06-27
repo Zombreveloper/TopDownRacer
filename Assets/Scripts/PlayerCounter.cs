@@ -24,6 +24,8 @@ public class PlayerCounter : MonoBehaviour
     private int currentPlayerUI;
     private int currentPlayer;
 
+    public GameMode_SO gameMode;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -105,13 +107,21 @@ public class PlayerCounter : MonoBehaviour
     public void startGame() //shouod also get called by pressing SpaceBar
     {
         //Debug.Log("started Game");
-        SceneManager.LoadScene("Multiplayer Test");
+
+        if (gameMode.gameMode == "Race")
+        {
+            SceneManager.LoadScene("Race Track Scene");
+        }
+        else if (gameMode.gameMode == "Arena")
+        {
+            SceneManager.LoadScene("Arena mk1");
+        }
     }
 
     public void startGeneratedGame() //shouod also get called by pressing SpaceBar
     {
         //Debug.Log("started Game");
-        SceneManager.LoadScene("Race Track Scene");
+        SceneManager.LoadScene("Multiplayer Test");
     }
 
     public void backToMainMenu()
