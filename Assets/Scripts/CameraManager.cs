@@ -43,6 +43,7 @@ public class CameraManager : MonoBehaviour
 
 	void LateUpdate()
 	{
+		UpdateTargetsList();
 		if (targets.Count == 0)
 			return;
 
@@ -72,6 +73,11 @@ public class CameraManager : MonoBehaviour
 			bounds.Encapsulate(targets[i].position);
 		}
 		return bounds.center;
+	}
+
+	void UpdateTargetsList() //for now only checks for empty values in List and deletes them. Might be enough
+	{
+		targets.RemoveAll(Transform => Transform == null);
 	}
 
 	void makeTargetsList()
