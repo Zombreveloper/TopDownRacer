@@ -18,4 +18,17 @@ public class ListOfActiveCars : MonoBehaviour
     {
 
     }
+
+    public void UpdateList() //removes empty keys
+    {
+        carsList.RemoveAll(GameObject => GameObject == null);
+    }
+
+    public void UpdateListOnNextFrame()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            carsList.RemoveAll(GameObject => GameObject == null);
+        }
+    }
 }

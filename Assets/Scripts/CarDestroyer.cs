@@ -10,7 +10,9 @@ public class CarDestroyer : MonoBehaviour
     [Tooltip("Threshold how much the object can be out of sight without getting destroyed. Measured in Pixels.")] 
     private float goodwill = 0; //how much the car is allowed to go over the borders before being destroyed
 
-    
+    //referenced classes
+    private ListOfActiveCars activeCars;
+
 
 
     // Start is called before the first frame update
@@ -19,19 +21,58 @@ public class CarDestroyer : MonoBehaviour
         //Transform parentsTransform = this.transform.parent;
         //thisCar = parentsTransform.gameObject; //use those if you want to grab a parent object
         thisCar = this.gameObject;
+        activeCars = GameObject.Find("/ParticipantsManager").GetComponent<ListOfActiveCars>();
+
+        //StartCoroutine(ExecuteDestroy());
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (IsOutOfScreen(thisCar) == true)
         {
+            // gescheiterter Versuch, die Liste nur einmal checken zu müssen. 
+            // da das Auto erst einen Frame später zerstört ist, muss die Liste mit dem Updaten einen Frame warten
+            /*int i = 0;
+            while (i == 0)
+            {
+                if (i < 2)
+                {
+                    Destroy(thisCar);
+                    Debug.Log("Car was destroyed");
+                }
+                else
+                {
+                    activeCars.UpdateList(); //Constantly checks for and deletes empty keys in the List
+                }
+
+            }*/
+
             Destroy(thisCar);
             Debug.Log("Car was destroyed");
         }
-            
+
+        //Constantly checks for and deletes empty keys in the List. This gets only called by the remaining Cars => bad design!!
+        activeCars.UpdateListOnNextFrame(); 
+
+
+    }
+
+    private IEnumerator ExecuteDestroy(int i = 0)
+    {
+        if (i == 0)
+        {
+            Destroy(thisCar);
+            Debug.Log("Car was destroyed");
+            i++;
+            yield return null;
+        }
+        else
+        {
+            activeCars.UpdateList(); //Constantly checks for and deletes empty keys in the List
+        }
+        //yield break;
     }
 
     //inspired from this website https://stackoverflow.com/questions/23217840/unity-2d-destroy-instantiated-prefab-when-it-goes-off-screen

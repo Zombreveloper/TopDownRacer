@@ -18,7 +18,7 @@ public class CameraManager : MonoBehaviour
 	//GameObject car;
 
 	public List<Transform> targets;
-	public ListOfActiveCars activeCars; //connet in hirachy
+	public ListOfActiveCars activeCars; //connect in hirachy
 	public Vector3 offset;
 	public float smoothTime = .5f;
 	private Vector3 velocity;
