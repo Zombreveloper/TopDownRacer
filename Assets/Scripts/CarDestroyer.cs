@@ -5,10 +5,11 @@ using UnityEngine;
 public class CarDestroyer : MonoBehaviour
 {
     GameObject thisCar;
+    GameObject[] activeCarObjects;
 
     [SerializeField]
     [Tooltip("Threshold how much the object can be out of sight without getting destroyed. Measured in Pixels.")] 
-    private float goodwill = 0; //how much the car is allowed to go over the borders before being destroyed
+    private float threshold = 0; //how much the car is allowed to go over the borders before being destroyed
 
     //referenced classes
     private ListOfActiveCars activeCars;
@@ -22,45 +23,33 @@ public class CarDestroyer : MonoBehaviour
         //thisCar = parentsTransform.gameObject; //use those if you want to grab a parent object
         thisCar = this.gameObject;
         activeCars = GameObject.Find("/ParticipantsManager").GetComponent<ListOfActiveCars>();
+        activeCarObjects = GameObject.FindGameObjectsWithTag("Car");
+        Debug.Log("This scene starts with " + activeCarObjects.Length + " Cars");
 
-        //StartCoroutine(ExecuteDestroy());
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsOutOfScreen(thisCar) == true)
+        foreach (GameObject car in activeCarObjects)
         {
-            // gescheiterter Versuch, die Liste nur einmal checken zu müssen. 
-            // da das Auto erst einen Frame später zerstört ist, muss die Liste mit dem Updaten einen Frame warten
-            /*int i = 0;
-            while (i == 0)
+            if ((car != null) && (IsOutOfScreen(car)))
             {
-                if (i < 2)
-                {
-                    Destroy(thisCar);
-                    Debug.Log("Car was destroyed");
-                }
-                else
-                {
-                    activeCars.UpdateList(); //Constantly checks for and deletes empty keys in the List
-                }
 
-            }*/
-
-            Destroy(thisCar);
-            Debug.Log("Car was destroyed");
+                StartCoroutine(ExecuteDestroy(car)); //deletes the car and updates activeCarsList one frame later
+            }
         }
 
         //Constantly checks for and deletes empty keys in the List. This gets only called by the remaining Cars => bad design!!
-        activeCars.UpdateListOnNextFrame(); 
+        
 
 
     }
 
-    private IEnumerator ExecuteDestroy(int i = 0)
+    private IEnumerator ExecuteDestroyy(int j = 0)
     {
+        int i = 0;
         if (i == 0)
         {
             Destroy(thisCar);
@@ -75,6 +64,18 @@ public class CarDestroyer : MonoBehaviour
         //yield break;
     }
 
+    private IEnumerator ExecuteDestroy(GameObject o)
+    {
+        
+            Destroy(o);
+            Debug.Log("Car was destroyed");
+            yield return 0;
+
+            activeCars.UpdateList(); //Constantly checks for and deletes empty keys in the List
+        Debug.Log("Only " + activeCars.carsList.Count + " cars left!");
+            yield break;
+    }
+
     //inspired from this website https://stackoverflow.com/questions/23217840/unity-2d-destroy-instantiated-prefab-when-it-goes-off-screen
     public bool IsOutOfScreen(GameObject o, Camera cam = null)
     {
@@ -87,8 +88,8 @@ public class CarDestroyer : MonoBehaviour
             Vector2 pos = cam.WorldToScreenPoint(o.transform.position);
             Vector2 min = pos - sdim;
             Vector2 max = pos + sdim;
-            if (min.x > Screen.width + goodwill || max.x < 0f - goodwill ||
-                min.y > Screen.height + goodwill || max.y < 0f - goodwill)
+            if (min.x > Screen.width + threshold || max.x < 0f - threshold ||
+                min.y > Screen.height + threshold || max.y < 0f - threshold)
             {
                 result = true;
             }

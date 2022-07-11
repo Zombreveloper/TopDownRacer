@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticipantsManager : MonoBehaviour
 {
     public ReadyPlayersList_SO allMyParicipants;
-    public ListOfActiveCars activeCars; //connet in hirachy
+    public ListOfActiveCars activeCars; //connect in hirachy
     public GameObject carPrefab;
     private GameObject currentCar;
     private int index = 1;
