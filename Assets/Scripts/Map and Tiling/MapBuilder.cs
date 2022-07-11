@@ -175,7 +175,6 @@ public class MapBuilder : MonoBehaviour
 			gridCoordinates[i] = gridCoordinate;
 			i++;
 			//PlaceSingleTile(gridCoordinate);
-			//checkpointPlacer.GetCheckpoint();
 		}
 		checkpointPlacer.PlaceCheckpoint(markerPos, markerRot);
 		currentTilemap.SetTiles(gridCoordinates, spriteArray);
@@ -227,7 +226,8 @@ public class MapBuilder : MonoBehaviour
 		}
 	}
 
-	//getters and setters
+	//getters and setters 
+	// (none currently)
 	
 
 	//here starts the trash dump! These methods will never be used but if compiler finds problems here
