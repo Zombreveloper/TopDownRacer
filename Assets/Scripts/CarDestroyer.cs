@@ -34,35 +34,17 @@ public class CarDestroyer : MonoBehaviour
     {
         foreach (GameObject car in activeCarObjects)
         {
-            if ((car != null) && (IsOutOfScreen(car)))
+            if ((car != null) && (IsOutOfScreen(car))) //activeCarObjects receives empty entries by deleting values!
             {
 
                 StartCoroutine(ExecuteDestroy(car)); //deletes the car and updates activeCarsList one frame later
             }
         }
-
-        //Constantly checks for and deletes empty keys in the List. This gets only called by the remaining Cars => bad design!!
         
 
 
     }
 
-    private IEnumerator ExecuteDestroyy(int j = 0)
-    {
-        int i = 0;
-        if (i == 0)
-        {
-            Destroy(thisCar);
-            Debug.Log("Car was destroyed");
-            i++;
-            yield return null;
-        }
-        else
-        {
-            activeCars.UpdateList(); //Constantly checks for and deletes empty keys in the List
-        }
-        //yield break;
-    }
 
     private IEnumerator ExecuteDestroy(GameObject o)
     {
