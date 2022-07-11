@@ -26,9 +26,13 @@ public class PlayerCounter : MonoBehaviour
 
     public GameMode_SO gameMode;
 
+    public GameObject doubleKeyBindErrorText;
+
     // Start is called before the first frame update
     void Start()
     {
+        doubleKeyBindErrorText.SetActive(false);
+
         currentPlayerUI = 0;
         currentPlayer = 0;
 
@@ -77,7 +81,7 @@ public class PlayerCounter : MonoBehaviour
                 //ReadyPlayersArray.Add(current);
                 ReadyPlayersList.ReadyPlayersArray.Add(current);
                 currentPlayer++;
-                Debug.Log("Player " + current.name + " is ready");
+                //Debug.Log("Player " + current.name + " is ready");
             }
         }
     }
@@ -104,17 +108,54 @@ public class PlayerCounter : MonoBehaviour
         }
     }
 
+    bool checkKeys()
+    {
+        doubleKeyBindErrorText.SetActive(false);
+
+        List<string> usedKeys = new List<string>();
+        usedKeys.Add(" ");
+
+        var keysToAdd = new List<string>();
+
+        foreach(PlayerProfile player in ReadyPlayersList.ReadyPlayersArray)
+        {
+            foreach(string key in usedKeys)
+            {
+                if(key != player.leftInput && key != player.rightInput)
+                {
+                    keysToAdd.Add(player.leftInput);
+                    keysToAdd.Add(player.rightInput);
+                }
+                else
+                {
+                    Debug.Log("Some Keys are binded multiple times! Change Your Key-Bindings!");
+                    doubleKeyBindErrorText.SetActive(true);
+
+                    return false;
+                }
+            }
+            usedKeys.AddRange(keysToAdd);
+        }
+        Debug.Log("have fun playing!");
+        return true;
+    }
+
     public void startGame() //shouod also get called by pressing SpaceBar
     {
         //Debug.Log("started Game");
 
-        if (gameMode.gameMode == "Race")
+        if(checkKeys())
         {
-            SceneManager.LoadScene("Race Track Scene");
-        }
-        else if (gameMode.gameMode == "Arena")
-        {
-            SceneManager.LoadScene("Arena mk1");
+            Debug.Log("Start Game!");
+
+            if (gameMode.gameMode == "Race")
+            {
+                SceneManager.LoadScene("Race Track Scene");
+            }
+            else if (gameMode.gameMode == "Arena")
+            {
+                SceneManager.LoadScene("Arena mk1");
+            }
         }
     }
 
