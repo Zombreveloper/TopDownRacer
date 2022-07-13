@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 using UnityEngine.SceneManagement;
 
+using System.Text.RegularExpressions;
+
 public class PlayerCounter : MonoBehaviour
 {
     public Button startButton;
@@ -27,6 +29,7 @@ public class PlayerCounter : MonoBehaviour
     public GameMode_SO gameMode;
 
     public GameObject doubleKeyBindErrorText;
+    public GameObject notAlphanumericErrorText;
 
     // Start is called before the first frame update
     void Start()
@@ -111,20 +114,58 @@ public class PlayerCounter : MonoBehaviour
     bool checkKeys()
     {
         doubleKeyBindErrorText.SetActive(false);
+        notAlphanumericErrorText.SetActive(false);
 
         List<string> usedKeys = new List<string>();
         usedKeys.Add(" ");
 
         var keysToAdd = new List<string>();
 
+        //check for double bindet keys
         foreach(PlayerProfile player in ReadyPlayersList.ReadyPlayersArray)
         {
             foreach(string key in usedKeys)
             {
                 if(key != player.leftInput && key != player.rightInput)
                 {
-                    keysToAdd.Add(player.leftInput);
-                    keysToAdd.Add(player.rightInput);
+                    //keysToAdd.Add(player.leftInput);
+                    //keysToAdd.Add(player.rightInput);
+
+
+                    //check if key is alphanumeric
+                    var myRegExp = new Regex("^[a-z0-9]$"); //regular Expression, checks for one key between lower case a to z and numeers 0 to 9
+
+                    if( myRegExp.IsMatch(player.leftInput) && myRegExp.IsMatch(player.rightInput) )
+                    {
+                        keysToAdd.Add(player.leftInput);
+                        keysToAdd.Add(player.rightInput);
+                    }
+                    else
+                    {
+                        Debug.Log("There may only be one (1) lower case alphanumeric (a-z & 0-9) key per Input! Change Your Key-Bindings!");
+                        notAlphanumericErrorText.SetActive(true);
+
+                        return false;
+                    }
+
+/*
+                    if(key == "a" || key == "b" || key == "c" || key == "d" || key == "e" || key == "f" || key == "g" || key == "h" || key == "i" ||
+                    key == "j" || key == "k" || key == "l" || key == "m" || key == "n" || key == "o" || key == "p" || key == "q" || key == "r" ||
+                    key == "s" || key == "t" || key == "u" || key == "v" || key == "w" || key == "x" || key == "y" || key == "z" ||
+                    key == "0" || key == "1" || key == "2" || key == "3" || key == "4" || key == "5" || key == "6" || key == "7" || key == "8" ||
+                    key == "9")
+                    {
+                        Debug.Log("RegExp");
+                        keysToAdd.Add(player.leftInput);
+                        keysToAdd.Add(player.rightInput);
+                    }
+                    else
+                    {
+                        Debug.Log("Some Keys are not alphanumeric! Change Your Key-Bindings!");
+                        notAlphanumericErrorText.SetActive(true);
+
+                        return false;
+                    }*/
                 }
                 else
                 {
