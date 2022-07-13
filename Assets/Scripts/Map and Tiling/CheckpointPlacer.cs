@@ -31,14 +31,18 @@ public class CheckpointPlacer : MonoBehaviour
 
 
 
-    public void PlaceCheckpoint(Vector3Int position, Vector3 rotationVec)
+    public void PlaceCheckpoint(Vector3Int position, Vector3 rotationVec) //gets called by MapBuilder.placePattern
     {
         //string aNumber = "mit Ordnungsnummer";
         Quaternion rotation = Quaternion.Euler(rotationVec);
         Vector3 worldPosition = myTilemap.GetCellCenterWorld(position);
         //currentCheckpoint = Instantiate(checkpointPrefab, worldPosition, rotation, checkpoints.transform);
         //currentCheckpoint.name = "Checkpoint " + aNumber;
-        checkpointPool.Enqueue(Instantiate(checkpointPrefab, worldPosition, rotation, checkpoints.transform));
+
+        currentCheckpoint = Instantiate(checkpointPrefab, worldPosition, rotation, checkpoints.transform);
+        currentCheckpoint.name = "HenryDerCheckpointMaster";
+        checkpointPool.Enqueue(currentCheckpoint);
+
 
         if (checkpointPool.Count > 5)
         {
