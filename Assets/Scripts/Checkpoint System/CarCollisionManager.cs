@@ -19,12 +19,13 @@ public class CarCollisionManager : MonoBehaviour
 
     void Awake()
     {
-        myName = this.transform.root.gameObject.name;
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        myName = this.transform.root.gameObject.name;
         //placementManager = GetComponentInParent<PlacementManager>();
         //placementManager = FindObjectOfType<PlacementManager>();
         placementManager = GameObject.Find("/PlacementManager").GetComponent<PlacementManager>();
@@ -52,6 +53,7 @@ public class CarCollisionManager : MonoBehaviour
             {
                 if (placementManager != null)
                     placementManager.FirstOne(myName);
+                Debug.Log(myName + " is now first place");
                 other.enabled = false;
             }
         }

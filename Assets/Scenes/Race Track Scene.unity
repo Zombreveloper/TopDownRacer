@@ -9867,13 +9867,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92602dc2ddd42da46aee994a509aa0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets: []
   activeCars: {fileID: 1225788051}
+  targets: []
   offset: {x: 0, y: 0, z: 0}
   smoothTime: 0.05
   zoomLimiter: 30
   minZoom: 30
   maxZoom: 15
+  favorFirstPlaced: 0.5
 --- !u!61 &889841280
 BoxCollider2D:
   m_ObjectHideFlags: 0

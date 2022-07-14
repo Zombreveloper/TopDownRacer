@@ -34,10 +34,12 @@ public class CheckpointScript : MonoBehaviour
     {
         if (carCounter == 1)
         {
+            //Debug.Log("carCounter is 1");
             return true;
         }
         else
         {
+            //Debug.Log("CarCounter counted up to fast");
             return false;
         }
     }

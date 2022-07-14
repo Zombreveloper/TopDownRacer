@@ -12,24 +12,31 @@ Inspiration
 
 public class CameraManager : MonoBehaviour
 {
+	//referenced classes
 	Camera _mainCamera;
-
+	public ListOfActiveCars activeCars; //connect in hirachy
+	private PlacementManager placementManager;
 	//[SerializeField]
 	//GameObject car;
 
 	public List<Transform> targets;
-	public ListOfActiveCars activeCars; //connect in hirachy
+
+	
 	public Vector3 offset;
+
 	public float smoothTime = .5f;
 	private Vector3 velocity;
 	public float zoomLimiter = 30f;
 	public float minZoom = 30f;
 	public float maxZoom = 15f;
 
+	public float favorFirstPlaced = 0.6f;
+
     // Start is called before the first frame update
     void Start()
     {
 		_mainCamera = GetComponent<Camera>();
+		placementManager = GameObject.Find("/PlacementManager").GetComponent<PlacementManager>();
 
 		makeTargetsList();
     }
@@ -38,7 +45,8 @@ public class CameraManager : MonoBehaviour
     void Update()
     {
 		//version von Marv
-        //transform.position = new Vector3(car.transform.position.x, car.transform.position.y, 0);
+		//GameObject firstPlaced = placementManager.getFirstPlaced();
+        //transform.position = new Vector3(firstPlaced.transform.position.x, firstPlaced.transform.position.y, 0);
     }
 
 	void LateUpdate()
@@ -72,7 +80,21 @@ public class CameraManager : MonoBehaviour
 		{
 			bounds.Encapsulate(targets[i].position);
 		}
-		return bounds.center;
+		//return bounds.center;
+
+		//this should become a make LIPO function. Makes LIPO between bounds centerpoint and first placed car.
+		GameObject firstPlaced = placementManager.getFirstPlaced();
+		if (firstPlaced != null)
+		{
+			//Vector3 Lerp(Vector3 a, Vector3 b, float t);
+			Vector3 lipoCenter = Vector3.Lerp(bounds.center, firstPlaced.transform.position, favorFirstPlaced);
+			return lipoCenter;
+		}
+
+		else
+        {
+			return bounds.center;
+		}	
 	}
 
 	void UpdateTargetsList() //for now only checks for empty values in List and deletes them. Might be enough

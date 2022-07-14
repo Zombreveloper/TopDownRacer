@@ -15,7 +15,7 @@ If it is, the checkpoint returns true, so the car calls "PlacementManager"s
 
 public class PlacementManager : MonoBehaviour
 {
-    public ListOfActiveCars activeCars; //connet in hirachy
+    public ListOfActiveCars activeCars; //connect in hirachy
     GameObject firstCar;
 
     // Start is called before the first frame update
@@ -50,5 +50,10 @@ public class PlacementManager : MonoBehaviour
         //because camera view shall kick the plaxers
 
         //I will place checkpoints somewhat narrowly. So we will never need to measure who is last
+    }
+
+    public GameObject getFirstPlaced()
+    {
+        return this.firstCar;
     }
 }
