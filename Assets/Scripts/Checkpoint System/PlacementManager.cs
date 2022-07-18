@@ -31,7 +31,7 @@ public class PlacementManager : MonoBehaviour
         //then call funktion for that
     }
 
-    public void FirstOne(string carsName) //gets called when a car is the first one to enter a checkpoint
+    public void FirstOne(string carsName) //gets called by CarCollisionManager when a car is the first one to enter a checkpoint
     {
         //get car with carsName from List for(int i=0; i<list.Count; i++){
         for (int i=0; i<activeCars.carsList.Count; i++)

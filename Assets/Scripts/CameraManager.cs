@@ -82,19 +82,24 @@ public class CameraManager : MonoBehaviour
 		}
 		//return bounds.center;
 
-		//this should become a make LIPO function. Makes LIPO between bounds centerpoint and first placed car.
+		return factorInFirstPlaced(bounds);
+	}
+
+	//watches for Values in Placement System and pushes CamCenter to firstPlaced
+	Vector3 factorInFirstPlaced(Bounds b)
+    {
 		GameObject firstPlaced = placementManager.getFirstPlaced();
 		if (firstPlaced != null)
 		{
 			//Vector3 Lerp(Vector3 a, Vector3 b, float t);
-			Vector3 lipoCenter = Vector3.Lerp(bounds.center, firstPlaced.transform.position, favorFirstPlaced);
+			Vector3 lipoCenter = Vector3.Lerp(b.center, firstPlaced.transform.position, favorFirstPlaced);
 			return lipoCenter;
 		}
 
 		else
-        {
-			return bounds.center;
-		}	
+		{
+			return b.center;
+		}
 	}
 
 	void UpdateTargetsList() //for now only checks for empty values in List and deletes them. Might be enough

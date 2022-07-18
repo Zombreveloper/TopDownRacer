@@ -24,11 +24,8 @@ public class ListOfActiveCars : MonoBehaviour
         carsList.RemoveAll(GameObject => GameObject == null);
     }
 
-    public void UpdateListOnNextFrame()
+    public List<GameObject> getCarsList()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            carsList.RemoveAll(GameObject => GameObject == null);
-        }
+        return this.carsList;
     }
 }

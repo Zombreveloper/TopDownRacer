@@ -83,7 +83,7 @@ public class CarDestroyer : MonoBehaviour
         return result;
     }
 
-    /*public Vector2 SpriteScreenSize(GameObject o, Camera cam = null)
+    /*public Vector2 SpriteScreenSize(GameObject o, Camera cam = null) //unchanged version from web
     {
         if (cam == null) cam = Camera.main;
         Vector2 sdim = new Vector2();
