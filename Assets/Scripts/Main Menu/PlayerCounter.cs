@@ -169,7 +169,7 @@ public class PlayerCounter : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Some Keys are binded multiple times! Change Your Key-Bindings!");
+                    Debug.Log("Some Keys are bound multiple times! Change Your Key-Bindings!");
                     doubleKeyBindErrorText.SetActive(true);
 
                     return false;
