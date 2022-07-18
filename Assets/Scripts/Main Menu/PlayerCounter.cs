@@ -51,7 +51,7 @@ public class PlayerCounter : MonoBehaviour
     void Update()
     {
         countPlayers();
-        Debug.Log("im at player " + currentPlayer);
+        //Debug.Log("im at player " + currentPlayer);
         enoughPlayers();
         //Debug.Log("passed enoughPlayers");
         updateUI();
