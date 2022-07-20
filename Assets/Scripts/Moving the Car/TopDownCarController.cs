@@ -5,7 +5,7 @@ using UnityEngine;
 public class TopDownCarController : MonoBehaviour
 {
     [Header("Car Settings")]
-    public float driftFactor = 0.95f;  //Set between 0 and 1. Lower value makes less drift, 
+    public float driftFactor = 0.95f;  //Set between 0 and 1. Lower value makes less drift,
     public float accelerationFactor = 30.0f;
     public float turnFactor = 3.5f;
     public float steerRejectFactor = 8; //Sets amount of steering deficiency at low velocities
@@ -21,7 +21,7 @@ public class TopDownCarController : MonoBehaviour
     float velocityVsUp = 27;
 
     Vector2 carPullVector;
-	
+
 	private MapManager mapManager;
 
     //Components
@@ -39,15 +39,15 @@ public class TopDownCarController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    
+
     //Frame-Rate independent for physics calculation
     void FixedUpdate()
     {
@@ -81,7 +81,7 @@ public class TopDownCarController : MonoBehaviour
         if (accelerationInput == 0)
             carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 3.0f, Time.fixedDeltaTime * 3);
         else carRigidbody2D.drag = 0;
-		
+
 		//float groundTileResistance = mapManager.GetTileResistance(transform.position);	// gets the Value for the resistance of the current Ground Tile. Applies to the Engine Force next line
 
         //Creates a force for the Engine
@@ -102,9 +102,10 @@ public class TopDownCarController : MonoBehaviour
 
         //Apply steering by rotating the car object
         carRigidbody2D.MoveRotation(rotationAngle);
+        //Debug.Log("Rotatoin Angle: " + rotationAngle);
     }
 
-    void KillOrthogonalVelocity() 
+    void KillOrthogonalVelocity()
     {
         //reduces the forces to the sides and minimizes drifting
         Vector2 forwardVelocity = transform.up * Vector2.Dot(carRigidbody2D.velocity, transform.up);
@@ -130,5 +131,12 @@ public class TopDownCarController : MonoBehaviour
     {
         carPullVector = pullVector;
         //Debug.Log("The Car is currently pulled to direction:" + pullVector); //Prints the Value of the Pullback Vector to Console
+    }
+
+    public void adjustRotationAngle(float difference)
+    {
+        //rotationAngle += difference*Time.deltaTime;
+        rotationAngle += difference;
+        //Debug.Log("Rotatoin Angle adjusted");
     }
 }
