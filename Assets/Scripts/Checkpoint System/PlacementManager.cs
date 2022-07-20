@@ -36,7 +36,7 @@ public class PlacementManager : MonoBehaviour
         //get car with carsName from List for(int i=0; i<list.Count; i++){
         for (int i=0; i<activeCars.carsList.Count; i++)
         {
-           if (activeCars.carsList[i].name == carsName)
+           if (activeCars.carsList[i] != null &&  activeCars.carsList[i].name == carsName)
            {
                firstCar = activeCars.carsList[i];
            }

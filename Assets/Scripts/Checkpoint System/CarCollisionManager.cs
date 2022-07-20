@@ -56,4 +56,9 @@ public class CarCollisionManager : MonoBehaviour
             }
         }
     }
+
+    public void callFirstOne()
+    {
+        placementManager.FirstOne(myName);
+    }
 }

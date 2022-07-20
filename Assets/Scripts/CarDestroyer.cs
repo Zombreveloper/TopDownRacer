@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CarDestroyer : MonoBehaviour
 {
-    GameObject thisCar;
     GameObject[] activeCarObjects;
 
     [SerializeField]
@@ -21,7 +20,6 @@ public class CarDestroyer : MonoBehaviour
     {
         //Transform parentsTransform = this.transform.parent;
         //thisCar = parentsTransform.gameObject; //use those if you want to grab a parent object
-        thisCar = this.gameObject;
         activeCars = GameObject.Find("/ParticipantsManager").GetComponent<ListOfActiveCars>();
         activeCarObjects = GameObject.FindGameObjectsWithTag("Car");
         Debug.Log("This scene starts with " + activeCarObjects.Length + " Cars");
@@ -50,10 +48,10 @@ public class CarDestroyer : MonoBehaviour
     {
         
             Destroy(o);
-            Debug.Log("Car was destroyed");
+            Debug.Log(o.name + " was destroyed");
             yield return 0;
 
-            activeCars.UpdateList(); //Constantly checks for and deletes empty keys in the List
+            activeCars.UpdateList(); //checks for and deletes empty keys in the List
         Debug.Log("Only " + activeCars.carsList.Count + " cars left!");
             yield break;
     }
@@ -107,5 +105,21 @@ public class CarDestroyer : MonoBehaviour
                 cam.WorldToScreenPoint(ren.bounds.min);
         }
         return sdim;
+    }
+
+    //public functions
+    public void callExecuteDestroy(int i)
+    {
+        Debug.Log("bleep bloop");
+        if (activeCars.carsList[i] != null)
+        {
+            GameObject car = activeCars.carsList[i];
+            StartCoroutine(ExecuteDestroy(car)); //deletes the car and updates activeCarsList one frame later
+        }
+        else
+        {
+            Debug.Log("car on index " + i + "doesn't exist"); 
+        }
+        
     }
 }
