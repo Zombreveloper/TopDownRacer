@@ -102,4 +102,9 @@ public class CarCollisionManager : MonoBehaviour
             transform.parent = null;
         }*/
     }
+
+    public void callFirstOne()
+    {
+        placementManager.FirstOne(myName);
+    }
 }

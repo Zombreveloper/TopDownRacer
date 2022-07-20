@@ -93,7 +93,7 @@ public class CheckpointPlacer : MonoBehaviour
     public void destroyCheckpoint() //gets called my Checkpoint Script OnTriggerEnter
     {
         Destroy(checkpointPool.Dequeue());
-        Debug.Log("destroyCheckpoint gets called but doesn't work");
+        Debug.Log("destroyCheckpoint gets called");
     }
 
     public GameObject getActiveCheckpoint()

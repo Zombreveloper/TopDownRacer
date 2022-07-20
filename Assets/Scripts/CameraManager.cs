@@ -89,6 +89,7 @@ public class CameraManager : MonoBehaviour
 	Vector3 factorInFirstPlaced(Bounds b)
     {
 		GameObject firstPlaced = placementManager.getFirstPlaced();
+		//Debug.Log("Camera now favors " + firstPlaced.name);
 		if (firstPlaced != null)
 		{
 			//Vector3 Lerp(Vector3 a, Vector3 b, float t);
