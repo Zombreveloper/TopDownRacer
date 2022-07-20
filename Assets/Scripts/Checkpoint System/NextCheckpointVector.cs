@@ -39,6 +39,11 @@ public class NextCheckpointVector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        determineFirstPlaced();
+    }
+
+    void determineFirstPlaced()
+    {
         activeCheckpoint = checkpointPlacer.getActiveCheckpoint();
 
         float distance;
@@ -69,6 +74,4 @@ public class NextCheckpointVector : MonoBehaviour
 
         //Debug.Log(nearestCar + " is currently the nearest with" + currentNearest);
     }
-
-
 }

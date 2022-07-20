@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeCars: {fileID: 0}
+  destroyer: {fileID: 0}
 --- !u!1 &8095696107228676280
 GameObject:
   m_ObjectHideFlags: 0
