@@ -28,4 +28,9 @@ public class ListOfActiveCars : MonoBehaviour
     {
         return this.carsList;
     }
+
+    public GameObject getCarFromList(int i)
+    {
+        return this.carsList[i];
+    }
 }
