@@ -20,6 +20,9 @@ public class PlacementManager : MonoBehaviour
     GameObject previousFirstCar;
     GameObject firstCarPrevFrame;
 
+    //variables
+    public bool isOvertaken;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,19 +30,24 @@ public class PlacementManager : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        //StartCoroutine(checkOvertake());
+       // if (firstCarPrevFrame != null)
+            //Debug.Log("first Car was" + firstCarPrevFrame.name);
+       // Debug.Log("first Car is currently" + firstCar.name);
+
+        isOvertaken = OnOvertake(); //Achtung! works only when FirstOne() gets called every frame!
+    }
     void LateUpdate()
     {
-        //check if car is first to collide with streen-trigger
-        //then call funktion for that
-        
-        
-        isOvertaken();
+       
 
-        firstCarPrevFrame = firstCar;
+        
     }
-    bool isOvertaken()
+    bool OnOvertake()
     {
-        if (firstCar == firstCarPrevFrame)
+        if (firstCar == previousFirstCar)
         {
             return false;
         }
@@ -51,7 +59,15 @@ public class PlacementManager : MonoBehaviour
         }
     }
 
-    public void FirstOne(string carsName) //gets called by CarCollisionManager when a car is the first one to enter a checkpoint
+    private IEnumerator checkOvertake()
+    {
+        OnOvertake();
+        yield return new WaitForEndOfFrame();
+        firstCarPrevFrame = firstCar;
+        StartCoroutine(checkOvertake());
+    }
+
+    public void FirstOne(string carsName) //gets called by CarCollisionManager when NextCheckpointVector sets that car as first
     {
         //get car with carsName from List for(int i=0; i<list.Count; i++){
         for (int i=0; i<activeCars.carsList.Count; i++)
@@ -60,8 +76,12 @@ public class PlacementManager : MonoBehaviour
            {
                previousFirstCar = firstCar;
                firstCar = activeCars.carsList[i];
-           }
+               //Debug.Log("firstOne got called for " + firstCar.name);
+                //Debug.Log("previous is " + previousFirstCar.name);
+            }
         }
+        
+        //Debug.Log("first car of this class is " + firstCar.name);
     }
 
  

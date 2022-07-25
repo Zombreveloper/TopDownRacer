@@ -11,6 +11,10 @@ public class StartManager : MonoBehaviour
     public int i;
     //private List<GameObject> myCarsList;
 
+    [Header("Toggle to let cars start instantly")]
+    [SerializeField] bool instantStart = true;
+
+
     void Awake()
     {
         activeCars = FindObjectOfType<ParticipantsManager>().GetComponent<ListOfActiveCars>();
@@ -19,14 +23,33 @@ public class StartManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCars();
         mytext.text = "0";
         i = 0;
-        StartCoroutine(Countdown1());
+        if (instantStart)
+        {
+            Canvas canvas = this.gameObject.GetComponentInChildren<Canvas>();
+            canvas.enabled = false;
+            StartCoroutine(NoCountdown());
+            
+        }
+
+        else
+        {
+            StartCoroutine(Countdown1());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    private IEnumerator NoCountdown()
+    {
+        yield return 0;
+        StartCars();
 
     }
 
@@ -66,7 +89,8 @@ public class StartManager : MonoBehaviour
 
     void StartCars()
     {
-        foreach (GameObject car in activeCars.carsList)
+        List<GameObject> activeCarsList = activeCars.getCarsList();
+        foreach (GameObject car in activeCarsList)
         {
             //car.LassesTestInputHandler.SetCarTorque(1);
 

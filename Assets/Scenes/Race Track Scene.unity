@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mytext: {fileID: 840388580}
   i: 0
+  instantStart: 1
 --- !u!4 &102547487
 Transform:
   m_ObjectHideFlags: 0
@@ -10260,6 +10261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeCars: {fileID: 0}
+  isOvertaken: 0
 --- !u!4 &1110122057
 Transform:
   m_ObjectHideFlags: 0

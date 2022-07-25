@@ -54,9 +54,10 @@ public class NextCheckpointVector : MonoBehaviour
     // Message gets redirected to PlacementManager
     void determineFirstPlaced() 
     {
-        List<GameObject> carsList = activeCars.getCarsList();
+        List<GameObject> activeCarsList = activeCars.getCarsList();
+        currentNearest = 1024; //absurdly high so first car will always overwrite that
 
-        foreach (GameObject car in carsList)
+        foreach (GameObject car in activeCars.carsList)
         {
             if (car != null)
             {

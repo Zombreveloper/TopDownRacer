@@ -113,9 +113,18 @@ public class CameraManager : MonoBehaviour
 		if (placementManager.getPreviousFirstPlaced() != null)
         {
 			GameObject previous = placementManager.getPreviousFirstPlaced();
-			Vector3 smoothPos = Vector3.SmoothDamp(previous.transform.position, first.transform.position, ref velocity, 2f);
+			Vector3 startpoint = previous.transform.position;
+			if (placementManager.isOvertaken)
+            {
+				//startpoint = this.gameObject.transform.position;
+				startpoint = previous.transform.position;
+			}
+
+			Vector3 smoothPos = Vector3.SmoothDamp(startpoint, first.transform.position, ref velocity, 10f);
 			//Debug.Log("I´m smoothing movement");
 			return smoothPos;
+			//Vector3 smoothPos = Vector3.SmoothDamp(previous.transform.position, first.transform.position, ref velocity, 1f);
+
 		}
 		else
         {

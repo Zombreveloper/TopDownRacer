@@ -41,26 +41,6 @@ public class CheckpointPlacer : MonoBehaviour
     }
 
 
-    //Das ist die bisher funktionierende Backup Methode!
-    public void PlaceCheckpointt(Vector3Int position, Vector3 rotationVec) //gets called by MapBuilder.placePattern
-    {
-        //string aNumber = "mit Ordnungsnummer";
-        Quaternion rotation = Quaternion.Euler(rotationVec);
-        Vector3 worldPosition = myTilemap.GetCellCenterWorld(position);
-        //currentCheckpoint = Instantiate(checkpointPrefab, worldPosition, rotation, checkpoints.transform);
-        //currentCheckpoint.name = "Checkpoint " + aNumber;
-
-
-        currentlyBuiltCheckpoint = Instantiate(checkpointPrefab, worldPosition, rotation, checkpoints.transform);
-        currentlyBuiltCheckpoint.name = "HenryDerCheckpointMaster";
-        checkpointPool.Enqueue(currentlyBuiltCheckpoint);
-
-
-        if (checkpointPool.Count > 5)
-        {
-            Destroy(checkpointPool.Dequeue());
-        }
-    }
 
     public void PlaceCheckpoint(Vector3Int position, Vector3 rotationVec) //gets called by MapBuilder.placePattern
     {
