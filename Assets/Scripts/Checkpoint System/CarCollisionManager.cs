@@ -76,6 +76,7 @@ public class CarCollisionManager : MonoBehaviour
                 oilConstant -= 5;
                 //Debug.Log("oil Constant: " + oilConstant);
             }
+
             //carController.adjustRotationAngle(150.0f);
         }
     }
