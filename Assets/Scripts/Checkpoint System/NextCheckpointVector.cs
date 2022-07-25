@@ -27,7 +27,7 @@ public class NextCheckpointVector : MonoBehaviour
         checkpoints = FindObjectOfType<CheckpointScript>();
         //I don't know yet which of those I need
         activeCars = FindObjectOfType<ParticipantsManager>().GetComponent<ListOfActiveCars>();
-        activeCarObjects = GameObject.FindGameObjectsWithTag("Car");
+        //activeCarObjects = GameObject.FindGameObjectsWithTag("Car");
     }
     // Start is called before the first frame update
     void Start()
@@ -47,7 +47,7 @@ public class NextCheckpointVector : MonoBehaviour
         activeCheckpoint = checkpointPlacer.getActiveCheckpoint();
 
         float distance;
-        float currentNearest = 1024; //incredibly high so first car will always overwrite
+        float currentNearest = 1024; //incredibly high so first car will always overwrite that
         GameObject nearestCar = activeCars.carsList[0];
 
         foreach (GameObject car in activeCars.carsList)
