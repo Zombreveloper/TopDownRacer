@@ -13,27 +13,35 @@ public class NextCheckpointVector : MonoBehaviour
     CheckpointPlacer checkpointPlacer;
     CheckpointScript checkpoints;
     ListOfActiveCars activeCars;
-    GameObject[] activeCarObjects;
+    //GameObject[] activeCarObjects;
 
     //used objects
     GameObject activeCheckpoint;
 
     //used variables
     //Vector3 distance;
+   
+
+    float distance;
+    float currentNearest;
+    GameObject nearestCar;
 
     private void Awake()
     {
         checkpointPlacer = FindObjectOfType<CheckpointPlacer>();
         checkpoints = FindObjectOfType<CheckpointScript>();
-        //I don't know yet which of those I need
         activeCars = FindObjectOfType<ParticipantsManager>().GetComponent<ListOfActiveCars>();
-        //activeCarObjects = GameObject.FindGameObjectsWithTag("Car");
     }
     // Start is called before the first frame update
     void Start()
     {
         if (activeCars != null)
             Debug.Log(activeCars.carsList[0]);
+
+        //needed for determineFirstPlaced()
+        activeCheckpoint = checkpointPlacer.getActiveCheckpoint();
+        currentNearest = 1024; //absurdly high so first car will always overwrite that
+        nearestCar = activeCars.getCarFromList(0); ;
     }
 
     // Update is called once per frame
@@ -42,15 +50,13 @@ public class NextCheckpointVector : MonoBehaviour
         determineFirstPlaced();
     }
 
-    void determineFirstPlaced()
+    // repeatedly sends message to CarCollisionManager if car is first one. 
+    // Message gets redirected to PlacementManager
+    void determineFirstPlaced() 
     {
-        activeCheckpoint = checkpointPlacer.getActiveCheckpoint();
+        List<GameObject> carsList = activeCars.getCarsList();
 
-        float distance;
-        float currentNearest = 1024; //incredibly high so first car will always overwrite that
-        GameObject nearestCar = activeCars.carsList[0];
-
-        foreach (GameObject car in activeCars.carsList)
+        foreach (GameObject car in carsList)
         {
             if (car != null)
             {

@@ -93,7 +93,8 @@ public class CameraManager : MonoBehaviour
 		if (firstPlaced != null)
 		{
 			//Vector3 Lerp(Vector3 a, Vector3 b, float t);
-			Vector3 lipoCenter = Vector3.Lerp(b.center, firstPlaced.transform.position, favorFirstPlaced);
+			Vector3 betweenFirsts = smoothFavorChange(firstPlaced);
+			Vector3 lipoCenter = Vector3.Lerp(b.center, betweenFirsts, favorFirstPlaced);
 			return lipoCenter;
 		}
 
@@ -103,7 +104,27 @@ public class CameraManager : MonoBehaviour
 		}
 	}
 
-	void UpdateTargetsList() //for now only checks for empty values in List and deletes them. Might be enough
+	Vector3 smoothFavorChange(GameObject first) //gets a smooth movement between old and new firstPlaced when overtaking
+    {
+		/*TODO
+		 * when cars are overtaking while camera panning not complete, cam will jump
+		 * instead of previous car position use cam position for interpolation!
+		 */
+		if (placementManager.getPreviousFirstPlaced() != null)
+        {
+			GameObject previous = placementManager.getPreviousFirstPlaced();
+			Vector3 smoothPos = Vector3.SmoothDamp(previous.transform.position, first.transform.position, ref velocity, 2f);
+			//Debug.Log("I´m smoothing movement");
+			return smoothPos;
+		}
+		else
+        {
+			return first.transform.position;
+        }
+		
+    }
+
+	void UpdateTargetsList() //only checks for empty values in List and deletes them. Might be enough
 	{
 		targets.RemoveAll(Transform => Transform == null);
 	}

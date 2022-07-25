@@ -40,7 +40,7 @@ public class CarCollisionManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log("I�ve hit a trigger");
+        //Debug.Log("I´ve hit a trigger");
         if (other.tag == "Checkpoint")
         {
             Debug.Log("This trigger is a checkpoint");
@@ -53,7 +53,7 @@ public class CarCollisionManager : MonoBehaviour
             if (checkpoint.AmIFirst()) //AmIFirst() gibt true aus, wenn dies die erste Collision ist
             {
                 if (placementManager != null)
-                    placementManager.FirstOne(myName);
+                    //placementManager.FirstOne(myName);
                 Debug.Log(myName + " is now first place");
                 //other.enabled = false;
             }

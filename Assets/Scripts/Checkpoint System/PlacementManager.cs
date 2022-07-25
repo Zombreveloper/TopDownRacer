@@ -17,6 +17,8 @@ public class PlacementManager : MonoBehaviour
 {
     public ListOfActiveCars activeCars; //connect in hirachy
     GameObject firstCar;
+    GameObject previousFirstCar;
+    GameObject firstCarPrevFrame;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +27,28 @@ public class PlacementManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         //check if car is first to collide with streen-trigger
         //then call funktion for that
+        
+        
+        isOvertaken();
+
+        firstCarPrevFrame = firstCar;
+    }
+    bool isOvertaken()
+    {
+        if (firstCar == firstCarPrevFrame)
+        {
+            return false;
+        }
+        
+        else
+        {
+            Debug.Log("Overtake!");
+            return true;
+        }
     }
 
     public void FirstOne(string carsName) //gets called by CarCollisionManager when a car is the first one to enter a checkpoint
@@ -38,22 +58,21 @@ public class PlacementManager : MonoBehaviour
         {
            if (activeCars.carsList[i] != null &&  activeCars.carsList[i].name == carsName)
            {
+               previousFirstCar = firstCar;
                firstCar = activeCars.carsList[i];
            }
         }
     }
 
-    void LastOne()
-    {
-        //check distance from the firstCar to others
-        //or not Marv?
-        //because camera view shall kick the plaxers
-
-        //I will place checkpoints somewhat narrowly. So we will never need to measure who is last
-    }
+ 
 
     public GameObject getFirstPlaced()
     {
         return this.firstCar;
+    }
+
+    public GameObject getPreviousFirstPlaced()
+    {
+        return this.previousFirstCar;
     }
 }
