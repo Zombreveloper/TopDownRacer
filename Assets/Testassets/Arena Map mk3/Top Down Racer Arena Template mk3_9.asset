@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Top Down Racer Arena Template mk3_9
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 885924680, guid: a55df01e3e22c5b4c87975e6906ded68, type: 3}
+  m_Sprite: {fileID: -1443599479, guid: a55df01e3e22c5b4c87975e6906ded68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -33,4 +33,4 @@ MonoBehaviour:
     e33: 1
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
-  m_ColliderType: 1
+  m_ColliderType: 0

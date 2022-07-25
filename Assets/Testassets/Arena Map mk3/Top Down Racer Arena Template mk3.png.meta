@@ -142,8 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0097df59fbb16384883c8578449cba4a
-      internalID: 844202939
+      spriteID: c990687d8e2bc8d459c28f7dc8f66d4e
+      internalID: -774420447
       vertices: []
       indices: 
       edges: []
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74a314894baade946b14208bc5638a7c
-      internalID: 371731469
+      spriteID: 36562696b59988245ad6ab64959dd08a
+      internalID: -1680685012
       vertices: []
       indices: 
       edges: []
@@ -182,39 +182,37 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: 64, y: -26}
-        - {x: 64, y: -44}
-        - {x: 44, y: -49}
-        - {x: 33, y: -48}
-        - {x: 25, y: -39}
-        - {x: 24, y: -30}
-        - {x: 29, y: -18}
-        - {x: 35, y: -11}
-        - {x: 40, y: -8}
-        - {x: 56, y: -8}
-      - - {x: -8, y: -58}
-        - {x: -14, y: -52}
-        - {x: -21, y: -42}
-        - {x: -26, y: -27}
-        - {x: -26, y: -6}
-        - {x: -23, y: 11}
-        - {x: -10, y: 28}
-        - {x: 4, y: 34}
-        - {x: 13, y: 36}
-        - {x: 36, y: 36}
-        - {x: 49, y: 34}
-        - {x: 64, y: 26}
-        - {x: 36, y: 21}
-        - {x: 21, y: 17}
-        - {x: 9, y: 14}
-        - {x: -3, y: 3}
-        - {x: -11, y: -14}
-        - {x: -11, y: -30}
+      - - {x: -12, y: -21}
+        - {x: -8, y: -38}
         - {x: -3, y: -59}
+        - {x: -9, y: -57}
+        - {x: -21, y: -44}
+        - {x: -26, y: -29}
+        - {x: -27, y: -11}
+        - {x: -23, y: 12}
+        - {x: -11, y: 27}
+        - {x: 6, y: 35}
+        - {x: 27, y: 36}
+        - {x: 53, y: 33}
+        - {x: 64, y: 27}
+        - {x: 53, y: 24}
+        - {x: 41, y: 22}
+        - {x: 16, y: 17}
+        - {x: 2, y: 10}
+        - {x: -8, y: -3}
+      - - {x: 25, y: -33}
+        - {x: 27, y: -22}
+        - {x: 39, y: -8}
+        - {x: 56, y: -8}
+        - {x: 64, y: -26}
+        - {x: 64, y: -43}
+        - {x: 51, y: -48}
+        - {x: 33, y: -48}
+        - {x: 27, y: -42}
       tessellationDetail: 0
       bones: []
-      spriteID: ca3e228c93fd616459c7d69f7cf58afd
-      internalID: -182157565
+      spriteID: 58370ccdb22e0374989b46ad10835527
+      internalID: 1421607534
       vertices: []
       indices: 
       edges: []
@@ -234,8 +232,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 364040b77bfec6341864f4f8606b4b03
-      internalID: -1322812997
+      spriteID: 532a414dd5ca8964aa00f59c42db7700
+      internalID: 1225710586
       vertices: []
       indices: 
       edges: []
@@ -244,7 +242,7 @@ TextureImporter:
       name: Top Down Racer Arena Template mk3_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 384
         y: 128
         width: 128
         height: 128
@@ -252,11 +250,21 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -14, y: 0}
+        - {x: -15, y: 14}
+        - {x: -8, y: 26}
+        - {x: 7, y: 32}
+        - {x: 22, y: 29}
+        - {x: 35, y: 18}
+        - {x: 36, y: 0}
+        - {x: 23, y: -15}
+        - {x: 3, y: -15}
+        - {x: -9, y: -9}
       tessellationDetail: 0
       bones: []
-      spriteID: 9bceee4f85e00b64fa1ebf997c934e60
-      internalID: -2126676999
+      spriteID: 93567d0642e8d7143b1247156327703e
+      internalID: -1874769072
       vertices: []
       indices: 
       edges: []
@@ -265,7 +273,7 @@ TextureImporter:
       name: Top Down Racer Arena Template mk3_5
       rect:
         serializedVersion: 2
-        x: 0
+        x: 384
         y: 0
         width: 128
         height: 128
@@ -273,11 +281,18 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -51, y: -21}
+        - {x: -4, y: 23}
+        - {x: 12, y: 37}
+        - {x: 28, y: 57}
+        - {x: 27, y: 17}
+        - {x: 25, y: 4}
+        - {x: 24, y: -19}
       tessellationDetail: 0
       bones: []
-      spriteID: e39d34c51d0333a4bba5f0e1b920f2e2
-      internalID: 212340843
+      spriteID: fe9fdf1d7b0a14349acabb94de1bcede
+      internalID: 38382500
       vertices: []
       indices: 
       edges: []
@@ -286,7 +301,7 @@ TextureImporter:
       name: Top Down Racer Arena Template mk3_6
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 0
         width: 128
         height: 128
@@ -297,8 +312,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d4972abd6044444cbfd98c605ccc964
-      internalID: -111505895
+      spriteID: ac4b30d93a90895439fffdd5b2272a25
+      internalID: -1285331891
       vertices: []
       indices: 
       edges: []
@@ -308,7 +323,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 0
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -318,95 +333,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd3aad85fab6b5048a3ccb7104791fa8
-      internalID: 100301187
+      spriteID: e604a5166ff74bb4e8db6fcbe2bdc970
+      internalID: -1578944072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: Top Down Racer Arena Template mk3_8
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -50, y: -21}
-        - {x: 3, y: 28}
-        - {x: 28, y: 56}
-        - {x: 24, y: -19}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 070a9d8ce27f04a4ea7e9ecfa412ebdd
-      internalID: 1089283522
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Top Down Racer Arena Template mk3_9
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 24, y: -15}
-        - {x: 3, y: -15}
-        - {x: -9, y: -9}
-        - {x: -13, y: -5}
-        - {x: -15, y: 10}
-        - {x: -13, y: 21}
-        - {x: -8, y: 25}
-        - {x: 0, y: 31}
-        - {x: 14, y: 32}
-        - {x: 29, y: 25}
-        - {x: 35, y: 17}
-        - {x: 36, y: 9}
-        - {x: 36, y: -1}
-        - {x: 31, y: -8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9f9cc66d03bb754d842dcf0d914b9e7
-      internalID: 885924680
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Top Down Racer Arena Template mk3_10
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 701da845643560743ad5179644532051
-      internalID: -400924330
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Top Down Racer Arena Template mk3_11
       rect:
         serializedVersion: 2
         x: 128
@@ -420,8 +354,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c9f29b3806c40043bbd3e19c9cfecf4
-      internalID: -141446971
+      spriteID: 740244f34b42f2c49a809e80c982dbeb
+      internalID: 815970014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Top Down Racer Arena Template mk3_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 817df4be241abda41967b71ce43392bc
+      internalID: -1443599479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Top Down Racer Arena Template mk3_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9fa870db2f32c841b648aac101a495b
+      internalID: -2005828770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Top Down Racer Arena Template mk3_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46abce2cf9b29604bab23c0a5281e32d
+      internalID: -1717348879
       vertices: []
       indices: 
       edges: []
@@ -437,18 +434,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Top Down Racer Arena Template mk3_11: -141446971
-      Top Down Racer Arena Template mk3_6: -111505895
-      Top Down Racer Arena Template mk3_7: 100301187
-      Top Down Racer Arena Template mk3_10: -400924330
-      Top Down Racer Arena Template mk3_3: -1322812997
-      Top Down Racer Arena Template mk3_0: 844202939
-      Top Down Racer Arena Template mk3_9: 885924680
-      Top Down Racer Arena Template mk3_1: 371731469
-      Top Down Racer Arena Template mk3_2: -182157565
-      Top Down Racer Arena Template mk3_4: -2126676999
-      Top Down Racer Arena Template mk3_5: 212340843
-      Top Down Racer Arena Template mk3_8: 1089283522
+      Top Down Racer Arena Template mk3_11: -1717348879
+      Top Down Racer Arena Template mk3_6: -1285331891
+      Top Down Racer Arena Template mk3_7: -1578944072
+      Top Down Racer Arena Template mk3_10: -2005828770
+      Top Down Racer Arena Template mk3_3: 1225710586
+      Top Down Racer Arena Template mk3_0: -774420447
+      Top Down Racer Arena Template mk3_9: -1443599479
+      Top Down Racer Arena Template mk3_1: -1680685012
+      Top Down Racer Arena Template mk3_2: 1421607534
+      Top Down Racer Arena Template mk3_4: -1874769072
+      Top Down Racer Arena Template mk3_5: 38382500
+      Top Down Racer Arena Template mk3_8: 815970014
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
