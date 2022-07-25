@@ -1363,7 +1363,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   smoothTime: 0.2
   zoomLimiter: 30
-  minZoom: 30
+  minZoom: 65
   maxZoom: 15
   favorFirstPlaced: 0.6
 --- !u!114 &1049050097
