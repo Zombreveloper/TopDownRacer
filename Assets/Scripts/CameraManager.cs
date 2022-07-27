@@ -13,7 +13,7 @@ Inspiration
 public class CameraManager : MonoBehaviour
 {
 	//referenced classes
-	Camera _mainCamera;
+	Camera mainCamera;
 	public ListOfActiveCars activeCars; //connect in hirachy
 	private PlacementManager placementManager;
 	//[SerializeField]
@@ -32,13 +32,21 @@ public class CameraManager : MonoBehaviour
 
 	public float favorFirstPlaced = 0.6f;
 
-    // Start is called before the first frame update
-    void Start()
+	//helping variables
+	Vector3 lastSmoothPos;
+	Vector3 center;
+
+	// Start is called before the first frame update
+	void Start()
     {
-		_mainCamera = GetComponent<Camera>();
+		mainCamera = GetComponent<Camera>();
 		placementManager = GameObject.Find("/PlacementManager").GetComponent<PlacementManager>();
 
 		makeTargetsList();
+
+		lastSmoothPos = activeCars.carsList[0].transform.position;
+			//placementManager.getFirstPlaced().transform.position;
+		center = transform.position;
     }
 
     // Update is called once per frame
@@ -55,7 +63,7 @@ public class CameraManager : MonoBehaviour
 		if (targets.Count == 0)
 			return;
 
-		move();
+		newMove();
 		zoom();
 	}
 
@@ -66,6 +74,17 @@ public class CameraManager : MonoBehaviour
 		Vector3 newPosition = centerPoint + offset;
 
 		transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+	}
+	void newMove()
+    {
+		Vector3 betweenPos = smoothFavorChange(placementManager.getFirstPlaced());
+		Vector3 centerPoint = getCenterPoint();
+		center = Vector3.SmoothDamp(center, centerPoint, ref velocity, smoothTime);
+
+		Vector3 lipoCenter = Vector3.Lerp(center, betweenPos, favorFirstPlaced);
+
+		transform.position = lipoCenter;
+		//transform.position = betweenPos; //if you only want the camPos between first and second place (for testing)
 	}
 
 	Vector3 getCenterPoint()
@@ -80,9 +99,9 @@ public class CameraManager : MonoBehaviour
 		{
 			bounds.Encapsulate(targets[i].position);
 		}
-		//return bounds.center;
+		return bounds.center;
 
-		return factorInFirstPlaced(bounds);
+		//return factorInFirstPlaced(bounds);
 	}
 
 	//watches for Values in Placement System and pushes CamCenter to firstPlaced
@@ -93,8 +112,9 @@ public class CameraManager : MonoBehaviour
 		if (firstPlaced != null)
 		{
 			//Vector3 Lerp(Vector3 a, Vector3 b, float t);
-			Vector3 betweenFirsts = smoothFavorChange(firstPlaced);
-			Vector3 lipoCenter = Vector3.Lerp(b.center, betweenFirsts, favorFirstPlaced);
+			//Vector3 betweenFirsts = smoothFavorChange(firstPlaced);
+			//Vector3 lipoCenter = Vector3.Lerp(b.center, betweenFirsts, favorFirstPlaced);
+			Vector3 lipoCenter = Vector3.Lerp(b.center, firstPlaced.transform.position, favorFirstPlaced);
 			return lipoCenter;
 		}
 
@@ -104,35 +124,53 @@ public class CameraManager : MonoBehaviour
 		}
 	}
 
-	Vector3 smoothFavorChange(GameObject first) //gets a smooth movement between old and new firstPlaced when overtaking
+
+	Vector3 smoothFavorChangeOld(GameObject first) //gets a smooth movement between old and new firstPlaced when overtaking
     {
 		/*TODO
 		 * when cars are overtaking while camera panning not complete, cam will jump
 		 * instead of previous car position use cam position for interpolation!
 		 */
-		if (placementManager.getPreviousFirstPlaced() != null && placementManager.getPreviousFirstPlaced() != first)
-        {
+		if (placementManager.getPreviousFirstPlaced() != null) // && placementManager.getPreviousFirstPlaced() != first)
+		{
 			GameObject previous = placementManager.getPreviousFirstPlaced();
-			Vector3 startpoint = previous.transform.position;
-			if (placementManager.isOvertaken)
-            {
-				//startpoint = this.gameObject.transform.position;
-				startpoint = previous.transform.position;
-			}
+			//Vector3 startpoint = previous.transform.position;
+			Vector3 startpoint = lastSmoothPos;
 
-			//Vector3 smoothPos = Vector3.SmoothDamp(startpoint, first.transform.position, ref velocity, 10f);
-			Vector3 smoothPos = Vector3.SmoothDamp(previous.transform.position, first.transform.position, ref velocity, 100f);
-			//Debug.Log("I´m smoothing movement");
+
+			Vector3 smoothPos = Vector3.MoveTowards(startpoint, first.transform.position, 20f * Time.deltaTime); //That works!
+			//Vector3 smoothPos = Vector3.SmoothDamp(startpoint, first.transform.position, ref velocity, 0.5f); //to slow and/or causes jitter
+
+			lastSmoothPos = smoothPos;
+			Debug.Log("I´m smoothing movement between " + previous.name + " and " + first.name);
 			return smoothPos;
-			
+			//return previous.transform.position;
+
 
 		}
 		else
-        {
+		{
 			return first.transform.position;
-        }
+			//return lastSmoothPos;
+		}
+
+	}
+
+	Vector3 smoothFavorChange(GameObject first) //gets a smooth movement between old and new firstPlaced when overtaking
+	{
 		
-    }
+			//Vector3 startpoint = previous.transform.position;
+			Vector3 startpoint = lastSmoothPos;
+
+		Vector3 smoothPos = Vector3.MoveTowards(startpoint, first.transform.position, 0.1f); //That works!
+		//Vector3 smoothPos = Vector3.SmoothDamp(startpoint, first.transform.position, ref velocity, 0.5f); //to slow and/or causes jitter
+
+			lastSmoothPos = smoothPos;
+			//Debug.Log("I´m smoothing movement between " + previous.name + " and " + first.name);
+			return smoothPos;
+			//return previous.transform.position;
+
+	}
 
 	void UpdateTargetsList() //only checks for empty values in List and deletes them. Might be enough
 	{
@@ -151,7 +189,7 @@ public class CameraManager : MonoBehaviour
 	{
 		//Debug.Log(getGreatestDistance());
 		float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance() / zoomLimiter);
-		_mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, newZoom, Time.deltaTime);
+		mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, newZoom, Time.deltaTime);
 	}
 
 	float getGreatestDistance()

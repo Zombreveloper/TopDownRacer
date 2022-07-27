@@ -17,8 +17,9 @@ public class PlacementManager : MonoBehaviour
 {
     public ListOfActiveCars activeCars; //connect in hirachy
     GameObject firstCar;
-    GameObject previousFirstCar;
+    GameObject firstCarLastFrame;
     GameObject firstCarPrevFrame;
+    GameObject previousFirst; //only gets updated when first and second place overtake each other
 
     //variables
     public bool isOvertaken;
@@ -32,7 +33,6 @@ public class PlacementManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //StartCoroutine(checkOvertake());
        // if (firstCarPrevFrame != null)
             //Debug.Log("first Car was" + firstCarPrevFrame.name);
        // Debug.Log("first Car is currently" + firstCar.name);
@@ -47,7 +47,7 @@ public class PlacementManager : MonoBehaviour
     }
     bool OnOvertake()
     {
-        if (firstCar == previousFirstCar)
+        if (firstCar == firstCarLastFrame)
         {
             return false;
         }
@@ -55,18 +55,13 @@ public class PlacementManager : MonoBehaviour
         else
         {
             Debug.Log("Overtake!");
-            Debug.Log("First Car on overtake is" + firstCar.name + "and previous is" + previousFirstCar);
+            if (firstCarLastFrame != null)
+            Debug.Log("First Car on overtake is" + firstCar.name + "and previous is" + firstCarLastFrame.name);
+            previousFirst = firstCarLastFrame;
             return true;
         }
     }
 
-    private IEnumerator checkOvertake()
-    {
-        OnOvertake();
-        yield return new WaitForEndOfFrame();
-        firstCarPrevFrame = firstCar;
-        StartCoroutine(checkOvertake());
-    }
 
     public void FirstOne(string carsName) //gets called by CarCollisionManager when NextCheckpointVector sets that car as first
     {
@@ -75,10 +70,10 @@ public class PlacementManager : MonoBehaviour
         {
            if (activeCars.carsList[i] != null &&  activeCars.carsList[i].name == carsName)
            {
-               previousFirstCar = firstCar;
+               firstCarLastFrame = firstCar;
                firstCar = activeCars.carsList[i];
                //Debug.Log("firstOne got called for " + firstCar.name);
-                //Debug.Log("previous is " + previousFirstCar.name);
+                //Debug.Log("previous is " + firstCarLastFrame.name);
             }
         }
         
@@ -94,6 +89,6 @@ public class PlacementManager : MonoBehaviour
 
     public GameObject getPreviousFirstPlaced()
     {
-        return this.previousFirstCar;
+        return this.previousFirst;
     }
 }
