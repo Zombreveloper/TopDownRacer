@@ -32,9 +32,6 @@ public class CameraManager : MonoBehaviour
 
 	public float favorFirstPlaced = 0.6f;
 
-	//GameObjects
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -58,24 +55,8 @@ public class CameraManager : MonoBehaviour
 		if (targets.Count == 0)
 			return;
 
-		newMove();
+		move();
 		zoom();
-	}
-
-	void newMove()
-	{
-		Vector3 centerPoint = getCenterPoint();
-
-		Vector3 newPosition = centerPoint + offset;
-
-		Vector3 followCenter = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime); // 1. folgt dem CenterPoint
-
-		Vector3 betweenFirsts = smoothFavorChange();
-
-		transform.position = Vector3.Lerp(followCenter, betweenFirsts, favorFirstPlaced);
-
-
-
 	}
 
 	void move()
@@ -99,9 +80,9 @@ public class CameraManager : MonoBehaviour
 		{
 			bounds.Encapsulate(targets[i].position);
 		}
-		return bounds.center;
+		//return bounds.center;
 
-		//return factorInFirstPlaced(bounds);
+		return factorInFirstPlaced(bounds);
 	}
 
 	//watches for Values in Placement System and pushes CamCenter to firstPlaced
@@ -112,7 +93,7 @@ public class CameraManager : MonoBehaviour
 		if (firstPlaced != null)
 		{
 			//Vector3 Lerp(Vector3 a, Vector3 b, float t);
-			Vector3 betweenFirsts = smoothFavorChange();
+			Vector3 betweenFirsts = smoothFavorChange(firstPlaced);
 			Vector3 lipoCenter = Vector3.Lerp(b.center, betweenFirsts, favorFirstPlaced);
 			return lipoCenter;
 		}
@@ -123,35 +104,31 @@ public class CameraManager : MonoBehaviour
 		}
 	}
 
-	Vector3 startpoint;
-	Vector3 smoothFavorChange() //gets a smooth movement between old and new firstPlaced when overtaking
+	Vector3 smoothFavorChange(GameObject first) //gets a smooth movement between old and new firstPlaced when overtaking
     {
 		/*TODO
 		 * when cars are overtaking while camera panning not complete, cam will jump
 		 * instead of previous car position use cam position for interpolation!
 		 */
-		GameObject first = placementManager.getFirstPlaced();
-		if (placementManager.isOvertaken)
-		{
-			//startpoint = this.gameObject.transform.position;
-			GameObject previous = placementManager.getPreviousFirstPlaced();
-			Debug.Log("previous first is " + previous.name);
-			startpoint = previous.transform.position;
-		}
-
-		if (startpoint != null)  // && placementManager.getPreviousFirstPlaced() != first)
+		if (placementManager.getPreviousFirstPlaced() != null && placementManager.getPreviousFirstPlaced() != first)
         {
-			
-			//Vector3 startpoint = previous.transform.position;
+			GameObject previous = placementManager.getPreviousFirstPlaced();
+			Vector3 startpoint = previous.transform.position;
+			if (placementManager.isOvertaken)
+            {
+				//startpoint = this.gameObject.transform.position;
+				startpoint = previous.transform.position;
+			}
 
-			Vector3 smoothPos = Vector3.SmoothDamp(startpoint, first.transform.position, ref velocity, 10f);
-			//Vector3 smoothPos = Vector3.SmoothDamp(previous.transform.position, first.transform.position, ref velocity, 5f);
+			//Vector3 smoothPos = Vector3.SmoothDamp(startpoint, first.transform.position, ref velocity, 10f);
+			Vector3 smoothPos = Vector3.SmoothDamp(previous.transform.position, first.transform.position, ref velocity, 100f);
 			//Debug.Log("I´m smoothing movement");
 			return smoothPos;
+			
+
 		}
 		else
         {
-			Debug.Log("smoothFavorChange just follows firstOne!");
 			return first.transform.position;
         }
 		

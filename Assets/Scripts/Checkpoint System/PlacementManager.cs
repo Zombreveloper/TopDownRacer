@@ -55,6 +55,7 @@ public class PlacementManager : MonoBehaviour
         else
         {
             Debug.Log("Overtake!");
+            Debug.Log("First Car on overtake is" + firstCar.name + "and previous is" + previousFirstCar);
             return true;
         }
     }
