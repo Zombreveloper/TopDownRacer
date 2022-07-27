@@ -10,6 +10,10 @@ public class ParticipantsManager : MonoBehaviour
     private GameObject currentCar;
     private int index = 1;
 
+    public GameMode_SO gameMode;
+    public GameObject lifeBarPrefab;
+    private GameObject currentLifeBar;
+
     void Awake()
     {
         index = 1;
@@ -46,9 +50,22 @@ public class ParticipantsManager : MonoBehaviour
                 index++;
                 currentCar.GetComponent<LassesTestInputHandler>().myDriver = player;
                 currentCar.GetComponent<CarColor>().myDriver = player;
+
+                WhatGamemode(currentCar);
+
                 //make Car available for every script in the Scene
                 activeCars.carsList.Add(currentCar);
             }
+        }
+    }
+
+    void WhatGamemode(GameObject _currentCar)
+    {
+        if (gameMode.gameMode == "Arena")
+        {
+            //Add a life bar to car.
+            currentLifeBar = Instantiate(lifeBarPrefab, new Vector2(0,0), Quaternion.identity);
+            currentLifeBar.transform.parent = _currentCar.transform;
         }
     }
 }

@@ -27,6 +27,14 @@ public class MainMenu : MonoBehaviour
         playerCount();
     }
 
+    public void selectArenaRace()
+    {
+        Debug.Log("Go to Arena-Scene");
+        gameMode.gameMode = "ArenaRace";
+        //SceneManager.LoadScene("MyScene");
+        playerCount();
+    }
+
     public void selectArena()
     {
         Debug.Log("Go to Arena-Scene");
