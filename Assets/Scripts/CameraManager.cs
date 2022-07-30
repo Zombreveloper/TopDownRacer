@@ -35,6 +35,7 @@ public class CameraManager : MonoBehaviour
 	//helping variables
 	Vector3 lastSmoothPos;
 	Vector3 center;
+	Vector3 SubResult;
 
 	// Start is called before the first frame update
 	void Start()
@@ -77,14 +78,34 @@ public class CameraManager : MonoBehaviour
 	}
 	void newMove()
     {
-		Vector3 betweenPos = smoothFavorChange(placementManager.getFirstPlaced());
+		//Vector3 betweenPos = smoothFavorChange(placementManager.getFirstPlaced());
+		Vector3 firstPlacedPos = placementManager.getFirstPlaced().transform.position;
+		 
+		StartCoroutine(LerpPositionChange(firstPlacedPos, 1));
+		Vector3 betweenPos = SubResult;
+
 		Vector3 centerPoint = getCenterPoint();
 		center = Vector3.SmoothDamp(center, centerPoint, ref velocity, smoothTime);
 
 		Vector3 lipoCenter = Vector3.Lerp(center, betweenPos, favorFirstPlaced);
 
-		transform.position = lipoCenter;
-		//transform.position = betweenPos; //if you only want the camPos between first and second place (for testing)
+		//transform.position = lipoCenter;
+		transform.position = betweenPos; //if you only want the camPos between first and second place (for testing)
+	}
+
+	IEnumerator LerpPositionChange(Vector3 targetPosition, float duration)
+	{
+		float time = 0;
+		Vector3 startPosition = lastSmoothPos;
+		while (time < duration)
+		{
+			SubResult = Vector3.Lerp(startPosition, targetPosition, time / duration);
+			time += Time.deltaTime;
+			lastSmoothPos = SubResult;
+			yield return null;
+		}
+		lastSmoothPos = targetPosition;
+		//yield return targetPosition;
 	}
 
 	Vector3 getCenterPoint()
