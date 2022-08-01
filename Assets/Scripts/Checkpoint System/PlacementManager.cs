@@ -18,7 +18,7 @@ public class PlacementManager : MonoBehaviour
     public ListOfActiveCars activeCars; //connect in hirachy
     GameObject firstCar;
     GameObject firstCarLastFrame;
-    GameObject firstCarPrevFrame;
+    //GameObject firstCarPrevFrame; //doesn't get used yet
     GameObject previousFirst; //only gets updated when first and second place overtake each other
 
     //variables
@@ -28,6 +28,7 @@ public class PlacementManager : MonoBehaviour
     void Start()
     {
         activeCars = FindObjectOfType<ListOfActiveCars>();
+        firstCar = activeCars.getCarFromList(0); //only works as intended if car 0 really is first on in beginning!
     }
 
     // Update is called once per frame
@@ -37,7 +38,7 @@ public class PlacementManager : MonoBehaviour
             //Debug.Log("first Car was" + firstCarPrevFrame.name);
        // Debug.Log("first Car is currently" + firstCar.name);
 
-        isOvertaken = OnOvertake(); //Achtung! works only when FirstOne() gets called every frame!
+        
     }
     void LateUpdate()
     {
@@ -63,7 +64,7 @@ public class PlacementManager : MonoBehaviour
     }
 
 
-    public void FirstOne(string carsName) //gets called by CarCollisionManager when NextCheckpointVector sets that car as first
+    public void FirstOne(string carsName) //gets called by CarCollisionManager every frame
     {
         //get car with carsName from List for(int i=0; i<list.Count; i++){
         for (int i=0; i<activeCars.carsList.Count; i++)
@@ -72,8 +73,9 @@ public class PlacementManager : MonoBehaviour
            {
                firstCarLastFrame = firstCar;
                firstCar = activeCars.carsList[i];
-               //Debug.Log("firstOne got called for " + firstCar.name);
+                //Debug.Log("firstOne got called for " + firstCar.name);
                 //Debug.Log("previous is " + firstCarLastFrame.name);
+                isOvertaken = OnOvertake(); //Warning! works only flawlessly if FirstOne() gets called every frame!
             }
         }
         

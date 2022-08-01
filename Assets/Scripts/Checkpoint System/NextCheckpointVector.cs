@@ -81,4 +81,12 @@ public class NextCheckpointVector : MonoBehaviour
 
         //Debug.Log(nearestCar + " is currently the nearest with" + currentNearest);
     }
+
+    public GameObject getNearestCar()
+    {
+        return this.nearestCar;
+    }
+
 }
+
+
