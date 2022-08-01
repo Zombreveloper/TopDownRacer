@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RaceOrArenaEndManager : MonoBehaviour
 {
     ListOfActiveCars activeCars;
-    string winner;
+    public WinnerSO saveWinner;
 
     void Awake()
     {
@@ -29,12 +30,41 @@ public class RaceOrArenaEndManager : MonoBehaviour
         if (activeCars.carsList.Count == 1)
         {
             GameObject winnerCar = activeCars.carsList[0];
-            winner = winnerCar.name;
-            //Debug.Log("THE WINNER IS " + winner);
+            PlayerProfile winnerProfile = winnerCar.GetComponent<LassesTestInputHandler>().myDriver;
+            saveWinner.winnerSoProfile = winnerProfile;
 
-            //farbe muss noch abgeschrieben werden...
-            /*SpriteRenderer winnerSprite = winnerCar.GetComponentsInChildren<SpriteRenderer>();
-            Color32 winnercolor = winnerSprite.color;*/
+            StartCoroutine(CountAndSound());
+        }
+    }
+
+    void CallWinnerScene()
+    {
+        StopCoroutine(CountAndSound());
+        StopCoroutine(CountAndScene());
+
+        SceneManager.LoadScene("WinnerScreen");
+    }
+
+    private IEnumerator CountAndSound()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1); //wait 2 seconds
+            //do thing
+
+            //make a Sound
+            StartCoroutine(CountAndScene());
+        }
+    }
+
+    private IEnumerator CountAndScene()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1); //wait 2 seconds
+            //do thing
+
+            CallWinnerScene();
         }
     }
 }

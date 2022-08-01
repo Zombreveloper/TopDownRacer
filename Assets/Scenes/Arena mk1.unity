@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50fbda54e675d04a9db85fc51d4d37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveWinner: {fileID: 11400000, guid: 95869ae478e630e458e01fcaee4533c8, type: 2}
 --- !u!1001 &184278470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1105,6 +1106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mytext: {fileID: 1234434281}
   i: 0
+  instantStart: 1
 --- !u!4 &262771508
 Transform:
   m_ObjectHideFlags: 0
@@ -1382,6 +1384,7 @@ GameObject:
   - component: {fileID: 1049050098}
   - component: {fileID: 1049050097}
   - component: {fileID: 1049050096}
+  - component: {fileID: 1049050101}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1508,6 +1511,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1049050101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049050095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b053f2e10921b4baafec09b321c2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeCars: {fileID: 1643212665}
+  targets: []
+  offset: {x: 0, y: 0, z: 0}
+  smoothTime: 0.5
+  zoomLimiter: 30
+  minZoom: 30
+  maxZoom: 15
+  favorFirstPlaced: 0.6
 --- !u!1001 &1050023070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1901,6 +1924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeCars: {fileID: 0}
+  isOvertaken: 0
 --- !u!4 &1236226348
 Transform:
   m_ObjectHideFlags: 0
@@ -2488,6 +2512,8 @@ MonoBehaviour:
   allMyParicipants: {fileID: 11400000, guid: 31e14a575b027e44d8b784db5c67f1d7, type: 2}
   activeCars: {fileID: 1643212665}
   carPrefab: {fileID: 7916444501015972658, guid: 00d1e54bb88efab4f99f155d70912ad5, type: 3}
+  gameMode: {fileID: 11400000, guid: 003f203112b025d40ba6921acae269f2, type: 2}
+  lifeBarPrefab: {fileID: 8848564746820162641, guid: 8922b74e47ddc3746903e90f5eadc774, type: 3}
 --- !u!4 &1643212667
 Transform:
   m_ObjectHideFlags: 0
