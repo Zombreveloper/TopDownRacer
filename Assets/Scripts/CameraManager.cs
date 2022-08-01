@@ -35,7 +35,8 @@ public class CameraManager : MonoBehaviour
 	//helping variables
 	Vector3 lastSmoothPos;
 	Vector3 center;
-	Vector3 SubResult;
+	Vector3 CRResult; //result of the Coroutine
+	bool CRisRunning = false;
 
 	// Start is called before the first frame update
 	void Start()
@@ -80,9 +81,17 @@ public class CameraManager : MonoBehaviour
     {
 		//Vector3 betweenPos = smoothFavorChange(placementManager.getFirstPlaced());
 		Vector3 firstPlacedPos = placementManager.getFirstPlaced().transform.position;
-		 
-		StartCoroutine(LerpPositionChange(firstPlacedPos, 1));
-		Vector3 betweenPos = SubResult;
+		//Vector3 betweenPos = firstPlacedPos;
+		
+		if (placementManager.isOvertaken)
+        {
+			StartCoroutine(LerpPositionChange(firstPlacedPos, 1)); //must get somewhere else. calls way to much subroutines at same time
+		}
+		
+
+		Vector3 betweenPos = BetweenPos(firstPlacedPos); //function to use to update values even if coroutine not running
+		//Vector3 betweenPos = CRResult;
+
 
 		Vector3 centerPoint = getCenterPoint();
 		center = Vector3.SmoothDamp(center, centerPoint, ref velocity, smoothTime);
@@ -90,22 +99,41 @@ public class CameraManager : MonoBehaviour
 		Vector3 lipoCenter = Vector3.Lerp(center, betweenPos, favorFirstPlaced);
 
 		//transform.position = lipoCenter;
+		//transform.position = center; //(for testing) gives only the center between all cars 
 		transform.position = betweenPos; //if you only want the camPos between first and second place (for testing)
 	}
 
+	Vector3 BetweenPos(Vector3 _firstPlacedPos)
+	{
+		if (CRisRunning == true) //in andere Funktion auslagern mit Rückgabewert und dort betweenPos initiieren und ausgeben. Einschließlich Deklaration da oben!
+		{
+			//Vector3 betweenPos = CRResult;
+			return CRResult;
+		}
+		else
+		{
+			//Vector3 betweenPos = firstPlacedPos;
+			Debug.Log("Coroutine is not running or bool is wrong");
+			return _firstPlacedPos;
+		}
+	}
+
+	//TargetPosition doesn't update while CR is running. use global value instead!
 	IEnumerator LerpPositionChange(Vector3 targetPosition, float duration)
 	{
+		CRisRunning = true;
 		float time = 0;
 		Vector3 startPosition = lastSmoothPos;
 		while (time < duration)
 		{
-			SubResult = Vector3.Lerp(startPosition, targetPosition, time / duration);
+			CRResult = Vector3.Lerp(startPosition, targetPosition, time / duration);
 			time += Time.deltaTime;
-			lastSmoothPos = SubResult;
+			lastSmoothPos = CRResult;
 			yield return null;
 		}
 		lastSmoothPos = targetPosition;
-		//yield return targetPosition;
+		CRisRunning = false;
+		yield break;
 	}
 
 	Vector3 getCenterPoint()
