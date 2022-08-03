@@ -16,8 +16,7 @@ public class CameraManager : MonoBehaviour
 	Camera mainCamera;
 	public ListOfActiveCars activeCars; //connect in hirachy
 	private PlacementManager placementManager;
-	//[SerializeField]
-	//GameObject car;
+	private SmoothMovementCR lerpCR;
 
 	public List<Transform> targets;
 
@@ -30,27 +29,27 @@ public class CameraManager : MonoBehaviour
 	public float minZoom = 30f;
 	public float maxZoom = 15f;
 
-	public float favorFirstPlaced = 0.6f;
+	[SerializeField]
+	float favorFirstPlaced = 0.6f;
+	[SerializeField]
+	float secondsToPanCam = 1f;
 
 	//global variables for Lipo in Coroutine (short: CR)
 	Vector3 lastSmoothPos;
-	Vector3 CRResult; //result of the Coroutine
-	Vector3 targetPosition; //target, the Lipo goes to
+	Vector3 center;
 	bool CRisRunning = false;
 
-	//global variables
-	Vector3 center;
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		mainCamera = GetComponent<Camera>();
 		placementManager = GameObject.Find("/PlacementManager").GetComponent<PlacementManager>();
+		lerpCR = GetComponent<SmoothMovementCR>();
 
 		makeTargetsList();
 
-		lastSmoothPos = activeCars.carsList[0].transform.position;
-		//placementManager.getFirstPlaced().transform.position;
+		//lastSmoothPos = activeCars.carsList[0].transform.position; //bei nicht Funktionieren einkommentieren!
 		center = transform.position;
 	}
 
@@ -68,23 +67,28 @@ public class CameraManager : MonoBehaviour
 		if (targets.Count == 0)
 			return;
 
-		newMove();
+		move();
 		zoom();
 	}
 
+	
 	void move()
 	{
-		Vector3 centerPoint = getCenterPoint();
+		Vector3 betweenPos = dynamicMovementBetweenCars();
+		Vector3 centerPoint = calcCenterPoint();
+		center = Vector3.SmoothDamp(center, centerPoint, ref velocity, smoothTime); //update the center Point for smooth Cam movement towards middle point between all cars
 
-		Vector3 newPosition = centerPoint + offset;
+		Vector3 lipoCenter = Vector3.Lerp(center, betweenPos, favorFirstPlaced); //final weighted position factoring in center between all cars and the first placed cars
 
-		transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+		transform.position = lipoCenter;
+		//transform.position = center; //(for testing) gives only the center between all cars 
+		//transform.position = betweenPos; //(for testing) gives only the camPos between first and second place 
 	}
-	void newMove()
-	{
-		//Vector3 betweenPos = smoothFavorChange(placementManager.getFirstPlaced());
+
+	//methods related to the dynamic focus change between cars
+	Vector3 dynamicMovementBetweenCars()
+    {
 		Vector3 firstPlacedPos = placementManager.getFirstPlaced().transform.position;
-		
 
 		if (placementManager.isOvertaken)
 		{
@@ -93,43 +97,27 @@ public class CameraManager : MonoBehaviour
 			StopAllCoroutines(); //stops a coroutine from ever setting CRisRunning to false while another CR is running
 			if (CRisRunning == false) //if this value is true the CR must have been stopped prematurely. To keep smooth movement the start point needs to be different
 			{
-				//StartCoroutine(LerpPositionChange(prevFirstPos, 3)); //Calls old Lerp-function
-				StartCoroutine(LerpInCenterSpace(placementManager.getPreviousFirstPlaced(), placementManager.getFirstPlaced(), 1));
+				StartCoroutine(lerpCR.LerpInCenterSpace(placementManager.getPreviousFirstPlaced(), placementManager.getFirstPlaced(), secondsToPanCam));
 			}
 			else
-            {
+			{
 				Debug.Log("does this ever get called?");
-				//StartCoroutine(LerpPositionChange(lastSmoothPos, 3)); //Calls old Lerp-function
-				StartCoroutine(LerpInCenterSpace(lastSmoothPos, placementManager.getFirstPlaced(), 1));
+				StartCoroutine(lerpCR.LerpInCenterSpace(lastSmoothPos, placementManager.getFirstPlaced(), secondsToPanCam));
 			}
-				
 		}
 
-
-		Vector3 betweenPos = BetweenPos(firstPlacedPos); //function to use to update values even if coroutine not running
-
-
-		Vector3 centerPoint = getCenterPoint();
-		center = Vector3.SmoothDamp(center, centerPoint, ref velocity, smoothTime);
-
-		Vector3 lipoCenter = Vector3.Lerp(center, betweenPos, favorFirstPlaced);
-
-		transform.position = lipoCenter;
-		//transform.position = center; //(for testing) gives only the center between all cars 
-		//transform.position = betweenPos; //if you only want the camPos between first and second place (for testing)
+		return BetweenPos(firstPlacedPos); //function returns either Lerp result or Pos of firstPlaced car
 	}
 
 	Vector3 BetweenPos(Vector3 _firstPlacedPos)
 	{
 		if (CRisRunning) //in andere Funktion auslagern mit Rückgabewert und dort betweenPos initiieren und ausgeben. Einschließlich Deklaration da oben!
 		{
-			//Vector3 betweenPos = CRResult;
 			//Debug.Log("Coroutine is running");
-			return lastSmoothPos;
+			return lastSmoothPos; //value that is calculated by Lerp
 		}
 		else
 		{
-			//Vector3 betweenPos = firstPlacedPos;
 			//Debug.Log("Coroutine is not running");
 			//Debug.Log("CRisRunning is now false!");
 			return _firstPlacedPos;
@@ -137,80 +125,9 @@ public class CameraManager : MonoBehaviour
 	}
 
 
-
-	void waitForNextCall(bool flag)
-    {
-		flag = true;		
-    }
-
-	//if I designed this well, this CoRoutine should become it's own class (less public variables) ~ Stickan
-	IEnumerator LerpInCenterSpace(GameObject secondCar, GameObject firstCar, float duration)
-    {
-		CRisRunning = true;
-		float time = 0;
-		Vector3 startPoint = secondCar.transform.position;
-		Vector3 startPosition = WorldToCenterSpace(startPoint); //startPosition doesn't get updated but moves with the camera
-		while (time < duration)
-		{
-			Vector3 targetCarPosition = firstCar.transform.position;
-			Vector3 targetPosition = WorldToCenterSpace(targetCarPosition); //targetPosition updates every frame
-
-			float t = time / duration; //function that smoothes the transition curve somewhat. If you want linear movement, replace t with time/duration in Vector3.Lerp down below
-			t = t * t * (3f - 2f * t);
-
-			CRResult = Vector3.Lerp(startPosition, targetPosition, t); //result is in CenterSpace
-			CRResult = CenterToWorldSpace(CRResult);
-			time += Time.deltaTime;
-			lastSmoothPos = CRResult;
-			yield return null;
-		}
-		//transform.position = targetPosition;
-		//lastSmoothPos = firstCar.transform.position; //Without Lipo We don't need a conversion to CenterSpace
-		Debug.Log("CRisRunning is set false here!");
-		CRisRunning = false;
-	}
-
-	IEnumerator LerpInCenterSpace(Vector3 startPoint, GameObject firstCar, float duration)
-	{
-		CRisRunning = true;
-		float time = 0;
-		//Vector3 startPoint = secondCar.transform.position;
-		Vector3 startPosition = WorldToCenterSpace(startPoint); //startPosition doesn't get updated but moves with the camera
-		while (time < duration)
-		{
-			Vector3 targetCarPosition = firstCar.transform.position;
-			Vector3 targetPosition = WorldToCenterSpace(targetCarPosition); //targetPosition updates every frame
-
-			float t = time / duration;  //function that smoothes the transition curve somewhat. If you want linear movement, replace t with time/duration in Vector3.Lerp down below
-			t = t * t * (3f - 2f * t);
-
-			CRResult = Vector3.Lerp(startPosition, targetPosition, t); //result is in CenterSpace
-			CRResult = CenterToWorldSpace(CRResult);
-			time += Time.deltaTime;
-			lastSmoothPos = CRResult;
-			yield return null;
-		}
-		//transform.position = targetPosition;
-		//lastSmoothPos = firstCar.transform.position; //Without Lipo We don't need a conversion to CenterSpace
-		Debug.Log("CRisRunning is set false here!");
-		CRisRunning = false;
-	}
-
-	Vector3 WorldToCenterSpace(Vector3 point) //converts ObjectPositions from WorldSpace to a Space that is relative to the CenterPoint between all cars
-    {
-		Vector3 newPoint = point - center;
-		return newPoint;
-    }
-
-	Vector3 CenterToWorldSpace(Vector3 point) //converts ObjectPositions from CenterSpace Back to normal WorldSpace
-	{
-		Vector3 newPoint = point + center;
-		return newPoint;
-	}
-
 	//from here on everything that is not Coroutine Lipo related
 
-	Vector3 getCenterPoint()
+	Vector3 calcCenterPoint()
 	{
 		if (targets.Count == 1)
 		{
@@ -223,8 +140,6 @@ public class CameraManager : MonoBehaviour
 			bounds.Encapsulate(targets[i].position);
 		}
 		return bounds.center;
-
-		//return factorInFirstPlaced(bounds);
 	}	
 
 	void UpdateTargetsList() //only checks for empty values in List and deletes them. Might be enough
@@ -274,6 +189,24 @@ public class CameraManager : MonoBehaviour
 		}
 	}
 
+	//getter and setter
+
+	public Vector3 getCenter()
+    {
+		return center;
+    }
+
+
+	public void setCRisRunning(bool _myBool)
+    {
+		CRisRunning = _myBool;
+    }
+
+	public void setLastSmoothPos(Vector3 _CRResult)
+    {
+		lastSmoothPos = _CRResult;
+    }
+
 
 
 
@@ -286,6 +219,7 @@ public class CameraManager : MonoBehaviour
 
 
 	//Trash Dump for obsolete Ideas and inspiration
+	/*
 	Vector3 smoothFavorChange(GameObject first) //gets a smooth movement between old and new firstPlaced when overtaking
 	{
 
@@ -304,10 +238,6 @@ public class CameraManager : MonoBehaviour
 
 	Vector3 smoothFavorChangeOld(GameObject first) //gets a smooth movement between old and new firstPlaced when overtaking
 	{
-		/*TODO
-		 * when cars are overtaking while camera panning not complete, cam will jump
-		 * instead of previous car position use cam position for interpolation!
-		 */
 		if (placementManager.getPreviousFirstPlaced() != null) // && placementManager.getPreviousFirstPlaced() != first)
 		{
 			GameObject previous = placementManager.getPreviousFirstPlaced();
@@ -402,5 +332,20 @@ public class CameraManager : MonoBehaviour
 		CRisRunning = false;
 		yield break;
 	}
+
+	void waitForNextCall(bool flag)
+	{
+		flag = true;
+	}
+
+	void oldMove()
+	{
+		Vector3 centerPoint = calcCenterPoint();
+
+		Vector3 newPosition = centerPoint + offset;
+
+		transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+	}
+*/
 
 }
