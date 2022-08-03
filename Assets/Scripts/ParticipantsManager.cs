@@ -47,25 +47,28 @@ public class ParticipantsManager : MonoBehaviour
                 currentCar = Instantiate(carPrefab, new Vector2(x,y), Quaternion.identity);
                 //give car a name
                 currentCar.name = ("Player" + index);
-                index++;
                 currentCar.GetComponent<LassesTestInputHandler>().myDriver = player;
                 currentCar.GetComponent<CarColor>().myDriver = player;
 
-                WhatGamemode(currentCar);
+                WhatGamemode(currentCar, x, y);
 
+                index++;
                 //make Car available for every script in the Scene
                 activeCars.carsList.Add(currentCar);
             }
         }
     }
 
-    void WhatGamemode(GameObject _currentCar)
+    void WhatGamemode(GameObject _currentCar, float x, float y)
     {
         if (gameMode.gameMode == "Arena")
         {
             //Add a life bar to car.
-            currentLifeBar = Instantiate(lifeBarPrefab, new Vector2(0,0), Quaternion.identity);
-            currentLifeBar.transform.parent = _currentCar.transform;
+            currentLifeBar = Instantiate(lifeBarPrefab, new Vector2(x,y), Quaternion.identity);
+            currentLifeBar.name = ("LifeBar_Player" + index);
+            LifeBarScript currentLife_Script = currentLifeBar.GetComponent<LifeBarScript>();
+            currentLife_Script.ThisIsYourCar(_currentCar);
+            //currentLifeBar.transform.parent = _currentCar.transform;
         }
     }
 }

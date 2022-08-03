@@ -11,6 +11,7 @@ Parts of this script are inprired by Brackeys:
 public class LifeBarScript : MonoBehaviour
 {
     PlayerProfile myPlayer;
+    GameObject myCar;
     string myHealth;
     public TMP_Text healthDisplay;
     Canvas myCanvas;
@@ -40,7 +41,8 @@ public class LifeBarScript : MonoBehaviour
 
     void StartDisplaying()
     {
-        myPlayer = GetComponentInParent<LassesTestInputHandler>().myDriver;
+        //myPlayer = GetComponentInParent<LassesTestInputHandler>().myDriver;
+        myPlayer = myCar.GetComponent<LassesTestInputHandler>().myDriver;
         SetEventCamera();
     }
 
@@ -50,6 +52,7 @@ public class LifeBarScript : MonoBehaviour
         myCanvas.transform.LookAt(transform.position + cameraTransform.forward); //healthbar always looks at camera
 
         //myCarTransform nach oben...
+        SetRightPosition();
     }
 
     void UpdateDisplaying()
@@ -59,10 +62,15 @@ public class LifeBarScript : MonoBehaviour
     }
 
 //Methods
+    public void ThisIsYourCar(GameObject someCar) //set by ParticipantsManager
+    {
+        myCar = someCar;
+    }
+
     void SetRightPosition()
     {
         Transform myTransform = GetComponent<Transform>();
-        myTransform.position = Vector3.zero;
+        myTransform.position = myCar.transform.position + new Vector3(0, 3, 0);
     }
 
     void SetEventCamera()
