@@ -193,7 +193,7 @@ public class PlayerCounter : MonoBehaviour
             {
                 SceneManager.LoadScene("Race Track Scene");
             }
-            else if (gameMode.gameMode == "Arena")
+            else if (gameMode.gameMode == "Arena" || gameMode.gameMode == "ArenaRace")
             {
                 SceneManager.LoadScene("Arena mk1");
             }

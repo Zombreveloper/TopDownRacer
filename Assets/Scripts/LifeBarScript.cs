@@ -59,6 +59,12 @@ public class LifeBarScript : MonoBehaviour
     {
         myHealth = myPlayer.health;
         healthDisplay.text = myHealth;
+
+        int currentHealth = int.Parse(myHealth);
+        if (currentHealth < 0)
+        {
+            selfDestroy();
+        }
     }
 
 //Methods
@@ -69,8 +75,15 @@ public class LifeBarScript : MonoBehaviour
 
     void SetRightPosition()
     {
-        Transform myTransform = GetComponent<Transform>();
-        myTransform.position = myCar.transform.position + new Vector3(0, 3, 0);
+        if (myCar == null)
+        {
+            selfDestroy();
+        }
+        else
+        {
+            Transform myTransform = GetComponent<Transform>();
+            myTransform.position = myCar.transform.position + new Vector3(0, 3, 0);
+        }
     }
 
     void SetEventCamera()
@@ -78,5 +91,10 @@ public class LifeBarScript : MonoBehaviour
         myCanvas = GetComponentInChildren<Canvas>(); //get attached canvas
         mainCamera = FindObjectOfType<Camera>(); //get only camera in scene
         myCanvas.worldCamera = mainCamera; // define event camera of canvas
+    }
+
+    void selfDestroy()
+    {
+        Destroy(gameObject);
     }
 }

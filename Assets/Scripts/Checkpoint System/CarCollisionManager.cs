@@ -86,11 +86,11 @@ public class CarCollisionManager : MonoBehaviour
         }
         else if(other.tag == "bumper")
         {
-            Debug.Log("health");
+            //Debug.Log("health");
             int myHealth = int.Parse(myPlayer.health);
-            Debug.Log("prev health " + myHealth);
+            //Debug.Log("prev health " + myHealth);
             myHealth--;
-            Debug.Log("curr health " + myHealth);
+            //Debug.Log("curr health " + myHealth);
             myPlayer.health = myHealth.ToString();
         }
     }
