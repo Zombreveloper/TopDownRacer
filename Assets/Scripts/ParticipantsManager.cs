@@ -52,7 +52,7 @@ public class ParticipantsManager : MonoBehaviour
                 currentCar.GetComponent<LassesTestInputHandler>().myDriver = player;
                 currentCar.GetComponent<CarColor>().myDriver = player;
 
-                WhatGamemode(currentCar, x, y);
+                WhatGamemode(currentCar, x, y, player);
 
                 index++;
                 //make Car available for every script in the Scene
@@ -61,7 +61,7 @@ public class ParticipantsManager : MonoBehaviour
         }
     }
 
-    void WhatGamemode(GameObject _currentCar, float x, float y)
+    void WhatGamemode(GameObject _currentCar, float x, float y, PlayerProfile player)
     {
         if (gameMode.gameMode == "Arena")
         {
@@ -81,6 +81,7 @@ public class ParticipantsManager : MonoBehaviour
         {
             //activate WayPoints
             //Debug.Log("WAYPOINTS");
+            player.wayPointCounter = 0;
             ArenaRaceManagerScript arms = FindObjectOfType<ArenaRaceManagerScript>();
             arms.InitiateArenaRace();
         }

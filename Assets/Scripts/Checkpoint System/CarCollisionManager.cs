@@ -93,6 +93,17 @@ public class CarCollisionManager : MonoBehaviour
             //Debug.Log("curr health " + myHealth);
             myPlayer.health = myHealth.ToString();
         }
+        else if (other.tag == "wayPoint")
+        {
+            //count up on myPlayer.checkpointCounter
+            myPlayer.wayPointCounter++;
+            int numberOfWayPoints = myPlayer.wayPointCounter;
+
+            if (numberOfWayPoints >= 20)
+            {
+                FindObjectOfType<ArenaRaceManagerScript>().Winner(myPlayer);
+            }
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)

@@ -392,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1809486b07cb29d45aa6faa5a5605a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveWinner: {fileID: 11400000, guid: 95869ae478e630e458e01fcaee4533c8, type: 2}
   allWayPoints:
   - {fileID: 559734428}
   - {fileID: 277920068}
@@ -1272,7 +1273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mytext: {fileID: 1234434281}
   i: 0
-  instantStart: 1
+  instantStart: 0
 --- !u!4 &262771508
 Transform:
   m_ObjectHideFlags: 0
@@ -1301,7 +1302,7 @@ GameObject:
   - component: {fileID: 277920070}
   m_Layer: 0
   m_Name: wayPoint02
-  m_TagString: Untagged
+  m_TagString: wayPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1462,7 +1463,7 @@ GameObject:
   - component: {fileID: 559734430}
   m_Layer: 0
   m_Name: wayPoint01
-  m_TagString: Untagged
+  m_TagString: wayPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1790,12 +1791,12 @@ MonoBehaviour:
   activeCars: {fileID: 1643212665}
   targets: []
   offset: {x: 0, y: 0, z: 0}
-  smoothTime: 0.5
-  zoomLimiter: 30
-  minZoom: 30
-  maxZoom: 15
-  favorFirstPlaced: 0.6
-  secondsToPanCam: 1
+  smoothTime: 0.1
+  zoomLimiter: 160
+  minZoom: 85
+  maxZoom: 20
+  favorFirstPlaced: 0
+  secondsToPanCam: 0.2
 --- !u!1001 &1050023070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3164,7 +3165,7 @@ GameObject:
   - component: {fileID: 1955258626}
   m_Layer: 0
   m_Name: wayPoint03
-  m_TagString: Untagged
+  m_TagString: wayPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

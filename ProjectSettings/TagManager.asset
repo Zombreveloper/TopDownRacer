@@ -12,6 +12,7 @@ TagManager:
   - underpass collider
   - oil stain
   - bumper
+  - wayPoint
   layers:
   - Default
   - TransparentFX

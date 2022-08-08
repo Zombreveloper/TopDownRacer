@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerProfile 1
   m_EditorClassIdentifier: 
   playerName: Player 1
-  leftInput: f
-  rightInput: f
+  leftInput: q
+  rightInput: w
   ready: 0
   red_value: 230
   green_value: 0
@@ -22,3 +22,4 @@ MonoBehaviour:
   alpha_value: 255
   vehicle: 
   health: 10
+  wayPointCounter: 0
