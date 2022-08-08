@@ -77,5 +77,12 @@ public class ParticipantsManager : MonoBehaviour
             currentBumper.name = ("Bumper_Player" + index);
             currentBumper.transform.parent = currentCar.transform;
         }
+        else if (gameMode.gameMode == "ArenaRace")
+        {
+            //activate WayPoints
+            //Debug.Log("WAYPOINTS");
+            ArenaRaceManagerScript arms = FindObjectOfType<ArenaRaceManagerScript>();
+            arms.InitiateArenaRace();
+        }
     }
 }
