@@ -13,6 +13,8 @@ public class ParticipantsManager : MonoBehaviour
     public GameMode_SO gameMode;
     public GameObject lifeBarPrefab;
     private GameObject currentLifeBar;
+    public GameObject bumperPrefab;
+    private GameObject currentBumper;
 
     void Awake()
     {
@@ -69,6 +71,11 @@ public class ParticipantsManager : MonoBehaviour
             LifeBarScript currentLife_Script = currentLifeBar.GetComponent<LifeBarScript>();
             currentLife_Script.ThisIsYourCar(_currentCar);
             //currentLifeBar.transform.parent = _currentCar.transform;
+
+            //Add a Bumper to car
+            currentBumper = Instantiate(bumperPrefab, new Vector2(x,y), Quaternion.identity);
+            currentBumper.name = ("Bumper_Player" + index);
+            currentBumper.transform.parent = currentCar.transform;
         }
     }
 }

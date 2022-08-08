@@ -21,4 +21,4 @@ MonoBehaviour:
   blue_value: 155
   alpha_value: 255
   vehicle: 
-  health: 
+  health: 10

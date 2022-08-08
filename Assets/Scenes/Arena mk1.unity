@@ -1531,6 +1531,7 @@ MonoBehaviour:
   minZoom: 30
   maxZoom: 15
   favorFirstPlaced: 0.6
+  secondsToPanCam: 1
 --- !u!1001 &1050023070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2514,6 +2515,7 @@ MonoBehaviour:
   carPrefab: {fileID: 7916444501015972658, guid: 00d1e54bb88efab4f99f155d70912ad5, type: 3}
   gameMode: {fileID: 11400000, guid: 003f203112b025d40ba6921acae269f2, type: 2}
   lifeBarPrefab: {fileID: 8848564746820162641, guid: 8922b74e47ddc3746903e90f5eadc774, type: 3}
+  bumperPrefab: {fileID: 108726690957500547, guid: 0ac58038ba76fce418927b976e5fd6f0, type: 3}
 --- !u!4 &1643212667
 Transform:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ TagManager:
   - overpass collider
   - underpass collider
   - oil stain
+  - bumper
   layers:
   - Default
   - TransparentFX

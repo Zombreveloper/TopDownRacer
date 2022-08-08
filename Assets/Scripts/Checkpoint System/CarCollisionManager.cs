@@ -14,6 +14,7 @@ public class CarCollisionManager : MonoBehaviour
     //referenced Classes
     PlacementManager placementManager;
     TopDownCarController carController;
+    PlayerProfile myPlayer;
 
     //variables
     string myName;
@@ -30,6 +31,7 @@ public class CarCollisionManager : MonoBehaviour
         myName = this.transform.root.gameObject.name;
         placementManager = GameObject.Find("/PlacementManager").GetComponent<PlacementManager>();
         carController = GetComponent<TopDownCarController>();
+        myPlayer = GetComponent<LassesTestInputHandler>().myDriver;
     }
 
     // Update is called once per frame
@@ -81,6 +83,15 @@ public class CarCollisionManager : MonoBehaviour
             }
 
             //carController.adjustRotationAngle(150.0f);
+        }
+        else if(other.tag == "bumper")
+        {
+            Debug.Log("health");
+            int myHealth = int.Parse(myPlayer.health);
+            Debug.Log("prev health " + myHealth);
+            myHealth--;
+            Debug.Log("curr health " + myHealth);
+            myPlayer.health = myHealth.ToString();
         }
     }
 
