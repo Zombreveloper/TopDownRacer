@@ -17,6 +17,7 @@ public class ArenaCarDestroyer : MonoBehaviour
         //Transform parentsTransform = this.transform.parent;
         //thisCar = parentsTransform.gameObject; //use those if you want to grab a parent object
         activeCars = GameObject.Find("/ParticipantsManager").GetComponent<ListOfActiveCars>();
+        //activeCars = GameObject.Find("/ParticipantsManager").GetComponent<ListOfActiveCars>();
         activeCarObjects = GameObject.FindGameObjectsWithTag("Car");
         Debug.Log("This scene starts with " + activeCarObjects.Length + " Cars");
     }
@@ -24,7 +25,8 @@ public class ArenaCarDestroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (GameObject car in activeCarObjects)
+        //foreach (GameObject car in activeCarObjects)          
+        foreach (GameObject car in activeCars.getCarsList())
         {
             if ((car != null) && (IsOutOfHealth(car))) //activeCarObjects receives empty entries by deleting values!
             {
@@ -47,21 +49,26 @@ public class ArenaCarDestroyer : MonoBehaviour
 
     public bool IsOutOfHealth(GameObject o)
     {
-        //check if health is below 0
-        PlayerProfile myPlayer = o.GetComponent<LassesTestInputHandler>().myDriver;
-        //Debug.Log("myPlayer: " + myPlayer.name);
-        //Debug.Log("GameObject o: " + o.name);
-        //Debug.Log("LassesTestInputHandler.myDriver: " + o.GetComponent<LassesTestInputHandler>().myDriver.name);
-        Debug.Log("There is no Error in Line 51, the reference is set to an instance of an Object...");
+        if (o)
+        {
+            //check if health is below 0
+            PlayerProfile myPlayer = o.GetComponent<LassesTestInputHandler>().myDriver;
+            //Debug.Log("myPlayer: " + myPlayer.name);
+            //Debug.Log("GameObject o: " + o.name);
+            //Debug.Log("LassesTestInputHandler.myDriver: " + o.GetComponent<LassesTestInputHandler>().myDriver.name);
+            Debug.Log("There is no Error in Line 51, the reference is set to an instance of an Object...");
 
-        int currentHealth = int.Parse(myPlayer.health);
-        if (currentHealth < 0)
-        {
-            return true;
+            int currentHealth = int.Parse(myPlayer.health);
+            if (currentHealth < 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
-        else
-        {
-            return false;
-        }
+        else return false;
     }
 }
