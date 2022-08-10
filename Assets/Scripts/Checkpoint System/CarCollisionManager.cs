@@ -19,6 +19,7 @@ public class CarCollisionManager : MonoBehaviour
     //variables
     string myName;
     private float oilConstant;
+    bool isColliding; //used to prevent multiple Triggers in one Frame
 
     void Awake()
     {
@@ -37,11 +38,18 @@ public class CarCollisionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        isColliding = false; //used to prevent multiple Triggers in one Frame
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (isColliding) //used to prevent multiple Triggers in one Frame
+        {
+            return;
+        }
+        isColliding = true; //used to prevent multiple Triggers in one Frame
+
+
         //Debug.Log("I´ve hit a trigger");
         if (other.tag == "Checkpoint")
         {
@@ -99,7 +107,7 @@ public class CarCollisionManager : MonoBehaviour
             myPlayer.wayPointCounter++;
             int numberOfWayPoints = myPlayer.wayPointCounter;
 
-            if (numberOfWayPoints >= 20)
+            if (numberOfWayPoints >= 10)
             {
                 FindObjectOfType<ArenaRaceManagerScript>().Winner(myPlayer);
             }

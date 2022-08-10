@@ -49,6 +49,11 @@ public class ArenaCarDestroyer : MonoBehaviour
     {
         //check if health is below 0
         PlayerProfile myPlayer = o.GetComponent<LassesTestInputHandler>().myDriver;
+        //Debug.Log("myPlayer: " + myPlayer.name);
+        //Debug.Log("GameObject o: " + o.name);
+        //Debug.Log("LassesTestInputHandler.myDriver: " + o.GetComponent<LassesTestInputHandler>().myDriver.name);
+        Debug.Log("There is no Error in Line 51, the reference is set to an instance of an Object...");
+
         int currentHealth = int.Parse(myPlayer.health);
         if (currentHealth < 0)
         {

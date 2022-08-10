@@ -10,14 +10,19 @@ public class ArenaRaceManagerScript : MonoBehaviour
 
     //referenced GameObject
     public List<GameObject> allWayPoints = new List<GameObject>();
+    GameObject prevWayPoint;
+    GameObject currentWayPoint;
 
     //referenced variables
-    bool doRace = false;
+    //bool doRace = false;
+    int numberOfWayPoints;
 
     // Start is called before the first frame update
     void Start()
     {
-        //set all players wayPointCounter to 0
+        //set all players wayPointCounter to 0 -> happens in ParticipantsManager
+        numberOfWayPoints = allWayPoints.Count;
+        prevWayPoint = null;
     }
 
     // Update is called once per frame
@@ -31,16 +36,65 @@ public class ArenaRaceManagerScript : MonoBehaviour
         //Set all WayPoints to Active or something similar...
         //Debug.Log("Start ArenaRace");
 
-        doRace = true;
+        //doRace = true;
+        ActivateFirstWayPoint();
 
+        /*
         foreach (GameObject waypoint in allWayPoints)
         {
             waypoint.SetActive(true);
         }
+        */
+    }
+
+    void ActivateFirstWayPoint()
+    {
+        Debug.Log("ActivateFirstWayPoint");
+        currentWayPoint = allWayPoints[Random.Range(0, numberOfWayPoints)];
+        ActivateWayPoint(currentWayPoint);
+    }
+
+    public void UpdateWayPoints() //gets called by WayPointScript when triggered
+    {
+        Debug.Log("UpdateWayPoints");
+        int randomNumber = Random.Range(0, numberOfWayPoints);
+        prevWayPoint = currentWayPoint;
+        prevWayPoint.SetActive(false);
+
+        //some checkpoint that is not the previous one
+        currentWayPoint = allWayPoints[randomNumber];
+        if (currentWayPoint == prevWayPoint)
+        {
+            if ((randomNumber + 1) == numberOfWayPoints)
+            {
+                currentWayPoint = allWayPoints[((randomNumber + 1) - numberOfWayPoints)];
+                //ActivateWayPoint(currentWayPoint);
+                currentWayPoint.SetActive(true);
+            }
+            else
+            {
+                currentWayPoint = allWayPoints[(randomNumber + 1)];
+                //ActivateWayPoint(currentWayPoint);
+                currentWayPoint.SetActive(true);
+            }
+        }
+        else
+        {
+            currentWayPoint.SetActive(true);
+        }
+    }
+
+    void ActivateWayPoint(GameObject _currentWayPoint)
+    {
+        Debug.Log("ActivateWayPoint");
+        _currentWayPoint.SetActive(true);
+        prevWayPoint = _currentWayPoint;
     }
 
     public void Winner(PlayerProfile myWinner)
     {
+        //amount of WayPoints to win get declared in CarCollisionManagers OnTriggerEnter2D
+
         //pass winner
         saveWinner.winnerSoProfile = myWinner;
         StartCoroutine(CountAndSound());
