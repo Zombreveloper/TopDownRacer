@@ -51,6 +51,7 @@ public class CheckpointPlacer : MonoBehaviour
         currentlyBuiltCheckpoint = Instantiate(checkpointPrefab, worldPosition, rotation, checkpoints.transform);
         currentlyBuiltCheckpoint.name = "Checkpoint " + numberString;
         checkpointPool.Enqueue(currentlyBuiltCheckpoint);
+        Debug.Log("PlaceCheckpoint does it even get called?");
 
         /* replaced by public destroyChekcpoint
         if (checkpointPool.Count > 3)

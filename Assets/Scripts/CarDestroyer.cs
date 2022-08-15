@@ -21,8 +21,13 @@ public class CarDestroyer : MonoBehaviour
         //Transform parentsTransform = this.transform.parent;
         //thisCar = parentsTransform.gameObject; //use those if you want to grab a parent object
         activeCars = GameObject.Find("/ParticipantsManager").GetComponent<ListOfActiveCars>();
+
+        //for getting the Objects in the Scene by Tag
         activeCarObjects = GameObject.FindGameObjectsWithTag("Car");
         Debug.Log("This scene starts with " + activeCarObjects.Length + " Cars");
+
+        //for getting Objects by the activeCarsList
+        Debug.Log("This scene starts with" + activeCars.getCarsList().Count);
 
 
     }
@@ -30,7 +35,7 @@ public class CarDestroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (GameObject car in activeCarObjects)
+        foreach (GameObject car in activeCars.getCarsList())
         {
             if ((car != null) && (IsOutOfScreen(car))) //activeCarObjects receives empty entries by deleting values!
             {

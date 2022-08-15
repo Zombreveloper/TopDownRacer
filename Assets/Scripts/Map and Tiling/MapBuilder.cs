@@ -30,6 +30,7 @@ public class MapBuilder : MonoBehaviour
 	private TrackBuildMarker buildMarker;
 	private TilingPatterns tilingPatterns;
 	private CheckpointPlacer checkpointPlacer;
+	private RandomObstacleSpawner obstacleSpawner;
 	
 	
 
@@ -39,6 +40,7 @@ public class MapBuilder : MonoBehaviour
 		buildMarker = FindObjectOfType<TrackBuildMarker>();
 		tilingPatterns = FindObjectOfType<TilingPatterns>();
 		checkpointPlacer = FindObjectOfType<CheckpointPlacer>();
+		obstacleSpawner = GameObject.Find("/ObstacleManager").GetComponent<RandomObstacleSpawner>();
 		//StartCoroutine(TilingDelay());
 		MakeLine();
 		MakeLine();
@@ -186,6 +188,9 @@ public class MapBuilder : MonoBehaviour
 			MirrorTilesInPattern(gridCoordinates);
 
 		}
+
+		RandomObstacleSpawner obstacleSpawner = FindObjectOfType<RandomObstacleSpawner>();
+		obstacleSpawner.spawnObjects();
 	}
 
 	//Don´t ever lose this! function to rotate a tile!

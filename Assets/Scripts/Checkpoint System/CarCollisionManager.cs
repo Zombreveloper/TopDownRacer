@@ -43,12 +43,12 @@ public class CarCollisionManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isColliding) //used to prevent multiple Triggers in one Frame
+        /*if (isColliding) //used to prevent multiple Triggers in one Frame
         {
             return;
         }
         isColliding = true; //used to prevent multiple Triggers in one Frame
-
+        */
 
         //Debug.Log("I´ve hit a trigger");
         if (other.tag == "Checkpoint")
