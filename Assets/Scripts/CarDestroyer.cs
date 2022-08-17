@@ -22,12 +22,13 @@ public class CarDestroyer : MonoBehaviour
         //thisCar = parentsTransform.gameObject; //use those if you want to grab a parent object
         activeCars = GameObject.Find("/ParticipantsManager").GetComponent<ListOfActiveCars>();
 
-        //for getting the Objects in the Scene by Tag
+       /* //for getting the Objects in the Scene by Tag ONLY USE IF GETTING BY ACTIVECARSLIST DOES NOT WORK
         activeCarObjects = GameObject.FindGameObjectsWithTag("Car");
         Debug.Log("This scene starts with " + activeCarObjects.Length + " Cars");
+       */
 
         //for getting Objects by the activeCarsList
-        Debug.Log("This scene starts with" + activeCars.getCarsList().Count);
+        Debug.Log("This scene starts with " + activeCars.getCarsList().Count + " Cars");
 
 
     }

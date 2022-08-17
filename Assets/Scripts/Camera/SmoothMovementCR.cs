@@ -4,7 +4,7 @@ using UnityEngine;
 
 /* Linear Interpolation inspired by: https://gamedevbeginner.com/the-right-way-to-lerp-in-unity-with-examples/
  * Takes values from the camera manager and interpolates them. Returns the results (position between car 1 and car 2)
- * and a bool if the Lerp is running
+ * and a bool if the Lerp is running or not
 */
 
 public class SmoothMovementCR : MonoBehaviour
@@ -53,6 +53,7 @@ public class SmoothMovementCR : MonoBehaviour
 	{
 		//CRisRunning = true;
 		camManager.setCRisRunning(true);
+		Debug.Log("CRisRunning is set true now!");
 		float time = 0;
 		//Vector3 startPoint = secondCar.transform.position;
 		Vector3 startPosition = WorldToCenterSpace(startPoint); //startPosition doesn't get updated but moves with the camera
@@ -70,7 +71,7 @@ public class SmoothMovementCR : MonoBehaviour
 			camManager.setLastSmoothPos(CRResult);
 			yield return null;
 		}
-		Debug.Log("CRisRunning is set false here!");
+		Debug.Log("CRisRunning is set false now!");
 		camManager.setCRisRunning(false);
 	}
 

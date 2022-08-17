@@ -35,12 +35,12 @@ public class NextCheckpointVector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (activeCars != null)
-            Debug.Log(activeCars.carsList[0]);
+        //if (activeCars != null)
+            //Debug.Log(activeCars.carsList[0] + " yes there are active cars");
 
         //needed for determineFirstPlaced()
         activeCheckpoint = checkpointPlacer.getActiveCheckpoint();
-        currentNearest = 1024; //absurdly high so first car will always overwrite that
+        currentNearest = Mathf.Infinity; //absurdly high so first car will always overwrite that
         nearestCar = activeCars.getCarFromList(0); ;
     }
 

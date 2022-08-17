@@ -42,17 +42,19 @@ public class ParticipantsManager : MonoBehaviour
         {
             foreach(PlayerProfile player in allMyParicipants.ReadyPlayersArray)
             {
+                
+                Vector2 spawnPosition = positionCar();
                 //spawn position
-                float x = 10 * index;
-                float y = 0;
+                //float x = 10 * index;
+                //float y = 0;
                 //spawn car at given potition
-                currentCar = Instantiate(carPrefab, new Vector2(x,y), Quaternion.identity);
+                currentCar = Instantiate(carPrefab, spawnPosition, Quaternion.identity);
                 //give car a name
                 currentCar.name = ("Player" + index);
                 currentCar.GetComponent<LassesTestInputHandler>().myDriver = player;
                 currentCar.GetComponent<CarColor>().myDriver = player;
 
-                WhatGamemode(currentCar, x, y, player);
+                //WhatGamemode(currentCar, x, y, player);
 
                 index++;
                 //make Car available for every script in the Scene
@@ -85,5 +87,33 @@ public class ParticipantsManager : MonoBehaviour
             ArenaRaceManagerScript arms = FindObjectOfType<ArenaRaceManagerScript>();
             arms.InitiateArenaRace();
         }
+    }
+
+    Vector2 positionCar()
+    {
+        int xDistance = 6; //vertical distance between cars in start Grid
+        int yDistance = 3; //horizontal distance in start Grid
+        int carsInRow = 4;
+        float setBackRow = xDistance * carsInRow; //widht of the row on the starting grid
+
+        if (index <= carsInRow) //first 4 cars
+        {
+            float x = xDistance * index;
+            float y = yDistance * -index;
+            return new Vector2(x, y);
+        }
+        else if (index > carsInRow && index <= (carsInRow * 2)) //other 4 cars
+        {            
+            float x = (xDistance * index) - setBackRow;
+            float y = yDistance * -index;
+            return new Vector2(x, y);
+        }
+        else //if for whatever reason there would be more than 8 cars on the track
+        {
+            float x = (xDistance * index) - 2*setBackRow;
+            float y = yDistance * -index;
+            return new Vector2(x, y);
+        }
+
     }
 }

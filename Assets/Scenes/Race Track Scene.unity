@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mytext: {fileID: 840388580}
   i: 0
-  instantStart: 1
+  instantStart: 0
 --- !u!4 &102547487
 Transform:
   m_ObjectHideFlags: 0
@@ -10329,7 +10329,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021652008}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0295d10b13456d04997fb67c3d7b2a6a, type: 3}
   m_Name: 

@@ -40,8 +40,13 @@ public class CameraManager : MonoBehaviour
 	bool CRisRunning = false;
 
 
-	// Start is called before the first frame update
-	void Start()
+    private void Awake()
+    {
+		
+    }
+
+    // Start is called before the first frame update
+    void Start()
 	{
 		mainCamera = GetComponent<Camera>();
 		placementManager = GameObject.Find("/PlacementManager").GetComponent<PlacementManager>();
@@ -49,7 +54,10 @@ public class CameraManager : MonoBehaviour
 
 		makeTargetsList();
 
-		//lastSmoothPos = activeCars.carsList[0].transform.position; //bei nicht Funktionieren einkommentieren!
+		//these two initialize the camera position
+		instantMove(); //functions without smooth movement to bring the camera instantly to the desired location
+		instantZoom();
+
 		center = transform.position;
 	}
 
@@ -81,6 +89,22 @@ public class CameraManager : MonoBehaviour
 		Vector3 lipoCenter = Vector3.Lerp(center, betweenPos, favorFirstPlaced); //final weighted position factoring in center between all cars and the first placed cars
 
 		transform.position = lipoCenter;
+
+
+		//transform.position = center; //(for testing) gives only the center between all cars 
+		//transform.position = betweenPos; //(for testing) gives only the camPos between first and second place 
+	}
+
+	void instantMove()
+	{
+		Vector3 betweenPos = dynamicMovementBetweenCars(); //is instant as long as no one overtakes
+		Vector3 centerPoint = calcCenterPoint(); //always instant
+
+		Vector3 lipoCenter = Vector3.Lerp(centerPoint, betweenPos, favorFirstPlaced); //final weighted position factoring in center between all cars and the first placed cars
+
+		transform.position = lipoCenter;
+
+
 		//transform.position = center; //(for testing) gives only the center between all cars 
 		//transform.position = betweenPos; //(for testing) gives only the camPos between first and second place 
 	}
@@ -88,7 +112,8 @@ public class CameraManager : MonoBehaviour
 	//methods related to the dynamic focus change between cars
 	Vector3 dynamicMovementBetweenCars()
     {
-		Vector3 firstPlacedPos = placementManager.getFirstPlaced().transform.position;
+		Vector3 firstPlacedPos = tryGetFirstPlacedPos();
+			
 
 		if (placementManager.isOvertaken)
 		{
@@ -101,7 +126,7 @@ public class CameraManager : MonoBehaviour
 			}
 			else
 			{
-				Debug.Log("does this ever get called?");
+				//Debug.Log("does this ever get called?");
 				StartCoroutine(lerpCR.LerpInCenterSpace(lastSmoothPos, placementManager.getFirstPlaced(), secondsToPanCam));
 			}
 		}
@@ -155,11 +180,28 @@ public class CameraManager : MonoBehaviour
 		}
 	}
 
+	Vector3 tryGetFirstPlacedPos() //if there is not yet a first placed defined, i just define it myself! (returns first active car instead)
+    {
+		if (placementManager.getFirstPlaced() != null)
+		{
+			return placementManager.getFirstPlaced().transform.position;
+		}
+		else return activeCars.getCarFromList(0).transform.position;
+
+	}
+
 	void zoom()
 	{
 		//Debug.Log(getGreatestDistance());
 		float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance() / zoomLimiter);
 		mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, newZoom, Time.deltaTime);
+	}
+
+	void instantZoom()
+	{
+		//Debug.Log(getGreatestDistance());
+		float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance() / zoomLimiter);
+		mainCamera.orthographicSize = newZoom;
 	}
 
 	float getGreatestDistance()
@@ -188,6 +230,8 @@ public class CameraManager : MonoBehaviour
 			return xDistance;
 		}
 	}
+
+
 
 	//getter and setter
 
