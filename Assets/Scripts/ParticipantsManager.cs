@@ -54,7 +54,7 @@ public class ParticipantsManager : MonoBehaviour
                 currentCar.GetComponent<LassesTestInputHandler>().myDriver = player;
                 currentCar.GetComponent<CarColor>().myDriver = player;
 
-                //WhatGamemode(currentCar, x, y, player);
+                WhatGamemode(currentCar, spawnPosition, player);
 
                 index++;
                 //make Car available for every script in the Scene
@@ -63,19 +63,19 @@ public class ParticipantsManager : MonoBehaviour
         }
     }
 
-    void WhatGamemode(GameObject _currentCar, float x, float y, PlayerProfile player)
+    void WhatGamemode(GameObject _currentCar, Vector2 _spawnPos, PlayerProfile player)
     {
         if (gameMode.gameMode == "Arena")
         {
             //Add a life bar to car.
-            currentLifeBar = Instantiate(lifeBarPrefab, new Vector2(x,y), Quaternion.identity);
+            currentLifeBar = Instantiate(lifeBarPrefab, _spawnPos, Quaternion.identity);
             currentLifeBar.name = ("LifeBar_Player" + index);
             LifeBarScript currentLife_Script = currentLifeBar.GetComponent<LifeBarScript>();
             currentLife_Script.ThisIsYourCar(_currentCar);
             //currentLifeBar.transform.parent = _currentCar.transform;
 
             //Add a Bumper to car
-            currentBumper = Instantiate(bumperPrefab, new Vector2(x,y), Quaternion.identity);
+            currentBumper = Instantiate(bumperPrefab, _spawnPos, Quaternion.identity);
             currentBumper.name = ("Bumper_Player" + index);
             currentBumper.transform.parent = currentCar.transform;
         }
