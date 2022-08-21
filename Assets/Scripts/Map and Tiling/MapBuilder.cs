@@ -30,12 +30,16 @@ public class MapBuilder : MonoBehaviour
 	private TrackBuildMarker buildMarker;
 	private TilingPatterns tilingPatterns;
 	private CheckpointPlacer checkpointPlacer;
-	private RandomObstacleSpawner obstacleSpawner;
-	
-	
 
-    // Start is called before the first frame update
-    void Start()
+	//Random Obstacle Spawning - some variables and classes will be moved in the future!
+	private RandomObstacleSpawner obstacleSpawner;
+	[Header("Obstacle Patterns")]
+	[SerializeField] private GameObject currentObstacleMap;
+	[SerializeField] private GameObject placeholderObs;
+
+
+	// Start is called before the first frame update
+	void Start()
     {
 		buildMarker = FindObjectOfType<TrackBuildMarker>();
 		tilingPatterns = FindObjectOfType<TilingPatterns>();
@@ -135,7 +139,7 @@ public class MapBuilder : MonoBehaviour
 	{
 		string flag = "leftCurve";
 		//currentTile = TileCurveLD;
-		tilingPatterns.CurvedLeftTrackPattern(); //calls for a straight line
+		tilingPatterns.CurvedLeftTrackPattern(); //calls for a left curve
         PlacePattern(tilingPatterns.GetPattern(), tilingPatterns.GetSprites(), flag); //draws the pattern onto the map, needs Positions + Sprites!
 		buildMarker.StepForward(1);
 		buildMarker.RotateLeft();
@@ -145,7 +149,7 @@ public class MapBuilder : MonoBehaviour
 	void MakeCurveRight()
 	{
 		string flag = "rightCurve";
-		tilingPatterns.CurvedRightTrackPattern(); //calls for a straight line
+		tilingPatterns.CurvedRightTrackPattern(); //calls for a right curve
 		PlacePattern(tilingPatterns.GetPattern(), tilingPatterns.GetSprites(), flag ); //draws the pattern onto the map, needs Positions + Sprites!
 		buildMarker.StepForward(1);
 		buildMarker.RotateRight();
@@ -187,14 +191,14 @@ public class MapBuilder : MonoBehaviour
         {
 			MirrorTilesInPattern(gridCoordinates);
 
-		}
+        }
 
-		RandomObstacleSpawner obstacleSpawner = FindObjectOfType<RandomObstacleSpawner>();
-		obstacleSpawner.spawnObjects();
-	}
+		//TODO: Random Obstacles under construction
+		makeRandomObstacles();
+    }
 
-	//Don´t ever lose this! function to rotate a tile!
-	void RotateAllTilesInPattern(Vector3Int[] coordinates)
+    //Don´t ever lose this! function to rotate a tile!
+    void RotateAllTilesInPattern(Vector3Int[] coordinates)
 	{
 		foreach (Vector3Int position in coordinates)
 		{
@@ -231,12 +235,52 @@ public class MapBuilder : MonoBehaviour
 		}
 	}
 
+	void makeRandomObstacles() //TODO: function name only for experimental purposes
+    {
+		GameObject obstacleMapClone = Instantiate(currentObstacleMap, currentTilemap.CellToWorld(buildMarker.GetMarkerPos()), Quaternion.identity, GameObject.FindGameObjectWithTag("TilemapGrid").transform);
+		Tilemap _map = obstacleMapClone.GetComponent<Tilemap>();
+		//obstacleMapClone.transform.parent
+
+		List<Vector3Int> possiblePlaces = makePlacementArray(obstacleMapClone);
+		foreach (Vector3Int validLocation in possiblePlaces)
+        {
+			Instantiate(placeholderObs, _map.GetCellCenterWorld(validLocation), Quaternion.identity, _map.transform);
+
+		}
+
+		//rudimentary obstacle placement here!
+		//RandomObstacleSpawner obstacleSpawner = FindObjectOfType<RandomObstacleSpawner>();
+		//obstacleSpawner.spawnObjects();
+	}
+
+	List<Vector3Int> makePlacementArray(GameObject map)
+    {
+		List<Vector3Int> validTiles = new List<Vector3Int>();
+		Tilemap _map = map.GetComponent<Tilemap>();
+
+		for(int i = -10; i < 20; i++) //numbers need to be bigger for curves. maybe get Tilemapsize by bounds? Y-Axis
+        {
+			for(int j = -10; j < 10; j++) //X-Axis
+            {
+				Vector3Int searchPos = new Vector3Int(j,i);
+				if (_map.HasTile(searchPos))
+                {
+					//Instantiate(placeholderObs, _map.GetCellCenterWorld(searchPos), Quaternion.identity, _map.transform);
+					//Debug.Log("There is a Tile on " + searchPos);
+					validTiles.Add(searchPos);
+                }
+            }
+        }
+		Debug.Log("There are currently " + validTiles.Count + "possible places to spawn obstacles");
+		return validTiles;
+    }
+
 	//getters and setters 
 	// (none currently)
-	
+
 
 	//here starts the trash dump! These methods will never be used but if compiler finds problems here
-	//i did something wrong higher up!
+	//i did something wrong above!
 	void PlacePrefab(Vector3Int pos)
 	{
 		prefabSpawnPoint = currentGrid.CellToWorld(pos);
