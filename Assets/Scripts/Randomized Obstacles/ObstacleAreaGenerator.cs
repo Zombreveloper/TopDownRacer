@@ -37,17 +37,19 @@ public class ObstacleAreaGenerator : MonoBehaviour
 
 	public void makeRandomObstacles(Tilemap _streetMap, TrackBuildMarker _buildMarker, string direction) //TODO: function name only for experimental purposes
 	{
-		Tilemap currentObstacleMap = selectObstacleMap(direction);
+		GameObject currentObstacleMap = selectObstacleMap(direction);
 
-		Tilemap mapClone = Instantiate(currentObstacleMap, _streetMap.CellToWorld(_buildMarker.GetMarkerPos()), Quaternion.identity, GameObject.FindGameObjectWithTag("TilemapGrid").transform);
+		GameObject mapClone = Instantiate(currentObstacleMap, _streetMap.GetCellCenterWorld(_buildMarker.GetMarkerPos()), pointerRotation(_buildMarker), GameObject.FindGameObjectWithTag("TilemapGrid").transform);
 		//rotateMap(mapClone, _buildMarker);
-		//Tilemap _map = obstacleMapClone.GetComponent<Tilemap>();
-		mapClone.CompressBounds();
+		Tilemap _map = mapClone.GetComponentInChildren<Tilemap>();
+		_map.CompressBounds();
 
-		List<Vector3Int> possiblePlaces = makePlacementArray(mapClone);
+		List<Vector3Int> possiblePlaces = makePlacementArray(_map);
 		foreach (Vector3Int validLocation in possiblePlaces)
 		{
-			Instantiate(placeholderObs, mapClone.GetCellCenterWorld(validLocation), Quaternion.identity, mapClone.transform);
+			int randomNumber = Random.Range(0, 15);
+			if(randomNumber == 1)
+			Instantiate(placeholderObs, _map.GetCellCenterWorld(validLocation), Quaternion.identity, mapClone.transform);
 
 		}
 
@@ -94,14 +96,14 @@ public class ObstacleAreaGenerator : MonoBehaviour
 		return validTiles;
 	}
 
-	Tilemap selectObstacleMap(string direction)
+	GameObject selectObstacleMap(string direction)
     {
 		if (direction == "straightTrack")
-			return straightObstacleMap.GetComponent<Tilemap>();
+			return straightObstacleMap; //.GetComponent<Tilemap>();
 		else if (direction == "leftCurve")
-			return leftObstacleMap.GetComponent<Tilemap>();
+			return leftObstacleMap; //.GetComponent<Tilemap>();
 		else
-			return rightObstacleMap.GetComponent<Tilemap>();
+			return rightObstacleMap; //.GetComponent<Tilemap>();
     }
 
 

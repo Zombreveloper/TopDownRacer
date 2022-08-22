@@ -33,6 +33,7 @@ public class TrackBuildMarker : MonoBehaviour
     void Start()
     {
         //Debug.Log("Pointer starts at Position: " + pointerPos);
+        Instantiate(visibleMarker, pointerPos, Quaternion.identity);
     }
 
     private void Update()
@@ -40,11 +41,12 @@ public class TrackBuildMarker : MonoBehaviour
         showMarker();
     }
 
-    void showMarker()
+    void showMarker() //this is crap. But i need this for testing
     {
         
         Vector3 gridInWorldPoint = tilemap.GetCellCenterWorld(pointerPos);
-        Instantiate(visibleMarker, gridInWorldPoint, Quaternion.identity);
+        visibleMarker.transform.position = gridInWorldPoint;
+
     }
 
     //Public functions
