@@ -10,12 +10,16 @@ public class TrackBuildMarker : MonoBehaviour
     private Vector3Int pointerPos; //represents pointers position
     private Vector3Int pointerRot; //represents pointers rotation
 
+    public GameObject visibleMarker;
+    Tilemap tilemap;
+
     //checkbox for printing Pos and Rot Logs
     [Header("Toggle to enable poition an rotation Logs")]
     [SerializeField] bool printsEnabled = true;
 
     private void Awake()
     {
+        tilemap = GameObject.Find("/Grid/Streetmap").GetComponent<Tilemap>(); //GetComponent<Tilemap>();
         pointerPos.Set(0, 0, 0);
         pointerRot.Set(0, 0, 0); //rotation, 0 means upwards
         if (printsEnabled)
@@ -31,6 +35,17 @@ public class TrackBuildMarker : MonoBehaviour
         //Debug.Log("Pointer starts at Position: " + pointerPos);
     }
 
+    private void Update()
+    {
+        showMarker();
+    }
+
+    void showMarker()
+    {
+        
+        Vector3 gridInWorldPoint = tilemap.GetCellCenterWorld(pointerPos);
+        Instantiate(visibleMarker, gridInWorldPoint, Quaternion.identity);
+    }
 
     //Public functions
 

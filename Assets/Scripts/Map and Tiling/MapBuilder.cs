@@ -30,6 +30,7 @@ public class MapBuilder : MonoBehaviour
 	private TrackBuildMarker buildMarker;
 	private TilingPatterns tilingPatterns;
 	private CheckpointPlacer checkpointPlacer;
+	private ObstacleAreaGenerator obstacleArea;
 
 	//Random Obstacle Spawning - some variables and classes will be moved in the future!
 	private RandomObstacleSpawner obstacleSpawner;
@@ -44,7 +45,8 @@ public class MapBuilder : MonoBehaviour
 		buildMarker = FindObjectOfType<TrackBuildMarker>();
 		tilingPatterns = FindObjectOfType<TilingPatterns>();
 		checkpointPlacer = FindObjectOfType<CheckpointPlacer>();
-		obstacleSpawner = GameObject.Find("/ObstacleManager").GetComponent<RandomObstacleSpawner>();
+		obstacleArea = GetComponentInChildren<ObstacleAreaGenerator>();
+		obstacleSpawner = GameObject.Find("/MapManager/ObstacleManager").GetComponent<RandomObstacleSpawner>();
 		//StartCoroutine(TilingDelay());
 		MakeLine();
 		MakeLine();
@@ -194,7 +196,7 @@ public class MapBuilder : MonoBehaviour
         }
 
 		//TODO: Random Obstacles under construction
-		makeRandomObstacles();
+		obstacleArea.makeRandomObstacles(currentTilemap, buildMarker, direction);
     }
 
     //Don´t ever lose this! function to rotate a tile!
@@ -235,6 +237,8 @@ public class MapBuilder : MonoBehaviour
 		}
 	}
 
+
+	//these two funcions are rebuilt in ObstacleAreaGenerator Class!
 	void makeRandomObstacles() //TODO: function name only for experimental purposes
     {
 		GameObject obstacleMapClone = Instantiate(currentObstacleMap, currentTilemap.CellToWorld(buildMarker.GetMarkerPos()), Quaternion.identity, GameObject.FindGameObjectWithTag("TilemapGrid").transform);
