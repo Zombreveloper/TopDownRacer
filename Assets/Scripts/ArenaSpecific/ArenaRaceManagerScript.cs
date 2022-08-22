@@ -12,10 +12,12 @@ public class ArenaRaceManagerScript : MonoBehaviour
     public List<GameObject> allWayPoints = new List<GameObject>();
     GameObject prevWayPoint;
     GameObject currentWayPoint;
+    public GameObject Arrow;
 
     //referenced variables
     //bool doRace = false;
     int numberOfWayPoints;
+    bool arrowActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,7 @@ public class ArenaRaceManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        UpdateArrow();
     }
 
     public void InitiateArenaRace()
@@ -45,18 +47,34 @@ public class ArenaRaceManagerScript : MonoBehaviour
             waypoint.SetActive(true);
         }
         */
+
+        ActivateArrow();
+    }
+
+    void ActivateArrow()
+    {
+        // Richtungsvektor aus pos mitte und pos waypoint
+        // Richtungsvektor Mitte_Pylon = Pos Poylon - Pos Mitte
+        arrowActive = true;
+        Arrow.SetActive(true);
+    }
+
+    void UpdateArrow()
+    {
+        if (arrowActive)
+        {
+            Arrow.GetComponent<ArrowToPylonScript>().UpdateArrow(currentWayPoint);
+        }
     }
 
     void ActivateFirstWayPoint()
     {
-        Debug.Log("ActivateFirstWayPoint");
         currentWayPoint = allWayPoints[Random.Range(0, numberOfWayPoints)];
         ActivateWayPoint(currentWayPoint);
     }
 
     public void UpdateWayPoints() //gets called by WayPointScript when triggered
     {
-        Debug.Log("UpdateWayPoints");
         int randomNumber = Random.Range(0, numberOfWayPoints);
         prevWayPoint = currentWayPoint;
         prevWayPoint.SetActive(false);
