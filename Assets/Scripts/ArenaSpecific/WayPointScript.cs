@@ -28,7 +28,7 @@ public class WayPointScript : MonoBehaviour
         isColliding = true; //used to prevent multiple Triggers in one Frame
 
         
-        if (other.tag == "Car")
+        if (other.transform.parent.tag == "Car")
         {
             Debug.Log("WayPointTrigger");
             myManager.UpdateWayPoints();
