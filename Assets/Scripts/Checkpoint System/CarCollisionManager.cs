@@ -21,6 +21,10 @@ public class CarCollisionManager : MonoBehaviour
     private float oilConstant;
     bool isColliding; //used to prevent multiple Triggers in one Frame
 
+    [Header("Toggle to enable semirandom Oilstain Spinning rotation")]
+    [SerializeField] bool unevenSpins = false;
+    bool coroutineRunning = false;
+
     void Awake()
     {
 
@@ -76,7 +80,7 @@ public class CarCollisionManager : MonoBehaviour
             //make oil stain the cars parent
             transform.parent = other.transform;
         }*/
-        else if(other.tag == "oil stain")
+        else if(other.tag == "oil stain" && coroutineRunning == false)
         {
             oilConstant = Random.Range(-10.0f, 10.0f);
             if (oilConstant < 5 && oilConstant >= 0)
@@ -114,8 +118,14 @@ public class CarCollisionManager : MonoBehaviour
         }
     }
 
-    private IEnumerator spinCar(int spins)
+    private IEnumerator spinCar(float spins)
     {
+        coroutineRunning = true;
+        if(unevenSpins)
+        {
+            float randomModifier = Random.Range(0.5f, 1.9f);
+            spins += randomModifier;
+        }
         float maxSpinAngle = spins * 360;
         float alreadySpun = 0;
         //Quaternion alreadySpun;
@@ -126,6 +136,7 @@ public class CarCollisionManager : MonoBehaviour
             alreadySpun += slowSpin;
             yield return null;
         }
+        coroutineRunning = false;
         yield break;
     }
 
