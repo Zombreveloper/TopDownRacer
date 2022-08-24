@@ -12,6 +12,8 @@ public class ObstacleAreaGenerator : MonoBehaviour
 	//variables
 	private Queue<GameObject> obstacleMapPool = new Queue<GameObject>();
 	[SerializeField] int maxObstacleMaps = 4;
+	[SerializeField] int waitBuildingObstacles = 1; //amount of checkpoints that must be passed before obstacles are set
+	int delayIndex = -1;
 
 	//referenced classes
 	private RandomObstacleSpawner obstacleSpawner;
@@ -38,13 +40,19 @@ public class ObstacleAreaGenerator : MonoBehaviour
 
 	public void makeRandomObstacles(Tilemap _streetMap, TrackBuildMarker _buildMarker, string direction) //TODO: function name only for experimental purposes
 	{
+		if (delayIndex < waitBuildingObstacles)
+        {
+			delayIndex++;
+			return;
+        }
+
 		Tilemap map = setObstacleMap(_streetMap, _buildMarker, direction);
 		
 		List<Vector3Int> possiblePlaces = makePlacementArray(map);
 		foreach (Vector3Int validLocation in possiblePlaces)
 		{
 			int randomNumber = Random.Range(0, 15);
-			if(randomNumber == 1)
+			if(randomNumber == 0)
             {
 				GameObject randomObstacle = obstacleSpawner.chooseRandomObject();
 				//GameObject randomObstacle = placeholderObs;

@@ -10354,6 +10354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxObstacleMaps: 4
+  waitBuildingObstacles: 1
   straightObstacleMap: {fileID: 4431709710267377626, guid: 333808cdafbfa4545acfd9006fba644e, type: 3}
   leftObstacleMap: {fileID: 2321878068809521216, guid: 46f3b506150c32c4784e716dc1f996d1, type: 3}
   rightObstacleMap: {fileID: 7343566454965107840, guid: cace80e67bfd5e948aa012681de56f9a, type: 3}
@@ -10472,7 +10473,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163696551}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a50fbda54e675d04a9db85fc51d4d37b, type: 3}
   m_Name: 
