@@ -89,7 +89,7 @@ public class CarCollisionManager : MonoBehaviour
                 oilConstant -= 5;
                 //Debug.Log("oil Constant: " + oilConstant);
             }
-
+            StartCoroutine(spinCar());
             //carController.adjustRotationAngle(150.0f);
         }
         else if(other.tag == "bumper")
@@ -114,14 +114,28 @@ public class CarCollisionManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private IEnumerator spinCar()
+    {
+        float alreadySpun = 0;
+        //Quaternion alreadySpun;
+        while (alreadySpun < 360 && alreadySpun > -360)
+        {
+            float slowSpin = oilConstant / 2;
+            carController.adjustRotationAngle(slowSpin);
+            alreadySpun += slowSpin;
+            yield return null;
+        }
+        yield break;
+    }
+
+    /*private void OnTriggerStay2D(Collider2D other)
     {
         if(other.tag == "oil stain")
         {
             carController.adjustRotationAngle(oilConstant);
             //carController.adjustRotationAngle(150.0f);
         }
-    }
+    }*/
 
     private void OnTriggerExit2D(Collider2D other)
     {
