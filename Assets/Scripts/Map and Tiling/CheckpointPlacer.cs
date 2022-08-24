@@ -71,7 +71,7 @@ public class CheckpointPlacer : MonoBehaviour
     }
 
     //public methods
-    public void destroyCheckpoint() //gets called my Checkpoint Script OnTriggerEnter
+    public void destroyCheckpoint() //gets called by Checkpoint Script OnTriggerEnter
     {
         Destroy(checkpointPool.Dequeue());
         Debug.Log("destroyCheckpoint gets called");

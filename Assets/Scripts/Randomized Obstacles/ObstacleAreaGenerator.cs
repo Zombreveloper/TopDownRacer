@@ -10,9 +10,10 @@ using UnityEngine.Tilemaps;
 public class ObstacleAreaGenerator : MonoBehaviour
 {
 	//variables
+	private Queue<GameObject> obstacleMapPool = new Queue<GameObject>();
+	[SerializeField] int maxObstacleMaps = 4;
 
 	//referenced classes
-	//TrackBuildMarker buildMarker;
 	private RandomObstacleSpawner obstacleSpawner;
 
 	//used GameObjects
@@ -24,9 +25,9 @@ public class ObstacleAreaGenerator : MonoBehaviour
 	[SerializeField] private GameObject placeholderObs;
 
 	// Start is called before the first frame update
-	void Start()
+	void Awake()
     {
-		
+		obstacleSpawner = FindObjectOfType<RandomObstacleSpawner>();
     }
 
     // Update is called once per frame
@@ -37,25 +38,34 @@ public class ObstacleAreaGenerator : MonoBehaviour
 
 	public void makeRandomObstacles(Tilemap _streetMap, TrackBuildMarker _buildMarker, string direction) //TODO: function name only for experimental purposes
 	{
-		GameObject currentObstacleMap = selectObstacleMap(direction);
-
-		GameObject mapClone = Instantiate(currentObstacleMap, _streetMap.GetCellCenterWorld(_buildMarker.GetMarkerPos()), pointerRotation(_buildMarker), GameObject.FindGameObjectWithTag("TilemapGrid").transform);
-		//rotateMap(mapClone, _buildMarker);
-		Tilemap _map = mapClone.GetComponentInChildren<Tilemap>();
-		_map.CompressBounds();
-
-		List<Vector3Int> possiblePlaces = makePlacementArray(_map);
+		Tilemap map = setObstacleMap(_streetMap, _buildMarker, direction);
+		
+		List<Vector3Int> possiblePlaces = makePlacementArray(map);
 		foreach (Vector3Int validLocation in possiblePlaces)
 		{
 			int randomNumber = Random.Range(0, 15);
 			if(randomNumber == 1)
-			Instantiate(placeholderObs, _map.GetCellCenterWorld(validLocation), Quaternion.identity, mapClone.transform);
-
+            {
+				GameObject randomObstacle = obstacleSpawner.chooseRandomObject();
+				//GameObject randomObstacle = placeholderObs;
+				Instantiate(randomObstacle, map.GetCellCenterWorld(validLocation), Quaternion.identity, map.transform.parent.transform);
+			}		
 		}
 
-		//rudimentary obstacle placement here!
-		//RandomObstacleSpawner obstacleSpawner = FindObjectOfType<RandomObstacleSpawner>();
-		//obstacleSpawner.spawnObjects();
+		checkDestroyObstacles();		
+	}
+
+	Tilemap setObstacleMap(Tilemap _street, TrackBuildMarker _buildMarker, string _direction)
+    {
+		GameObject currentObstacleMap = selectObstacleMap(_direction);
+
+		GameObject mapClone = Instantiate(currentObstacleMap, _street.GetCellCenterWorld(_buildMarker.GetMarkerPos()), pointerRotation(_buildMarker), GameObject.FindGameObjectWithTag("TilemapGrid").transform);
+		obstacleMapPool.Enqueue(mapClone);
+		//rotateMap(mapClone, _buildMarker);
+		Tilemap _map = mapClone.GetComponentInChildren<Tilemap>();
+		_map.CompressBounds();
+
+		return _map;
 	}
 
 	Quaternion pointerRotation(TrackBuildMarker buildMarker)
@@ -75,7 +85,7 @@ public class ObstacleAreaGenerator : MonoBehaviour
 	List<Vector3Int> makePlacementArray(Tilemap map)
 	{
 		List<Vector3Int> validTiles = new List<Vector3Int>();
-		//Tilemap _map = map.GetComponent<Tilemap>(); //maybe for overloading when giving a GameObject
+		//Tilemap _map = map.GetComponent<Tilemap>(); //maybe for overloading when given a GameObject instead of tilemap
 
 		BoundsInt mapBounds = map.cellBounds;
 
@@ -105,6 +115,14 @@ public class ObstacleAreaGenerator : MonoBehaviour
 		else
 			return rightObstacleMap; //.GetComponent<Tilemap>();
     }
+
+	void checkDestroyObstacles()
+    {
+		if (obstacleMapPool.Count > maxObstacleMaps)
+		{
+			Destroy(obstacleMapPool.Dequeue());
+		}
+	}
 
 
 }

@@ -16,7 +16,7 @@ public class RandomObstacleSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnObjects();
+        //spawnObjects();
     }
 
     // Update is called once per frame
@@ -46,5 +46,20 @@ public class RandomObstacleSpawner : MonoBehaviour
 
             Instantiate(toSpawn, pos, toSpawn.transform.rotation);
         }
+    }
+
+    public GameObject chooseRandomObject()
+    {
+        GameObject toSpawn;
+
+        int randomItem = Random.Range(0, spawnPool.Count);
+        toSpawn = spawnPool[randomItem];
+
+        for (int i = 0; i < spawnPool.Count; i++)
+        {
+            Debug.Log("List Index " + i + " carries the GameObject " + spawnPool[i]);
+        }
+
+        return toSpawn;
     }
 }
