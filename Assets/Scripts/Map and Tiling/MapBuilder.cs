@@ -32,11 +32,8 @@ public class MapBuilder : MonoBehaviour
 	private CheckpointPlacer checkpointPlacer;
 	private ObstacleAreaGenerator obstacleArea;
 
-	//Random Obstacle Spawning - some variables and classes will be moved in the future!
+	//Random Obstacle Spawning
 	private RandomObstacleSpawner obstacleSpawner;
-	[Header("Obstacle Patterns")]
-	[SerializeField] private GameObject currentObstacleMap;
-	[SerializeField] private GameObject placeholderObs;
 
 
 	// Start is called before the first frame update
@@ -239,45 +236,7 @@ public class MapBuilder : MonoBehaviour
 
 
 	//these two funcions are rebuilt in ObstacleAreaGenerator Class!
-	void makeRandomObstacles() //TODO: function name only for experimental purposes
-    {
-		GameObject obstacleMapClone = Instantiate(currentObstacleMap, currentTilemap.CellToWorld(buildMarker.GetMarkerPos()), Quaternion.identity, GameObject.FindGameObjectWithTag("TilemapGrid").transform);
-		Tilemap _map = obstacleMapClone.GetComponent<Tilemap>();
-		//obstacleMapClone.transform.parent
 
-		List<Vector3Int> possiblePlaces = makePlacementArray(obstacleMapClone);
-		foreach (Vector3Int validLocation in possiblePlaces)
-        {
-			Instantiate(placeholderObs, _map.GetCellCenterWorld(validLocation), Quaternion.identity, _map.transform);
-
-		}
-
-		//rudimentary obstacle placement here!
-		//RandomObstacleSpawner obstacleSpawner = FindObjectOfType<RandomObstacleSpawner>();
-		//obstacleSpawner.spawnObjects();
-	}
-
-	List<Vector3Int> makePlacementArray(GameObject map)
-    {
-		List<Vector3Int> validTiles = new List<Vector3Int>();
-		Tilemap _map = map.GetComponent<Tilemap>();
-
-		for(int i = -10; i < 20; i++) //numbers need to be bigger for curves. maybe get Tilemapsize by bounds? Y-Axis
-        {
-			for(int j = -10; j < 10; j++) //X-Axis
-            {
-				Vector3Int searchPos = new Vector3Int(j,i);
-				if (_map.HasTile(searchPos))
-                {
-					//Instantiate(placeholderObs, _map.GetCellCenterWorld(searchPos), Quaternion.identity, _map.transform);
-					//Debug.Log("There is a Tile on " + searchPos);
-					validTiles.Add(searchPos);
-                }
-            }
-        }
-		Debug.Log("There are currently " + validTiles.Count + "possible places to spawn obstacles");
-		return validTiles;
-    }
 
 	//getters and setters 
 	// (none currently)

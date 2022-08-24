@@ -256,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   driftFactor: 0.95
   accelerationFactor: 10
-  turnFactor: 3.5
+  turnFactor: 2
   steerRejectFactor: 8
   maxSpeed: 30
   startBoost: 5
