@@ -55,10 +55,10 @@ public class RandomObstacleSpawner : MonoBehaviour
         int randomItem = Random.Range(0, spawnPool.Count);
         toSpawn = spawnPool[randomItem];
 
-        for (int i = 0; i < spawnPool.Count; i++)
+        /*for (int i = 0; i < spawnPool.Count; i++)
         {
             Debug.Log("List Index " + i + " carries the GameObject " + spawnPool[i]);
-        }
+        }*/
 
         return toSpawn;
     }

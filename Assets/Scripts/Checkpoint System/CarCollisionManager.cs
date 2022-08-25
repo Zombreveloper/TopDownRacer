@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using System; includes the EventSystem
 
 /*
 detects every collision it does
@@ -11,6 +12,9 @@ necessairy for
 
 public class CarCollisionManager : MonoBehaviour
 {
+    //listeners
+    //public static event Action OnOilstain;
+
     //referenced Classes
     PlacementManager placementManager;
     TopDownCarController carController;
@@ -19,10 +23,8 @@ public class CarCollisionManager : MonoBehaviour
     //variables
     string myName;
     private float oilConstant;
-    bool isColliding; //used to prevent multiple Triggers in one Frame
+    //bool isColliding; //used to prevent multiple Triggers in one Frame
 
-    [Header("Toggle to enable semirandom Oilstain Spinning rotation")]
-    [SerializeField] bool unevenSpins = false;
     bool coroutineRunning = false;
 
     void Awake()
@@ -37,12 +39,14 @@ public class CarCollisionManager : MonoBehaviour
         placementManager = GameObject.Find("/PlacementManager").GetComponent<PlacementManager>();
         carController = GetComponent<TopDownCarController>();
         myPlayer = GetComponent<LassesTestInputHandler>().myDriver;
+
+        //OilStainScript.OnTestEvent += doEventThing; //Remnant of the Event System
     }
 
     // Update is called once per frame
     void Update()
     {
-        isColliding = false; //used to prevent multiple Triggers in one Frame
+        //isColliding = false; //used to prevent multiple Triggers in one Frame
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -80,22 +84,6 @@ public class CarCollisionManager : MonoBehaviour
             //make oil stain the cars parent
             transform.parent = other.transform;
         }*/
-        else if(other.tag == "oil stain" && coroutineRunning == false)
-        {
-            oilConstant = Random.Range(-10.0f, 10.0f);
-            if (oilConstant < 5 && oilConstant >= 0)
-            {
-                oilConstant += 5;
-                //Debug.Log("oil Constant: " + oilConstant);
-            }
-            else if (oilConstant <= 0 && oilConstant > -5)
-            {
-                oilConstant -= 5;
-                //Debug.Log("oil Constant: " + oilConstant);
-            }
-            StartCoroutine(spinCar(1));
-            //carController.adjustRotationAngle(150.0f);
-        }
         else if(other.tag == "bumper")
         {
             //Debug.Log("health");
@@ -118,13 +106,33 @@ public class CarCollisionManager : MonoBehaviour
         }
     }
 
-    private IEnumerator spinCar(float spins)
+    public void OilStainBehavior(int spinAmount, bool _unevenSpins)
+    {
+        if (coroutineRunning == false)
+        {
+            oilConstant = Random.Range(5.0f, 10.0f);
+            int spinOtherDirection = Random.Range(0, 2); //upper value is exclusive!
+            if (spinOtherDirection == 1) 
+                oilConstant = -oilConstant;
+
+            StartCoroutine(spinCar(spinAmount, _unevenSpins));
+            //carController.adjustRotationAngle(150.0f);
+        }
+    }
+
+    public void BoostPadBehavior(Vector2 _force, float duration)
+    {
+        //carController.addAdditionalVelocity(_force, duration);
+        StartCoroutine(carController.additionalVelocityForSeconds(_force, duration));
+    }
+
+    private IEnumerator spinCar(float spins, bool _unevenSpins = false) //possibly better placed directly inside CarController
     {
         coroutineRunning = true;
-        if(unevenSpins)
+        if(_unevenSpins)
         {
-            float randomModifier = Random.Range(0.5f, 1.9f);
-            spins += randomModifier;
+            float randomModifier = Random.Range(0.5f, 1.0f);
+            spins *= randomModifier;
         }
         float maxSpinAngle = spins * 360;
         float alreadySpun = 0;
@@ -140,14 +148,6 @@ public class CarCollisionManager : MonoBehaviour
         yield break;
     }
 
-    /*private void OnTriggerStay2D(Collider2D other)
-    {
-        if(other.tag == "oil stain")
-        {
-            carController.adjustRotationAngle(oilConstant);
-            //carController.adjustRotationAngle(150.0f);
-        }
-    }*/
 
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -166,5 +166,11 @@ public class CarCollisionManager : MonoBehaviour
     public void callFirstOne()
     {
         placementManager.FirstOne(myName);
+    }
+
+    private void doEventThing()
+    {
+        transform.position = new Vector3(2, 2, 0);
+        Debug.Log("This Event gets called");
     }
 }

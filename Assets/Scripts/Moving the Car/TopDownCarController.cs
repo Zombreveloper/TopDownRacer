@@ -139,4 +139,25 @@ public class TopDownCarController : MonoBehaviour
         rotationAngle += difference;
         //Debug.Log("Rotatoin Angle adjusted");
     }
+
+    public void addAdditionalVelocity(Vector2 forwardForce, float _duration)
+    {
+        //carRigidbody2D.AddForce(transform.up * forwardForce, ForceMode2D.Force);
+        StartCoroutine(additionalVelocityForSeconds(forwardForce, _duration));
+    }
+
+    public IEnumerator additionalVelocityForSeconds(Vector2 _forwardForce, float countDown)
+    {
+        countDown = 1f;
+        for (int i = 0; i < 10000; i++)
+        {
+            while (countDown >= 0)
+            {
+                carRigidbody2D.AddForce(transform.up * _forwardForce, ForceMode2D.Force);
+                Debug.Log(i++);
+                countDown -= Time.smoothDeltaTime;
+                yield return null;
+            }
+        }
+    }
 }
