@@ -3196,7 +3196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mytext: {fileID: 1234434281}
   i: 0
-  instantStart: 0
+  instantStart: 1
 --- !u!4 &262771508
 Transform:
   m_ObjectHideFlags: 0

@@ -45,7 +45,10 @@ public class TopDownCarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetMouseButtonDown(1))
+        {
+            StartCoroutine(makeSlipperyForSeconds(10));
+        }
     }
 
     //Frame-Rate independent for physics calculation
@@ -148,7 +151,6 @@ public class TopDownCarController : MonoBehaviour
 
     public IEnumerator additionalVelocityForSeconds(Vector2 _forwardForce, float countDown)
     {
-        countDown = 1f;
         for (int i = 0; i < 10000; i++)
         {
             while (countDown >= 0)
@@ -159,5 +161,24 @@ public class TopDownCarController : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    //Test for real OilStain Effect
+    //TODO: prevent Coroutine from being run more than one time at a time per car
+    public IEnumerator makeSlipperyForSeconds(float countDown)
+    {
+        float slippyness = 0.04f;
+        driftFactor += slippyness;
+
+        for (int i = 0; i < 10000; i++)
+        {
+            while (countDown >= 0)
+            {                
+                Debug.Log(i++);
+                countDown -= Time.smoothDeltaTime;
+                yield return null;
+            }
+        }
+        driftFactor -= slippyness;
     }
 }
