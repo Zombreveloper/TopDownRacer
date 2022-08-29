@@ -26,6 +26,7 @@ public class TopDownCarController : MonoBehaviour
     //flags for coroutines
     bool slipperyCRRunning = false;
     bool boostCRRunning = false;
+    bool autoRotateCRRunning = false;
 
 	private MapManager mapManager;
 
@@ -150,9 +151,25 @@ public class TopDownCarController : MonoBehaviour
         //Debug.Log("Rotatoin Angle adjusted");
     }
 
+    public void autoRotateCar(int spinAmount, bool _unevenSpins)
+    {
+        if (autoRotateCRRunning == false)
+        {
+           
+            StartCoroutine(spinCarFromOutside(spinAmount, _unevenSpins));
+        }
+    }
+
     public void addAdditionalVelocity(Vector2 forwardForce, float _duration)
     {
-        StartCoroutine(additionalVelocityForSeconds(forwardForce, _duration));
+        if (boostCRRunning)
+        {
+            StopCoroutine(additionalVelocityForSeconds(forwardForce, _duration));
+            StartCoroutine(additionalVelocityForSeconds(forwardForce, _duration));
+        }
+        else
+            StartCoroutine(additionalVelocityForSeconds(forwardForce, _duration));
+
     }
 
     public void changeDriftFactor(float tempDriftFactor, float duration)
@@ -166,8 +183,9 @@ public class TopDownCarController : MonoBehaviour
     }
 
 
-    public IEnumerator additionalVelocityForSeconds(Vector2 _forwardForce, float timeSeconds)
+    private IEnumerator additionalVelocityForSeconds(Vector2 _forwardForce, float timeSeconds)
     {
+        boostCRRunning = true;
         for (int i = 0; i < 10000; i++)
         {
             while (timeSeconds >= 0)
@@ -178,11 +196,35 @@ public class TopDownCarController : MonoBehaviour
                 yield return null;
             }
         }
+        boostCRRunning = false;
     }
 
-    //Test for real OilStain Effect
-    //TODO: prevent Coroutine from being run more than one time at a time per car
-    public IEnumerator makeSlipperyForSeconds(float newDriftFactor, float timeSeconds)
+    private IEnumerator spinCarFromOutside(float spins, bool _unevenSpins)
+    {
+        float oilConstant = Random.Range(5.0f, 10.0f);
+        int spinOtherDirection = Random.Range(0, 2); //upper value is exclusive!
+        if (spinOtherDirection == 1)
+            oilConstant = -oilConstant;
+
+        autoRotateCRRunning = true;
+        if (_unevenSpins)
+        {
+            float randomModifier = Random.Range(0.5f, 1.0f);
+            spins *= randomModifier;
+        }
+        float maxSpinAngle = spins * 360;
+        float alreadySpun = 0;
+        while (alreadySpun < maxSpinAngle && alreadySpun > -maxSpinAngle)
+        {
+            float slowSpin = oilConstant / 2;
+            adjustRotationAngle(slowSpin);
+            alreadySpun += slowSpin;
+            yield return null;
+        }
+        autoRotateCRRunning = false;
+        yield break;
+    }
+    private IEnumerator makeSlipperyForSeconds(float newDriftFactor, float timeSeconds)
     {
         slipperyCRRunning = true;
         float oldDriftFactor = driftFactor;
@@ -201,26 +243,7 @@ public class TopDownCarController : MonoBehaviour
         slipperyCRRunning = false;
     }
 
-    public IEnumerator OldmakeSlipperyForSeconds(float timeSeconds)
-    {
-        slipperyCRRunning = true;
-        float slippyness = 0.04f;
-        driftFactor += slippyness;
-
-        for (int i = 0; i < 10000; i++)
-        {
-            while (timeSeconds >= 0)
-            {
-                //Debug.Log(i++);
-                timeSeconds -= Time.smoothDeltaTime;
-                yield return null;
-            }
-        }
-        driftFactor -= slippyness;
-        slipperyCRRunning = false;
-    }
-
-    public IEnumerator countdownInSeconds(float timeSeconds)
+    private IEnumerator countdownInSeconds(float timeSeconds)
     {
         for (int i = 0; i < 10000; i++)
         {

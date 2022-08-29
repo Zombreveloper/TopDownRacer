@@ -25,7 +25,6 @@ public class CarCollisionManager : MonoBehaviour
     private float oilConstant;
     //bool isColliding; //used to prevent multiple Triggers in one Frame
 
-    bool coroutineRunning = false;
 
     void Awake()
     {
@@ -106,52 +105,20 @@ public class CarCollisionManager : MonoBehaviour
         }
     }
 
-    public void OilStainBehavior(int spinAmount, bool _unevenSpins)
+    public void OilStainBehavior(int spinAmount, bool unevenSpins)
     {
-        if (coroutineRunning == false)
-        {
-            oilConstant = Random.Range(5.0f, 10.0f);
-            int spinOtherDirection = Random.Range(0, 2); //upper value is exclusive!
-            if (spinOtherDirection == 1) 
-                oilConstant = -oilConstant;
-
-            StartCoroutine(spinCar(spinAmount, _unevenSpins));
-            //carController.adjustRotationAngle(150.0f);
-        }
+        carController.autoRotateCar(spinAmount, unevenSpins);
     }
 
     public void BoostPadBehavior(Vector2 _force, float duration)
     {
-        //carController.addAdditionalVelocity(_force, duration);
-        StartCoroutine(carController.additionalVelocityForSeconds(_force, duration));
+        carController.addAdditionalVelocity(_force, duration);
     }
 
     public void slippySurfaceBehavior(float targetDriftFactor, float duration)
     {
         carController.changeDriftFactor(targetDriftFactor, duration);
     }
-
-    private IEnumerator spinCar(float spins, bool _unevenSpins = false) //possibly better placed directly inside CarController
-    {
-        coroutineRunning = true;
-        if(_unevenSpins)
-        {
-            float randomModifier = Random.Range(0.5f, 1.0f);
-            spins *= randomModifier;
-        }
-        float maxSpinAngle = spins * 360;
-        float alreadySpun = 0;
-        while (alreadySpun < maxSpinAngle && alreadySpun > -maxSpinAngle)
-        {
-            float slowSpin = oilConstant / 2;
-            carController.adjustRotationAngle(slowSpin);
-            alreadySpun += slowSpin;
-            yield return null;
-        }
-        coroutineRunning = false;
-        yield break;
-    }
-
 
     private void OnTriggerExit2D(Collider2D other)
     {
