@@ -7,6 +7,7 @@ public class ArenaRaceManagerScript : MonoBehaviour
 {
     //referenced classes
     public WinnerSO saveWinner;
+    public GameMode_SO gameMode;
 
     //referenced GameObject
     public List<GameObject> allWayPoints = new List<GameObject>();
@@ -48,7 +49,10 @@ public class ArenaRaceManagerScript : MonoBehaviour
         }
         */
 
-        ActivateArrow();
+        if (gameMode.gameMode == "ArenaRace")
+        {
+            ActivateArrow();
+        }
     }
 
     void ActivateArrow()

@@ -76,55 +76,6 @@ public class ArrowToPylonScript : MonoBehaviour
     void UpdatePosition()
     {
         //arrow in screen center
-        //transform.position = camCenterPos;
-
-        //arrow near screen edge
-        //vector-position = between camCenterPos and pylonPos, but x and y are never greater than camera.pixelHeigt or pixelWidth /2
-
-        Vector3 v1 = Intersection(camCenterPos, pylonPos, topLeftCamCorner, topRightCamCorner);
-        Vector3 v2 = Intersection(camCenterPos, pylonPos, topRightCamCorner, botRightCamCorner);
-        Vector3 v3 = Intersection(camCenterPos, pylonPos, botRightCamCorner, botLeftCamCorner);
-        Vector3 v4 = Intersection(camCenterPos, pylonPos, botLeftCamCorner, topLeftCamCorner);
-
-        List<Vector3> possibleVectors = new List<Vector3>();
-        possibleVectors.Add(v1);
-        possibleVectors.Add(v2);
-        possibleVectors.Add(v3);
-        possibleVectors.Add(v4);
-
-        foreach ( Vector3 vector in possibleVectors)
-        {
-            if (vector.x > 0.005f || vector.x < -0.005f && vector.y > 0.005f || vector.y < -0.005f)
-            {
-                pylonDir = vector;
-            }
-        }
-
-        transform.position = Vector3.Lerp(camCenterPos, pylonDir, 0.8f);
-    }
-
-    Vector3 Intersection(Vector3 camCenter, Vector3 pylon, Vector3 camCorner1, Vector3 camCorner2)
-    {
-        //Wikipedia Article with equation
-        //Line - Line Intersection Given Two Points On Each Line
-        //https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
-
-        //Line 1
-        float x1 = camCenter.x;
-        float y1 = camCenter.y;
-        float x2 = pylon.x;
-        float y2 = pylon.y;
-        //Line 2
-        float x3 = camCorner1.x;
-        float y3 = camCorner1.y;
-        float x4 = camCorner2.x;
-        float y4 = camCorner2.y;
-
-        float pointX = (((x1*y2 - y1*x2) * (x3 - x4) - (x1 - x2) * (x3*y4 - y3*x4))/((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)));
-        float pointY = (((x1*y2 - y1*x2) * (y3 - y4) - (y1 - y2) * (x3*y4 - y3*x4))/((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)));
-
-        Vector3 IntersectionResult = new Vector3(pointX, pointY, 0.0f);
-
-        return IntersectionResult;
+        transform.position = camCenterPos;
     }
 }
