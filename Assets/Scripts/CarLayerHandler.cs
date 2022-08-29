@@ -12,6 +12,7 @@ public class CarLayerHandler : MonoBehaviour
     public SpriteRenderer carOutlineSpriteRenderer;
     public SpriteRenderer carNormalSpriteRenderer;
     public SpriteRenderer bumperRenderer;
+    public TrailRenderer oilTrailRenderer;
 
     List<SpriteRenderer> defaultLayerSpriteRenderers = new List<SpriteRenderer>();
 
@@ -112,6 +113,11 @@ public class CarLayerHandler : MonoBehaviour
         {
             spriteRenderer.sortingLayerName = layerName;
         }
+    }
+
+    public bool IsDrivingOnOverpass()
+    {
+        return isDrivingOnOverpass;
     }
 
     void OnTriggerEnter2D(Collider2D collider2d)
