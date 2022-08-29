@@ -25,13 +25,13 @@ public class OilStainScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+       /* if (Input.GetMouseButtonDown(1))
         {
                 //OnTestEvent?.Invoke(); //Remnant of the Event System
                 //Debug.Log("Event invoked");
             
                 
-        }
+        }*/
     }
 
 

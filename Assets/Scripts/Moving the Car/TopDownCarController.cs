@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Timer Coroutines taken from: https://answers.unity.com/questions/1040630/do-something-for-10-sec.html
+ */
+
 public class TopDownCarController : MonoBehaviour
 {
     [Header("Car Settings")]
@@ -15,12 +18,14 @@ public class TopDownCarController : MonoBehaviour
     //local variables
     float accelerationInput = 0;
     float steeringInput = 0;
-
     float rotationAngle = 0;
-
     float velocityVsUp = 27;
 
     Vector2 carPullVector;
+
+    //flags for coroutines
+    bool slipperyCRRunning = false;
+    bool boostCRRunning = false;
 
 	private MapManager mapManager;
 
@@ -47,7 +52,7 @@ public class TopDownCarController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            StartCoroutine(makeSlipperyForSeconds(10));
+            StartCoroutine(makeSlipperyForSeconds(0.99f, 10));
         }
     }
 
@@ -136,6 +141,8 @@ public class TopDownCarController : MonoBehaviour
         //Debug.Log("The Car is currently pulled to direction:" + pullVector); //Prints the Value of the Pullback Vector to Console
     }
 
+    //acessed by CarCollisionManager through Obstacle scripts
+
     public void adjustRotationAngle(float difference)
     {
         //rotationAngle += difference*Time.deltaTime;
@@ -145,19 +152,29 @@ public class TopDownCarController : MonoBehaviour
 
     public void addAdditionalVelocity(Vector2 forwardForce, float _duration)
     {
-        //carRigidbody2D.AddForce(transform.up * forwardForce, ForceMode2D.Force);
         StartCoroutine(additionalVelocityForSeconds(forwardForce, _duration));
     }
 
-    public IEnumerator additionalVelocityForSeconds(Vector2 _forwardForce, float countDown)
+    public void changeDriftFactor(float tempDriftFactor, float duration)
+    {
+        if (slipperyCRRunning == false)
+        {
+            StartCoroutine(makeSlipperyForSeconds(tempDriftFactor, duration));
+        }
+        else
+            Debug.Log("Cars already slipping");
+    }
+
+
+    public IEnumerator additionalVelocityForSeconds(Vector2 _forwardForce, float timeSeconds)
     {
         for (int i = 0; i < 10000; i++)
         {
-            while (countDown >= 0)
+            while (timeSeconds >= 0)
             {
                 carRigidbody2D.AddForce(transform.up * _forwardForce, ForceMode2D.Force);
-                Debug.Log(i++);
-                countDown -= Time.smoothDeltaTime;
+               // Debug.Log(i++);
+                timeSeconds -= Time.smoothDeltaTime;
                 yield return null;
             }
         }
@@ -165,20 +182,60 @@ public class TopDownCarController : MonoBehaviour
 
     //Test for real OilStain Effect
     //TODO: prevent Coroutine from being run more than one time at a time per car
-    public IEnumerator makeSlipperyForSeconds(float countDown)
+    public IEnumerator makeSlipperyForSeconds(float newDriftFactor, float timeSeconds)
     {
+        slipperyCRRunning = true;
+        float oldDriftFactor = driftFactor;
+        driftFactor = newDriftFactor;
+
+        for (int i = 0; i < 10000; i++)
+        {
+            while (timeSeconds >= 0)
+            {                
+               // Debug.Log(i++);
+                timeSeconds -= Time.smoothDeltaTime;
+                yield return null;
+            }
+        }
+        driftFactor = oldDriftFactor;
+        slipperyCRRunning = false;
+    }
+
+    public IEnumerator OldmakeSlipperyForSeconds(float timeSeconds)
+    {
+        slipperyCRRunning = true;
         float slippyness = 0.04f;
         driftFactor += slippyness;
 
         for (int i = 0; i < 10000; i++)
         {
-            while (countDown >= 0)
-            {                
-                Debug.Log(i++);
-                countDown -= Time.smoothDeltaTime;
+            while (timeSeconds >= 0)
+            {
+                //Debug.Log(i++);
+                timeSeconds -= Time.smoothDeltaTime;
                 yield return null;
             }
         }
         driftFactor -= slippyness;
+        slipperyCRRunning = false;
+    }
+
+    public IEnumerator countdownInSeconds(float timeSeconds)
+    {
+        for (int i = 0; i < 10000; i++)
+        {
+            while (timeSeconds >= 0)
+            {
+                //Debug.Log(i++);
+                timeSeconds -= Time.smoothDeltaTime;
+                yield return null;
+            }
+        }
+    }
+
+    //getter and setter
+    public bool getSlipperyStatus()
+    {
+        return slipperyCRRunning;
     }
 }

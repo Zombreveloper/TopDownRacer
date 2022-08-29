@@ -126,6 +126,11 @@ public class CarCollisionManager : MonoBehaviour
         StartCoroutine(carController.additionalVelocityForSeconds(_force, duration));
     }
 
+    public void slippySurfaceBehavior(float targetDriftFactor, float duration)
+    {
+        carController.changeDriftFactor(targetDriftFactor, duration);
+    }
+
     private IEnumerator spinCar(float spins, bool _unevenSpins = false) //possibly better placed directly inside CarController
     {
         coroutineRunning = true;
@@ -136,7 +141,6 @@ public class CarCollisionManager : MonoBehaviour
         }
         float maxSpinAngle = spins * 360;
         float alreadySpun = 0;
-        //Quaternion alreadySpun;
         while (alreadySpun < maxSpinAngle && alreadySpun > -maxSpinAngle)
         {
             float slowSpin = oilConstant / 2;

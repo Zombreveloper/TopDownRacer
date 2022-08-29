@@ -23,7 +23,7 @@ TagManager:
   - UI
   - ObjectOnOverpass
   - ObjectOnUnderpass
-  - 
+  - Skidmarks
   - 
   - 
   - 
@@ -56,4 +56,7 @@ TagManager:
     locked: 0
   - name: above track
     uniqueID: 376131307
+    locked: 0
+  - name: Skidmarks
+    uniqueID: 2380574727
     locked: 0
