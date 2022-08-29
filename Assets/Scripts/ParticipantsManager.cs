@@ -49,7 +49,7 @@ public class ParticipantsManager : MonoBehaviour
         {
             foreach(PlayerProfile player in allMyParicipants.ReadyPlayersArray)
             {
-                
+
                 Vector2 spawnPosition = positionCar();
                 //spawn position
                 //float x = 10 * index;
@@ -82,9 +82,9 @@ public class ParticipantsManager : MonoBehaviour
             //currentLifeBar.transform.parent = _currentCar.transform;
 
             //Add a Bumper to car
-            currentBumper = Instantiate(bumperPrefab, _spawnPos, Quaternion.identity);
-            currentBumper.name = ("Bumper_Player" + index);
-            currentBumper.transform.parent = currentCar.transform;
+            //currentBumper = Instantiate(bumperPrefab, _spawnPos, Quaternion.identity);
+            //currentBumper.name = ("Bumper_Player" + index);
+            //currentBumper.transform.parent = currentCar.transform;
         }
         else if (gameMode.gameMode == "ArenaRace")
         {
@@ -98,7 +98,7 @@ public class ParticipantsManager : MonoBehaviour
 
     //positions participating cars on a formula1 like starting grid. Propably better off as an own class but whatever
     //TODO: add in the reference Points rotation if necessary
-    Vector2 positionCar() 
+    Vector2 positionCar()
     {
         int _lowIndex = index - 1; //to let Index start at 0. Important for Division
         Vector2 _referencePoint = Vector2.zero;

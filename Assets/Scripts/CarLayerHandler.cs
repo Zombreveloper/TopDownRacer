@@ -11,6 +11,7 @@ public class CarLayerHandler : MonoBehaviour
 {
     public SpriteRenderer carOutlineSpriteRenderer;
     public SpriteRenderer carNormalSpriteRenderer;
+    public SpriteRenderer bumperRenderer;
 
     List<SpriteRenderer> defaultLayerSpriteRenderers = new List<SpriteRenderer>();
 
@@ -18,6 +19,7 @@ public class CarLayerHandler : MonoBehaviour
     List<Collider2D> overpassColliderList = new List<Collider2D>();
 
     Collider2D carCollider;
+    Collider2D bumperCollider;
 
     bool isDrivingOnOverpass = true;
 
@@ -45,6 +47,9 @@ public class CarLayerHandler : MonoBehaviour
 
       //Default drive on underpass
       carCollider.gameObject.layer = LayerMask.NameToLayer("ObjectOnOverpass"); //in Projectsettings->Physics2D->Layer Collision Matrix->disable collision between Over- and Underpass Layer
+
+      bumperCollider = transform.Find("Bumper").GetComponentInChildren<Collider2D>();
+      bumperCollider.gameObject.layer = LayerMask.NameToLayer("ObjectOnOverpass");
     }
 
     // Start is called before the first frame update
@@ -67,6 +72,7 @@ public class CarLayerHandler : MonoBehaviour
 
             carOutlineSpriteRenderer.enabled = false;
             carNormalSpriteRenderer.maskInteraction = SpriteMaskInteraction.None;
+            bumperRenderer.maskInteraction = SpriteMaskInteraction.None;
         }
         else
         {
@@ -74,6 +80,7 @@ public class CarLayerHandler : MonoBehaviour
 
             carOutlineSpriteRenderer.enabled = true;
             carNormalSpriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+            bumperRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
         }
 
         SetCollisionWithOverpass();
@@ -115,6 +122,7 @@ public class CarLayerHandler : MonoBehaviour
             //Debug.Log("underpass");
             isDrivingOnOverpass = false;
             carCollider.gameObject.layer = LayerMask.NameToLayer("ObjectOnUnderpass"); //in Projectsettings->Physics2D->Layer Collision Matrix->disable collision between Over- and Underpass Layer
+            bumperCollider.gameObject.layer = LayerMask.NameToLayer("ObjectOnUnderpass");
             UpdateSortingAndCollisionLayers();
         }
         else if (collider2d.CompareTag("overpass"))
@@ -122,6 +130,7 @@ public class CarLayerHandler : MonoBehaviour
             //Debug.Log("overpass");
             isDrivingOnOverpass = true;
             carCollider.gameObject.layer = LayerMask.NameToLayer("ObjectOnOverpass"); //in Projectsettings->Physics2D->Layer Collision Matrix->disable collision between Over- and Underpass Layer
+            bumperCollider.gameObject.layer = LayerMask.NameToLayer("ObjectOnOverpass");
             UpdateSortingAndCollisionLayers();
         }
     }
