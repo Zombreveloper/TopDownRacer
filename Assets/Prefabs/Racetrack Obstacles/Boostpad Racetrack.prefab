@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostDurationSeconds: 1
-  boostStrength: 7
+  boostStrength: 5
 --- !u!1 &1549994558742319709
 GameObject:
   m_ObjectHideFlags: 0
