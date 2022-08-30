@@ -33,7 +33,7 @@ public class TrackBuildMarker : MonoBehaviour
     void Start()
     {
         //Debug.Log("Pointer starts at Position: " + pointerPos);
-        Instantiate(visibleMarker, pointerPos, Quaternion.identity);
+        //Instantiate(visibleMarker, pointerPos, Quaternion.identity);
     }
 
     private void Update()
