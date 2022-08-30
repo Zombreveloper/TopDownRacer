@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CarDestroyer : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class CarDestroyer : MonoBehaviour
     //referenced classes
     private ListOfActiveCars activeCars;
 
+    //Events
+    public static event Action<GameObject> OnOutOfScreenDestroy;
 
 
     // Start is called before the first frame update
@@ -21,11 +24,6 @@ public class CarDestroyer : MonoBehaviour
         //Transform parentsTransform = this.transform.parent;
         //thisCar = parentsTransform.gameObject; //use those if you want to grab a parent object
         activeCars = GameObject.Find("/ParticipantsManager").GetComponent<ListOfActiveCars>();
-
-       /* //for getting the Objects in the Scene by Tag ONLY USE IF GETTING BY ACTIVECARSLIST DOES NOT WORK
-        activeCarObjects = GameObject.FindGameObjectsWithTag("Car");
-        Debug.Log("This scene starts with " + activeCarObjects.Length + " Cars");
-       */
 
         //for getting Objects by the activeCarsList
         Debug.Log("This scene starts with " + activeCars.getCarsList().Count + " Cars");
@@ -42,6 +40,7 @@ public class CarDestroyer : MonoBehaviour
             {
 
                 StartCoroutine(ExecuteDestroy(car)); //deletes the car and updates activeCarsList one frame later
+                OnOutOfScreenDestroy?.Invoke(car);
             }
         }
         
