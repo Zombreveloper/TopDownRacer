@@ -17,6 +17,7 @@ public class CameraManager : MonoBehaviour
 	public ListOfActiveCars activeCars; //connect in hirachy
 	private PlacementManager placementManager;
 	private SmoothMovementCR lerpCR;
+	private CameraShaker camShake;
 
 	public List<Transform> targets;
 
@@ -51,6 +52,7 @@ public class CameraManager : MonoBehaviour
 		mainCamera = GetComponent<Camera>();
 		placementManager = GameObject.Find("/PlacementManager").GetComponent<PlacementManager>();
 		lerpCR = GetComponent<SmoothMovementCR>();
+		camShake = GetComponent<CameraShaker>();
 
 		makeTargetsList();
 
@@ -77,6 +79,8 @@ public class CameraManager : MonoBehaviour
 
 		move();
 		zoom();
+
+		camShake.startShake(.5f, 1f);
 	}
 
 	
