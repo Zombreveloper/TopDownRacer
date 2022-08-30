@@ -7,23 +7,35 @@ using UnityEngine;
 
 public class OutOfScreenDestroyEffects : MonoBehaviour
 {
+    private Camera mainCamera;
     public GameObject explosion;
+    private List<GameObject> explosions;
+
+    Vector3 explosionScreenPos;
 
     // Start is called before the first frame update
     void Start()
     {
+        explosions = new List<GameObject>();
+        mainCamera = GameObject.FindObjectOfType<Camera>();
+
         CarDestroyer.OnOutOfScreenDestroy += doEvent;
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        foreach (GameObject _explosion in explosions)
+        {
+            Debug.Log(explosionScreenPos);
+            _explosion.transform.position = explosionScreenPos + mainCamera.transform.position;
+        }
     }
 
     private void doEvent(GameObject destroyedCar)
     {
-        Instantiate(explosion, destroyedCar.transform.position, Quaternion.identity);
+        explosions.Add(Instantiate(explosion, destroyedCar.transform.position, Quaternion.identity));
+        explosionScreenPos = destroyedCar.transform.position - mainCamera.transform.position;
         Debug.Log("Car destroy Event played");
     }
 }

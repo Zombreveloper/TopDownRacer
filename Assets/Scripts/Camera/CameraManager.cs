@@ -40,6 +40,9 @@ public class CameraManager : MonoBehaviour
 	Vector3 center;
 	bool CRisRunning = false;
 
+	//flags
+	bool camShakeAllowed = false;
+
 
     private void Awake()
     {
@@ -53,6 +56,8 @@ public class CameraManager : MonoBehaviour
 		placementManager = GameObject.Find("/PlacementManager").GetComponent<PlacementManager>();
 		lerpCR = GetComponent<SmoothMovementCR>();
 		camShake = GetComponent<CameraShaker>();
+
+		CarDestroyer.OnOutOfScreenDestroy += allowCamShake;
 
 		makeTargetsList();
 
@@ -79,10 +84,19 @@ public class CameraManager : MonoBehaviour
 
 		move();
 		zoom();
-
-		camShake.startShake(.5f, 1f);
+		shake();
+		
 	}
 
+	void shake()
+    {
+		if (camShakeAllowed)
+		{
+			camShakeAllowed = false;
+			camShake.startShake(.5f, 1f);
+		}
+		transform.position += camShake.getShakeValue();
+	}
 	
 	void move()
 	{
@@ -235,7 +249,10 @@ public class CameraManager : MonoBehaviour
 		}
 	}
 
-
+	private void allowCamShake(GameObject car)
+    {
+		camShakeAllowed = true;
+    }
 
 	//getter and setter
 
@@ -254,7 +271,6 @@ public class CameraManager : MonoBehaviour
     {
 		lastSmoothPos = _CRResult;
     }
-
 
 
 

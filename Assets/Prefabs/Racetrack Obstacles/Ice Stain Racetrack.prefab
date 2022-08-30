@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deebcccf98a1e9f46915042f5c44c8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowUnevenSpins: 1
+  allowUnevenSpins: 0
   amountOfFullSpins: 1
 --- !u!50 &2342472716562569753
 Rigidbody2D:

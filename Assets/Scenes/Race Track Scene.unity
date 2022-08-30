@@ -10080,8 +10080,8 @@ GameObject:
   - component: {fileID: 889841278}
   - component: {fileID: 889841279}
   - component: {fileID: 889841281}
-  - component: {fileID: 889841280}
   - component: {fileID: 889841282}
+  - component: {fileID: 889841280}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10259,6 +10259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957fccaf41e53b342b7d3f201046d10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shakeTime: 2
+  shakePower: 1
 --- !u!1 &972576872
 GameObject:
   m_ObjectHideFlags: 0

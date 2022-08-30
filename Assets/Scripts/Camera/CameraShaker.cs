@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class CameraShaker : MonoBehaviour
 {
-    private float shakeTimeRemaining, shakePower, shakeFadeTime;
+    [SerializeField]
+    private float shakeTime = .5f, shakePower = 1; 
+    float shakeFadeTime;
+
+    Vector3 shakeOutput = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        CarDestroyer.OnOutOfScreenDestroy += startShake;
     }
 
     // Update is called once per frame
@@ -23,28 +27,45 @@ public class CameraShaker : MonoBehaviour
 
     private void LateUpdate()
     {
-       
+    }
+
+    private void startShake(GameObject car)
+    {
+        //shakeTime = duration;
+        //shakePower = power;
+        StartCoroutine(doShake());
     }
 
     public void startShake(float duration, float power)
     {
-        shakeTimeRemaining = duration;
+        shakeTime = duration;
         shakePower = power;
         StartCoroutine(doShake());
     }
 
-    private IEnumerator doShake()
+    public IEnumerator doShake()
     {
-        if (shakeTimeRemaining > 0)
+        yield return new WaitForEndOfFrame();
+        Debug.Log("Event Camera shake played");
+        float shakeTimeRemaining = shakeTime;
+        while (shakeTimeRemaining > 0)
         {
+            Debug.Log("if-statement is met");
             shakeTimeRemaining -= Time.deltaTime;
 
             float xAmount = Random.Range(-1f, 1f) * shakePower;
             float yAmount = Random.Range(-1f, 1f) * shakePower;
 
-            transform.position += new Vector3(xAmount, yAmount, 0f);
+            shakeOutput = new Vector3(xAmount, yAmount, 0f);
             yield return null;
         }
+        shakeOutput = Vector3.zero;
         yield break;
+    }
+    //TODO maybe let the coroutine give out the created Vector and the Camera Manager adds the values in LateUpdate
+
+    public Vector3 getShakeValue()
+    {
+        return shakeOutput;
     }
 }

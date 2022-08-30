@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4115414596402866154}
   - component: {fileID: 4115414596402866153}
   - component: {fileID: -1602108374304087777}
-  - component: {fileID: -400500701312718737}
+  - component: {fileID: -8098313682576641021}
   m_Layer: 0
   m_Name: Oil Stain Racetrack
   m_TagString: oil stain
@@ -108,7 +108,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-400500701312718737
+--- !u!114 &-8098313682576641021
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,10 +117,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4115414596402866156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deebcccf98a1e9f46915042f5c44c8b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1811dffd1f5e292429da77379a11e0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowUnevenSpins: 0
+  effectDurationSeconds: 5
+  targetDriftFactor: 0.98
 --- !u!1 &4115414596860727319
 GameObject:
   m_ObjectHideFlags: 0
