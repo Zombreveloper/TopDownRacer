@@ -61,7 +61,10 @@ public class ArrowToPylonScript : MonoBehaviour
         Inspired by / copied from Code Monkey, link to the Video here;
         https://youtu.be/dHzeHh-3bp4
         */
-        float borderSize = 45f;
+        //float borderSize = 50f;
+        float borderSize = ((-(Camera.main.orthographicSize))/2) + 55;
+
+
         Vector3 targetPositionScreenPoint = Camera.main.WorldToScreenPoint(pylonPos);
         bool isOffScreen = targetPositionScreenPoint.x <= borderSize || targetPositionScreenPoint.x >= Screen.width - borderSize || targetPositionScreenPoint.y <= borderSize || targetPositionScreenPoint.y >= Screen.height - borderSize;
 
