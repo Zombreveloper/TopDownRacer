@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1458615574852806996}
   - component: {fileID: 1458615574852806997}
   - component: {fileID: 1458615574852806986}
+  - component: {fileID: 8319875750281714172}
   m_Layer: 0
   m_Name: Explosion_spritesheet_0
   m_TagString: Untagged
@@ -105,6 +106,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8319875750281714172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458615574852806987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605e847ed33db324890d63ccbe3be6d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4965427002574414066
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8059877459761551357}
   - component: {fileID: 5563008949853457300}
+  - component: {fileID: -2647066007576443926}
   m_Layer: 0
   m_Name: DirectionalExplosion
   m_TagString: Untagged
@@ -152,3 +166,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowSprite: {fileID: 0}
   targetSprite: {fileID: 0}
+--- !u!114 &-2647066007576443926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965427002574414066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605e847ed33db324890d63ccbe3be6d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

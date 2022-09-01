@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Lasses Arrow to Pylon Script but reused to always let the Explosion rotate towards the center of the screen
+ */
 public class ExplosionScript : MonoBehaviour
 {
     Vector3 camCenterPos;
     Vector3 pylonPos;
+    Vector3 pointOfImpact;
 
     Vector3 pylonDir;
 
-    public Sprite arrowSprite;
-    public Sprite targetSprite;
     SpriteRenderer myRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         //myRenderer = GetComponentInChildren<SpriteRenderer>();
+        pointOfImpact = this.gameObject.transform.position - Camera.main.transform.position;
+
     }
 
     // Update is called once per frame
@@ -24,6 +27,7 @@ public class ExplosionScript : MonoBehaviour
     {
         camCenterPos = Camera.main.transform.position;
         UpdateRotation();
+        simpleUpdatePosition(); //currently handled by OutOfScreenDestroyEffects
     }
 
     public void UpdateArrow(GameObject currentWayPoint)
@@ -45,20 +49,21 @@ public class ExplosionScript : MonoBehaviour
 
         //get positions
 
-        //calculate rotation
-        //Vector3 arrowRot = pylonPos - camCenterPos;
-        Vector3 arrowRot = camCenterPos - this.gameObject.transform.position;
+        //calculate rotation towards CameraCenterPoint
+        Vector3 spriteRot = camCenterPos - this.gameObject.transform.position;
         //set rotation
-        transform.up = arrowRot;
+        transform.up = spriteRot;
         //Debug.Log("trafo up: " + arrowRot);
 
     }
 
+    void simpleUpdatePosition()
+    {
+        this.gameObject.transform.position = pointOfImpact + camCenterPos;
+    }
+
     void UpdatePosition()
     {
-        //arrow in screen center
-        //transform.position = camCenterPos;
-
         /*
         Inspired by / copied from Code Monkey, link to the Video here;
         https://youtu.be/dHzeHh-3bp4
@@ -67,13 +72,12 @@ public class ExplosionScript : MonoBehaviour
         float borderSize = ((-(Camera.main.orthographicSize)) / 2) + 75;
 
 
-        Vector3 targetPositionScreenPoint = Camera.main.WorldToScreenPoint(pylonPos);
+        Vector3 targetPositionScreenPoint = camCenterPos;
         bool isOffScreen = targetPositionScreenPoint.x <= borderSize || targetPositionScreenPoint.x >= Screen.width - borderSize || targetPositionScreenPoint.y <= borderSize || targetPositionScreenPoint.y >= Screen.height - borderSize;
 
-        if (isOffScreen)
+        if (!isOffScreen)
         {
-            UpdateRotation();
-            //myRenderer.sprite = arrowSprite;
+            //UpdateRotation();
 
             Vector3 cappedTargetScreenPosition = targetPositionScreenPoint;
 
@@ -88,7 +92,6 @@ public class ExplosionScript : MonoBehaviour
         else
         {
             transform.up = Vector3.zero;
-            //myRenderer.sprite = targetSprite;
 
             Vector3 pointerWorldPosition = Camera.main.ScreenToWorldPoint(targetPositionScreenPoint);
             transform.position = pointerWorldPosition;

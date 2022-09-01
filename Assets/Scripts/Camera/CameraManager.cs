@@ -57,7 +57,7 @@ public class CameraManager : MonoBehaviour
 		lerpCR = GetComponent<SmoothMovementCR>();
 		camShake = GetComponent<CameraShaker>();
 
-		CarDestroyer.OnOutOfScreenDestroy += allowCamShake;
+		//CarDestroyer.OnOutOfScreenDestroy += allowCamShake; //Subscription to Event
 
 		makeTargetsList();
 
@@ -253,7 +253,7 @@ public class CameraManager : MonoBehaviour
 		}
 	}
 
-	private void allowCamShake(GameObject car)
+	public void allowCamShake(GameObject car)
     {
 		camShakeAllowed = true;
     }
