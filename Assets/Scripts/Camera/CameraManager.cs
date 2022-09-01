@@ -90,12 +90,16 @@ public class CameraManager : MonoBehaviour
 
 	void shake()
     {
-		if (camShakeAllowed)
-		{
-			camShakeAllowed = false;
-			camShake.startShake(.5f, 1f);
+		if (camShake != null)
+        {
+			if (camShakeAllowed)
+			{
+				camShakeAllowed = false;
+				camShake.startShake(.5f, 1f);
+			}
+			transform.position += camShake.getShakeValue();
 		}
-		transform.position += camShake.getShakeValue();
+		
 	}
 	
 	void move()

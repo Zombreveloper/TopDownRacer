@@ -13,7 +13,7 @@ public class CameraShaker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CarDestroyer.OnOutOfScreenDestroy += startShake;
+        //CarDestroyer.OnOutOfScreenDestroy += startShake; //Subscription for Event
     }
 
     // Update is called once per frame
