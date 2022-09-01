@@ -95,7 +95,7 @@ public class CameraManager : MonoBehaviour
 			if (camShakeAllowed)
 			{
 				camShakeAllowed = false;
-				camShake.startShake(.5f, 1f);
+				camShake.startShake(.8f, 2f);
 			}
 			transform.position += camShake.getShakeValue();
 		}
