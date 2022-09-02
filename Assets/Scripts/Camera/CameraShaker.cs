@@ -50,7 +50,7 @@ public class CameraShaker : MonoBehaviour
         float shakeTimeRemaining = shakeTime;
         while (shakeTimeRemaining > 0)
         {
-            Debug.Log("if-statement is met");
+            //Debug.Log("if-statement is met");
             shakeTimeRemaining -= Time.deltaTime;
 
             float xAmount = Random.Range(-1f, 1f) * shakePower;
