@@ -55,7 +55,7 @@ public class pauseMenu : MonoBehaviour
         PlayerPrefs.SetString("fromPLanet", "Splash");
         PlayerPrefs.Save();
 		//mySoundmanager.UnpauseSFX();
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Menu Test");
     }
 	
 	public void goToOptions()

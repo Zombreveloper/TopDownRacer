@@ -10,7 +10,7 @@ public class TrackBuildMarker : MonoBehaviour
     private Vector3Int pointerPos; //represents pointers position
     private Vector3Int pointerRot; //represents pointers rotation
 
-    public GameObject visibleMarker;
+    //public GameObject visibleMarker;
     Tilemap tilemap;
 
     //checkbox for printing Pos and Rot Logs
@@ -38,16 +38,17 @@ public class TrackBuildMarker : MonoBehaviour
 
     private void Update()
     {
-        showMarker();
+        //showMarker();
     }
 
-    void showMarker() //this is crap. But i need this for testing
+    //will show me a visible version of the marker for debugging
+   /* void showMarker() //this is crap. But i need this for testing
     {
         
         Vector3 gridInWorldPoint = tilemap.GetCellCenterWorld(pointerPos);
         visibleMarker.transform.position = gridInWorldPoint;
 
-    }
+    }*/
 
     //Public functions
 
