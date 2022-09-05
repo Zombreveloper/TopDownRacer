@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class ArenaRaceManagerScript : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class ArenaRaceManagerScript : MonoBehaviour
     GameObject currentWayPoint;
     public GameObject Arrow;
 
+    private ListOfActiveCars activeCars;
+
     //referenced variables
     //bool doRace = false;
     int numberOfWayPoints;
@@ -26,6 +29,10 @@ public class ArenaRaceManagerScript : MonoBehaviour
         //set all players wayPointCounter to 0 -> happens in ParticipantsManager
         numberOfWayPoints = allWayPoints.Count;
         prevWayPoint = null;
+
+        //WayPointScript.OnCarGotWaypoint += EventOnCarGotWaypoint;
+
+        activeCars = GameObject.Find("/ParticipantsManager").GetComponent<ListOfActiveCars>();
     }
 
     // Update is called once per frame
@@ -73,13 +80,45 @@ public class ArenaRaceManagerScript : MonoBehaviour
 
     void ActivateFirstWayPoint()
     {
-        currentWayPoint = allWayPoints[Random.Range(0, numberOfWayPoints)];
+        currentWayPoint = allWayPoints[UnityEngine.Random.Range(0, numberOfWayPoints)];
         ActivateWayPoint(currentWayPoint);
+    }
+
+    /*void EventOnCarGotWaypoint()
+    {
+        UpdateWayPoints();
+
+    }*/
+
+    public void PunishOthers(string carGotWaypoint)
+    {
+        foreach (GameObject car in activeCars.carsList)
+        {
+            string currentName = car.name;
+            if (currentName != carGotWaypoint)
+            {
+                PlayerProfile myPlayer = car.GetComponent<LassesTestInputHandler>().myDriver;
+
+                myPlayer.wayPointCounter--;
+            }
+        }
+    }
+
+    void CheckForWinner()
+    {
+        if (activeCars.carsList.Count == 1)
+        {
+            GameObject winnerCar = activeCars.carsList[0];
+            PlayerProfile winnerProfile = winnerCar.GetComponent<LassesTestInputHandler>().myDriver;
+            saveWinner.winnerSoProfile = winnerProfile;
+
+            StartCoroutine(CountAndSound());
+        }
     }
 
     public void UpdateWayPoints() //gets called by WayPointScript when triggered
     {
-        int randomNumber = Random.Range(0, numberOfWayPoints);
+        int randomNumber = UnityEngine.Random.Range(0, numberOfWayPoints);
         prevWayPoint = currentWayPoint;
         prevWayPoint.SetActive(false);
 

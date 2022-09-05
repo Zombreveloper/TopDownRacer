@@ -92,7 +92,7 @@ public class ParticipantsManager : MonoBehaviour
         {
             //activate WayPoints
             //Debug.Log("WAYPOINTS");
-            player.wayPointCounter = 0;
+            //player.wayPointCounter = 20;
             ArenaRaceManagerScript arms = FindObjectOfType<ArenaRaceManagerScript>();
             arms.InitiateArenaRace();
 

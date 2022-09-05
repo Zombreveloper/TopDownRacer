@@ -22,4 +22,4 @@ MonoBehaviour:
   alpha_value: 255
   vehicle: 
   health: 10
-  wayPointCounter: 0
+  wayPointCounter: 20
