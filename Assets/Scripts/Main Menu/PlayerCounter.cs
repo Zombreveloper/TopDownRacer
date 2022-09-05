@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 using UnityEngine.UI;
 
@@ -31,6 +32,11 @@ public class PlayerCounter : MonoBehaviour
     public GameObject doubleKeyBindErrorText;
     public GameObject notAlphanumericErrorText;
 
+    // Set Health
+    public GameObject healthInput;
+    public TMP_Text healthTextPreview;
+    public GameObject healtText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +51,13 @@ public class PlayerCounter : MonoBehaviour
         ReadyPlayersList.ReadyPlayersArray.Clear();
 
         resetPlayers();
+        resetHealth();
+
+        if (gameMode.gameMode == "Race")
+        {
+            healtText.SetActive(false);
+            healthInput.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -64,6 +77,41 @@ public class PlayerCounter : MonoBehaviour
         {
             profile.leftInput = "";
             profile.rightInput = "";
+        }
+    }
+
+    void resetHealth()
+    {
+        if (gameMode.gameMode == "Arena")
+        {
+            healthTextPreview.text = "10";
+        }
+        else if (gameMode.gameMode == "ArenaRace")
+        {
+            healthTextPreview.text = "20";
+        }
+
+        foreach (PlayerProfile profile in PlayerProfileArray)
+        {
+            profile.health = "10";
+            profile.wayPointCounter = 20;
+        }
+    }
+
+    void setHealth(string status)
+    {
+        foreach (PlayerProfile profile in PlayerProfileArray)
+        {
+            if (status == "Race")
+            {
+                profile.health = healthInput.GetComponent<TMP_InputField>().text;
+                //profile.health = "10";
+            }
+            else if (status == "ArenaRace")
+            {
+                profile.wayPointCounter = int.Parse(healthInput.GetComponent<TMP_InputField>().text);
+                //profile.wayPointCounter = 20;
+            }
         }
     }
 
@@ -201,10 +249,18 @@ public class PlayerCounter : MonoBehaviour
             {
                 SceneManager.LoadScene("Race Track Scene");
             }
-            else if (gameMode.gameMode == "Arena" || gameMode.gameMode == "ArenaRace")
+            else if (gameMode.gameMode == "Arena")
             {
+                setHealth("Race");
                 SceneManager.LoadScene("Arena mk1");
             }
+            else if (gameMode.gameMode == "ArenaRace")
+            {
+                setHealth("ArenaRace");
+                SceneManager.LoadScene("Arena mk1");
+            }
+
+
         }
     }
 
