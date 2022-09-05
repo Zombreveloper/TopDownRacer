@@ -92,9 +92,10 @@ public class CarCollisionManager : MonoBehaviour
             //Debug.Log("curr health " + myHealth);
             myPlayer.health = myHealth.ToString();
         }
-        else if (other.tag == "wayPoint")
+        /*else if (other.tag == "wayPoint")
         {
             //count up on myPlayer.checkpointCounter
+
             myPlayer.wayPointCounter++;
             int numberOfWayPoints = myPlayer.wayPointCounter;
 
@@ -102,7 +103,7 @@ public class CarCollisionManager : MonoBehaviour
             {
                 FindObjectOfType<ArenaRaceManagerScript>().Winner(myPlayer);
             }
-        }
+        }*/
     }
 
     public void OilStainBehavior(int spinAmount, bool unevenSpins)
@@ -139,9 +140,9 @@ public class CarCollisionManager : MonoBehaviour
         placementManager.FirstOne(myName);
     }
 
-    private void doEventThing()
+    /*private void doEventThing()
     {
         transform.position = new Vector3(2, 2, 0);
         Debug.Log("This Event gets called");
-    }
+    }*/
 }

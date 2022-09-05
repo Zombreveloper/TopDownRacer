@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArenaCarDestroyer : MonoBehaviour
 {
     GameObject[] activeCarObjects;
+    public GameMode_SO gameMode;
 
     //referenced classes
     private ListOfActiveCars activeCars;
@@ -25,7 +26,7 @@ public class ArenaCarDestroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //foreach (GameObject car in activeCarObjects)          
+        //foreach (GameObject car in activeCarObjects)
         foreach (GameObject car in activeCars.getCarsList())
         {
             if ((car != null) && (IsOutOfHealth(car))) //activeCarObjects receives empty entries by deleting values!
@@ -57,16 +58,34 @@ public class ArenaCarDestroyer : MonoBehaviour
             //Debug.Log("GameObject o: " + o.name);
             //Debug.Log("LassesTestInputHandler.myDriver: " + o.GetComponent<LassesTestInputHandler>().myDriver.name);
 
-            int currentHealth = int.Parse(myPlayer.health);
-            if (currentHealth < 0)
+            if (gameMode.gameMode == "Arena")
             {
-                return true;
+                int currentHealth = int.Parse(myPlayer.health);
+                if (currentHealth < 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (gameMode.gameMode == "ArenaRace")
+            {
+                int currentHealth = myPlayer.wayPointCounter;
+                if (currentHealth < 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
                 return false;
             }
-
         }
         else return false;
     }
