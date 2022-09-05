@@ -131,6 +131,14 @@ public class PlayerCounter : MonoBehaviour
                     //keysToAdd.Add(player.leftInput);
                     //keysToAdd.Add(player.rightInput);
 
+                    if(player.leftInput == player.rightInput)
+                    {
+                        Debug.Log("Some Keys are bound multiple times! Change Your Key-Bindings!");
+                        doubleKeyBindErrorText.SetActive(true);
+
+                        return false;
+                    }
+
 
                     //check if key is alphanumeric
                     var myRegExp = new Regex("^[a-z0-9]$"); //regular Expression, checks for one key between lower case a to z and numeers 0 to 9
