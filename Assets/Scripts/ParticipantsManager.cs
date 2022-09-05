@@ -14,6 +14,8 @@ public class ParticipantsManager : MonoBehaviour
     public GameMode_SO gameMode;
     public GameObject lifeBarPrefab;
     private GameObject currentLifeBar;
+    public GameObject wayPointDisplayerPrefab;
+    private GameObject currentWayPointDisplayer;
     public GameObject bumperPrefab;
     private GameObject currentBumper;
 
@@ -93,6 +95,11 @@ public class ParticipantsManager : MonoBehaviour
             player.wayPointCounter = 0;
             ArenaRaceManagerScript arms = FindObjectOfType<ArenaRaceManagerScript>();
             arms.InitiateArenaRace();
+
+            currentWayPointDisplayer = Instantiate(wayPointDisplayerPrefab, _spawnPos, Quaternion.identity);
+            currentWayPointDisplayer.name = ("WayPointDisplayer_Player" + index);
+            WayPointDisplayerScript currentWayPointDisplayer_Script = currentWayPointDisplayer.GetComponent<WayPointDisplayerScript>();
+            currentWayPointDisplayer_Script.ThisIsYourCar(_currentCar);
         }
     }
 
