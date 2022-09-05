@@ -9,14 +9,14 @@ public class ArrowToPylonScript : MonoBehaviour
 
     Vector3 pylonDir;
 
-    public Sprite arrowSprite;
-    public Sprite targetSprite;
-    SpriteRenderer myRenderer;
+    public GameObject ArrowOnCanvas;
+    public GameObject TargetInWorld;
 
     // Start is called before the first frame update
     void Start()
     {
-        myRenderer = GetComponentInChildren<SpriteRenderer>();
+        ArrowOnCanvas.SetActive(false);
+        TargetInWorld.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,8 +61,10 @@ public class ArrowToPylonScript : MonoBehaviour
         Inspired by / copied from Code Monkey, link to the Video here;
         https://youtu.be/dHzeHh-3bp4
         */
-        //float borderSize = 50f;
-        float borderSize = ((-(Camera.main.orthographicSize))/2) + 75;
+        //float borderSize = 100f;
+        //float borderSize = ((-(Camera.main.orthographicSize))/2) + 75;
+        //Debug.Log("current resolution " + Screen.height);
+        float borderSize = Screen.height/100*12; //make 100 units from the sreen.height, and then put the arrow x units away from screen-border.
 
 
         Vector3 targetPositionScreenPoint = Camera.main.WorldToScreenPoint(pylonPos);
@@ -71,7 +73,8 @@ public class ArrowToPylonScript : MonoBehaviour
         if (isOffScreen)
         {
             UpdateRotation();
-            myRenderer.sprite = arrowSprite;
+            ArrowOnCanvas.SetActive(true);
+            TargetInWorld.SetActive(false);
 
             Vector3 cappedTargetScreenPosition = targetPositionScreenPoint;
 
@@ -82,14 +85,17 @@ public class ArrowToPylonScript : MonoBehaviour
 
             Vector3 pointerWorldPosition = Camera.main.ScreenToWorldPoint(cappedTargetScreenPosition);
             transform.position = pointerWorldPosition;
+            TargetInWorld.transform.position = pointerWorldPosition;
         }
         else
         {
             transform.up = Vector3.zero;
-            myRenderer.sprite = targetSprite;
+            TargetInWorld.SetActive(true);
+            ArrowOnCanvas.SetActive(false);
 
             Vector3 pointerWorldPosition = Camera.main.ScreenToWorldPoint(targetPositionScreenPoint);
             transform.position = pointerWorldPosition;
+            TargetInWorld.transform.position = pointerWorldPosition;
         }
     }
 }
