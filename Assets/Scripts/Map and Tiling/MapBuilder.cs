@@ -121,7 +121,7 @@ public class MapBuilder : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		PlaceTileByMouse();
+		//PlaceTileByMouse();
 	}
 
 	void MakeLine()

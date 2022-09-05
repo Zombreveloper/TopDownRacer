@@ -57,7 +57,7 @@ public class CameraManager : MonoBehaviour
 		lerpCR = GetComponent<SmoothMovementCR>();
 		camShake = GetComponent<CameraShaker>();
 
-		CarDestroyer.OnOutOfScreenDestroy += allowCamShake;
+		//CarDestroyer.OnOutOfScreenDestroy += allowCamShake; //Subscription to Event
 
 		makeTargetsList();
 
@@ -90,12 +90,16 @@ public class CameraManager : MonoBehaviour
 
 	void shake()
     {
-		if (camShakeAllowed)
-		{
-			camShakeAllowed = false;
-			camShake.startShake(.5f, 1f);
+		if (camShake != null)
+        {
+			if (camShakeAllowed)
+			{
+				camShakeAllowed = false;
+				camShake.startShake(.8f, 2f);
+			}
+			transform.position += camShake.getShakeValue();
 		}
-		transform.position += camShake.getShakeValue();
+		
 	}
 	
 	void move()
@@ -249,7 +253,7 @@ public class CameraManager : MonoBehaviour
 		}
 	}
 
-	private void allowCamShake(GameObject car)
+	public void allowCamShake(GameObject car)
     {
 		camShakeAllowed = true;
     }
