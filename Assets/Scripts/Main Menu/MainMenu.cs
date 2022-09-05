@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     public GameMode_SO gameMode;
+    public Button firstButton, startPlayButton, leavePlayButton, startOptionsButton, leaveOptionsButton, startHTPButton, leaveHTPButton;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        firstButton.Select();
     }
 
     // Update is called once per frame
@@ -18,6 +20,42 @@ public class MainMenu : MonoBehaviour
     {
 
     }
+
+    //
+    //select right button
+
+    public void selectStartPlayButton()
+    {
+        startPlayButton.Select();
+    }
+
+    public void selectLeavePlayButton()
+    {
+        leavePlayButton.Select();
+    }
+
+    public void selectStartOptionsButton()
+    {
+        startOptionsButton.Select();
+    }
+
+    public void selectLeaveOptionsButton()
+    {
+         leaveOptionsButton.Select();
+    }
+
+    public void selectStartHTPButton()
+    {
+        startHTPButton.Select();
+    }
+
+    public void selectLeaveHTPButton()
+    {
+        leaveHTPButton.Select();
+    }
+
+    //
+    //
 
     public void selectRace()
     {
