@@ -26,29 +26,11 @@ public class TilemapFiller : MonoBehaviour
         Vector3 lowerRight;
 
         Vector3 camPos = mainCam.transform.position;
-        //Debug.Log(camPos);
         createArea(camPos, out upperLeft, out lowerRight);
         boxFillOnTilemap(upperLeft, lowerRight);
         //Debug.Log(upperLeft);
     }
 
-    void boxFillOnTilemapBackup(Vector3 upLeft, Vector3 downRight)
-    {
-        Vector3Int upLeftCell = currentTilemap.WorldToCell(upLeft);
-        Vector3Int downRightCell = currentTilemap.WorldToCell(downRight);
-
-        for (int ix =upLeftCell.x; ix < downRightCell.x; ix++)
-        {
-            for (int iy = downRightCell.y; iy < upLeftCell.y; iy++)
-            {
-                Vector3Int currentCell = new Vector3Int(ix, iy);
-                if (!currentTilemap.HasTile(currentCell))
-                {
-                    currentTilemap.SetTile(currentCell, defaultTile);
-                }
-            }
-        }
-    }
     void boxFillOnTilemap(Vector3 upLeft, Vector3 downRight)
     {
         List<Vector3Int> areaCoordinates = cellCoordinatesInArea(upLeft, downRight);
