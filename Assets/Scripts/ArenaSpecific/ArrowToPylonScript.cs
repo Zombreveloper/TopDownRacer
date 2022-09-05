@@ -64,7 +64,8 @@ public class ArrowToPylonScript : MonoBehaviour
         //float borderSize = 100f;
         //float borderSize = ((-(Camera.main.orthographicSize))/2) + 75;
         //Debug.Log("current resolution " + Screen.height);
-        float borderSize = Screen.height/100*12; //make 100 units from the sreen.height, and then put the arrow x units away from screen-border.
+        //float borderSize = Screen.height/100*12; //make 100 units from the sreen.height, and then put the arrow x units away from screen-border.
+        float borderSize = ((-(Camera.main.orthographicSize))/2) + (Screen.height/100*11); //relative to orthographic-camera-size and relative to screen-heigt (resolution)
 
 
         Vector3 targetPositionScreenPoint = Camera.main.WorldToScreenPoint(pylonPos);
