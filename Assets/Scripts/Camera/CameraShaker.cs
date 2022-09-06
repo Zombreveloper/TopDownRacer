@@ -41,6 +41,8 @@ public class CameraShaker : MonoBehaviour
     {
         shakeTime = duration;
         shakePower = power;
+
+        shakeFadeTime = power / duration;
         StartCoroutine(doShake());
     }
 
@@ -58,6 +60,8 @@ public class CameraShaker : MonoBehaviour
             float yAmount = Random.Range(-1f, 1f) * shakePower;
 
             shakeOutput = new Vector3(xAmount, yAmount, 0f);
+
+            shakePower = Mathf.MoveTowards(shakePower, 0f, shakeFadeTime * Time.deltaTime);
             yield return null;
         }
         shakeOutput = Vector3.zero;
