@@ -61,7 +61,7 @@ public class ArenaCarDestroyer : MonoBehaviour
             if (gameMode.gameMode == "Arena")
             {
                 int currentHealth = int.Parse(myPlayer.health);
-                if (currentHealth < 0)
+                if (currentHealth < 1)
                 {
                     return true;
                 }

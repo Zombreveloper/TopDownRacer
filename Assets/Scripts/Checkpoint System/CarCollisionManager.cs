@@ -127,6 +127,10 @@ public class CarCollisionManager : MonoBehaviour
         int myHealth = int.Parse(myPlayer.health);
         //Debug.Log("prev health " + myHealth);
         myHealth++;
+        if (myHealth > int.Parse(myPlayer.maxHealth))
+        {
+            myHealth--;
+        }
         //Debug.Log("curr health " + myHealth);
         myPlayer.health = myHealth.ToString();
     }
