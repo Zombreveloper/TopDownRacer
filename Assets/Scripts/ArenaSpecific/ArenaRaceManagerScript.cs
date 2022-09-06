@@ -15,6 +15,8 @@ public class ArenaRaceManagerScript : MonoBehaviour
     GameObject prevWayPoint;
     GameObject currentWayPoint;
     public GameObject Arrow;
+    public GameObject heatlthRegenPad1;
+    public GameObject heatlthRegenPad2;
 
     private ListOfActiveCars activeCars;
 
@@ -33,6 +35,8 @@ public class ArenaRaceManagerScript : MonoBehaviour
         //WayPointScript.OnCarGotWaypoint += EventOnCarGotWaypoint;
 
         activeCars = GameObject.Find("/ParticipantsManager").GetComponent<ListOfActiveCars>();
+
+        ActivateHealthRegenPad();
     }
 
     // Update is called once per frame
@@ -191,6 +195,24 @@ public class ArenaRaceManagerScript : MonoBehaviour
             //do thing
 
             CallWinnerScene();
+        }
+    }
+
+    void ActivateHealthRegenPad()
+    {
+        if (gameMode.gameMode == "ArenaRace")
+        {
+            heatlthRegenPad1.SetActive(false);
+            heatlthRegenPad2.SetActive(false);
+        }
+        else if (gameMode.gameMode == "Arena")
+        {
+            heatlthRegenPad1.SetActive(true);
+            heatlthRegenPad2.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("ERROR: ArenaRaceManagerScript Line 199: No Gamemode!");
         }
     }
 }

@@ -121,6 +121,16 @@ public class CarCollisionManager : MonoBehaviour
         carController.changeDriftFactor(targetDriftFactor, duration);
     }
 
+    public void HealthRegenPadBehavior()
+    {
+        //Debug.Log("health");
+        int myHealth = int.Parse(myPlayer.health);
+        //Debug.Log("prev health " + myHealth);
+        myHealth++;
+        //Debug.Log("curr health " + myHealth);
+        myPlayer.health = myHealth.ToString();
+    }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         /*if(other.tag == "oil stain")
