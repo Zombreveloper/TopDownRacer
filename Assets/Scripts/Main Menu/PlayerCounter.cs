@@ -33,9 +33,10 @@ public class PlayerCounter : MonoBehaviour
     public GameObject notAlphanumericErrorText;
 
     // Set Health
-    public GameObject healthInput;
-    public TMP_Text healthTextPreview;
-    public GameObject healtText;
+    public GameObject healthBG; //parent of all health GOs
+    public Slider healthSlider; //has a value
+    public TMP_Text startHealthText; // is just there
+    public TMP_Text healthText; //tells the value of healthSlider
 
     // Start is called before the first frame update
     void Start()
@@ -55,8 +56,7 @@ public class PlayerCounter : MonoBehaviour
 
         if (gameMode.gameMode == "Race")
         {
-            healtText.SetActive(false);
-            healthInput.SetActive(false);
+            healthBG.SetActive(false);
         }
     }
 
@@ -80,15 +80,18 @@ public class PlayerCounter : MonoBehaviour
         }
     }
 
-    void resetHealth()
+    void resetHealth() //gets called on start
     {
         if (gameMode.gameMode == "Arena")
         {
-            healthTextPreview.text = "10";
+            healthSlider.value = 10f;
+            //healthText = GetComponent<TMP_Text>(); //evtl nötig
+            healthText.text = "10";
         }
         else if (gameMode.gameMode == "ArenaRace")
         {
-            healthTextPreview.text = "20";
+            healthSlider.value = 20f;
+            healthText.text = "20";
         }
 
         foreach (PlayerProfile profile in PlayerProfileArray)
@@ -98,40 +101,24 @@ public class PlayerCounter : MonoBehaviour
         }
     }
 
-    void setHealth(string status)
+    void setHealth(string status) //gets called on startGame
     {
         foreach (PlayerProfile profile in PlayerProfileArray)
         {
-            if (status == "Arena")
-            {
-                string input = healthInput.GetComponent<TMP_InputField>().text;
-                Debug.Log(input);
-                if (input != null)
-                {
-                    profile.health = input;
-                }
-                else
-                {
-                    profile.health = "10";
-                }
-                //profile.health = "10";
-            }
-            else if (status == "ArenaRace")
-            {
-                string input = healthInput.GetComponent<TMP_InputField>().text;
-                Debug.Log(input);
-                int _input = int.Parse(input);
-                if (_input != null)
-                {
-                    profile.wayPointCounter = _input;
-                }
-                else
-                {
-                    profile.wayPointCounter = 20;
-                }
-                //profile.wayPointCounter = 20;
-            }
+            float temp = healthSlider.value;
+            int iTemp = (int)temp; //makes an int from it
+            //Debug.Log(temp);
+
+            profile.health = temp.ToString();
+
+            profile.wayPointCounter = iTemp;
         }
+    }
+
+    void updateHealthSlider()
+    {
+        float temp = healthSlider.value;
+        healthText.text = temp.ToString();
     }
 
     void countPlayers()
@@ -176,6 +163,8 @@ public class PlayerCounter : MonoBehaviour
             GameObject currentUI = PlayerUI[currentPlayerUI];
             currentUI.SetActive(true);
         }
+
+        updateHealthSlider();
     }
 
     bool checkKeys()
