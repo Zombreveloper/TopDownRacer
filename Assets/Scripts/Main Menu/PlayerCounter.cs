@@ -16,6 +16,7 @@ public class PlayerCounter : MonoBehaviour
 
     //UI Objects
     public List<GameObject> PlayerUI = new List<GameObject>();
+    public Button buttonBack;
 
     //list of all possible playerProfile SOs
     public List<PlayerProfile> PlayerProfileArray = new List<PlayerProfile>();
@@ -69,6 +70,11 @@ public class PlayerCounter : MonoBehaviour
         //Debug.Log("passed enoughPlayers");
         updateUI();
         //Debug.Log("passed updateUI");
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            buttonBack.onClick.Invoke();
+        }
     }
 
     void resetPlayers() //resets the players Inputs

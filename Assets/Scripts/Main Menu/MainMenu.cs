@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
 {
     public GameMode_SO gameMode;
     public Button firstButton, startPlayButton, leavePlayButton, startOptionsButton, leaveOptionsButton, startHTPButton, leaveHTPButton;
+    public GameObject mainMenu, optionsMenu, hTPMenu, playMenu;
+    public Button mainQuit, optionsBack, hTPBack, playBack;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,27 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //do sth.
+            //referenceToTheButton.onClick.Invoke();
+            if (mainMenu.activeSelf)
+            {
+                mainQuit.onClick.Invoke();
+            }
+            else if (optionsMenu.activeSelf)
+            {
+                optionsBack.onClick.Invoke();
+            }
+            else if (hTPMenu.activeSelf)
+            {
+                hTPBack.onClick.Invoke();
+            }
+            else if (playMenu.activeSelf)
+            {
+                playBack.onClick.Invoke();
+            }
+        }
     }
 
     //
@@ -88,7 +110,7 @@ public class MainMenu : MonoBehaviour
 
     public void quitGame()
     {
-        Debug.Log("Quit Game");
-        //Application.Quit();
+        //Debug.Log("Quit Game");
+        Application.Quit();
     }
 }
