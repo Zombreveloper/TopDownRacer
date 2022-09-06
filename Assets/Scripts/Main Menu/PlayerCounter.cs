@@ -102,15 +102,32 @@ public class PlayerCounter : MonoBehaviour
     {
         foreach (PlayerProfile profile in PlayerProfileArray)
         {
+            string temp = healthInput.GetComponent<TMP_InputField>().text;
+            //Debug.Log(temp);
+
             if (status == "Race")
             {
-                profile.health = healthInput.GetComponent<TMP_InputField>().text;
-                //profile.health = "10";
+                if (temp != " ")
+                {
+                    profile.health = temp;
+                    //profile.health = "10";
+                }
+                else
+                {
+                    profile.health = "10";
+                }
             }
             else if (status == "ArenaRace")
             {
-                profile.wayPointCounter = int.Parse(healthInput.GetComponent<TMP_InputField>().text);
-                //profile.wayPointCounter = 20;
+                if (temp != " ")
+                {
+                    profile.wayPointCounter = int.Parse(temp);
+                    //profile.wayPointCounter = 20;
+                }
+                else
+                {
+                    profile.wayPointCounter = 20;
+                }
             }
         }
     }
