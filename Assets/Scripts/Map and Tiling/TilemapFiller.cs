@@ -6,34 +6,28 @@ using UnityEngine.Tilemaps;
 /*Fills up unset Tiles in an area with a default Tile and deletes every tile that is outside the Area*/
 public class TilemapFiller : MonoBehaviour
 {
+    private AreaToTileCoordinates tileCoordinates;
     public TileBase defaultTile;
     private Tilemap currentTilemap;
-    private Camera mainCam;
-
-    private Vector3 areaSize = new Vector3(400, 400);
 
     // Start is called before the first frame update
     void Start()
     {
         mainCam = Camera.main;
         currentTilemap = GameObject.Find("/Grid").GetComponentInChildren<Tilemap>();
+        tileCoordinates = GetComponent<AreaToTileCoordinates>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 upperLeft;
-        Vector3 lowerRight;
-
-        Vector3 camPos = mainCam.transform.position;
-        createArea(camPos, out upperLeft, out lowerRight);
-        boxFillOnTilemap(upperLeft, lowerRight);
-        //Debug.Log(upperLeft);
+        boxFillOnTilemap();
     }
 
-    void boxFillOnTilemap(Vector3 upLeft, Vector3 downRight)
+    void boxFillOnTilemap()
     {
-        List<Vector3Int> areaCoordinates = cellCoordinatesInArea(upLeft, downRight);
+        //List<Vector3Int> areaCoordinates = cellCoordinatesInArea(upLeft, downRight);
+        List<Vector3Int> areaCoordinates = tileCoordinates.getCellCoordinates();
         foreach (Vector3Int currentCell in areaCoordinates)
         {
             if (!currentTilemap.HasTile(currentCell))
@@ -43,6 +37,12 @@ public class TilemapFiller : MonoBehaviour
         }       
     }
 
+
+    //Trash Dump
+
+    //only necessary for the unused methods
+    private Camera mainCam;
+    private Vector3 areaSize = new Vector3(400, 400);
     List<Vector3Int> cellCoordinatesInArea(Vector3 _upLeft, Vector3 _downRight)
     {
         Vector3Int upLeftCell = currentTilemap.WorldToCell(_upLeft);

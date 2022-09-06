@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class FarawayTileDestroyer : MonoBehaviour
+public class AreaToTileCoordinates : MonoBehaviour
 {
-    private AreaToTileCoordinates tileCoordinates;
+
     private Tilemap currentTilemap;
-    private Camera mainCam;
+    //private Camera mainCam;
 
     private BoxCollider2D area;
+
+    List<Vector3Int> areaTileCoordinates;
 
     // Start is called before the first frame update
     void Start()
     {
-        mainCam = Camera.main;
+        //mainCam = Camera.main;
         currentTilemap = GameObject.Find("/Grid").GetComponentInChildren<Tilemap>();
-        tileCoordinates = GetComponent<AreaToTileCoordinates>();
 
         area = GetComponent<BoxCollider2D>();
     }
@@ -25,25 +26,12 @@ public class FarawayTileDestroyer : MonoBehaviour
     void Update()
     {
         Bounds areaBounds = area.bounds;
-        destroyTilesOutside(areaBounds);
-    }
-
-    void destroyTilesOutside(Bounds _areaBounds)
-    {
-        List<Vector3Int> allCellsInTilemap = tileCoordinates.getCellCoordinates();
-        foreach (Vector3Int currentCell in allCellsInTilemap)
-        {
-            Vector3 cellPosWorld = currentTilemap.CellToWorld(currentCell);
-            if (!_areaBounds.Contains(cellPosWorld))
-            {
-                currentTilemap.SetTile(currentCell, null);
-            }
-        }
+        areaTileCoordinates = everyCellCoordinate();
     }
 
     List<Vector3Int> everyCellCoordinate()
     {
-
+        Bounds areaBounds = area.bounds;
         BoundsInt tilemapBounds = currentTilemap.cellBounds;
         List<Vector3Int> areaCoordinates = new List<Vector3Int>();
 
@@ -56,5 +44,10 @@ public class FarawayTileDestroyer : MonoBehaviour
             }
         }
         return areaCoordinates;
+    }
+
+    public List<Vector3Int> getCellCoordinates()
+    {
+        return areaTileCoordinates;
     }
 }
