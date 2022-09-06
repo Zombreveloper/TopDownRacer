@@ -103,6 +103,7 @@ public class PlayerCounter : MonoBehaviour
         foreach (PlayerProfile profile in PlayerProfileArray)
         {
             profile.health = "10";
+            profile.maxHealth = "10";
             profile.wayPointCounter = 20;
         }
     }
@@ -116,7 +117,7 @@ public class PlayerCounter : MonoBehaviour
             //Debug.Log(temp);
 
             profile.health = temp.ToString();
-
+            profile.maxHealth = temp.ToString();
             profile.wayPointCounter = iTemp;
         }
     }

@@ -10505,6 +10505,7 @@ GameObject:
   - component: {fileID: 1110372076}
   - component: {fileID: 1110372077}
   - component: {fileID: 1110372078}
+  - component: {fileID: 1110372079}
   m_Layer: 0
   m_Name: TileFillerAndDestroyer
   m_TagString: Untagged
@@ -10588,6 +10589,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5fc6e02ba3e6ae429654b7423cbd4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1110372079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110372073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4b26b81a8e5af4faff003b26aacd29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1148873960
