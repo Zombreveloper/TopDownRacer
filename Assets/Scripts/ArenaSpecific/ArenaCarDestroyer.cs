@@ -73,7 +73,7 @@ public class ArenaCarDestroyer : MonoBehaviour
             else if (gameMode.gameMode == "ArenaRace")
             {
                 int currentHealth = myPlayer.wayPointCounter;
-                if (currentHealth < 0)
+                if (currentHealth < 1)
                 {
                     return true;
                 }
