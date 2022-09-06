@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/* converts the Bounds of an Object to a List of cell coordinates of a given tilemap
+ */
 public class AreaToTileCoordinates : MonoBehaviour
 {
 
@@ -18,8 +20,10 @@ public class AreaToTileCoordinates : MonoBehaviour
     {
         //mainCam = Camera.main;
         currentTilemap = GameObject.Find("/Grid").GetComponentInChildren<Tilemap>();
-
         area = GetComponent<BoxCollider2D>();
+
+        Bounds areaBounds = area.bounds;
+        areaTileCoordinates = everyCellCoordinate();
     }
 
     // Update is called once per frame

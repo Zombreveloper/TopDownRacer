@@ -10397,8 +10397,8 @@ MonoBehaviour:
   amountToSpawn: 3
   spawnPool:
   - {fileID: 1549994558414431109, guid: fb033f6c2d980cf449a2b7978bdd5a1e, type: 3}
-  - {fileID: 4115414596402866156, guid: fc41f8a6507cd5d48adde0775e6ed0ba, type: 3}
   - {fileID: 1889064686053316991, guid: 3b6659561f118a94aba1c99810b812bd, type: 3}
+  - {fileID: 4115414596402866156, guid: fc41f8a6507cd5d48adde0775e6ed0ba, type: 3}
   streetMap: {fileID: 1379453192}
 --- !u!4 &1021652010
 Transform:
