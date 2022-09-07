@@ -5,7 +5,7 @@ using UnityEngine;
 /* inspired by https://www.youtube.com/watch?v=8PXPyyVu_6I */
 public class CameraShaker : MonoBehaviour
 {
-    [SerializeField]
+    //[SerializeField]
     private float shakeTime = .5f, shakePower = 1; 
     float shakeFadeTime;
 
