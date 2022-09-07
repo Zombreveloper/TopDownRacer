@@ -4,18 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class pauseMenu : MonoBehaviour
-{	
-	
+{
+
 	//public FmodVolumeSettings mySoundmanager;
-	
+
     public static bool GameIsPaused = false;
-	
+
 
     public GameObject pauseMenuUI;
-	public GameObject OptionsMenuUI;
-	
 
-	
+
+
     // Update is called once per frame
     void Update()
     {
@@ -35,7 +34,6 @@ public class pauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-		OptionsMenuUI.SetActive(false);
 		//mySoundmanager.UnpauseSFX();
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -57,17 +55,15 @@ public class pauseMenu : MonoBehaviour
 		//mySoundmanager.UnpauseSFX();
         SceneManager.LoadScene("Menu Test");
     }
-	
+
 	public void goToOptions()
 	{
 		pauseMenuUI.SetActive(false);
-		OptionsMenuUI.SetActive(true);
-		
+
 	}
-	
+
 	public void goToPauseMenu()
 	{
-		OptionsMenuUI.SetActive(false);
 		pauseMenuUI.SetActive(true);
 	}
 

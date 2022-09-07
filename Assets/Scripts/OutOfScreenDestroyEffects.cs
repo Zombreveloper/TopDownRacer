@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* Manager for Visual Effects when a Car leaves the Screen and gets destroyed
- * only here to call methods of other classes and combine them 
+ * only here to call methods of other classes and combine them
  */
 
 public class OutOfScreenDestroyEffects : MonoBehaviour

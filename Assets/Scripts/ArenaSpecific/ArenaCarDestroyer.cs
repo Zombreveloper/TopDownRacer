@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ArenaCarDestroyer : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class ArenaCarDestroyer : MonoBehaviour
     //referenced classes
     private ListOfActiveCars activeCars;
 
+    //Events
+    public static event Action<GameObject> OnOutOfHealthDestroy;
 
 
     // Start is called before the first frame update
@@ -32,6 +35,7 @@ public class ArenaCarDestroyer : MonoBehaviour
             if ((car != null) && (IsOutOfHealth(car))) //activeCarObjects receives empty entries by deleting values!
             {
                 StartCoroutine(ExecuteDestroy(car)); //deletes the car and updates activeCarsList one frame later
+                OnOutOfHealthDestroy?.Invoke(car);
             }
         }
     }
