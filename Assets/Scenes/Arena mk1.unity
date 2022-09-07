@@ -936,7 +936,7 @@ GameObject:
   - component: {fileID: 233919293}
   m_Layer: 0
   m_Name: Arena Ground Tilemap
-  m_TagString: Untagged
+  m_TagString: ArenaMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

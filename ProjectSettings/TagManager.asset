@@ -15,6 +15,7 @@ TagManager:
   - wayPoint
   - TilemapGrid
   - healthRegenPad
+  - ArenaMap
   layers:
   - Default
   - TransparentFX
@@ -60,4 +61,7 @@ TagManager:
     locked: 0
   - name: above track
     uniqueID: 376131307
+    locked: 0
+  - name: particles
+    uniqueID: 2186554839
     locked: 0

@@ -19,6 +19,7 @@ public class CarCollisionManager : MonoBehaviour
     PlacementManager placementManager;
     TopDownCarController carController;
     PlayerProfile myPlayer;
+    public SparkSystemScript mySparkSystem;
 
     //variables
     string myName;
@@ -159,4 +160,13 @@ public class CarCollisionManager : MonoBehaviour
         transform.position = new Vector3(2, 2, 0);
         Debug.Log("This Event gets called");
     }*/
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "ArenaMap" || collision.collider.tag == "underpass collider" || collision.collider.tag == "overpass collider" || collision.collider.transform.parent.tag == "Car")
+        {
+            Vector2 posOfImpact = collision.GetContact(0).point;
+            mySparkSystem.MakeSparks(posOfImpact);
+        }
+    }
 }
