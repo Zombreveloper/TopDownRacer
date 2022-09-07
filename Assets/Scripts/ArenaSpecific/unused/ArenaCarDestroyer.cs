@@ -5,7 +5,6 @@ using System;
 
 public class ArenaCarDestroyer : MonoBehaviour
 {
-    GameObject[] activeCarObjects;
     public GameMode_SO gameMode;
 
     //referenced classes
@@ -18,12 +17,8 @@ public class ArenaCarDestroyer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Transform parentsTransform = this.transform.parent;
-        //thisCar = parentsTransform.gameObject; //use those if you want to grab a parent object
         activeCars = GameObject.Find("/ParticipantsManager").GetComponent<ListOfActiveCars>();
-        //activeCars = GameObject.Find("/ParticipantsManager").GetComponent<ListOfActiveCars>();
-        activeCarObjects = GameObject.FindGameObjectsWithTag("Car");
-        Debug.Log("This scene starts with " + activeCarObjects.Length + " Cars");
+        Debug.Log("This scene starts with " + activeCars.getCarsList().Count + " Cars");
     }
 
     // Update is called once per frame

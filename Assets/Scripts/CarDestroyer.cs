@@ -12,10 +12,11 @@ public class CarDestroyer : MonoBehaviour
     private float threshold = 0; //how much the car is allowed to go over the borders before being destroyed
 
     //referenced classes
+    public GameMode_SO gameMode;
     private ListOfActiveCars activeCars;
 
     //Events
-    public static event Action<GameObject> OnOutOfScreenDestroy;
+    public static event Action<GameObject> OnCarDestroy;
 
 
     // Start is called before the first frame update
@@ -36,11 +37,11 @@ public class CarDestroyer : MonoBehaviour
     {
         foreach (GameObject car in activeCars.getCarsList())
         {
-            if ((car != null) && (IsOutOfScreen(car))) //activeCarObjects receives empty entries by deleting values!
+            if (car!=null && IsOutOfScreen(car) || IsOutOfHealth(car)) //activeCarObjects receives empty entries by deleting values!
             {
 
                 StartCoroutine(ExecuteDestroy(car)); //deletes the car and updates activeCarsList one frame later
-                OnOutOfScreenDestroy?.Invoke(car);
+                OnCarDestroy?.Invoke(car);
             }
         }
         
@@ -114,4 +115,41 @@ public class CarDestroyer : MonoBehaviour
         }
         
     }
+
+
+
+    public bool IsOutOfHealth(GameObject o)
+    {
+        if (o)
+        {
+            int currentHealth = getHealthPoints(o);
+
+            if (currentHealth < 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        else return false;
+    }
+
+    private int getHealthPoints(GameObject o)
+    {
+        PlayerProfile myPlayer = o.GetComponent<LassesTestInputHandler>().myDriver;
+        int currentHealth = 20;
+        if (gameMode.gameMode == "Arena")
+        {
+            currentHealth = int.Parse(myPlayer.health);
+        }
+        else if (gameMode.gameMode == "ArenaRace")
+        {
+            currentHealth = myPlayer.wayPointCounter;
+        }
+        return currentHealth;
+    }
+
 }

@@ -79,8 +79,8 @@ public class RandomObstacleSpawner : MonoBehaviour
 
             float interpolator = fListIndex / fListLength;
             float lipoResult = Mathf.LerpAngle(0f, endRotation, interpolator);
-            Debug.Log("index is " + _listIndex + " and the list has " + _possiblePlaces.Count + " entries");
-            Debug.Log(lipoResult);
+            //Debug.Log("index is " + _listIndex + " and the list has " + _possiblePlaces.Count + " entries");
+            //Debug.Log(lipoResult);
             Quaternion additionalRotation = Quaternion.Euler(0, 0, lipoResult);
             return additionalRotation;
         }

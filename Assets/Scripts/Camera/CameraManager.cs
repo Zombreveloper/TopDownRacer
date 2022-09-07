@@ -42,6 +42,8 @@ public class CameraManager : MonoBehaviour
 
 	//flags
 	bool camShakeAllowed = false;
+	float shakeDuration = 0.5f;
+	float shakePower = 1;
 
 
     private void Awake()
@@ -84,18 +86,18 @@ public class CameraManager : MonoBehaviour
 
 		move();
 		zoom();
-		shake();
+		shake(shakeDuration, shakePower);
 		
 	}
 
-	void shake()
+	void shake(float _shakeDuration, float _shakePower)
     {
 		if (camShake != null)
         {
 			if (camShakeAllowed)
 			{
 				camShakeAllowed = false;
-				camShake.startShake(.8f, 2f);
+				camShake.startShake(_shakeDuration, _shakePower);
 			}
 			transform.position += camShake.getShakeValue();
 		}
@@ -208,7 +210,11 @@ public class CameraManager : MonoBehaviour
 		{
 			return placementManager.getFirstPlaced().transform.position;
 		}
-		else return activeCars.getCarFromList(0).transform.position;
+		else if (activeCars.getCarFromList(0))
+		{
+			return activeCars.getCarFromList(0).transform.position;
+		}
+		else return this.gameObject.transform.position;
 
 	}
 
@@ -253,9 +259,11 @@ public class CameraManager : MonoBehaviour
 		}
 	}
 
-	public void allowCamShake(GameObject car)
+	public void allowCamShake(float duration = 1, float power = 1)
     {
 		camShakeAllowed = true;
+		shakeDuration = duration;
+		shakePower = power;
     }
 
 	//getter and setter

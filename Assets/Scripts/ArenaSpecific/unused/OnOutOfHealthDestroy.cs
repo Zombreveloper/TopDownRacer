@@ -28,7 +28,7 @@ public class OnOutOfHealthDestroy : MonoBehaviour
     private void playEffects(GameObject destroyedCar)
     {
         Instantiate(explosion, destroyedCar.transform.position, Quaternion.identity);
-        mainCamera.GetComponent<CameraManager>().allowCamShake(destroyedCar);
+        mainCamera.GetComponent<CameraManager>().allowCamShake();
         Debug.Log("Car destroy Event played");
     }
 }

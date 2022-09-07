@@ -8,7 +8,7 @@ public class WayPointScript : MonoBehaviour
     ArenaRaceManagerScript myManager;
     bool isColliding; //used to prevent multiple Triggers in one Frame
 
-    //public static event Action OnCarGotWaypoint; //Remnant of the Event System
+    public static event Action<GameObject> OnCarGotWaypoint; 
 
     // Start is called before the first frame update
     void Start()
@@ -37,9 +37,8 @@ public class WayPointScript : MonoBehaviour
             //Debug.Log("WayPointTrigger");
             myManager.UpdateWayPoints();
             myManager.PunishOthers(other.transform.parent.name);
-
             //call event
-            //OnCarGotWaypoint?.Invoke(); //Remnant of the Event System
+            OnCarGotWaypoint?.Invoke(other.transform.parent.gameObject);
         }
     }
 }
