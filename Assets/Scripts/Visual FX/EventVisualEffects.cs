@@ -6,7 +6,7 @@ using UnityEngine;
  * only here to call methods of other classes and combine them
  */
 
-public class CarDestroyEffects : MonoBehaviour
+public class EventVisualEffects : MonoBehaviour
 {
     private Camera mainCamera;
     private TopDownCarController[] carControllers;
