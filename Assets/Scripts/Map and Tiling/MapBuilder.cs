@@ -193,7 +193,7 @@ public class MapBuilder : MonoBehaviour
         }
 
 		//TODO: Random Obstacles under construction
-		obstacleArea.makeRandomObstacles(currentTilemap, buildMarker, direction);
+		obstacleSpawner.makeRandomObstacles(currentTilemap, buildMarker, direction);
     }
 
     //Don´t ever lose this! function to rotate a tile!
@@ -226,6 +226,7 @@ public class MapBuilder : MonoBehaviour
 	{
 		Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		Vector3Int pos = currentTilemap.WorldToCell(mousePosition);
+		Debug.Log("I am called in MapBuilder");
 
 
 		if (Input.GetMouseButton(1))
@@ -233,9 +234,6 @@ public class MapBuilder : MonoBehaviour
 			PlaceSingleTile(pos);
 		}
 	}
-
-
-	//these two funcions are rebuilt in ObstacleAreaGenerator Class!
 
 
 	//getters and setters 
