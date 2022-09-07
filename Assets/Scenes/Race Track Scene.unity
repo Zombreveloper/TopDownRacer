@@ -10317,8 +10317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957fccaf41e53b342b7d3f201046d10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeTime: 0.5
-  shakePower: 1
 --- !u!1 &972576872
 GameObject:
   m_ObjectHideFlags: 0
@@ -10658,7 +10656,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163696551}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a50fbda54e675d04a9db85fc51d4d37b, type: 3}
   m_Name: 
@@ -10773,6 +10771,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 4965427002574414066, guid: ce0f381631b0ca7438e4f657c1b014a5, type: 3}
+  shakeDurationDestroy: 1.5
+  shakePowerDestroy: 2
+  lengthOfTimestop: 0.15
+  shakeDurationWaypoint: 0.5
+  shakePowerWaypoint: 1
+  allowUnevenSpins: 0
 --- !u!1 &1264026337
 GameObject:
   m_ObjectHideFlags: 0
@@ -10919,7 +10923,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22df057d43e85ac45abf4c20435ce11a, type: 2}
+  - {fileID: 2100000, guid: 849f275cfe01afb4085d574c50a020da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
