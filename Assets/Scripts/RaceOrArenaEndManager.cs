@@ -33,6 +33,7 @@ public class RaceOrArenaEndManager : MonoBehaviour
             PlayerProfile winnerProfile = winnerCar.GetComponent<LassesTestInputHandler>().myDriver;
             saveWinner.winnerSoProfile = winnerProfile;
 
+            SlowmotionEffect slowmo = gameObject.AddComponent<SlowmotionEffect>();
             StartCoroutine(CountAndSound());
         }
     }
@@ -49,7 +50,7 @@ public class RaceOrArenaEndManager : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(1); //wait 2 seconds
+            yield return new WaitForSeconds(1); //wait seconds
             //do thing
 
             //make a Sound
@@ -59,10 +60,16 @@ public class RaceOrArenaEndManager : MonoBehaviour
 
     private IEnumerator CountAndScene()
     {
-        while(true)
+        float secondsTillEndScene = 1;
+        float slowmoFactor = 0.3f;
+        //SlowmotionEffect slowmo = new SlowmotionEffect(slowmoFactor, secondsTillEndScene);
+
+        while (true)
         {
-            yield return new WaitForSeconds(1); //wait 2 seconds
-            //do thing
+
+            //Time.timeScale = 0.3f;
+            yield return new WaitForSeconds(secondsTillEndScene); //wait seconds
+            //Time.timeScale = 1f;
 
             CallWinnerScene();
         }
