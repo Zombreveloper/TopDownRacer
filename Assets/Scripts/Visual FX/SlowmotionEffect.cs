@@ -6,7 +6,7 @@ public class SlowmotionEffect : MonoBehaviour
 {
     // Start is called before the first frame update
     public float targetValue = 0.2f;
-    public float effectDuration = 2;
+    public float effectDuration = 2f;
 
     public static SlowmotionEffect instance;
 
@@ -21,6 +21,7 @@ public class SlowmotionEffect : MonoBehaviour
     }
     IEnumerator LerpFunction(float endValue, float duration)
     {
+
         float time = 0;
         float startValue = 1f; //timeScale to start
         while (time < duration)

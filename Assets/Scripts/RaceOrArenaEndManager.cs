@@ -33,7 +33,7 @@ public class RaceOrArenaEndManager : MonoBehaviour
             PlayerProfile winnerProfile = winnerCar.GetComponent<LassesTestInputHandler>().myDriver;
             saveWinner.winnerSoProfile = winnerProfile;
 
-            SlowmotionEffect slowmo = gameObject.AddComponent<SlowmotionEffect>();
+            
             StartCoroutine(CountAndSound());
         }
     }
@@ -56,6 +56,7 @@ public class RaceOrArenaEndManager : MonoBehaviour
             //make a Sound
             StartCoroutine(CountAndScene());
         }
+        //SlowmotionEffect slowmo = gameObject.AddComponent<SlowmotionEffect>();
     }
 
     private IEnumerator CountAndScene()
