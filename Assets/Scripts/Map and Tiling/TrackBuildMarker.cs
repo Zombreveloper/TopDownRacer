@@ -42,15 +42,22 @@ public class TrackBuildMarker : MonoBehaviour
     }
 
     //will show me a visible version of the marker for debugging
-   /* void showMarker() //this is crap. But i need this for testing
-    {
-        
-        Vector3 gridInWorldPoint = tilemap.GetCellCenterWorld(pointerPos);
-        visibleMarker.transform.position = gridInWorldPoint;
+    /* void showMarker() //this is crap. But i need this for testing
+     {
 
-    }*/
+         Vector3 gridInWorldPoint = tilemap.GetCellCenterWorld(pointerPos);
+         visibleMarker.transform.position = gridInWorldPoint;
+
+     }*/
 
     //Public functions
+
+    public Quaternion getRotationQuaternion()
+    {
+        Vector3 markerRotation = GetMarkerRot();
+        Quaternion targetRotation = Quaternion.Euler(markerRotation);
+        return targetRotation;
+    }
 
     public void StepForward(int steps)
     {

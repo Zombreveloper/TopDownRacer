@@ -7,7 +7,6 @@ using UnityEngine;
 public class ExplosionScript : MonoBehaviour
 {
     Vector3 camCenterPos;
-    Vector3 pylonPos;
     Vector3 pointOfImpactScreenSpace;
 
     // Start is called before the first frame update
