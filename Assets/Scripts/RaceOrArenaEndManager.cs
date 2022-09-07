@@ -8,6 +8,10 @@ public class RaceOrArenaEndManager : MonoBehaviour
     ListOfActiveCars activeCars;
     public WinnerSO saveWinner;
 
+    //to make sure that check for winner only gets called once
+    bool winnerDetermined = false;
+    bool checkIfBoolChanged = false;
+
     void Awake()
     {
         activeCars = FindObjectOfType<ParticipantsManager>().GetComponent<ListOfActiveCars>();
@@ -22,20 +26,44 @@ public class RaceOrArenaEndManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckForWinner();
+        checkForDownToOneCar();
+        if (boolChanged()) //checks for the exact moment where the cars go down to the last one 
+        {
+            startGameEnd();
+        }
     }
 
-    void CheckForWinner()
+    bool boolChanged()
+    {
+        if (winnerDetermined != checkIfBoolChanged)
+        {
+            checkIfBoolChanged = winnerDetermined;
+
+            print("winnerDetermined has changed to: " + winnerDetermined);
+            if (winnerDetermined == true)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void checkForDownToOneCar()
     {
         if (activeCars.carsList.Count == 1)
         {
+            winnerDetermined = true;
+        }
+    }
+
+    void startGameEnd() //Check for winner gets called multiple times!!! set bool here and call other method 1 time!
+    {
+
             GameObject winnerCar = activeCars.carsList[0];
             PlayerProfile winnerProfile = winnerCar.GetComponent<LassesTestInputHandler>().myDriver;
             saveWinner.winnerSoProfile = winnerProfile;
 
-            
             StartCoroutine(CountAndSound());
-        }
     }
 
     void CallWinnerScene()
@@ -48,31 +76,27 @@ public class RaceOrArenaEndManager : MonoBehaviour
 
     private IEnumerator CountAndSound()
     {
-        while(true)
-        {
-            yield return new WaitForSeconds(1); //wait seconds
-            //do thing
+            yield return new WaitForSecondsRealtime(0); //wait seconds
 
             //make a Sound
+            Debug.Log("Count and Scene is going to be called");
             StartCoroutine(CountAndScene());
-        }
-        //SlowmotionEffect slowmo = gameObject.AddComponent<SlowmotionEffect>();
+        
     }
 
     private IEnumerator CountAndScene()
     {
-        float secondsTillEndScene = 1;
-        float slowmoFactor = 0.3f;
-        //SlowmotionEffect slowmo = new SlowmotionEffect(slowmoFactor, secondsTillEndScene);
+        float slowmoDuration = 1.5f;
+        float slowmoFactor = 0.15f;
+        SlowmotionEffect slowmo = gameObject.AddComponent<SlowmotionEffect>();
+        StartCoroutine(slowmo.reverseSlowmotion(slowmoFactor, slowmoDuration));
 
-        while (true)
+
+        while (slowmo.coroutineRunning)
         {
-
-            //Time.timeScale = 0.3f;
-            yield return new WaitForSeconds(secondsTillEndScene); //wait seconds
-            //Time.timeScale = 1f;
-
-            CallWinnerScene();
+            yield return null;            
         }
+        yield return new WaitForSeconds(2);
+        CallWinnerScene();
     }
 }

@@ -5283,8 +5283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957fccaf41e53b342b7d3f201046d10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeTime: 0.5
-  shakePower: 1
 --- !u!1001 &1050023070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7304,6 +7302,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1060011345914707563, guid: d7e0e450ec840ee45981ecb215e5d1cb, type: 3}
+  shakeDurationDestroy: 1.5
+  shakePowerDestroy: 1
+  lengthOfTimestop: 0.15
+  shakeDurationWaypoint: 0.3
+  shakePowerWaypoint: 1
+  allowUnevenSpins: 0
 --- !u!114 &1643212671
 MonoBehaviour:
   m_ObjectHideFlags: 0
