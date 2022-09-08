@@ -43,7 +43,32 @@ public class DynamicMenuNavigationScript : MonoBehaviour
 
     public void SelectSouthUiElement(bool _active) //cycles through Selectebles from screen-top to screen-bottom
     {
-        StartCoroutine(waitForOneFrame()); //specific for PlayerCounterMenu, onValueChanged in TMP_InputField gets called before PlayerCounterMenu updates its ui, wich kind of generates an error
+        StartCoroutine(waitForOneFrameSouth(_active)); //specific for PlayerCounterMenu, onValueChanged in TMP_InputField gets called before PlayerCounterMenu updates its ui, wich kind of generates an error
+        /*index++; //next element in list
+
+        if (index >= ListOfUiElements.Count)
+        {
+            index = 0; //loop from bottom to top
+        }
+
+        downwards = true;
+
+        if (_active) //if element has to be SetActive(true)
+        {
+            SelectActiveUiElement();
+        }
+        else if (!_active) //if element has to be SetActive(false) or SetActive doesnt matter
+        {
+            SelectUiElement();
+        }*/
+    }
+
+    private IEnumerator waitForOneFrameSouth(bool _active)
+    {
+        //returning 0 will make it wait 1 frame
+        yield return 0;
+
+        //code goes here
         index++; //next element in list
 
         if (index >= ListOfUiElements.Count)
@@ -65,7 +90,32 @@ public class DynamicMenuNavigationScript : MonoBehaviour
 
     public void SelectNorthUiElement(bool _active)  //cycles through Selectebles from screen-bottom to screen-top
     {
-        StartCoroutine(waitForOneFrame()); //specific for PlayerCounterMenu, onValueChanged in TMP_InputField gets called before PlayerCounterMenu updates its ui, wich kind of generates an error
+        StartCoroutine(waitForOneFrameNorth(_active)); //specific for PlayerCounterMenu, onValueChanged in TMP_InputField gets called before PlayerCounterMenu updates its ui, wich kind of generates an error
+        /*index--;
+
+        if (index < 0)
+        {
+            index = ListOfUiElements.Count - 1; //loop from top to bottom
+        }
+
+        downwards = false;
+
+        if (_active) //if element has to be SetActive(true)
+        {
+            SelectActiveUiElement();
+        }
+        else if (!_active) //if element has to be SetActive(false) or SetActive doesnt matter
+        {
+            SelectUiElement();
+        }*/
+    }
+
+    private IEnumerator waitForOneFrameNorth(bool _active)
+    {
+        //returning 0 will make it wait 1 frame
+        yield return 0;
+
+        //code goes here
         index--;
 
         if (index < 0)
@@ -112,12 +162,5 @@ public class DynamicMenuNavigationScript : MonoBehaviour
     {
         currentUIElement = ListOfUiElements[index];
         currentUIElement.Select();
-    }
-
-    private IEnumerator waitForOneFrame()
-    {
-        //returning 0 will make it wait 1 frame
-        yield return 0;
-        //code goes here
     }
 }
