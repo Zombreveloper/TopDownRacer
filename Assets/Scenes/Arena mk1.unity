@@ -3710,6 +3710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725b3156e4264ce4aaed813dc2c60d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myParent: {fileID: 359449096}
   sparkEmitter: {fileID: 1493602436}
 --- !u!1 &407780117
 GameObject:
