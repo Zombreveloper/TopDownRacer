@@ -8,8 +8,10 @@ public class CarDestroyer : MonoBehaviour
     GameObject[] activeCarObjects;
 
     [SerializeField]
-    [Tooltip("Threshold how much the object can be out of sight without getting destroyed. Measured in Pixels.")] 
+    [Tooltip("Threshold how much the object can be out of sight without getting destroyed. Measured in Pixels.")]
     private float threshold = 0; //how much the car is allowed to go over the borders before being destroyed
+
+    public bool dependsOnHealth;
 
     //referenced classes
     public GameMode_SO gameMode;
@@ -37,14 +39,26 @@ public class CarDestroyer : MonoBehaviour
     {
         foreach (GameObject car in activeCars.getCarsList())
         {
-            if (car!=null && IsOutOfScreen(car) || IsOutOfHealth(car)) //activeCarObjects receives empty entries by deleting values!
+            if (dependsOnHealth == true) //depends on cars Health
             {
+                if (car!=null && IsOutOfHealth(car)) //activeCarObjects receives empty entries by deleting values!
+                {
 
-                StartCoroutine(ExecuteDestroy(car)); //deletes the car and updates activeCarsList one frame later
-                OnCarDestroy?.Invoke(car);
+                    StartCoroutine(ExecuteDestroy(car)); //deletes the car and updates activeCarsList one frame later
+                    OnCarDestroy?.Invoke(car);
+                }
+            }
+            else if (dependsOnHealth == false) //depends on cars Position in Camera View
+            {
+                if (car!=null && IsOutOfScreen(car)) //activeCarObjects receives empty entries by deleting values!
+                {
+
+                    StartCoroutine(ExecuteDestroy(car)); //deletes the car and updates activeCarsList one frame later
+                    OnCarDestroy?.Invoke(car);
+                }
             }
         }
-        
+
 
 
     }
@@ -52,7 +66,7 @@ public class CarDestroyer : MonoBehaviour
 
     private IEnumerator ExecuteDestroy(GameObject o)
     {
-        
+
             Destroy(o);
             Debug.Log(o.name + " was destroyed");
             yield return 0;
@@ -111,9 +125,9 @@ public class CarDestroyer : MonoBehaviour
         }
         else
         {
-            Debug.Log("car on index " + i + "doesn't exist"); 
+            Debug.Log("car on index " + i + "doesn't exist");
         }
-        
+
     }
 
 
