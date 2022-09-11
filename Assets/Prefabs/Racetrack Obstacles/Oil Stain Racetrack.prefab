@@ -4993,7 +4993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectDurationSeconds: 5
-  targetDriftFactor: 0.98
+  targetDriftFactor: 0.99
 --- !u!114 &468725393366426097
 MonoBehaviour:
   m_ObjectHideFlags: 0
