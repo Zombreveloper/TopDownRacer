@@ -53,4 +53,9 @@ public class WayPointParticlesScript : MonoBehaviour
 
         //sparkEmitterParent.SetActive(false);
     }
+
+    private void OnDestroy()
+    {
+        WayPointScript.OnCarGotWaypoint -= placeParticles;
+    }
 }
