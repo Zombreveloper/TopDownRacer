@@ -39,6 +39,17 @@ public class DynamicMenuNavigationScript : MonoBehaviour
             bool active = true;
             SelectSouthUiElement(active);
         }
+        else if (Input.GetKeyDown(KeyCode.Return)) //specific for Top Down Racing Games PlayerCounterMenu
+        {
+            if (currentUIElement != ListOfUiElements[0])
+            {
+                GetComponent<PlayerCounter>().startGame();
+            }
+            else if (currentUIElement == ListOfUiElements[0])
+            {
+                GetComponent<PlayerCounter>().backToMainMenu();
+            }
+        }
     }
 
     public void SelectSouthUiElement(bool _active) //cycles through Selectebles from screen-top to screen-bottom
