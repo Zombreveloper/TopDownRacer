@@ -5082,6 +5082,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102fe3e2ba2bf0040b0f172b54ef4ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 30
+  myCollider: {fileID: 2525324057807870876}
 --- !u!114 &5305003031511457117
 MonoBehaviour:
   m_ObjectHideFlags: 0

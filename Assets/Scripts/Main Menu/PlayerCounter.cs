@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 public class PlayerCounter : MonoBehaviour
 {
     public Button startButton;
+    private bool canIStart;
     public Button buttonToRaceTrack; //Button to go to random generated Race Track
 
     //UI Objects
@@ -48,6 +49,7 @@ public class PlayerCounter : MonoBehaviour
         currentPlayer = 0;
 
         startButton.interactable = false; //button has "disabled"-color...
+        canIStart = false;
         buttonToRaceTrack.interactable = false;
 
         ReadyPlayersList.ReadyPlayersArray.Clear();
@@ -158,6 +160,7 @@ public class PlayerCounter : MonoBehaviour
         if (ReadyPlayersList.ReadyPlayersArray.Count >= 2)
         {
             startButton.interactable = true;
+            canIStart = true;
             buttonToRaceTrack.interactable = true;
         }
     }
@@ -256,7 +259,7 @@ public class PlayerCounter : MonoBehaviour
     {
         //Debug.Log("started Game");
 
-        if(checkKeys())
+        if(checkKeys() && canIStart)
         {
             Debug.Log("Start Game!");
 
