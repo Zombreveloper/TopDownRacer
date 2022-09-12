@@ -5,8 +5,8 @@ using UnityEngine;
 public class SlowmotionEffect : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float targetValue;
-    public float effectDuration;
+    float targetValue;
+    float effectDuration;
     public bool coroutineRunning = false;
 
     public static SlowmotionEffect instance;
