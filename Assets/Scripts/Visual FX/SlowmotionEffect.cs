@@ -27,7 +27,7 @@ public class SlowmotionEffect : MonoBehaviour
         float endValue = 1f; //timeScale to start
         while (time < duration)
         {
-            Time.timeScale = Mathf.Lerp(startValue, endValue, time / duration);
+            Time.timeScale = Mathf.Lerp(startValue, endValue, time / duration); //set Gametime
             time += Time.deltaTime;
             yield return null;
         }
