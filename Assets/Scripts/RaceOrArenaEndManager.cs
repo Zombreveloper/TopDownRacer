@@ -12,6 +12,10 @@ public class RaceOrArenaEndManager : MonoBehaviour
     bool winnerDetermined = false;
     bool checkIfBoolChanged = false;
 
+    [Header("duration and slowest point of slowmo")]
+    [SerializeField] float slowmoDuration = 1.5f;
+    [SerializeField] float slowmoFactor = 0.15f;
+
     void Awake()
     {
         activeCars = FindObjectOfType<ParticipantsManager>().GetComponent<ListOfActiveCars>();
@@ -74,7 +78,7 @@ public class RaceOrArenaEndManager : MonoBehaviour
         SceneManager.LoadScene("WinnerScreen");
     }
 
-    private IEnumerator CountAndSound()
+    private IEnumerator CountAndSound() //TODO: doesn't really do anything atm. Maybe just delete (if sound is handled otherwise)
     {
             yield return new WaitForSecondsRealtime(0); //wait seconds
 
@@ -86,8 +90,6 @@ public class RaceOrArenaEndManager : MonoBehaviour
 
     private IEnumerator CountAndScene()
     {
-        float slowmoDuration = 1.5f;
-        float slowmoFactor = 0.15f;
         SlowmotionEffect slowmo = gameObject.AddComponent<SlowmotionEffect>();
         StartCoroutine(slowmo.reverseSlowmotion(slowmoFactor, slowmoDuration));
 
