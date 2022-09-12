@@ -15,8 +15,7 @@ public class ArenaRaceManagerScript : MonoBehaviour
     GameObject prevWayPoint;
     GameObject currentWayPoint;
     public GameObject Arrow;
-    public GameObject heatlthRegenPad1;
-    public GameObject heatlthRegenPad2;
+    public List<GameObject> allHealthPads = new List<GameObject>();
 
     private ListOfActiveCars activeCars;
 
@@ -202,13 +201,23 @@ public class ArenaRaceManagerScript : MonoBehaviour
     {
         if (gameMode.gameMode == "ArenaRace")
         {
-            heatlthRegenPad1.SetActive(false);
-            heatlthRegenPad2.SetActive(false);
+            foreach (GameObject heatlthRegenPad in allHealthPads)
+            {
+                if (heatlthRegenPad.activeSelf == true)
+                {
+                    heatlthRegenPad.SetActive(false);
+                }
+            }
         }
         else if (gameMode.gameMode == "Arena")
         {
-            heatlthRegenPad1.SetActive(true);
-            heatlthRegenPad2.SetActive(true);
+            foreach (GameObject heatlthRegenPad in allHealthPads)
+            {
+                if (heatlthRegenPad.activeSelf == false)
+                {
+                    heatlthRegenPad.SetActive(true);
+                }
+            }
         }
         else
         {
