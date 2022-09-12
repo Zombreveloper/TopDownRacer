@@ -45,6 +45,7 @@ public class ObstacleParticles : MonoBehaviour
     {
         if (collider.transform.parent.tag == "Car")
         {
+            //Debug.Log("Ein Auto überfährt mich");
             //Vector2 posOfImpact = collision.GetContact(0).point; //for specific position of the Impact
             //MakeSparks(posOfImpact); //for specific position of the Impact
             MakeSparks();
