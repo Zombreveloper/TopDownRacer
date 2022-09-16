@@ -201,7 +201,7 @@ public class TopDownCarController : MonoBehaviour
 
     private IEnumerator spinCarFromOutside(float spins, bool _unevenSpins)
     {
-        float oilConstant = Random.Range(5.0f, 10.0f);
+        float oilConstant = 7f; //Random.Range(5.0f, 7.0f);
         int spinOtherDirection = Random.Range(0, 2); //upper value is exclusive!
         if (spinOtherDirection == 1)
             oilConstant = -oilConstant;
@@ -217,8 +217,8 @@ public class TopDownCarController : MonoBehaviour
         while (alreadySpun < maxSpinAngle && alreadySpun > -maxSpinAngle)
         {
             float slowSpin = oilConstant / 2;
-            adjustRotationAngle(slowSpin);
-            alreadySpun += slowSpin;
+            adjustRotationAngle(oilConstant);
+            alreadySpun += oilConstant;
             yield return null;
         }
         autoRotateCRRunning = false;

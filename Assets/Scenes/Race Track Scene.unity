@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mytext: {fileID: 840388580}
   i: 0
-  instantStart: 1
+  instantStart: 0
 --- !u!4 &102547487
 Transform:
   m_ObjectHideFlags: 0
@@ -9910,6 +9910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 304090527}
   - component: {fileID: 304090526}
+  - component: {fileID: 304090528}
   m_Layer: 0
   m_Name: SoundPlayer
   m_TagString: Untagged
@@ -9924,14 +9925,14 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304090525}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: eb0a07dfe846da440ad97eba205d644b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f04d16cedade2024fbe53d8ea92f3798, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.643
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -10028,6 +10029,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &304090528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304090525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62b4f72f6a9ce547801760f2e981e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BPM: 144
+  loopLength: 44.344
+  loopThreshold: 57.5
 --- !u!1 &645419241
 GameObject:
   m_ObjectHideFlags: 0
@@ -10777,7 +10793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1163696552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11680,7 +11696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4965427002574414066, guid: ce0f381631b0ca7438e4f657c1b014a5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8059877459761551357, guid: ce0f381631b0ca7438e4f657c1b014a5, type: 3}
       propertyPath: m_RootOrder
