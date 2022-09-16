@@ -151,12 +151,12 @@ public class TopDownCarController : MonoBehaviour
         //Debug.Log("Rotatoin Angle adjusted");
     }
 
-    public void autoRotateCar(int spinAmount, bool _unevenSpins)
+    public void autoRotateCar(float spinAmount, float spinVelocity)
     {
         if (autoRotateCRRunning == false)
         {
            
-            StartCoroutine(spinCarFromOutside(spinAmount, _unevenSpins));
+            StartCoroutine(spinCarFromOutside(spinAmount, spinVelocity));
         }
     }
 
@@ -199,31 +199,24 @@ public class TopDownCarController : MonoBehaviour
         boostCRRunning = false;
     }
 
-    private IEnumerator spinCarFromOutside(float spins, bool _unevenSpins)
+    private IEnumerator spinCarFromOutside(float spins, float spinVelocity)
     {
-        float oilConstant = 7f; //Random.Range(5.0f, 7.0f);
-        int spinOtherDirection = Random.Range(0, 2); //upper value is exclusive!
-        if (spinOtherDirection == 1)
-            oilConstant = -oilConstant;
-
         autoRotateCRRunning = true;
-        if (_unevenSpins)
-        {
-            float randomModifier = Random.Range(0.5f, 1.0f);
-            spins *= randomModifier;
-        }
+
         float maxSpinAngle = spins * 360;
         float alreadySpun = 0;
+
         while (alreadySpun < maxSpinAngle && alreadySpun > -maxSpinAngle)
         {
-            float slowSpin = oilConstant / 2;
-            adjustRotationAngle(oilConstant);
-            alreadySpun += oilConstant;
+            //float slowSpin = oilConstant / 2;
+            adjustRotationAngle(spinVelocity);
+            alreadySpun += spinVelocity;
             yield return null;
         }
         autoRotateCRRunning = false;
         yield break;
     }
+
     private IEnumerator makeSlipperyForSeconds(float newDriftFactor, float timeSeconds)
     {
         slipperyCRRunning = true;

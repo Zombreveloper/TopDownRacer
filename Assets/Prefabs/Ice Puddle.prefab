@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2342472716562569753}
   - component: {fileID: 88516093405739798}
   m_Layer: 0
-  m_Name: Oil Stain
+  m_Name: Ice Puddle
   m_TagString: oil stain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,8 +112,8 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 42ec33422477ad848941739bc1fe576c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
+  m_FlipX: 1
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.25, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
@@ -135,6 +135,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowUnevenSpins: 1
   amountOfFullSpins: 1
+  spinVelocityMin: 5
+  spinVelocityMax: 7
+  spinType: 1
 --- !u!50 &2342472716562569753
 Rigidbody2D:
   serializedVersion: 4

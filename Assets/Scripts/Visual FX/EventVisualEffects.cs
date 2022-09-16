@@ -22,7 +22,8 @@ public class EventVisualEffects : MonoBehaviour
     [Header("Effects at hitting waypoint")]
     [SerializeField] float shakeDurationWaypoint = .5f; 
     [SerializeField] float shakePowerWaypoint = 1f;
-    [SerializeField] bool allowUnevenSpins = false;
+    [SerializeField] float carFullSpins = 1f; //negative Value spins car the other way around
+    [SerializeField] float carSpinVelocity = 7f;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +57,7 @@ public class EventVisualEffects : MonoBehaviour
             foreach (TopDownCarController controller in carControllers)
             {
                 if (controller.gameObject != collidedCar)
-                controller.autoRotateCar(1, allowUnevenSpins);
+                controller.autoRotateCar(carFullSpins, carSpinVelocity);
             }
         }
         

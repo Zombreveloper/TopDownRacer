@@ -107,9 +107,9 @@ public class CarCollisionManager : MonoBehaviour
         }*/
     }
 
-    public void OilStainBehavior(int spinAmount, bool unevenSpins)
+    public void SpinForceBehavior(float spinAmount, float spinVelocity)
     {
-        carController.autoRotateCar(spinAmount, unevenSpins);
+        carController.autoRotateCar(spinAmount, spinVelocity);
     }
 
     public void BoostPadBehavior(Vector2 _force, float duration)
