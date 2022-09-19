@@ -71,7 +71,8 @@ public class ArenaCarDestroyer : MonoBehaviour
             }
             else if (gameMode.gameMode == "ArenaRace")
             {
-                int currentHealth = myPlayer.wayPointCounter;
+                //int currentHealth = myPlayer.wayPointCounter;
+                int currentHealth = int.Parse(myPlayer.health);
                 if (currentHealth < 1)
                 {
                     return true;

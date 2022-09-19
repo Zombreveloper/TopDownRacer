@@ -52,7 +52,8 @@ public class WayPointDisplayerScript : MonoBehaviour
 
     void UpdateDisplaying()
     {
-        myWaypoints = myPlayer.wayPointCounter;
+        //myWaypoints = myPlayer.wayPointCounter;
+        myWaypoints = int.Parse(myPlayer.health);
         healthDisplay.text = myWaypoints.ToString();
     }
 

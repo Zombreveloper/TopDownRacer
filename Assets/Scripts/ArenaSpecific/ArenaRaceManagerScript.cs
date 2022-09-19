@@ -102,7 +102,10 @@ public class ArenaRaceManagerScript : MonoBehaviour
             {
                 PlayerProfile myPlayer = car.GetComponent<LassesTestInputHandler>().myDriver;
 
-                myPlayer.wayPointCounter--;
+                //myPlayer.wayPointCounter--;
+                int myhealth = int.Parse(myPlayer.health);
+                myhealth--;
+                myPlayer.health = myhealth.ToString();
             }
         }
     }

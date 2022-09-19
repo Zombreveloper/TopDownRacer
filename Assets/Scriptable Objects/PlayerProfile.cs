@@ -20,5 +20,5 @@ public class PlayerProfile : ScriptableObject
     public string vehicle; //should be a SO on its own
     public string health;
     public string maxHealth;
-    public int wayPointCounter;
+    //public int wayPointCounter;
 }

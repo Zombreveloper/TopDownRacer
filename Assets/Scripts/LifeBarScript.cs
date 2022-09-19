@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 /*
 Parts of this script are inprired by Brackeys:
@@ -14,6 +15,9 @@ public class LifeBarScript : MonoBehaviour
     GameObject myCar;
     string myHealth;
     public TMP_Text healthDisplay;
+    public Slider slider;
+    public Gradient gradient;
+    public Image fill;
     Canvas myCanvas;
     Camera mainCamera;
     Transform cameraTransform;
@@ -43,6 +47,8 @@ public class LifeBarScript : MonoBehaviour
     {
         //myPlayer = GetComponentInParent<LassesTestInputHandler>().myDriver;
         myPlayer = myCar.GetComponent<LassesTestInputHandler>().myDriver;
+        slider.maxValue=int.Parse(myPlayer.maxHealth);
+        fill.color = gradient.Evaluate(1f);
         SetEventCamera();
     }
 
@@ -59,6 +65,8 @@ public class LifeBarScript : MonoBehaviour
     {
         myHealth = myPlayer.health;
         healthDisplay.text = myHealth;
+        slider.value = float.Parse(myHealth);
+        fill.color = gradient.Evaluate(slider.normalizedValue); //gradient has values from 0f to 1f
 
         int currentHealth = int.Parse(myHealth);
         if (currentHealth < 0)

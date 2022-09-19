@@ -98,15 +98,14 @@ public class PlayerCounter : MonoBehaviour
         }
         else if (gameMode.gameMode == "ArenaRace")
         {
-            healthSlider.value = 20f;
-            healthText.text = "20";
+            healthSlider.value = 10f;
+            healthText.text = "10";
         }
 
         foreach (PlayerProfile profile in PlayerProfileArray)
         {
             profile.health = "10";
             profile.maxHealth = "10";
-            profile.wayPointCounter = 20;
         }
     }
 
@@ -120,7 +119,6 @@ public class PlayerCounter : MonoBehaviour
 
             profile.health = temp.ToString();
             profile.maxHealth = temp.ToString();
-            profile.wayPointCounter = iTemp;
         }
     }
 

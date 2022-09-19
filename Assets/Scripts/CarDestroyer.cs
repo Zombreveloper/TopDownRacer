@@ -155,14 +155,7 @@ public class CarDestroyer : MonoBehaviour
     {
         PlayerProfile myPlayer = o.GetComponent<LassesTestInputHandler>().myDriver;
         int currentHealth = 20;
-        if (gameMode.gameMode == "Arena")
-        {
-            currentHealth = int.Parse(myPlayer.health);
-        }
-        else if (gameMode.gameMode == "ArenaRace")
-        {
-            currentHealth = myPlayer.wayPointCounter;
-        }
+        currentHealth = int.Parse(myPlayer.health);
         return currentHealth;
     }
 

@@ -77,10 +77,7 @@ public class ParticipantsManager : MonoBehaviour
         if (gameMode.gameMode == "Arena")
         {
             //Add a life bar to car.
-            currentLifeBar = Instantiate(lifeBarPrefab, _spawnPos, Quaternion.identity);
-            currentLifeBar.name = ("LifeBar_Player" + index);
-            LifeBarScript currentLife_Script = currentLifeBar.GetComponent<LifeBarScript>();
-            currentLife_Script.ThisIsYourCar(_currentCar);
+            AddLifeBar(_currentCar, _spawnPos);
             //currentLifeBar.transform.parent = _currentCar.transform;
 
             //Add a Bumper to car
@@ -96,11 +93,16 @@ public class ParticipantsManager : MonoBehaviour
             ArenaRaceManagerScript arms = FindObjectOfType<ArenaRaceManagerScript>();
             arms.InitiateArenaRace();
 
-            currentWayPointDisplayer = Instantiate(wayPointDisplayerPrefab, _spawnPos, Quaternion.identity);
-            currentWayPointDisplayer.name = ("WayPointDisplayer_Player" + index);
-            WayPointDisplayerScript currentWayPointDisplayer_Script = currentWayPointDisplayer.GetComponent<WayPointDisplayerScript>();
-            currentWayPointDisplayer_Script.ThisIsYourCar(_currentCar);
+            AddLifeBar(_currentCar, _spawnPos);
         }
+    }
+
+    void AddLifeBar(GameObject _currentCar, Vector2 _spawnPos)
+    {
+        currentLifeBar = Instantiate(lifeBarPrefab, _spawnPos, Quaternion.identity);
+        currentLifeBar.name = ("LifeBar_Player" + index);
+        LifeBarScript currentLife_Script = currentLifeBar.GetComponent<LifeBarScript>();
+        currentLife_Script.ThisIsYourCar(_currentCar);
     }
 
     //positions participating cars on a formula1 like starting grid. Propably better off as an own class but whatever
