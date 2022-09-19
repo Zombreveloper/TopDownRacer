@@ -29,6 +29,8 @@ public class CameraManager : MonoBehaviour
 	public float zoomLimiter = 30f;
 	public float minZoom = 30f;
 	public float maxZoom = 15f;
+	float zoomVelocity = 0;
+	float zoomSmoothTime = .3f;
 
 	[SerializeField]
 	float favorFirstPlaced = 0.6f;
@@ -218,16 +220,32 @@ public class CameraManager : MonoBehaviour
 
 	}
 
-	void zoom()
+	//Zoom related stuff
+	void zoomBackup()
 	{
 		//Debug.Log(getGreatestDistance());
+		//float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance() / zoomLimiter);
+		//mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, newZoom, Time.deltaTime); //has issues if cars are straying apart to fast
+	}
+	void zoom()
+	{
+		
+		//Debug.Log(getGreatestDistance());
 		float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance() / zoomLimiter);
-		mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, newZoom, Time.deltaTime);
+		float t = smoothDamp(newZoom);
+		//mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, newZoom, Time.deltaTime); //has issues if cars are straying apart to fast
+		mainCamera.orthographicSize = Mathf.SmoothDamp(mainCamera.orthographicSize, newZoom, ref zoomVelocity, zoomSmoothTime);
+	}
+
+	float smoothDamp(float target)
+    {
+		float t = mainCamera.orthographicSize / target;
+		t = t * t * (3f - 2f * t);
+		return t;
 	}
 
 	void instantZoom()
 	{
-		//Debug.Log(getGreatestDistance());
 		float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance() / zoomLimiter);
 		mainCamera.orthographicSize = newZoom;
 	}
@@ -258,6 +276,8 @@ public class CameraManager : MonoBehaviour
 			return xDistance;
 		}
 	}
+
+	//everything else whitch is hopefully not that much because srsly slowly i am beginning to think this camera class is better off split in three
 
 	public void allowCamShake(float duration = 1, float power = 1)
     {
