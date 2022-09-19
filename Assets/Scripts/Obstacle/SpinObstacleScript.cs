@@ -41,6 +41,7 @@ public class SpinObstacleScript : MonoBehaviour
 
     float spinFactorByType() //wanted to try out switch cases. Works well but this is not really a fitting use scenario
     {
+        Debug.Log("Ice activated");
         float calculatedSpinFactor = amountOfFullSpins;
         float randomModifier = 1f;
         switch(spinType)
