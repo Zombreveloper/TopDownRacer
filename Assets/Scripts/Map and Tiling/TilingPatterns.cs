@@ -20,12 +20,22 @@ public class TilingPatterns : MonoBehaviour
     [SerializeField] TileBase CurveTileDL;
     [SerializeField] TileBase CurveTileDR;
 
+    [SerializeField] TilePoolList_SO tileset;
+
     //referenced classes
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (tileset != null)
+        {
+            GrassTile = tileset.tiles[0];
+            StraightTile = tileset.tiles[1];
+            CurveTileUL = tileset.tiles[2];
+            CurveTileUR = tileset.tiles[3];
+            CurveTileDL = tileset.tiles[4];
+            CurveTileDR = tileset.tiles[5];
+        }
     }
 
     // Update is called once per frame
@@ -57,7 +67,7 @@ public class TilingPatterns : MonoBehaviour
         TileBase[] currentTilesArray = new TileBase[currentPatternArray.Length];
         for (int index = 0; index < currentPatternArray.Length; index++)
         {
-            currentTilesArray[index] = index == 1 ? StraightTile : GrassTile;
+            currentTilesArray[index] = index == 1 ? StraightTile : GrassTile; //line asks: does "index" currently equal 1? Then add StraightTile, otherwise add GrassTile
         }
         spriteArray = currentTilesArray;
     }
