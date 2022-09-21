@@ -10806,6 +10806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveWinner: {fileID: 11400000, guid: 95869ae478e630e458e01fcaee4533c8, type: 2}
+  EveryoneWinsPlayerProfile: {fileID: 11400000, guid: d81aed9f5c532d246b52a30243bd0a59, type: 2}
   slowmoDuration: 1.5
   slowmoFactor: 0.15
 --- !u!4 &1163696553
