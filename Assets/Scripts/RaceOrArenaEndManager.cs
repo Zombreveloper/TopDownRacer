@@ -7,6 +7,9 @@ public class RaceOrArenaEndManager : MonoBehaviour
 {
     ListOfActiveCars activeCars;
     public WinnerSO saveWinner;
+    public PlayerProfile EveryoneWinsPlayerProfile;
+
+    private PlayerProfile winnerProfile;
 
     //to make sure that check for winner only gets called once
     bool winnerDetermined = false;
@@ -31,7 +34,7 @@ public class RaceOrArenaEndManager : MonoBehaviour
     void Update()
     {
         checkForDownToOneCar();
-        if (boolChanged()) //checks for the exact moment where the cars go down to the last one 
+        if (boolChanged()) //checks for the exact moment where the cars go down to the last one
         {
             startGameEnd();
         }
@@ -54,7 +57,7 @@ public class RaceOrArenaEndManager : MonoBehaviour
 
     void checkForDownToOneCar()
     {
-        if (activeCars.carsList.Count == 1)
+        if (activeCars.carsList.Count <= 1)
         {
             winnerDetermined = true;
         }
@@ -62,12 +65,18 @@ public class RaceOrArenaEndManager : MonoBehaviour
 
     void startGameEnd() //Check for winner gets called multiple times!!! set bool here and call other method 1 time!
     {
-
+        if (activeCars.carsList.Count == 1)
+        {
             GameObject winnerCar = activeCars.carsList[0];
-            PlayerProfile winnerProfile = winnerCar.GetComponent<LassesTestInputHandler>().myDriver;
-            saveWinner.winnerSoProfile = winnerProfile;
+            winnerProfile = winnerCar.GetComponent<LassesTestInputHandler>().myDriver;
+        }
+        else if (activeCars.carsList.Count == 0)
+        {
+            winnerProfile = EveryoneWinsPlayerProfile;
+        }
+        saveWinner.winnerSoProfile = winnerProfile;
 
-            StartCoroutine(CountAndSound());
+        StartCoroutine(CountAndSound());
     }
 
     void CallWinnerScene()
@@ -85,7 +94,7 @@ public class RaceOrArenaEndManager : MonoBehaviour
             //make a Sound
             Debug.Log("Count and Scene is going to be called");
             StartCoroutine(CountAndScene());
-        
+
     }
 
     private IEnumerator CountAndScene()
@@ -96,7 +105,7 @@ public class RaceOrArenaEndManager : MonoBehaviour
 
         while (slowmo.coroutineRunning)
         {
-            yield return null;            
+            yield return null;
         }
         yield return new WaitForSeconds(2);
         CallWinnerScene();

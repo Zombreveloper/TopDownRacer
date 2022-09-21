@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62e0e163bf334d45b35c2184538b166, type: 3}
   m_Name: PlayerProfile 5
   m_EditorClassIdentifier: 
-  playerName: Player 5
+  playerName: Pink
   leftInput: f
   rightInput: f
   ready: 0
@@ -22,4 +22,4 @@ MonoBehaviour:
   alpha_value: 255
   vehicle: 
   health: 10
-  wayPointCounter: 20
+  maxHealth: 
