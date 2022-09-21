@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public TilePoolList_SO tilePools;
     public GameMode_SO gameMode;
     public Button firstButton, startPlayButton, leavePlayButton, startOptionsButton, leaveOptionsButton, startHTPButton, leaveHTPButton;
     public GameObject mainMenu, optionsMenu, hTPMenu, playMenu;
@@ -76,6 +77,18 @@ public class MainMenu : MonoBehaviour
         leaveHTPButton.Select();
     }
 
+    public void setLevelMeadows()
+    {
+        tilePools.levelName = "Meadows";
+        playerCount();
+    }
+
+    public void setLevelDesert()
+    {
+        tilePools.levelName = "Desert";
+        playerCount();
+    }
+
     //
     //
 
@@ -84,7 +97,7 @@ public class MainMenu : MonoBehaviour
         //Debug.Log("Go to Race-Scene");
         gameMode.gameMode = "Race";
         //SceneManager.LoadScene("MyScene");
-        playerCount();
+        //playerCount();
     }
 
     public void selectArenaRace()

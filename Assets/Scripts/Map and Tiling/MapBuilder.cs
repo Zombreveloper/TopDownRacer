@@ -131,9 +131,9 @@ public class MapBuilder : MonoBehaviour
 	void MakeStartArea()
 	{
 		//tilingPatterns.StraightLinePattern(); //calls for a straight line
+		currentTilemap.SetTile(new Vector3Int(0, -2, 0), tilingPatterns.GetSingleTile(1));
 		currentTilemap.SetTile(new Vector3Int(0, -1, 0), tilingPatterns.GetSingleTile(1));
 		currentTilemap.SetTile(new Vector3Int(0, 0, 0), tilingPatterns.GetSingleTile(1));
-		currentTilemap.SetTile(new Vector3Int(0, 11, 0), tilingPatterns.GetSingleTile(1));
 
 
 
@@ -144,7 +144,7 @@ public class MapBuilder : MonoBehaviour
 		string flag = "straightTrack";
 		tilingPatterns.StraightLinePattern(); //calls for a straight line
 		PlacePattern(tilingPatterns.GetPattern(), tilingPatterns.GetSprites(), flag); //draws the pattern onto the map, needs Positions + Sprites!
-		buildMarker.StepForward(1); //could be called elsewhere?
+		buildMarker.StepForward(1);
 	}
 
 	

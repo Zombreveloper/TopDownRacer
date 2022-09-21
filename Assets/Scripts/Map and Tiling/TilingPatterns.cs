@@ -22,6 +22,8 @@ public class TilingPatterns : MonoBehaviour
 
     //for dynamic tilesets
     [SerializeField] TilePoolList_SO tileset;
+    [SerializeField] GameMode_SO gameMode;
+    List<TileBase> tilesetFromSO;
 
     //referenced classes
 
@@ -30,13 +32,24 @@ public class TilingPatterns : MonoBehaviour
     {
         if (tileset != null)
         {
-            GrassTile = tileset.tiles[0];
-            StraightTile = tileset.tiles[1];
-            CurveTileUL = tileset.tiles[2];
-            CurveTileUR = tileset.tiles[3];
-            CurveTileDL = tileset.tiles[4];
-            CurveTileDR = tileset.tiles[5];
+                   
+            if (tileset.levelName == "Desert")
+            {
+                tilesetFromSO = tileset.DesertTiles;
+            }
+            else
+            {
+                tilesetFromSO = tileset.MeadowTiles;
+            }
+
+            GrassTile = tilesetFromSO[0];
+            StraightTile = tilesetFromSO[1];
+            CurveTileUL = tilesetFromSO[2];
+            CurveTileUR = tilesetFromSO[3];
+            CurveTileDL = tilesetFromSO[4];
+            CurveTileDR = tilesetFromSO[5];
         }
+       
     }
 
     public void StraightLinePattern() //Builds List of coordinates for tiles in relation to each other
@@ -161,6 +174,6 @@ public class TilingPatterns : MonoBehaviour
 
     public TileBase GetSingleTile(int i)
     {
-        return this.tileset.tiles[i];
+        return this.tilesetFromSO[i];
     }
 }
