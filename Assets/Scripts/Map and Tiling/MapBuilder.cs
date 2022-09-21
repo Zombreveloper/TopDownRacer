@@ -10,8 +10,8 @@ public class MapBuilder : MonoBehaviour
 {
 	[Header("Selected Tiles")]
 	[SerializeField] Tilemap currentTilemap;
-	[SerializeField] TileBase TileStraightVert; //Ruletiles for Straight Track in Vertival Direction
-	[SerializeField] TileBase TileCurveLD; //Ruletiles for curved Track Left to Down
+
+	//these are somewhere in the code but not really relevant anymore
 	TileBase currentTile;
 
 
@@ -39,12 +39,16 @@ public class MapBuilder : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
+		//references to GameObjects
 		buildMarker = FindObjectOfType<TrackBuildMarker>();
 		tilingPatterns = FindObjectOfType<TilingPatterns>();
 		checkpointPlacer = FindObjectOfType<CheckpointPlacer>();
 		obstacleArea = GetComponentInChildren<ObstacleAreaGenerator>();
 		obstacleSpawner = GameObject.Find("/MapManager/ObstacleManager").GetComponent<RandomObstacleSpawner>();
+
+		//build initial Track pieces
 		//StartCoroutine(TilingDelay());
+		MakeStartArea();
 		MakeLine();
 		MakeLine();
 
@@ -124,10 +128,20 @@ public class MapBuilder : MonoBehaviour
 		//PlaceTileByMouse();
 	}
 
+	void MakeStartArea()
+	{
+		//tilingPatterns.StraightLinePattern(); //calls for a straight line
+		currentTilemap.SetTile(new Vector3Int(0, -1, 0), tilingPatterns.GetSingleTile(1));
+		currentTilemap.SetTile(new Vector3Int(0, 0, 0), tilingPatterns.GetSingleTile(1));
+		currentTilemap.SetTile(new Vector3Int(0, 11, 0), tilingPatterns.GetSingleTile(1));
+
+
+
+	}
+
 	void MakeLine()
     {
 		string flag = "straightTrack";
-		//currentTile = TileStraightVert;
 		tilingPatterns.StraightLinePattern(); //calls for a straight line
 		PlacePattern(tilingPatterns.GetPattern(), tilingPatterns.GetSprites(), flag); //draws the pattern onto the map, needs Positions + Sprites!
 		buildMarker.StepForward(1); //could be called elsewhere?
@@ -137,7 +151,6 @@ public class MapBuilder : MonoBehaviour
 	void MakeCurveLeft()
 	{
 		string flag = "leftCurve";
-		//currentTile = TileCurveLD;
 		tilingPatterns.CurvedLeftTrackPattern(); //calls for a left curve
         PlacePattern(tilingPatterns.GetPattern(), tilingPatterns.GetSprites(), flag); //draws the pattern onto the map, needs Positions + Sprites!
 		buildMarker.StepForward(1);
@@ -192,7 +205,6 @@ public class MapBuilder : MonoBehaviour
 
         }
 
-		//TODO: Random Obstacles under construction
 		obstacleSpawner.makeRandomObstacles(currentTilemap, buildMarker, direction);
     }
 
@@ -214,11 +226,6 @@ public class MapBuilder : MonoBehaviour
 		Vector3 rotatedVector = rotMatrix.MultiplyPoint3x4(coordinate);
 		Vector3Int rotatedIntVector = Vector3Int.RoundToInt(rotatedVector);
 		return rotatedIntVector;
-	}
-
-	private void PlaceSingleTile(Vector3Int pos) //places a single current tile on a given position on the grid
-	{
-		currentTilemap.SetTile(pos, currentTile);
 	}
 
 	
@@ -256,5 +263,10 @@ public class MapBuilder : MonoBehaviour
 			buildPos.Set(i, posY, 0);
 			PlaceSingleTile(buildPos);
 		}	
+	}
+
+	private void PlaceSingleTile(Vector3Int pos) //places a single current tile on a given position on the grid
+	{
+		currentTilemap.SetTile(pos, currentTile);
 	}
 }

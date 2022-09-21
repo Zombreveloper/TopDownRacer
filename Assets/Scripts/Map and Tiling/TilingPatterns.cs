@@ -20,12 +20,13 @@ public class TilingPatterns : MonoBehaviour
     [SerializeField] TileBase CurveTileDL;
     [SerializeField] TileBase CurveTileDR;
 
+    //for dynamic tilesets
     [SerializeField] TilePoolList_SO tileset;
 
     //referenced classes
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (tileset != null)
         {
@@ -36,12 +37,6 @@ public class TilingPatterns : MonoBehaviour
             CurveTileDL = tileset.tiles[4];
             CurveTileDR = tileset.tiles[5];
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void StraightLinePattern() //Builds List of coordinates for tiles in relation to each other
@@ -162,5 +157,10 @@ public class TilingPatterns : MonoBehaviour
     public TileBase[] GetSprites()
     {
         return this.spriteArray;
+    }
+
+    public TileBase GetSingleTile(int i)
+    {
+        return this.tileset.tiles[i];
     }
 }

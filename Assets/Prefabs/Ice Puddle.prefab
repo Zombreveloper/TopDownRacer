@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deebcccf98a1e9f46915042f5c44c8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinVelocityMin: 2
+  spinVelocityMin: 3
   spinVelocityMax: 4
   amountOfFullSpins: 1
   spinType: 1
