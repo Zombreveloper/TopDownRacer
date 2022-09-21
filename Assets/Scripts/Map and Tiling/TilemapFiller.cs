@@ -10,12 +10,21 @@ public class TilemapFiller : MonoBehaviour
     public TileBase defaultTile;
     private Tilemap currentTilemap;
 
+    // for dynamic tilesets
+    [SerializeField] TilePoolList_SO tileset;
+
     // Start is called before the first frame update
     void Start()
     {
         mainCam = Camera.main;
         currentTilemap = GameObject.Find("/Grid").GetComponentInChildren<Tilemap>();
         tileCoordinates = GetComponent<AreaToTileCoordinates>();
+
+        if (tileset != null)
+        {
+            //overwrite the given Tile 
+            defaultTile = tileset.tiles[0];
+        }
     }
 
     // Update is called once per frame
