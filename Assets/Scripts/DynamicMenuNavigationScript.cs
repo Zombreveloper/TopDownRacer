@@ -52,6 +52,12 @@ public class DynamicMenuNavigationScript : MonoBehaviour
         }
     }
 
+    public Selectable GetSelectedSelectable()
+    {
+        Selectable _SelectedSelectable = currentUIElement;
+        return _SelectedSelectable;
+    }
+
     public void SelectSouthUiElement(bool _active) //cycles through Selectebles from screen-top to screen-bottom
     {
         StartCoroutine(waitForOneFrameSouth(_active)); //specific for PlayerCounterMenu, onValueChanged in TMP_InputField gets called before PlayerCounterMenu updates its ui, wich kind of generates an error
