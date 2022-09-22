@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     public TilePoolList_SO tilePools;
     public GameMode_SO gameMode;
-    public Button firstButton, startPlayButton, leavePlayButton, startOptionsButton, leaveOptionsButton, startHTPButton, leaveHTPButton;
+    public Button firstButton, startPlayButton, leavePlayButton, startOptionsButton, leaveOptionsButton, startHTPButton, leaveHTPButton, startAreaSelectButton, leaveAreaSelectButton;
     public GameObject mainMenu, optionsMenu, hTPMenu, playMenu;
     public Button mainQuit, optionsBack, hTPBack, playBack;
 
@@ -77,6 +77,19 @@ public class MainMenu : MonoBehaviour
         leaveHTPButton.Select();
     }
 
+    public void selectStartAreaSelectButton()
+    {
+        startAreaSelectButton.Select();
+    }
+
+    public void selectLeaveAreaSelectButton()
+    {
+        leaveAreaSelectButton.Select();
+    }
+
+    //
+    //
+
     public void setLevelMeadows()
     {
         tilePools.levelName = "Meadows";
@@ -89,8 +102,6 @@ public class MainMenu : MonoBehaviour
         playerCount();
     }
 
-    //
-    //
 
     public void selectRace()
     {
