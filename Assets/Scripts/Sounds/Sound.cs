@@ -22,5 +22,4 @@ public class Sound
 
     [HideInInspector] //following var behaves like a puplic var, but is not visible in the inspector
     public AudioSource source;
-
 }

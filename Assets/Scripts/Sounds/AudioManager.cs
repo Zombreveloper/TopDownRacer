@@ -10,11 +10,11 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds; //Array mit (rohen) Sounds aus dem Asset Ordner.
 
-    public static AudioManager instance; //static refeence to itself / the first one
+    /*public static AudioManager instance;*/ //static refeence to itself / the first one
 
     void Awake()
     {
-        if (instance == null) //if there is no AudioManagers
+        /*if (instance == null) //if there is no AudioManagers
         {
             instance = this;
         }
@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject); //is persistent between Scenes.
+        DontDestroyOnLoad(gameObject); //is persistent between Scenes.*/
 
         foreach (Sound s in sounds)
         {
@@ -42,12 +42,12 @@ public class AudioManager : MonoBehaviour
     {
         //Debug.Log("A Sound should be played");
         Sound s = Array.Find(sounds, sound => sound.name == name); //Find in the "sounds" Array, a sound with the name "name"
-        s.source.Play();
-        //Debug.Log("A Sound should be played");
         if (s == null) //does not play a sound that is not there. Catches spelling Errors.
         {
             Debug.Log("ERROR in AudioManager.Play(): Sound " + name + " was not found!!!");
             return;
         }
+        s.source.Play();
+        //Debug.Log("A Sound should be played");
     }
 }
