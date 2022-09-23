@@ -9,8 +9,8 @@ public class MainMenu : MonoBehaviour
     public TilePoolList_SO tilePools;
     public GameMode_SO gameMode;
     public Button firstButton, startPlayButton, leavePlayButton, startOptionsButton, leaveOptionsButton, startHTPButton, leaveHTPButton, startAreaSelectButton, leaveAreaSelectButton;
-    public GameObject mainMenu, optionsMenu, hTPMenu, playMenu;
-    public Button mainQuit, optionsBack, hTPBack, playBack;
+    public GameObject mainMenu, optionsMenu, hTPMenu, playMenu, areaSelectMenu;
+    public Button mainQuit, optionsBack, hTPBack, playBack, areaSelectBack;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +40,10 @@ public class MainMenu : MonoBehaviour
             else if (playMenu.activeSelf)
             {
                 playBack.onClick.Invoke();
+            }
+            else if (areaSelectMenu.activeSelf)
+            {
+                areaSelectBack.onClick.Invoke();
             }
         }
     }
@@ -137,4 +141,5 @@ public class MainMenu : MonoBehaviour
         //Debug.Log("Quit Game");
         Application.Quit();
     }
+
 }
