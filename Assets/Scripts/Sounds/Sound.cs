@@ -18,6 +18,8 @@ public class Sound
     [Range(1f, 3f)]
     public float pitch;
 
+    public bool loop;
+
     [HideInInspector] //following var behaves like a puplic var, but is not visible in the inspector
     public AudioSource source;
 
