@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 /*
-Copied from Brackeys:
+Mostly copied from Brackeys:
 https://youtu.be/6OT43pvUyfY
 */
 
@@ -19,6 +19,8 @@ public class Sound
     public float pitch;
 
     public bool loop;
+
+    public AudioMixerGroup outputAudioMixerGroup;
 
     [HideInInspector] //following var behaves like a puplic var, but is not visible in the inspector
     public AudioSource source;

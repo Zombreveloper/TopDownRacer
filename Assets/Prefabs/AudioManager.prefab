@@ -44,19 +44,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0226c0483d65309498845952ecfe4ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAudioMxer: {fileID: 24100000, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
   sounds:
   - name: Back
     clip: {fileID: 8300000, guid: 12490cfbae7888e41a1796c18ed871a8, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: -1390566947919402347, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
   - name: Submit
     clip: {fileID: 8300000, guid: ba5881f31bc8fb24f986638ddd56cc0e, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: -1390566947919402347, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
   - name: Select
     clip: {fileID: 8300000, guid: 9cec0cabf1f92444b925847bd9c90e6c, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: -1390566947919402347, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
