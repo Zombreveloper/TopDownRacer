@@ -8,7 +8,9 @@ https://youtu.be/6OT43pvUyfY
 */
 public class AudioManager : MonoBehaviour
 {
-    public AudioMixer myAudioMxer;
+    public AudioMixer myAudioMxer; //needs to know bacause AudioSource needs outputAudioMixerGroup
+
+    //needed for istancing AudioSources
     public Sound[] sounds; //Array mit (rohen) Sounds aus dem Asset Ordner.
 
     /*public static AudioManager instance;*/ //static refeence to itself / the first one
@@ -34,6 +36,7 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
 
             s.source.volume = s.volume;
+
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;

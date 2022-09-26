@@ -8,13 +8,24 @@ public class MixerController : MonoBehaviour
 {
     [SerializeField] private AudioMixer myAudioMxer;
 
-    private Slider slider;
+    //every slider this specific MixerController needs, because Mixer hast that much buses...
+    public Slider masterSlider;
+    public Slider musicSlider;
+    public Slider effectsSlider;
+    public Slider buttonSlider;
+
+    private List<Slider> volumeSlider = new List<Slider>();
+
     private float sliderValue;
 
     // Start is called before the first frame update
     void Start()
     {
-        slider = GetComponent<Slider>();
+        volumeSlider.Add(masterSlider);
+        volumeSlider.Add(musicSlider);
+        volumeSlider.Add(effectsSlider);
+        volumeSlider.Add(buttonSlider);
+
         LoadSavedSettings();
     }
 
@@ -26,54 +37,68 @@ public class MixerController : MonoBehaviour
 
     public void SetMasterVolume()
     {
-        sliderValue = slider.value;
+        var sliderValue = masterSlider.value;
         myAudioMxer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
     }
 
     public void SetMusicVolume()
     {
-        sliderValue = slider.value;
+        var sliderValue = musicSlider.value;
         myAudioMxer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20);
     }
 
     public void SetEffectsVolume()
     {
-        sliderValue = slider.value;
+        var sliderValue = effectsSlider.value;
         myAudioMxer.SetFloat("EffectsVolume", Mathf.Log10(sliderValue) * 20);
     }
 
     public void SetMenuVolume()
     {
-        sliderValue = slider.value;
+        var sliderValue = buttonSlider.value;
         myAudioMxer.SetFloat("MenuVolume", Mathf.Log10(sliderValue) * 20);
     }
 
-    void LoadSavedSettings()
+    public void LoadSavedSettings()
     {
-        //PlayerPrefs.DeleteAll(); //only unComment for testing Purpose!!!1!!!!11!!!!
-        //Debug.Log("load saved settings for sound");
+        //PlayerPrefs.DeleteAll(); //only uncomment this for testing purposes!!!!1!!!!11!!!
 
         //load smth from playerPrefs;
-        slider.value = PlayerPrefs.GetFloat(slider.name);
-
-        //Debug.Log("OnLoad: Name: " + slider.name + " Value: " + slider.value);
-
-        if (PlayerPrefs.HasKey(slider.name))
+        foreach (Slider slider in volumeSlider)
         {
-            //Debug.Log("key " + slider.name + " exists");
-        }
-        else
-        {
-            slider.value = 1f;
-            //Debug.Log("key " + slider.name + " does not exist");
-        }
+            if (slider != null)
+            {
+                slider.value = PlayerPrefs.GetFloat(slider.name);
 
-        //Debug.Log("OnLoad after if: Name: " + slider.name + " Value: " + slider.value);
+                if (PlayerPrefs.HasKey(slider.name))
+                {
+                    //Debug.Log("key " + slider.name + " exists");
+                }
+                else
+                {
+                    slider.value = 1f;
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 
     void OnDisable() //when quitting or esiting scene, save stuff
     {
         //Debug.Log("OnDisable: Name: " + slider.name + " Value: " + slider.value);
-        PlayerPrefs.SetFloat(slider.name, slider.value);
+        foreach (Slider slider in volumeSlider)
+        {
+            if (slider != null)
+            {
+                PlayerPrefs.SetFloat(slider.name, slider.value);
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }
