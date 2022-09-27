@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5284707229956122452}
   - component: {fileID: 6322466980050399003}
   - component: {fileID: 480161075735834023}
+  - component: {fileID: 1925663677807791588}
   m_Layer: 0
   m_Name: Boostpad Racetrack
   m_TagString: Untagged
@@ -118,6 +119,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparkEmitter: {fileID: 6478242334973868301}
   sparkEmitterParent: {fileID: 844972424635024568}
+--- !u!114 &1925663677807791588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549994558414431109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ecf45ad25e0f14ca16b4ffd891b38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: Boost
 --- !u!1 &1549994558742319709
 GameObject:
   m_ObjectHideFlags: 0

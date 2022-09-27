@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6737698961779022800}
   - component: {fileID: 2342472716562569753}
   - component: {fileID: 7558638877920912956}
+  - component: {fileID: 3481193723883895795}
   m_Layer: 0
   m_Name: Ice Stain Racetrack
   m_TagString: oil stain
@@ -140,6 +141,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparkEmitter: {fileID: 5632036595095212404}
   sparkEmitterParent: {fileID: 8508589878470659731}
+--- !u!114 &3481193723883895795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889064686053316991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ecf45ad25e0f14ca16b4ffd891b38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: IcePuddle
 --- !u!1 &1889064686535241348
 GameObject:
   m_ObjectHideFlags: 0
