@@ -117,6 +117,13 @@ MonoBehaviour:
     loop: 0
     outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
+  - name: Pylon
+    clip: {fileID: 8300000, guid: 12490cfbae7888e41a1796c18ed871a8, type: 3}
+    volume: 1
+    pitch: 3
+    loop: 0
+    outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
+    source: {fileID: 0}
   - name: WinJingle
     clip: {fileID: 8300000, guid: 5c6e9722cbe005d43ad6e6af42dfeba6, type: 3}
     volume: 1

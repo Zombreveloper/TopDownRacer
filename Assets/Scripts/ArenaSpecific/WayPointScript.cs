@@ -5,15 +5,17 @@ using System;
 
 public class WayPointScript : MonoBehaviour
 {
+    AudioManager audioManager;
     ArenaRaceManagerScript myManager;
     bool isColliding; //used to prevent multiple Triggers in one Frame
 
-    public static event Action<GameObject> OnCarGotWaypoint; 
+    public static event Action<GameObject> OnCarGotWaypoint;
 
     // Start is called before the first frame update
     void Start()
     {
         myManager = FindObjectOfType<ArenaRaceManagerScript>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -34,6 +36,7 @@ public class WayPointScript : MonoBehaviour
 
         if (other.transform.parent.tag == "Car")
         {
+            audioManager.Play("Pylon");
             //Debug.Log("WayPointTrigger");
             myManager.UpdateWayPoints();
             myManager.PunishOthers(other.transform.parent.name);
