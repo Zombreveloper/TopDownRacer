@@ -4883,6 +4883,7 @@ GameObject:
   - component: {fileID: 4765072982518740889}
   - component: {fileID: 4765072982518740888}
   - component: {fileID: 2912186899475849727}
+  - component: {fileID: 5928642297780132239}
   m_Layer: 0
   m_Name: Slippy Oil
   m_TagString: Untagged
@@ -5008,6 +5009,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparkEmitter: {fileID: 3830903232931562035}
   sparkEmitterParent: {fileID: 7120548128907549217}
+--- !u!114 &5928642297780132239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765072982518740891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ecf45ad25e0f14ca16b4ffd891b38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: OilStain
 --- !u!1 &4765072984146659119
 GameObject:
   m_ObjectHideFlags: 0

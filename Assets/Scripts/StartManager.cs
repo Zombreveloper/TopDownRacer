@@ -24,14 +24,14 @@ public class StartManager : MonoBehaviour
     void Start()
     {
         StartCars();
-        mytext.text = "0";
-        i = 0;
+        mytext.text = "3";
+        i = 3;
         if (instantStart)
         {
             Canvas canvas = this.gameObject.GetComponentInChildren<Canvas>();
             canvas.enabled = false;
             StartCoroutine(NoCountdown());
-            
+
         }
 
         else
@@ -66,15 +66,15 @@ public class StartManager : MonoBehaviour
 
     void Countdown()
     {
-        i++;
+        i--;
 
-        if (i <= 3)
+        if (i >= 1)
         {
             mytext.text = i.ToString();
             //Debug.Log("the number is " + i);
             //sound "möp"
         }
-        else if (i == 4)
+        else if (i == 0)
         {
             mytext.text = "GO!";
             //sound "meep"

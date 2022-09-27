@@ -4881,6 +4881,7 @@ GameObject:
   - component: {fileID: 1549994558414431106}
   - component: {fileID: 2198963369323960022}
   - component: {fileID: 4103919012765284312}
+  - component: {fileID: 4996829821136963397}
   m_Layer: 0
   m_Name: Boostpad (Trigger)
   m_TagString: Untagged
@@ -4941,6 +4942,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4996829821136963397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549994558414431109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ecf45ad25e0f14ca16b4ffd891b38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: Boost
 --- !u!1 &1549994558742319709
 GameObject:
   m_ObjectHideFlags: 0

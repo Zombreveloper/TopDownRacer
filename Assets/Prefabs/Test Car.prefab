@@ -5743,6 +5743,7 @@ GameObject:
   - component: {fileID: 1180067295109101682}
   - component: {fileID: 3655273635024600058}
   - component: {fileID: 4047626136768691773}
+  - component: {fileID: 8253781986679798512}
   m_Layer: 0
   m_Name: Test Car
   m_TagString: Car
@@ -5908,6 +5909,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMode: {fileID: 11400000, guid: 003f203112b025d40ba6921acae269f2, type: 2}
   bumper: {fileID: 26016351889859491}
+--- !u!114 &8253781986679798512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7916444501015972658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec0eb4d30d01a74083640c28856b7e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crashSounds:
+  - crash1
+  - crash2
+  - crash3
+  motorSound: 
 --- !u!1 &8095696107228676280
 GameObject:
   m_ObjectHideFlags: 0
