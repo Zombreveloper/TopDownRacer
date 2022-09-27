@@ -32,8 +32,8 @@ public class TilingPatterns : MonoBehaviour
     {
         if (tileset != null)
         {
-                   
-            if (tileset.levelName == "Desert")
+            tileset.tilesetPicker = Random.Range(0, 2);   
+            if (tileset.tilesetPicker == 0)
             {
                 tilesetFromSO = tileset.DesertTiles;
             }

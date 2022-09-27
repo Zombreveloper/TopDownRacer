@@ -94,13 +94,13 @@ public class MainMenu : MonoBehaviour
     //
     //
 
-    public void setLevelMeadows()
+    public void setLevelMeadows() //not working anymore,level now determined by int
     {
         tilePools.levelName = "Meadows";
         playerCount();
     }
 
-    public void setLevelDesert()
+    public void setLevelDesert() //not working anymore,level now determined by int
     {
         tilePools.levelName = "Desert";
         playerCount();
@@ -112,7 +112,7 @@ public class MainMenu : MonoBehaviour
         //Debug.Log("Go to Race-Scene");
         gameMode.gameMode = "Race";
         //SceneManager.LoadScene("MyScene");
-        //playerCount();
+        playerCount();
     }
 
     public void selectArenaRace()

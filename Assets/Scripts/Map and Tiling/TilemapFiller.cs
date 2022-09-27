@@ -23,7 +23,7 @@ public class TilemapFiller : MonoBehaviour
         if (tileset != null)
         {
             //overwrite the given Tile 
-            if (tileset.levelName == "Desert")
+            if (tileset.tilesetPicker == 0)
             defaultTile = tileset.DesertTiles[0];
             else defaultTile = tileset.MeadowTiles[0];
         }

@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 public class TilePoolList_SO : ScriptableObject
 {
     public string levelName;
+    public int tilesetPicker;
 
     public List<TileBase> MeadowTiles;
     public List<TileBase> DesertTiles;
