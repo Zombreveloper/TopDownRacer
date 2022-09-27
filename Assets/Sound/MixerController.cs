@@ -86,7 +86,23 @@ public class MixerController : MonoBehaviour
         }
     }
 
-    void OnDisable() //when quitting or esiting scene, save stuff
+    /*void OnDisable() //when quitting or exiting scene, save stuff
+    {
+        //Debug.Log("OnDisable: Name: " + slider.name + " Value: " + slider.value);
+        foreach (Slider slider in volumeSlider)
+        {
+            if (slider != null)
+            {
+                PlayerPrefs.SetFloat(slider.name, slider.value);
+            }
+            else
+            {
+                return;
+            }
+        }
+    }*/
+
+    public void saveOptions() //call this whn you want to save your changes
     {
         //Debug.Log("OnDisable: Name: " + slider.name + " Value: " + slider.value);
         foreach (Slider slider in volumeSlider)
