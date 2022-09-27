@@ -3740,6 +3740,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb17e6bfce43d004ca31113227a358c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdownVoice:
+  - Three
+  - Two
+  - One
+  - GO
   mytext: {fileID: 1234434281}
   i: 0
   instantStart: 0

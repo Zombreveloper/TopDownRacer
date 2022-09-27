@@ -5,10 +5,14 @@ using TMPro;
 
 public class StartManager : MonoBehaviour
 {
+    private AudioManager audioManager;
+    public string[] countdownVoice;
+
     ListOfActiveCars activeCars;
     //LassesTestInputHandler Inputhandler;
     public TMP_Text mytext;
     public int i;
+    private int voiceIndex;
     //private List<GameObject> myCarsList;
 
     [Header("Toggle to let cars start instantly")]
@@ -23,9 +27,12 @@ public class StartManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+
         StartCars();
         mytext.text = "3";
         i = 3;
+        voiceIndex = 0;
         if (instantStart)
         {
             Canvas canvas = this.gameObject.GetComponentInChildren<Canvas>();
@@ -37,6 +44,7 @@ public class StartManager : MonoBehaviour
         else
         {
             StartCoroutine(Countdown1());
+            audioManager.Play(countdownVoice[voiceIndex]);
         }
     }
 
@@ -67,18 +75,21 @@ public class StartManager : MonoBehaviour
     void Countdown()
     {
         i--;
+        voiceIndex++;
 
         if (i >= 1)
         {
             mytext.text = i.ToString();
             //Debug.Log("the number is " + i);
             //sound "möp"
+            audioManager.Play(countdownVoice[voiceIndex]);
         }
         else if (i == 0)
         {
             mytext.text = "GO!";
             //sound "meep"
             StartCars();
+            audioManager.Play(countdownVoice[voiceIndex]);
         }
         else
         {
