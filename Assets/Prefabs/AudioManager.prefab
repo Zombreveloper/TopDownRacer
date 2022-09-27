@@ -70,49 +70,49 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: crash1
     clip: {fileID: 8300000, guid: 625f982d06874dc43b95336d059ab5ca, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
   - name: crash2
     clip: {fileID: 8300000, guid: 0e06a3766c7651b41b6118af5a25b42b, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
   - name: crash3
     clip: {fileID: 8300000, guid: 3ce9ac90384b8f24d8fae84466c9dfdb, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
   - name: Boost
     clip: {fileID: 8300000, guid: 37e20d20752019248b2e7361878e8b21, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
   - name: IcePuddle
     clip: {fileID: 8300000, guid: 8ca0f87de141a164f96b01ba98f687fd, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
   - name: OilStain
     clip: {fileID: 8300000, guid: 96b2a23c0253c4e4cabaa7fbda398881, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
   - name: HPUp
     clip: {fileID: 8300000, guid: 7c2b83f8000120441953acf4c9c0416c, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}

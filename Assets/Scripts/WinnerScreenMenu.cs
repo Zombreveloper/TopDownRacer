@@ -9,11 +9,13 @@ public class WinnerScreenMenu : MonoBehaviour
     public Button winnerBack;
     public Button restart;
     public GameMode_SO gameMode;
+    AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        audioManager = FindObjectOfType<AudioManager>();
+        audioManager.Play("WinJingle");
     }
 
     // Update is called once per frame

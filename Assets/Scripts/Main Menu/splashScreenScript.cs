@@ -21,6 +21,7 @@ public class splashScreenScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return)) //specific for Top Down Racing Games PlayerCounterMenu
         {
             EnterMenu();
+            audioManager.Play("Submit");
         }
     }
 
