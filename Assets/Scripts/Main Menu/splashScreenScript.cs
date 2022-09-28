@@ -13,6 +13,7 @@ public class splashScreenScript : MonoBehaviour
     {
         audioManager = FindObjectOfType<AudioManager>();
         audioManager.Play(soundName);
+        audioManager.Play("CrowdCheer");
     }
 
     // Update is called once per frame

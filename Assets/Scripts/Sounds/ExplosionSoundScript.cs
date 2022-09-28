@@ -28,11 +28,13 @@ public class ExplosionSoundScript : MonoBehaviour
         if (state)
         {
             audioManager.Play(soundName1);
+            audioManager.Play("CrowdCheer");
             state = false;
         }
         else
         {
             audioManager.Play(soundName2);
+            audioManager.Play("CrowdCheer");
             state = true;
         }
     }

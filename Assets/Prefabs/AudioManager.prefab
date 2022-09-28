@@ -194,6 +194,20 @@ MonoBehaviour:
     loop: 0
     outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
+  - name: CrowdCheer
+    clip: {fileID: 8300000, guid: 6b0cc9e8566cc9144bc22740ce4bb98d, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
+    source: {fileID: 0}
+  - name: CrowdCheer2
+    clip: {fileID: 8300000, guid: 75ff69883d1dbae4c869c21b2db83ea6, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
+    source: {fileID: 0}
 --- !u!114 &3309548159198918558
 MonoBehaviour:
   m_ObjectHideFlags: 0

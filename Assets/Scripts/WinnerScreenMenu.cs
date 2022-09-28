@@ -16,6 +16,7 @@ public class WinnerScreenMenu : MonoBehaviour
     {
         audioManager = FindObjectOfType<AudioManager>();
         audioManager.Play("WinJingle");
+        audioManager.Play("CrowdCheer");
     }
 
     // Update is called once per frame

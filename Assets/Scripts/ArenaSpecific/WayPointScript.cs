@@ -37,6 +37,7 @@ public class WayPointScript : MonoBehaviour
         if (other.transform.parent.tag == "Car")
         {
             audioManager.Play("Pylon");
+            audioManager.Play("CrowdCheer2");
             //Debug.Log("WayPointTrigger");
             myManager.UpdateWayPoints();
             myManager.PunishOthers(other.transform.parent.name);
