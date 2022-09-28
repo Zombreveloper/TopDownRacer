@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WinnerDisplayer : MonoBehaviour
 {
     public WinnerSO saveWinner;
     public TMP_Text nameTextDisplay;
+    public Image car;
 
     private PlayerProfile myWinner;
     private string myWinnerName;
@@ -47,8 +49,17 @@ public class WinnerDisplayer : MonoBehaviour
 
     void DisplayName()
     {
-        nameTextDisplay.text = myWinnerName;
-        nameTextDisplay.color = new Color32(myRed_value, myGreen_value, myBlue_value, myAlpha_value);
+        if (myWinnerName == "Draw !!!") //display "Draw !!!"
+        {
+            car.color = new Color32(myRed_value, myGreen_value, myBlue_value, 50);
+            nameTextDisplay.text = myWinnerName;
+            nameTextDisplay.color = new Color32(myRed_value, myGreen_value, myBlue_value, myAlpha_value);
+        }
+        else //display car in its Color
+        {
+            nameTextDisplay.color = new Color32(255,255,255,0);
+            car.color = new Color32(myRed_value, myGreen_value, myBlue_value, myAlpha_value);
+        }
     }
 
 

@@ -11,12 +11,14 @@ public class PlayerDisplayer : MonoBehaviour
     public TMP_Text playerName;
     public GameObject inputFieldLeft;
     public GameObject inputFieldRight;
+    public Image car;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerName.text = profile.playerName;
-        playerName.color = new Color32(profile.red_value, profile.green_value, profile.blue_value, profile.alpha_value);
+        //playerName.text = profile.playerName;
+        //playerName.color = new Color32(profile.red_value, profile.green_value, profile.blue_value, profile.alpha_value);
+        car.color = new Color32(profile.red_value, profile.green_value, profile.blue_value, profile.alpha_value);
     }
 
     // Update is called once per frame

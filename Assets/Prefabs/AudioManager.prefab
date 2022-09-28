@@ -70,14 +70,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: SliderUp
     clip: {fileID: 8300000, guid: df8c10cdcf450d9418220b405b5a11ad, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: -1390566947919402347, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
   - name: SliderDown
     clip: {fileID: 8300000, guid: 6f8a50b2edd51474993b0b001489b0b9, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: -1390566947919402347, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
