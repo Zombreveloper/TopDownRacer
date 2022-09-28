@@ -20,6 +20,8 @@ public class MixerController : MonoBehaviour
 
     private List<string> mySaveNames = new List<string>();
 
+    int index;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,9 @@ public class MixerController : MonoBehaviour
         mySaveNames.Add("EffectsVolume");
         mySaveNames.Add("MenuVolume");
 
-        LoadSavedSettings();
+        index = 0;
+
+        LoadSettings(); //pulls from PlayerPrefs, pushes into Mixer and Sliders
     }
 
     // Update is called once per frame
@@ -45,37 +49,41 @@ public class MixerController : MonoBehaviour
     public void SetMasterVolume()
     {
         var sliderValue = masterSlider.value;
-        myAudioMxer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
-        saveOptions("MasterVolume", sliderValue);
+        //myAudioMxer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
+        SetSettings("MasterVolume", sliderValue);
     }
 
     public void SetMusicVolume()
     {
         var sliderValue = musicSlider.value;
-        myAudioMxer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20);
-        saveOptions("MusicVolume", sliderValue);
+        //myAudioMxer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20);
+        SetSettings("MusicVolume", sliderValue);
     }
 
     public void SetEffectsVolume()
     {
         var sliderValue = effectsSlider.value;
-        myAudioMxer.SetFloat("EffectsVolume", Mathf.Log10(sliderValue) * 20);
-        saveOptions("EffectsVolume", sliderValue);
+        //myAudioMxer.SetFloat("EffectsVolume", Mathf.Log10(sliderValue) * 20);
+        SetSettings("EffectsVolume", sliderValue);
     }
 
     public void SetMenuVolume()
     {
         var sliderValue = buttonSlider.value;
-        myAudioMxer.SetFloat("MenuVolume", Mathf.Log10(sliderValue) * 20);
-        saveOptions("MenuVolume", sliderValue);
+        //myAudioMxer.SetFloat("MenuVolume", Mathf.Log10(sliderValue) * 20);
+        SetSettings("MenuVolume", sliderValue);
     }
 
-    public void LoadSavedSettings()
+    private void LoadSettings() //pulls from PlayerPrefs, pushes into Mixer and Sliders
     {
         //PlayerPrefs.DeleteAll(); //only uncomment this for testing purposes!!!!1!!!!11!!!
 
+        PullFromPlayerPrefs();
+        //PushIntoSliders(); //gest called by PullFromPlayerPrefs()
+        //PushIntoMixer(); //gest called by PullFromPlayerPrefs()
+
         //load smth from playerPrefs;
-        foreach (string name in mySaveNames)
+        /*foreach (string name in mySaveNames)
         {
             float value = PlayerPrefs.GetFloat(name);
 
@@ -89,31 +97,43 @@ public class MixerController : MonoBehaviour
                 float firstValue = 1f;
                 setSettings(name, firstValue);
             }
-        }
+        }*/
     }
 
-    void setSettings(string _name, float _value)
+    private void PullFromPlayerPrefs()
     {
-        myAudioMxer.SetFloat(_name, Mathf.Log10(_value) * 20);
-    }
-
-    /*void OnDisable() //when quitting or exiting scene, save stuff
-    {
-        //Debug.Log("OnDisable: Name: " + slider.name + " Value: " + slider.value);
-        foreach (Slider slider in volumeSlider)
+        foreach (string name in mySaveNames)
         {
-            if (slider != null)
-            {
-                PlayerPrefs.SetFloat(slider.name, slider.value);
-            }
-            else
-            {
-                return;
-            }
+            float value = PlayerPrefs.GetFloat(name);
+
+            PushIntoSliders(index , value); //display slider with right value
+
+            //PushIntoMixer() -> SetSettings
+            SetSettings(name, value);
         }
+    }
+    private void PushIntoSliders(int _sliderIndex, float _value)
+    {
+        if (volumeSlider[_sliderIndex] != null)
+        {
+            Slider slider = volumeSlider[_sliderIndex]; //get right slider from Slider List (volumeSlider)
+            index++;
+            slider.value = _value;
+        }
+    }
+    /*PushIntoMixer() ->directly use SetSettings()
+    {
+        SetSettings(name, value)
     }*/
 
-    public void saveOptions(string name, float value) //call this whn you want to save your changes
+    public void SetSettings(string _name, float _value) //changes Mixer values
+    {
+        myAudioMxer.SetFloat(_name, Mathf.Log10(_value) * 20);
+
+        SaveSettings(_name, _value);
+    }
+
+    private void SaveSettings(string name, float value) //push into PlayerPrefs
     {
         //Debug.Log("OnDisable: Name: " + slider.name + " Value: " + slider.value);
         /*foreach (Slider slider in volumeSlider)
