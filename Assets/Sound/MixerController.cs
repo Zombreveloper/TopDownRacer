@@ -81,35 +81,28 @@ public class MixerController : MonoBehaviour
         PullFromPlayerPrefs();
         //PushIntoSliders(); //gest called by PullFromPlayerPrefs()
         //PushIntoMixer(); //gest called by PullFromPlayerPrefs()
-
-        //load smth from playerPrefs;
-        /*foreach (string name in mySaveNames)
-        {
-            float value = PlayerPrefs.GetFloat(name);
-
-            if (PlayerPrefs.HasKey(name)) //if something was saved previously
-            {
-                //Debug.Log("key " + slider.name + " exists");
-                setSettings(name, value);
-            }
-            else // if this is the first time you open the game
-            {
-                float firstValue = 1f;
-                setSettings(name, firstValue);
-            }
-        }*/
     }
 
     private void PullFromPlayerPrefs()
     {
         foreach (string name in mySaveNames)
         {
-            float value = PlayerPrefs.GetFloat(name);
+            float currentValue;
 
-            PushIntoSliders(index , value); //display slider with right value
+            if (PlayerPrefs.HasKey(name)) //if something was saved previously
+            {
+                //Debug.Log("key " + slider.name + " exists");
+                currentValue = PlayerPrefs.GetFloat(name);
+            }
+            else // if this is the first time you open the game
+            {
+                currentValue = 1f;
+            }
+
+            PushIntoSliders(index , currentValue); //display slider with right value
 
             //PushIntoMixer() -> SetSettings
-            SetSettings(name, value);
+            SetSettings(name, currentValue);
         }
     }
     private void PushIntoSliders(int _sliderIndex, float _value)
