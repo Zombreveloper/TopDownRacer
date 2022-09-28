@@ -68,6 +68,20 @@ MonoBehaviour:
     loop: 0
     outputAudioMixerGroup: {fileID: -1390566947919402347, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
+  - name: SliderUp
+    clip: {fileID: 8300000, guid: df8c10cdcf450d9418220b405b5a11ad, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: -1390566947919402347, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
+    source: {fileID: 0}
+  - name: SliderDown
+    clip: {fileID: 8300000, guid: 6f8a50b2edd51474993b0b001489b0b9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: -1390566947919402347, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
+    source: {fileID: 0}
   - name: crash1
     clip: {fileID: 8300000, guid: 625f982d06874dc43b95336d059ab5ca, type: 3}
     volume: 0.5
@@ -162,6 +176,20 @@ MonoBehaviour:
   - name: GO
     clip: {fileID: 8300000, guid: 21bce012d31858a42908f9df3e58627c, type: 3}
     volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
+    source: {fileID: 0}
+  - name: Explosion1
+    clip: {fileID: 8300000, guid: ecf6341dcac6bb94799054a75ef7107f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
+    source: {fileID: 0}
+  - name: Explosion2
+    clip: {fileID: 8300000, guid: 88c443587c73c554d8be5189a96ba07d, type: 3}
+    volume: 0.9
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}

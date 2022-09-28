@@ -18,6 +18,8 @@ public class MixerController : MonoBehaviour
 
     private float sliderValue;
 
+    private List<string> mySaveNames = new List<string>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,11 @@ public class MixerController : MonoBehaviour
         volumeSlider.Add(musicSlider);
         volumeSlider.Add(effectsSlider);
         volumeSlider.Add(buttonSlider);
+
+        mySaveNames.Add("MasterVolume");
+        mySaveNames.Add("MusicVolume");
+        mySaveNames.Add("EffectsVolume");
+        mySaveNames.Add("MenuVolume");
 
         LoadSavedSettings();
     }
@@ -39,24 +46,28 @@ public class MixerController : MonoBehaviour
     {
         var sliderValue = masterSlider.value;
         myAudioMxer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
+        saveOptions("MasterVolume", sliderValue);
     }
 
     public void SetMusicVolume()
     {
         var sliderValue = musicSlider.value;
         myAudioMxer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20);
+        saveOptions("MusicVolume", sliderValue);
     }
 
     public void SetEffectsVolume()
     {
         var sliderValue = effectsSlider.value;
         myAudioMxer.SetFloat("EffectsVolume", Mathf.Log10(sliderValue) * 20);
+        saveOptions("EffectsVolume", sliderValue);
     }
 
     public void SetMenuVolume()
     {
         var sliderValue = buttonSlider.value;
         myAudioMxer.SetFloat("MenuVolume", Mathf.Log10(sliderValue) * 20);
+        saveOptions("MenuVolume", sliderValue);
     }
 
     public void LoadSavedSettings()
@@ -64,26 +75,26 @@ public class MixerController : MonoBehaviour
         //PlayerPrefs.DeleteAll(); //only uncomment this for testing purposes!!!!1!!!!11!!!
 
         //load smth from playerPrefs;
-        foreach (Slider slider in volumeSlider)
+        foreach (string name in mySaveNames)
         {
-            if (slider != null)
-            {
-                slider.value = PlayerPrefs.GetFloat(slider.name);
+            float value = PlayerPrefs.GetFloat(name);
 
-                if (PlayerPrefs.HasKey(slider.name))
-                {
-                    //Debug.Log("key " + slider.name + " exists");
-                }
-                else
-                {
-                    slider.value = 1f;
-                }
-            }
-            else
+            if (PlayerPrefs.HasKey(name)) //if something was saved previously
             {
-                return;
+                //Debug.Log("key " + slider.name + " exists");
+                setSettings(name, value);
+            }
+            else // if this is the first time you open the game
+            {
+                float firstValue = 1f;
+                setSettings(name, firstValue);
             }
         }
+    }
+
+    void setSettings(string _name, float _value)
+    {
+        myAudioMxer.SetFloat(_name, Mathf.Log10(_value) * 20);
     }
 
     /*void OnDisable() //when quitting or exiting scene, save stuff
@@ -102,10 +113,10 @@ public class MixerController : MonoBehaviour
         }
     }*/
 
-    public void saveOptions() //call this whn you want to save your changes
+    public void saveOptions(string name, float value) //call this whn you want to save your changes
     {
         //Debug.Log("OnDisable: Name: " + slider.name + " Value: " + slider.value);
-        foreach (Slider slider in volumeSlider)
+        /*foreach (Slider slider in volumeSlider)
         {
             if (slider != null)
             {
@@ -115,6 +126,7 @@ public class MixerController : MonoBehaviour
             {
                 return;
             }
-        }
+        }*/
+        PlayerPrefs.SetFloat(name, value);
     }
 }

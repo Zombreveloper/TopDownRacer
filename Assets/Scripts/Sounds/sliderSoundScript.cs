@@ -13,8 +13,6 @@ public class sliderSoundScript : MonoBehaviour
 {
     Slider slider;
     AudioManager audioManager;
-    public string moveLeftSound;
-    public string moveRightSound;
     private bool diffrentValue;
 
     // Start is called before the first frame update
@@ -29,12 +27,12 @@ public class sliderSoundScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow) && diffrentValue)
         {
-            audioManager.Play(moveRightSound);
+            audioManager.Play("SliderDown");
             diffrentValue = false;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow) && diffrentValue)
         {
-            audioManager.Play(moveLeftSound);
+            audioManager.Play("SliderUp");
             diffrentValue = false;
         }
     }

@@ -11,16 +11,17 @@ public class EventVisualEffects : MonoBehaviour
     private Camera mainCamera;
     private TopDownCarController[] carControllers;
     public GameObject explosion;
+    private ExplosionSoundScript explosionSound;
 
     Vector3 explosionScreenPos;
 
     [Header("Effects at Car Destroy")]
-    [SerializeField] float shakeDurationDestroy = 1.5f; 
+    [SerializeField] float shakeDurationDestroy = 1.5f;
     [SerializeField] float shakePowerDestroy = 2f;
     [SerializeField] float lengthOfTimestop = 0.15f;
 
     [Header("Effects at hitting waypoint")]
-    [SerializeField] float shakeDurationWaypoint = .5f; 
+    [SerializeField] float shakeDurationWaypoint = .5f;
     [SerializeField] float shakePowerWaypoint = 1f;
     [SerializeField] float carFullSpins = 1f; //negative Value spins car the other way around
     [SerializeField] float carSpinVelocity = 7f;
@@ -34,6 +35,8 @@ public class EventVisualEffects : MonoBehaviour
         //Events
         CarDestroyer.OnCarDestroy += playDestroyEffects; //Subscription to the event
         WayPointScript.OnCarGotWaypoint += playWayPointEffects;
+
+        explosionSound = FindObjectOfType<ExplosionSoundScript>();
     }
 
     private void OnDestroy()
@@ -60,7 +63,7 @@ public class EventVisualEffects : MonoBehaviour
                 controller.autoRotateCar(carFullSpins, carSpinVelocity);
             }
         }
-        
+
     }
 
     private void playDestroyEffects(GameObject destroyedCar)
@@ -84,5 +87,7 @@ public class EventVisualEffects : MonoBehaviour
 
         mainCamera.GetComponent<CameraManager>().allowCamShake(shakeDurationDestroy, shakePowerDestroy);
         Debug.Log("Car destroy Event played");
+
+        explosionSound.playSound();
     }
 }

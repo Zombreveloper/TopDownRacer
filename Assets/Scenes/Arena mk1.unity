@@ -13507,6 +13507,7 @@ GameObject:
   - component: {fileID: 1643212665}
   - component: {fileID: 1643212671}
   - component: {fileID: 1643212670}
+  - component: {fileID: 1643212672}
   m_Layer: 0
   m_Name: ParticipantsManager
   m_TagString: Untagged
@@ -13596,6 +13597,20 @@ MonoBehaviour:
   threshold: 0
   dependsOnHealth: 1
   gameMode: {fileID: 11400000, guid: 003f203112b025d40ba6921acae269f2, type: 2}
+--- !u!114 &1643212672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643212664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4424511209424f41a130c358ebe136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName1: Explosion1
+  soundName2: Explosion2
 --- !u!1 &1674885181
 GameObject:
   m_ObjectHideFlags: 0

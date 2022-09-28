@@ -5,18 +5,35 @@ using UnityEngine;
 public class ExplosionSoundScript : MonoBehaviour
 {
     private AudioManager audioManager;
-    public string soundName;
+    public string soundName1;
+    public string soundName2;
+    private bool state;
 
     // Start is called before the first frame update
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
-        audioManager.Play(soundName);
+        state = true;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void playSound()
+    {
+        Debug.Log("EXPLOSION PLAY SOUND");
+        if (state)
+        {
+            audioManager.Play(soundName1);
+            state = false;
+        }
+        else
+        {
+            audioManager.Play(soundName2);
+            state = true;
+        }
     }
 }
