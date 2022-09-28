@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /*
 Inspiration
@@ -257,6 +258,8 @@ public class CameraManager : MonoBehaviour
 		{
 			bounds.Encapsulate(targets[i].position);
 		}
+		//if (SceneManager.GetActiveScene == SceneManager.GetSceneByName("Arena"))
+		//TODO: hier machen, dass bei Arena auch Explosionen encapsulated werden
 
 		//hier das größere nehmen, x oder y Achse!
 

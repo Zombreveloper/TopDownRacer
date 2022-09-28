@@ -20,6 +20,7 @@ public class TopDownCarController : MonoBehaviour
     float steeringInput = 0;
     float rotationAngle = 0;
     float velocityVsUp = 27;
+    float currentVelocity = 0;
 
     Vector2 carPullVector;
 
@@ -83,7 +84,8 @@ public class TopDownCarController : MonoBehaviour
             return;
 
         //Limit so we cannot go faster in any direction while accelerating
-        if (carRigidbody2D.velocity.sqrMagnitude > maxSpeed * maxSpeed && accelerationInput > 0)
+        currentVelocity = carRigidbody2D.velocity.sqrMagnitude;
+        if (currentVelocity > maxSpeed * maxSpeed && accelerationInput > 0)
             return;
 
         //Apply drag if there is no accelerationInput so the car stops when the player lets go of the accelerator
@@ -254,4 +256,15 @@ public class TopDownCarController : MonoBehaviour
     {
         return slipperyCRRunning;
     }
+
+    public float getRelativeCarVelocity()
+    {
+        return currentVelocity / (maxSpeed*maxSpeed);
+    }
+
+    public float getAbsoluteCarVelocity()
+    {
+        return currentVelocity;
+    }
+
 }

@@ -55,4 +55,15 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
         //Debug.Log("A Sound should be played");
     }
+
+    public void setPitch(string name, float newPitch)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name); //Find in the "sounds" Array, a sound with the name "name"
+        if (s == null) //does not play a sound that is not there. Catches spelling Errors.
+        {
+            Debug.Log("ERROR in AudioManager.Play(): Sound " + name + " was not found!!!");
+            return;
+        }
+        s.source.pitch = newPitch;
+    }
 }
