@@ -38,14 +38,15 @@ public class CarSounds : MonoBehaviour
         audioManager.Play(soundName);
     }
 
-    float minPitch = 1;
-    float maxPitch = 3;
+    float minPitch = .5f;
+    float maxPitch = 3f;
     void playEngineSound()
     {
         float carSpeed = carController.getRelativeCarVelocity();
-        float effectiveRPM = Mathf.Lerp(minPitch, maxPitch, carSpeed);
+        float RPM = carSpeed / carController.currentGear();
+        float effectiveRPM = Mathf.Lerp(minPitch, maxPitch, RPM);
         //Debug.Log(carSpeed);
-        audioManager.setPitch(motorSound, carSpeed);
+        audioManager.setPitch(motorSound, effectiveRPM);
         //audioManager.Play(soundName);
     }
 }

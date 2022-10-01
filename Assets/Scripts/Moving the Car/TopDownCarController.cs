@@ -14,6 +14,7 @@ public class TopDownCarController : MonoBehaviour
     public float steerRejectFactor = 8; //Sets amount of steering deficiency at low velocities
     public float maxSpeed = 20;
     public float startBoost = 20f;
+    public int maxGear = 3;
 
     //local variables
     float accelerationInput = 0;
@@ -144,6 +145,17 @@ public class TopDownCarController : MonoBehaviour
         //Debug.Log("The Car is currently pulled to direction:" + pullVector); //Prints the Value of the Pullback Vector to Console
     }
 
+    //only really necessary for sound atm
+    public int currentGear()
+    {
+        int currentGear;
+        float normalizedVelocity = getRelativeCarVelocity();
+        currentGear = Mathf.CeilToInt(normalizedVelocity * maxGear);
+        return currentGear;
+    }
+
+
+    //application of external forces
     //acessed by CarCollisionManager through Obstacle scripts
 
     public void adjustRotationAngle(float difference)

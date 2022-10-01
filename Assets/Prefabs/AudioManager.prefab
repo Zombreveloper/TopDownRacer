@@ -209,9 +209,9 @@ MonoBehaviour:
     outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
   - name: CarEngine
-    clip: {fileID: 8300000, guid: 21bce012d31858a42908f9df3e58627c, type: 3}
-    volume: 0.49
-    pitch: 1
+    clip: {fileID: 8300000, guid: c0580ddf21f70a8409f1d337084ba4db, type: 3}
+    volume: 0.25
+    pitch: 1.28
     loop: 1
     outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
     source: {fileID: 0}
