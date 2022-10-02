@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Audio;
 
 /*
@@ -52,6 +54,7 @@ public class AudioManager : MonoBehaviour
             Debug.Log("ERROR in AudioManager.Play(): Sound " + name + " was not found!!!");
             return;
         }
+
         s.source.Play();
         //Debug.Log("A Sound should be played");
     }

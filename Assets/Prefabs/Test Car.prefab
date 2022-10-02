@@ -5825,6 +5825,7 @@ MonoBehaviour:
   steerRejectFactor: 8
   maxSpeed: 30
   startBoost: 5
+  maxGear: 3
 --- !u!114 &1661030404866649602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5926,6 +5927,14 @@ MonoBehaviour:
   - crash2
   - crash3
   motorSound: CarEngine
+  sound:
+    name: CarEngine
+    clip: {fileID: 8300000, guid: fbf271f896647e740901b3b6e203dec2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    outputAudioMixerGroup: {fileID: 1490556167946098161, guid: 2a805251424facf46b3e1d40287adddd, type: 2}
+    source: {fileID: 0}
 --- !u!1 &8095696107228676280
 GameObject:
   m_ObjectHideFlags: 0
