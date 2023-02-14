@@ -18,6 +18,7 @@ public class PlayerCounter : MonoBehaviour
     //UI Objects
     public List<GameObject> PlayerUI = new List<GameObject>();
     public Button buttonBack;
+    public GameObject keysToUse;
 
     //list of all possible playerProfile SOs
     public List<PlayerProfile> PlayerProfileArray = new List<PlayerProfile>();
@@ -61,6 +62,8 @@ public class PlayerCounter : MonoBehaviour
         {
             healthBG.SetActive(false);
         }
+
+        keysToUse.SetActive(true);
     }
 
     // Update is called once per frame
@@ -160,6 +163,11 @@ public class PlayerCounter : MonoBehaviour
             startButton.interactable = true;
             canIStart = true;
             buttonToRaceTrack.interactable = true;
+        }
+
+        else if (ReadyPlayersList.ReadyPlayersArray.Count >= 1)
+        {
+            keysToUse.SetActive(false);
         }
     }
 
