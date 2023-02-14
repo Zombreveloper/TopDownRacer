@@ -12,7 +12,22 @@ public class pauseMenu : MonoBehaviour
 
 
     public GameObject pauseMenuUI;
+    
+    //variables to get CarSounds
+    [SerializeField] public ListOfActiveCars activeCars;
+    private List<GameObject> myCarsList;
 
+    void Start()
+    {
+        activeCars = FindObjectOfType<ListOfActiveCars>();
+        if (activeCars == null)
+        {
+            Debug.Log("PauseMenu Doesn't have CarsList!");
+        }
+
+        
+
+    }
 
 
     // Update is called once per frame
@@ -34,7 +49,7 @@ public class pauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-		//mySoundmanager.UnpauseSFX();
+        playSound();
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
@@ -42,7 +57,7 @@ public class pauseMenu : MonoBehaviour
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
-		//mySoundmanager.PauseSFX();
+        pauseSound();
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
@@ -70,5 +85,26 @@ public class pauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit(); //spiel verlassen
+    }
+
+    //Playing and Pausing Sound
+    private void pauseSound()
+    {
+        myCarsList = activeCars.getCarsList();
+        foreach (GameObject car in myCarsList)
+        {
+            CarSounds myCarSounds = car.GetComponent<CarSounds>();
+            myCarSounds.getAudioSource().Pause();
+        }
+    }
+
+    private void playSound()
+    {
+        myCarsList = activeCars.getCarsList();
+        foreach (GameObject car in myCarsList)
+        {
+            CarSounds myCarSounds = car.GetComponent<CarSounds>();
+            myCarSounds.getAudioSource().Play();
+        }
     }
 }
