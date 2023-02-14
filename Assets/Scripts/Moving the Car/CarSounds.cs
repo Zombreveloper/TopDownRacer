@@ -92,4 +92,7 @@ public class CarSounds : MonoBehaviour
         }
         source.pitch = newPitch;
     }
+
+    public AudioSource getAudioSource()
+    { return this.mySource; }
 }
