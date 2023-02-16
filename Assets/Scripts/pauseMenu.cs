@@ -41,9 +41,20 @@ public class pauseMenu : MonoBehaviour
             }
             else
             {
+                if (!lastPlayerLeft())
                 Pause();
             }
         }
+    }
+
+    bool lastPlayerLeft()
+    {
+        myCarsList = activeCars.getCarsList();
+        if (myCarsList.Count != 1)
+        {
+            return false;
+        }
+        else return true;
     }
 
     public void Resume()
@@ -106,5 +117,11 @@ public class pauseMenu : MonoBehaviour
             CarSounds myCarSounds = car.GetComponent<CarSounds>();
             myCarSounds.getAudioSource().Play();
         }
+    }
+
+    void OnDestroy()
+    {
+        GameIsPaused = false;
+        Debug.Log("Pause Menu knows It's destroyed");
     }
 }
