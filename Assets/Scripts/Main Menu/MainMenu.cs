@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     public Button firstButton, startPlayButton, leavePlayButton, startOptionsButton, leaveOptionsButton, startHTPButton, leaveHTPButton, startAreaSelectButton, leaveAreaSelectButton;
     public GameObject mainMenu, optionsMenu, hTPMenu, playMenu, areaSelectMenu;
     public Button mainQuit, optionsBack, hTPBack, playBack, areaSelectBack;
+    public Toggle fullScreenToggle;
 
     // Start is called before the first frame update
     void Start()
@@ -142,4 +143,8 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void fullscreen(bool isFullscreen) //implemented via "on Value Changed" and "Dynamic Bool"
+    {
+        Screen.fullScreen = isFullscreen;
+    }
 }
