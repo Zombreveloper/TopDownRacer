@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     public TilePoolList_SO tilePools;
     public GameMode_SO gameMode;
-    public Button firstButton, startPlayButton, leavePlayButton, startOptionsButton, leaveOptionsButton, startHTPButton, leaveHTPButton, startAreaSelectButton, leaveAreaSelectButton;
+    public Selectable firstButton, startPlayButton, leavePlayButton, startOptionsButton, leaveOptionsButton, startHTPButton, leaveHTPButton, startAreaSelectButton, leaveAreaSelectButton;
     public GameObject mainMenu, optionsMenu, hTPMenu, playMenu, areaSelectMenu;
     public Button mainQuit, optionsBack, hTPBack, playBack, areaSelectBack;
     public Toggle fullScreenToggle;
