@@ -65,6 +65,7 @@ public class MainMenu : MonoBehaviour
     public void selectStartOptionsButton()
     {
         startOptionsButton.Select();
+        diplayToggleFullscreen();
     }
 
     public void selectLeaveOptionsButton()
@@ -141,6 +142,19 @@ public class MainMenu : MonoBehaviour
     {
         //Debug.Log("Quit Game");
         Application.Quit();
+    }
+
+    private void diplayToggleFullscreen()
+    {
+        //get info from Screen and display on Toggle
+        if (Screen.fullScreen == true)
+        {
+            fullScreenToggle.isOn = true;
+        }
+        else
+        {
+            fullScreenToggle.isOn = false;
+        }
     }
 
     public void fullscreen(bool isFullscreen) //implemented via "on Value Changed" and "Dynamic Bool"
