@@ -1,0 +1,204 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Menu BG Sprite Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 0
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -419847558, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 876789930, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1689090699, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -395956640, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1890305064, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1388107261, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 2101791288, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -347076113, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -404505715, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 185158819, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 881743026, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1151280855, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -995534586, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1813199466, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1020726114, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1191305550, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 70917105, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -214240869, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -971315557, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 355476599, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 730471444, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 2063841362, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 383863260, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -800248394, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1183990370, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -2088515010, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 48664269, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -376429757, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1580239872, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 85885527, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 767782226, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 417757373, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 394970712, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 57599081, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 345658636, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 76653187, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 593084650, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -2054156521, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1948815980, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 389757424, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1166554973, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 860952998, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 730274648, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 81108782, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1511311270, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1242886452, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -312582403, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 181403598, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1687454612, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1508307565, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1161876160, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 877807560, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1591621980, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1720632587, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -423268594, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1487979415, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1434785487, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 47715779, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 706611759, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 221375244, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 190468697, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1497253913, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -284708386, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1671892168, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1836798320, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -769566014, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -212991142, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 2126675805, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 2135712796, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1155964661, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 836167027, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: -1474170523, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1022694854, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  - {fileID: 1316887582, guid: b455df7e97875d24eb6e215208da6eae, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Piskel Font & Menu mk2 Tilemap_68
+  - Piskel Font & Menu mk2 Tilemap_72
+  - Piskel Font & Menu mk2 Tilemap_69
+  - Piskel Font & Menu mk2 Tilemap_59
+  - Piskel Font & Menu mk2 Tilemap_58
+  - Piskel Font & Menu mk2 Tilemap_57
+  - Piskel Font & Menu mk2 Tilemap_56
+  - Piskel Font & Menu mk2 Tilemap_55
+  - Piskel Font & Menu mk2 Tilemap_54
+  - Piskel Font & Menu mk2 Tilemap_53
+  - Piskel Font & Menu mk2 Tilemap_52
+  - Piskel Font & Menu mk2 Tilemap_51
+  - Piskel Font & Menu mk2 Tilemap_50
+  - Piskel Font & Menu mk2 Tilemap_13
+  - Piskel Font & Menu mk2 Tilemap_12
+  - Piskel Font & Menu mk2 Tilemap_11
+  - Piskel Font & Menu mk2 Tilemap_10
+  - Piskel Font & Menu mk2 Tilemap_26
+  - Piskel Font & Menu mk2 Tilemap_17
+  - Piskel Font & Menu mk2 Tilemap_27
+  - Piskel Font & Menu mk2 Tilemap_16
+  - Piskel Font & Menu mk2 Tilemap_24
+  - Piskel Font & Menu mk2 Tilemap_15
+  - Piskel Font & Menu mk2 Tilemap_25
+  - Piskel Font & Menu mk2 Tilemap_39
+  - Piskel Font & Menu mk2 Tilemap_14
+  - Piskel Font & Menu mk2 Tilemap_22
+  - Piskel Font & Menu mk2 Tilemap_38
+  - Piskel Font & Menu mk2 Tilemap_23
+  - Piskel Font & Menu mk2 Tilemap_20
+  - Piskel Font & Menu mk2 Tilemap_19
+  - Piskel Font & Menu mk2 Tilemap_21
+  - Piskel Font & Menu mk2 Tilemap_18
+  - Piskel Font & Menu mk2 Tilemap_48
+  - Piskel Font & Menu mk2 Tilemap_31
+  - Piskel Font & Menu mk2 Tilemap_49
+  - Piskel Font & Menu mk2 Tilemap_30
+  - Piskel Font & Menu mk2 Tilemap_33
+  - Piskel Font & Menu mk2 Tilemap_28
+  - Piskel Font & Menu mk2 Tilemap_32
+  - Piskel Font & Menu mk2 Tilemap_44
+  - Piskel Font & Menu mk2 Tilemap_29
+  - Piskel Font & Menu mk2 Tilemap_35
+  - Piskel Font & Menu mk2 Tilemap_45
+  - Piskel Font & Menu mk2 Tilemap_34
+  - Piskel Font & Menu mk2 Tilemap_46
+  - Piskel Font & Menu mk2 Tilemap_37
+  - Piskel Font & Menu mk2 Tilemap_47
+  - Piskel Font & Menu mk2 Tilemap_36
+  - Piskel Font & Menu mk2 Tilemap_40
+  - Piskel Font & Menu mk2 Tilemap_41
+  - Piskel Font & Menu mk2 Tilemap_42
+  - Piskel Font & Menu mk2 Tilemap_43
+  - Piskel Font & Menu mk2 Tilemap_0
+  - Piskel Font & Menu mk2 Tilemap_1
+  - Piskel Font & Menu mk2 Tilemap_2
+  - Piskel Font & Menu mk2 Tilemap_3
+  - Piskel Font & Menu mk2 Tilemap_4
+  - Piskel Font & Menu mk2 Tilemap_5
+  - Piskel Font & Menu mk2 Tilemap_6
+  - Piskel Font & Menu mk2 Tilemap_7
+  - Piskel Font & Menu mk2 Tilemap_8
+  - Piskel Font & Menu mk2 Tilemap_9
+  - Piskel Font & Menu mk2 Tilemap_62
+  - Piskel Font & Menu mk2 Tilemap_63
+  - Piskel Font & Menu mk2 Tilemap_60
+  - Piskel Font & Menu mk2 Tilemap_61
+  - Piskel Font & Menu mk2 Tilemap_66
+  - Piskel Font & Menu mk2 Tilemap_67
+  - Piskel Font & Menu mk2 Tilemap_64
+  - Piskel Font & Menu mk2 Tilemap_65
+  - Piskel Font & Menu mk2 Tilemap_71
+  - Piskel Font & Menu mk2 Tilemap_70
+  - Piskel Font & Menu mk2 Tilemap_73
+  m_RenderDataMap: {}
+  m_Tag: Menu BG Sprite Atlas
+  m_IsVariant: 0
