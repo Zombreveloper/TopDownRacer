@@ -23,8 +23,8 @@ public class MouseDisable : MonoBehaviour
             instance = this;
         }
 
-        // Hides the cursor
-        Cursor.visible = false;
+        // disables the cursor
+       
         InputSystem.DisableDevice(Mouse.current);
         DontDestroyOnLoad(this.gameObject);
     }
@@ -32,6 +32,16 @@ public class MouseDisable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Hides the cursor
+        if (Screen.fullScreen == true)
+        {
+            Cursor.visible = false;
+        }
+        else Cursor.visible = true;
+    }
+
+    void OnSceneChanged()
+    {
+        InputSystem.DisableDevice(Mouse.current);
     }
 }
