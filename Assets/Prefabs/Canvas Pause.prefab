@@ -578,7 +578,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 128
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1280, y: 720}
-  m_ScreenMatchMode: 2
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -615,6 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 8354577785961447489}
+  activeCars: {fileID: 0}
 --- !u!114 &8068165204007503433
 MonoBehaviour:
   m_ObjectHideFlags: 0
