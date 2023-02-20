@@ -32,4 +32,9 @@ public class WinnerScreenMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Player Count Test");
     }
+
+    public void backToMainMenu()
+    {
+        SceneManager.LoadScene("Menu Test");
+    }
 }

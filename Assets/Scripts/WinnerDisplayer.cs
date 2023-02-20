@@ -61,11 +61,4 @@ public class WinnerDisplayer : MonoBehaviour
             car.color = new Color32(myRed_value, myGreen_value, myBlue_value, myAlpha_value);
         }
     }
-
-
-//the scene has to work, and i dont wanna write another script just for this method...
-    public void backToMainMenu()
-    {
-        SceneManager.LoadScene("Menu Test");
-    }
 }
