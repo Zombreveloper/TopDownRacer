@@ -5896,6 +5896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeCars: {fileID: 0}
   destroyer: {fileID: 0}
+  developerDestroyActivate: 0
 --- !u!114 &4047626136768691773
 MonoBehaviour:
   m_ObjectHideFlags: 0

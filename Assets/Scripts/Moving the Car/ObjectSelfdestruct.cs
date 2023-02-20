@@ -6,6 +6,7 @@ public class ObjectSelfdestruct : MonoBehaviour
 {
     public ListOfActiveCars activeCars; //connect in hirachy
     public CarDestroyer destroyer;
+    [SerializeField] bool developerDestroyActivate;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +19,12 @@ public class ObjectSelfdestruct : MonoBehaviour
     void Update()
     {
         //destroys the first and last positioned on the list, not the race!
-        OnCommandDestroyFirst();
-        OnCommandDestroyLast();
+        if (developerDestroyActivate == true)
+        {
+            OnCommandDestroyFirst();
+            OnCommandDestroyLast();
+        }
+
 
     }
 
