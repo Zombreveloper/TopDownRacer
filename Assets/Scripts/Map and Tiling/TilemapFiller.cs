@@ -22,7 +22,7 @@ public class TilemapFiller : MonoBehaviour
 
         if (tileset != null)
         {
-            //overwrite the given Tile 
+            //set a default tile to fill with 
             if (tileset.tilesetPicker == 0)
             defaultTile = tileset.DesertTiles[0];
             else defaultTile = tileset.MeadowTiles[0];
@@ -33,12 +33,12 @@ public class TilemapFiller : MonoBehaviour
     void Update()
     {
         boxFillOnTilemap();
-    }
+    } 
 
     void boxFillOnTilemap()
     {
         //List<Vector3Int> areaCoordinates = cellCoordinatesInArea(upLeft, downRight);
-        List<Vector3Int> areaCoordinates = tileCoordinates.getCellCoordinates();
+        List<Vector3Int> areaCoordinates = tileCoordinates.getCellCoordinatesAroundCam();
         foreach (Vector3Int currentCell in areaCoordinates)
         {
             if (!currentTilemap.HasTile(currentCell))

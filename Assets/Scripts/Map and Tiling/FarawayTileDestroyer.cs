@@ -30,7 +30,7 @@ public class FarawayTileDestroyer : MonoBehaviour
 
     void destroyTilesOutside(Bounds _areaBounds)
     {
-        List<Vector3Int> allCellsInTilemap = tileCoordinates.getCellCoordinates();
+        List<Vector3Int> allCellsInTilemap = tileCoordinates.getAllCellCoordinates();
         foreach (Vector3Int currentCell in allCellsInTilemap)
         {
             Vector3 cellPosWorld = currentTilemap.CellToWorld(currentCell);
@@ -40,6 +40,8 @@ public class FarawayTileDestroyer : MonoBehaviour
             }
         }
     }
+
+    //trash dump
 
     List<Vector3Int> everyCellCoordinate()
     {
