@@ -53,10 +53,10 @@ public class TopDownCarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        /*if (Input.GetMouseButtonDown(1))
         {
             StartCoroutine(makeSlipperyForSeconds(0.99f, 10));
-        }
+        }*/
     }
 
     //Frame-Rate independent for physics calculation
