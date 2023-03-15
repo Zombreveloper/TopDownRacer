@@ -10,23 +10,37 @@ public class TrackBuildMarker : MonoBehaviour
     private Vector3Int pointerPos; //represents pointers position
     private Vector3Int pointerRot; //represents pointers rotation
 
-    //public GameObject visibleMarker;
+    public GameObject visibleMarker;
+    private GameObject instMarker; //instanced version of the visibleMarker
     Tilemap tilemap;
 
     //checkbox for printing Pos and Rot Logs
     [Header("Toggle to enable poition an rotation Logs")]
     [SerializeField] bool printsEnabled = true;
 
+    [Header("Toggle to enable marker Visualization")]
+    [SerializeField] bool MVisualize = true;
+
     private void Awake()
     {
         tilemap = GameObject.Find("/Grid/Streetmap").GetComponent<Tilemap>(); //GetComponent<Tilemap>();
         pointerPos.Set(0, 0, 0);
         pointerRot.Set(0, 0, 0); //rotation, 0 means upwards
+        CheckBools();
+        
+
+    }
+
+    private void CheckBools()
+    {
         if (printsEnabled)
         {
             Debug.Log("Pointer wakes at Position: " + pointerPos);
         }
-
+        if (MVisualize)
+        {
+            instMarker = Instantiate(visibleMarker, pointerPos, Quaternion.identity);
+        }
     }
 
     // Start is called before the first frame update but only AFTER the coroutine in MapBuilder!!!
@@ -38,17 +52,22 @@ public class TrackBuildMarker : MonoBehaviour
 
     private void Update()
     {
-        //showMarker();
+        if (instMarker != null)
+        {
+            updateMarker();
+        }
     }
 
     //will show me a visible version of the marker for debugging
-    /* void showMarker() //this is crap. But i need this for testing
+    void updateMarker() //this is crap. But i need this for testing
      {
 
          Vector3 gridInWorldPoint = tilemap.GetCellCenterWorld(pointerPos);
-         visibleMarker.transform.position = gridInWorldPoint;
+        instMarker.transform.position = gridInWorldPoint; //tilemap.WorldToCell(pointerPos);
+        Quaternion newRotation = Quaternion.Euler(pointerRot); // +(new Vector3 (0,-90,0)));
+        instMarker.transform.rotation = newRotation ;
 
-     }*/
+     }
 
     //Public functions
 
